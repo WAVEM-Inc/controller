@@ -1,0 +1,2 @@
+/bin/ar qc devel/lib/libdart_mx8m_gpio.a  CMakeFiles/dart_mx8m_gpio.dir/lib/gpio_ctrl.c.o
+/bin/ranlib devel/lib/libdart_mx8m_gpio.a

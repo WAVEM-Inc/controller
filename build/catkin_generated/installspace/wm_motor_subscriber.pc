@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: wm_motor_subscriber
+Description: Description of wm_motor_subscriber
+Version: 0.1.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lwm_motor_subscriber
+Requires: std_msgs roscpp

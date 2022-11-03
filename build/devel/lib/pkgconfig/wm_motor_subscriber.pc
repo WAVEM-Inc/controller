@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/src/wm_motor_subscriber/build/devel
+
+Name: wm_motor_subscriber
+Description: Description of wm_motor_subscriber
+Version: 0.1.0
+Cflags: -I/home/ubuntu/catkin_ws/src/wm_motor_subscriber/include
+Libs: -L${prefix}/lib -lwm_motor_subscriber
+Requires: std_msgs roscpp
