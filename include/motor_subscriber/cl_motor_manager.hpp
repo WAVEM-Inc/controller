@@ -38,10 +38,13 @@ class cl_motor_manager{
         //static void* fn_device_read(void* data);
         int r_ro_val;
         int l_ro_val;
-        void fn_device_read_();
+        void fn_device_read();
+        int fn_index_of(char* str,char ch,int size);
         void do_encoder();
         void fn_ros_run();
         char* fn_substr(char* str, int start, int end);
+
+        static void fn_voltage_request(int fd);
         
 };
 #endif

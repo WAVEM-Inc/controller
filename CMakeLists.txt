@@ -15,7 +15,6 @@ include_directories(
 	include/wm_motor_subscriber
 	${catkin_INCLUDE_DIRS})
 
-ADD_LIBRARY(dart_mx8m_gpio STATIC lib/gpio_ctrl.c)
 add_executable(cdrmotor_subscriber src/cdrmotor_subscriber.cpp lib/gpio_ctrl.cpp
 				src/cl_motor_manager.cpp src/cl_motor_recv_data.cpp)
 add_dependencies(cdrmotor_subscriber ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

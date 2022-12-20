@@ -1,18 +1,17 @@
-#define CDR_MOTOR_TTY "/dev/ttyNUC"
+#define CDR_MOTOR_TTY "/dev/ttyUSB2"
 #define  ESS_KEY     9527
 #define  KEY_NUM     9527
 #define  MEM_SIZE    1024
 //
-#define RECV_SIZE 500
-#define SEND_SIZE 17
+#define RECV_SIZE 1024
+#define SEND_SIZE 1024
 #define RECV_LEFT_START 2
 #define RECV_LEFT_END 5
 #define RECV_RIGHT_START 7
 #define RECV_RIGHT_END 10
 #define  ESS_SIZE    sizeof(struct epoll_sensor_info)
 
-#define OVER_NUMBER_CHECK 9000
-#define OVER_NUMBER 10000
+#define TP_CMD_VEL "cmd_vel"
 
 struct left_encor_info{
 	int encor_left;

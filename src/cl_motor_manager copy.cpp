@@ -13,7 +13,7 @@ void cl_motor_manager::test_read(){
     //pthread_create(&device_read,NULL, &cl_motor_manager::fn_device_read, (void*) this);
     //pthread_detach(device_read);
 	ros::Time::init();
-    	std::thread thread_read(&cl_motor_manager::fn_device_read,this);
+    	std::thread thread_read(&cl_motor_manager::fn_device_read_,this);
 	std::thread thread_encoder(&cl_motor_manager::do_encoder,this);
 	std::thread thread_ros_move(&cl_motor_manager::fn_ros_run,this);
 	//
@@ -87,50 +87,34 @@ void cl_motor_manager::msgCallback(const geometry_msgs::Twist& cmd_vel_msg){
 	sprintf(cdr_motor_buf,"<M%01d%04d,%01d%04d,11>",l_dir,abs(l_speed),r_dir,abs(r_speed));
 	printf("STR=-->%s<--\n",cdr_motor_buf);
 	write(fd, cdr_motor_buf,strlen(cdr_motor_buf));
-	//
-	//sprintf(cdr_motor_buf,"<M%01d%04d,%01d%04d,11>",l_dir,150,r_dir,150);
-	//write(fd, cdr_motor_buf,strlen(cdr_motor_buf));
-	//fn_voltage_request(fd);
-	//
 	close(fd);
+	//fd=open(CDR_MOTOR_TTY, O_RDWR);
+	//sprintf(led_buf,"<L%01d%01d%01d>",led_red,led_green,led_blue);
+	//write(fd,led_buf,strlen(led_buf));
+	//close(fd);
 	printf("linear = %.02f,angular = %.02f\n", vel_linear, vel_angular);
 }
 
-void cl_motor_manager::fn_device_read(){
+void cl_motor_manager::fn_device_read_(){
 	char* recv_data;
 	m_old_encoder=0;
 	m_old_time= ros::Time::now();
 	int read_flag=1;
 	int read_success_check=0;
 	while(true){
-		std::cout<<"mobile robot data recv"<<std::endl;
+		std::cout<<"test"<<std::endl;
 
-		//std::ifstream stream_read(CDR_MOTOR_TTY,std::ios_base::in);
-		std::ifstream stream_read;
-		stream_read.open(CDR_MOTOR_TTY);
+		std::ifstream stream_read(CDR_MOTOR_TTY,std::ios_base::in);
 		recv_data=new char[RECV_SIZE];
 		memset(recv_data,0,sizeof(char)*RECV_SIZE);
-		//stream_read>>recv_data;
+		stream_read>>recv_data;
 		//std::string string_data(recv_data);
 		char *left_angle_bracket = 0;
 		char *right_angle_bracket = 0;
-		char* recv_data=new char[5000];
-		memset(recv_data,0,sizeof(char)*5000);
-		char ch=NULL;
-		int end =0, start=0;
-		while(stream_read.get(ch)){
-			recv_data[end]=ch;
-			std::cout<<ch;
-			if(ch=='<'){
-				start=end;
-			}
-			end++;
-			if(ch=='>'){
-				std::cout<<std::endl;
-				break;
-			}
+		printf("hex ");
+		for(int j =0 ;j<sizeof(char)*RECV_SIZE;j++){
+			printf("%x ",recv_data[j]);
 		}
-
 		printf("\n");
 		std::cout<<"[read]"<<recv_data<<' ';
 		left_angle_bracket=strchr(recv_data,'<');
@@ -350,10 +334,40 @@ int cl_motor_manager::fn_get_speed(float vel_motor, float x,float y){
 	//return result_speed;
 }
 
-void cl_motor_manager::fn_voltage_request(int fd){
+void cl_motor_manager::fn_voltage_request_test(){
+    int fd;
+    int lp=1;
+    while(1){
+        fd=open(CDR_MOTOR_TTY, O_RDWR);
         char board_buf[64];
         memset(board_buf,0,sizeof(board_buf));
-        sprintf(board_buf,"<V%01d>",1);
-		std::cout<<"battery"<<board_buf<<std::endl;
+        sprintf(board_buf,"<V%01d>",lp);
+       // printf("[voltage] %s\n",board_buf);
         write(fd,board_buf,strlen(board_buf));
+        lp++;
+        close(fd);
+        sleep(1);
+    }
 }
+
+/*
+//
+		int left_move = m_motor_recv_data.fn_get_left_move();
+		int right_move = m_motor_recv_data.fn_get_right_move();
+		if((right_move-m_old_encoder)>=30){
+			
+			double test_time = ros::Time::now().toSec()-m_old_time.toSec();
+		
+			std::cout<<"[Time!!]"<<test_time<<" L "<<left_move<<" R "<<right_move<<" "<<m_old_encoder<<std::endl;
+			std::cout<<"[Velocity]"<< ((right_move-m_old_encoder))*1.57/test_time<<std::endl;
+			
+			std::cout<<std::endl;
+			std::cout<<std::endl;
+			std::cout<<std::endl;
+			std::cout<<std::endl;
+			
+			m_old_time= ros::Time::now();
+			m_old_encoder = m_motor_recv_data.fn_get_right_move();
+		}
+		//
+*/
