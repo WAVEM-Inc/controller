@@ -1,4 +1,4 @@
-#define CDR_MOTOR_TTY "/dev/ttyUSB2"
+#define CDR_MOTOR_TTY "/dev/ttyUSB0"
 #define  ESS_KEY     9527
 #define  KEY_NUM     9527
 #define  MEM_SIZE    1024
