@@ -1,0 +1,97 @@
+#include "ros/ros.h"                            // ROS Default Header File
+#include "ros_tutorials_topic/MsgTutorial.h"    // MsgTutorial Message File Header. The header file is automatically created when building the package.
+#include <geometry_msgs/Twist.h>
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<unistd.h>
+#include<errno.h>
+#include<fcntl.h>
+#include<time.h>
+int get_distance(void)
+{
+	int bt_fd;
+	int lp;
+	int sonic_val;
+	char buff[64], UlSonic[8];
+	memset(buff,0,sizeof(buff));
+	bt_fd = open( "/dev/ttymxc4" , O_RDONLY);
+	read(bt_fd , buff, 256);
+	if(strstr(buff,"FORWORD")!=NULL)
+k	{
+		close(bt_fd);
+		return 1;
+	}
+	else if(strstr(buff,"LF")!=NULL)
+	{
+		close(bt_fd);
+		return 2;
+	}
+	else if(strstr(buff,"RF")!=NULL)
+	{
+		close(bt_fd);
+		return 3;
+	}
+	else if(strstr(buff,"LEFT")!=NULL)
+	{
+		close(bt_fd);
+		return 4;
+	}
+	else if(strstr(buff,"RIGHT")!=NULL)
+	{
+		close(bt_fd);
+		return 5;
+	}
+	else if(strstr(buff,"LB")!=NULL)
+	{
+		close(bt_fd);
+		return 6;
+	}
+	else if(strstr(buff,"RB")!=NULL)
+	{
+		close(bt_fd);
+		return 7;
+	}
+	else if(strstr(buff,"BACK")!=NULL)
+	{
+		close(bt_fd);
+		return 8;
+	}
+	else
+	{
+		close(bt_fd);
+		return 0;
+	}
+}
+int main(int argc, char **argv)                 // Node Main Function
+{
+  ros::init(argc, argv, "control_publisher");     // Initializes Node Name
+  ros::NodeHandle nh;                           // Node handle declaration for communication with ROS system
+
+  ros::Publisher ros_tutorial_pub = nh.advertise<ros_tutorials_topic::MsgTutorial>("ros_tutorial_msg", 100);
+
+  // Set the loop period. '10' refers to 10 Hz and the main loop repeats at 0.1 second intervals
+  ros::Rate loop_rate(10);
+
+  ros_tutorials_topic::MsgTutorial msg;     // Declares message 'msg' in 'MsgTutorial' message file format
+  int count = 0;                            // Variable to be used in message
+
+  while (ros::ok())
+  {
+    msg.stamp = ros::Time::now();           // Save current time in the stamp of 'msg'
+    msg.data  = count;                      // Save the the 'count' value in the data of 'msg'
+
+    ROS_INFO("send msg = %d", msg.stamp.sec);   // Prints the 'stamp.sec' message
+    ROS_INFO("send msg = %d", msg.stamp.nsec);  // Prints the 'stamp.nsec' message
+    ROS_INFO("send msg = %d", msg.data);        // Prints the 'data' message
+
+    ros_tutorial_pub.publish(msg);          // Publishes 'msg' message
+
+    loop_rate.sleep();                      // Goes to sleep according to the loop rate defined above.
+
+    ++count;                                // Increase count variable by one
+  }
+
+  return 0;
+}

@@ -1,1 +1,0 @@
-/bin/g++ -fPIC -g  -shared -Wl,-soname,libgmockd.so -o ../lib/libgmockd.so CMakeFiles/gmock.dir/src/gmock-all.cc.o  -Wl,-rpath,/home/ubuntu/catkin_ws/src/wm_motor_subscriber/build/gtest/lib ../lib/libgtestd.so -lpthread 

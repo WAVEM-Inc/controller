@@ -38,13 +38,13 @@ add_executable(tank_subscriber_jbk src/tank_subscriber_jbk_bak.cpp lib/gpio_ctrl
 add_dependencies(tank_subscriber_jbk ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS}) 	# 2020-09-24 JBK
 target_link_libraries(tank_subscriber_jbk ${catkin_LIBRARIES})					# 2020-09-24 JBK
 
-#add_executable(clcd_subscriber src/clcd_subscriber.cpp lib/gpio_ctrl.cpp lib/clcd_ctrl.cpp)		# 2021-02-24 BMS
-#add_dependencies(clcd_subscriber ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS}) 	# 2021-02-24 BMS
-#target_link_libraries(clcd_subscriber ${catkin_LIBRARIES})					# 2021-02-24 BMS
+add_executable(clcd_subscriber src/clcd_subscriber.cpp lib/gpio_ctrl.cpp lib/clcd_ctrl.cpp)		# 2021-02-24 BMS
+add_dependencies(clcd_subscriber ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS}) 	# 2021-02-24 BMS
+target_link_libraries(clcd_subscriber ${catkin_LIBRARIES})					# 2021-02-24 BMS
 
-#add_executable(clcd_follow_jbk src/clcd_subscriber_jbk.cpp lib/gpio_ctrl.cpp lib/clcd_ctrl.cpp)		# 2021-02-24 JBK
-#add_dependencies(clcd_follow_jbk ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS}) 	# 2021-02-24 JBK
-#target_link_libraries(clcd_subscriber ${catkin_LIBRARIES})					# 2021-02-24 JBK
+add_executable(clcd_follow_jbk src/clcd_subscriber_jbk.cpp lib/gpio_ctrl.cpp lib/clcd_ctrl.cpp)		# 2021-02-24 JBK
+add_dependencies(clcd_follow_jbk ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS}) 	# 2021-02-24 JBK
+target_link_libraries(clcd_follow_jbk ${catkin_LIBRARIES})					# 2021-02-24 JBK
 
 add_executable(tank_subscriber_jbk_encoder src/tank_subscriber_jbk.cpp lib/gpio_ctrl.cpp)		# 2020-10-14 JBK
 add_dependencies(tank_subscriber_jbk_encoder ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS}) 	# 2020-10-14 JBK

@@ -4,6 +4,8 @@
   <version>0.1.0</version>
   <description>ROS turtorial package to learn the topic</description>
   <license>Apache License 2.0</license>
+  <author email="pyo@robotis.com">Yoonseok Pyo</author>
+  <maintainer email="pyo@robotis.com">Yoonseok Pyo</maintainer>
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>std_msgs</build_depend>

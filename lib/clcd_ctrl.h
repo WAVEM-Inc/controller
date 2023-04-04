@@ -1,5 +1,5 @@
-#ifndef LCD_H
-#define LCD_H
+#ifndef LED_H
+#define LED_H
 
 #include <unistd.h>
 #include <termios.h>
