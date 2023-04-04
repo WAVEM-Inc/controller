@@ -9,6 +9,6 @@ Next, the nodes that control the robot transmit accordingly to the command proto
 
 ### 개발환경
 * ![Dev badge](https://img.shields.io/badge/ROS2-Foxy-orange/white?style=flat&logo=ROS&logoColor=white)
-* ![Dev_badge](https://img.shields.io/badge/Linux-20.04-brightgreen)
+* ![Dev_badge](https://img.shields.io/badge/Ubuntu-20.04-brightgreen&style=flat&logo=#E95420&logoColor=white)
 * ![Dev_badge](https://img.shields.io/badge/HardWare-NUC12-lightgrey)
 * ![Dev_badge](https://img.shields.io/badge/Target-Wabot3-blue)
