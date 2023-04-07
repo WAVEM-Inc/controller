@@ -1,0 +1,2 @@
+#define STEER_MAX_ANGLE 0.7
+#define STEER_MAX_ANGLE_CAL 1
