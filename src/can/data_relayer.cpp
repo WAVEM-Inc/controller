@@ -302,8 +302,6 @@ void DataRelayer::Run(){
   canlib_->CheckSocketStatus(device,faultCallback);    
 }
 
-
-
 void DataRelayer::StopPostMessage(unsigned int id){
   canlib_->StopPostMessage(id);
 }

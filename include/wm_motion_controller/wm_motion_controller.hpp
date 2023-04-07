@@ -41,14 +41,13 @@ class WmMotionController : public rclcpp::Node{
         int fn_can_init(); // Register callback function for can communication response
 
         void fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel);
-
-        
-
+        void faultCallback(int can_falut,int dbs_fault);
+        void rpmCallback(int remote_f_horn,int remote_d_headlight,int remote_b_motor_holding_brake);
+        rclcpp::TimerBase::SharedPtr m_timer;
         rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr m_sub_cmdvel;
     public :
         WmMotionController();
         virtual ~WmMotionController();
-        void faultCallback(int can_falut,int dbs_fault);
 };
 
 #endif

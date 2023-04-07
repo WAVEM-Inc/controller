@@ -6,7 +6,7 @@
  */
 WmMotionController::WmMotionController()
 :Node("WmMotionControllerNode"),m_steer_max_ang(STEER_MAX_ANGLE),m_steer_max_ang_cal(STEER_MAX_ANGLE_CAL){
-
+	fn_can_init();
 }
 WmMotionController::~WmMotionController(){
 
@@ -19,19 +19,43 @@ WmMotionController::~WmMotionController(){
  */
 int WmMotionController::fn_can_init(){
 	DataRelayer obj;
-	//std::function<void(WmMotionController&, int,int)> func = &WmMotionController::faultCallback;
-	//void(WmMotionController::*pfunc)(int,int);
-	//obj.RegistFaultCallback(this,pfunc);
-	int a= 1,b=2;
 	obj.RegistFaultCallback<WmMotionController>(this, &WmMotionController::faultCallback);
-
+	obj.RegistRpmCallback<WmMotionController>(this, &WmMotionController::rpmCallback);
+	obj.Run();
     return 0;
 }
 
+
+/**
+ * @brief 
+ * @param can_falut 0x0: no fault
+ * 0X1: invalid connection
+ * @param dbs_fault 0x0: no fault
+ * 0X1: oil pressure sensor failure
+ * 0X2: Insufficient system power supply
+ * 0X4: Controller temperature is too high
+ * 0X8: Motor failure
+ * 0X10: The controller itself is faulty
+ * 0X20: Oil pressure command message lost
+ * 0X40: CAN BUS OFF
+ * @author changunAn(changun516@wavem.net)
+ * @date 23.04.07
+ */
 void WmMotionController::faultCallback(int can_falut,int dbs_fault){
-	  std::cout << "[main] callback DBS_Status : " << (int)can_falut<< "," << (int)dbs_fault<< std::endl;
+	  std::cout << "[main] callback DBS_Status : " << (int)can_falut<< "," << (int)dbs_fault<< std::endl; 
 }
 
+
+void WmMotionController::rpmCallback(int remote_f_horn
+                    ,int remote_d_headlight
+                    ,int remote_b_motor_holding_brake
+                    ){
+
+  cout << "[main] callback RPM Status : " << (int)remote_f_horn
+  << "," << (int)remote_d_headlight
+  << "," << (int)remote_b_motor_holding_brake
+  << endl;
+}
 /**
  * @brief cmd_vel receive function for robot control
  * @param twist_aux Received cmd_vel data
