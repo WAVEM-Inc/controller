@@ -6,7 +6,13 @@
  */
 WmMotionController::WmMotionController()
 :Node("WmMotionControllerNode"),m_steer_max_ang(STEER_MAX_ANGLE),m_steer_max_ang_cal(STEER_MAX_ANGLE_CAL){
+	std::cout<<"WmMotionContoller Start"<<std::endl;
 	fn_can_init();
+	m_cb_group_cmd_vel = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+	rclcpp::SubscriptionOptions sub_cmdvel_options;
+	m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>("/cmd_vel",10,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1));
+	std::thread thread_run(&WmMotionController::fn_can_run,this);
+    thread_run.detach();
 }
 WmMotionController::~WmMotionController(){
 
@@ -18,11 +24,24 @@ WmMotionController::~WmMotionController(){
  * @date 23.04.06
  */
 int WmMotionController::fn_can_init(){
-	DataRelayer obj;
 	obj.RegistFaultCallback<WmMotionController>(this, &WmMotionController::faultCallback);
 	obj.RegistRpmCallback<WmMotionController>(this, &WmMotionController::rpmCallback);
-	obj.Run();
+
     return 0;
+}
+
+/**
+ * @brief can run function
+ * @date 23.04.10
+ * @author changunAn(changun516@wavem.net)
+ */
+void WmMotionController::fn_can_run(){
+	std::cout << "***can run start!!!***" << std::endl;
+	obj.Run();
+	while(state){
+		sleep(5);
+	}
+	std::cout << "***can end!!!***" << std::endl;
 }
 
 
@@ -94,6 +113,7 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
  */
 int main(int argc, char** argv){
     rclcpp::init(argc, argv);
+	std::cout<<"main start"<<std::endl;
     auto node = std::make_shared<WmMotionController>();
     rclcpp::spin(node);	
 	rclcpp::shutdown();
