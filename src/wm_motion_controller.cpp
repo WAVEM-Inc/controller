@@ -5,12 +5,12 @@
  * @date 23.04.06
  */
 WmMotionController::WmMotionController()
-:Node("WmMotionControllerNode"),m_steer_max_ang(STEER_MAX_ANGLE),m_steer_max_ang_cal(STEER_MAX_ANGLE_CAL){
+:Node("WmMotionControllerNode"),m_steer_max_ang(STEER_MAX_ANGLE),m_tp_cmdvel(TP_CMDVEL),m_tp_queue_size(TP_QUEUE_SIZE){
 	std::cout<<"WmMotionContoller Start"<<std::endl;
 	fn_can_init();
 	m_cb_group_cmd_vel = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	rclcpp::SubscriptionOptions sub_cmdvel_options;
-	m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>("/cmd_vel",10,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1));
+	m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(m_tp_cmdvel,m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1));
 	std::thread thread_run(&WmMotionController::fn_can_run,this);
     thread_run.detach();
 }
@@ -26,7 +26,6 @@ WmMotionController::~WmMotionController(){
 int WmMotionController::fn_can_init(){
 	obj.RegistFaultCallback<WmMotionController>(this, &WmMotionController::faultCallback);
 	obj.RegistRpmCallback<WmMotionController>(this, &WmMotionController::rpmCallback);
-
     return 0;
 }
 
@@ -64,7 +63,13 @@ void WmMotionController::faultCallback(int can_falut,int dbs_fault){
 	  std::cout << "[main] callback DBS_Status : " << (int)can_falut<< "," << (int)dbs_fault<< std::endl; 
 }
 
-
+/**
+ * @brief 
+ * 
+ * @param remote_f_horn 
+ * @param remote_d_headlight 
+ * @param remote_b_motor_holding_brake 
+ */
 void WmMotionController::rpmCallback(int remote_f_horn
                     ,int remote_d_headlight
                     ,int remote_b_motor_holding_brake
@@ -83,23 +88,24 @@ void WmMotionController::rpmCallback(int remote_f_horn
  */
 void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel){
 	float vel_linear = 0,vel_angular = 0;
-	//float ac_state = 0;
-	float steer_angle = 0, steer_val = 0;
 	vel_linear = cmd_vel->linear.x;
 	vel_angular = cmd_vel->angular.z;
     RCLCPP_INFO(this->get_logger(),"linear = %.02f,angular = %.02f\n", vel_linear, vel_angular);
-    steer_angle= (vel_angular)/(0.0001+vel_linear*2);
-    if(steer_angle > m_steer_max_ang){
-		steer_angle = m_steer_max_ang;
-	}
-	else if(steer_angle < -m_steer_max_ang){
-		steer_angle = -m_steer_max_ang;
-	}
-	steer_val = steer_angle/m_steer_max_ang; // 차후 수정
-	if((std::fabs(steer_val) <= m_steer_max_ang_cal ) ){
-		//acmotor_pulse = acmotor_pulse+steer_val-ac_angular_bak;
-		//ac_angular_bak = steer_val;
-	}    
+	obj.ControlSteering(vel_angular);
+	obj.ControlVel(vel_linear);
+}
+
+/**
+ * @brief m/s to km/h
+ * @param mps 
+ * @return float 
+ */
+float WmMotionController::fn_mps2kmph(float mps){
+	return mps * 3600 / 1000;  // mps를 kmph로 변환
+}
+
+float WmMotionController::fn_kmph2mps(float kmph){
+	return kmph * 1000 / 3600;  // kmph를 mps로 변환
 }
 
 
