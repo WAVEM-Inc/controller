@@ -5,12 +5,16 @@
  * @date 23.04.06
  */
 WmMotionController::WmMotionController()
-:Node("WmMotionControllerNode"),m_steer_max_ang(STEER_MAX_ANGLE),m_tp_cmdvel(TP_CMDVEL),m_tp_queue_size(TP_QUEUE_SIZE){
+:Node("WmMotionControllerNode"),m_steer_max_ang(STEER_MAX_ANGLE),m_tp_cmdvel(TP_CMDVEL),m_tp_queue_size(TP_QUEUE_SIZE),m_tp_can_chw(TP_CONTROL_HARD_WARE){
 	std::cout<<"WmMotionContoller Start"<<std::endl;
 	fn_can_init();
 	m_cb_group_cmd_vel = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+	m_cb_group_can_chw = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	rclcpp::SubscriptionOptions sub_cmdvel_options;
+	rclcpp::SubscriptionOptions sub_can_chw_options;
 	m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(m_tp_cmdvel,m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1));
+	m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(m_tp_cmdvel,m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1));
+	
 	std::thread thread_run(&WmMotionController::fn_can_run,this);
     thread_run.detach();
 }
@@ -42,7 +46,9 @@ void WmMotionController::fn_can_run(){
 	}
 	std::cout << "***can end!!!***" << std::endl;
 }
+void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw){
 
+}
 
 /**
  * @brief 
@@ -108,20 +114,3 @@ float WmMotionController::fn_kmph2mps(float kmph){
 	return kmph * 1000 / 3600;  // kmph를 mps로 변환
 }
 
-
-/**
- * @brief The main function of the WmMotionController node.
- * @param argc int paramter , Number of factors delivered at the start of the program
- * @param argv char**, The factors you gave me at the start of the program
- * @return int Program normal operation
- * @author changunAn(changun516@wavem.net)
- * @date 23.04.06
- */
-int main(int argc, char** argv){
-    rclcpp::init(argc, argv);
-	std::cout<<"main start"<<std::endl;
-    auto node = std::make_shared<WmMotionController>();
-    rclcpp::spin(node);	
-	rclcpp::shutdown();
-	return 0;
-}
