@@ -23,11 +23,13 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(actionlib_msgs REQUIRED)
+find_package(can_msgs REQUIRED)
 
-add_executable(wm_motion_controller_node src/wm_motion_controller.cpp
+add_executable(wm_motion_controller_node src/wm_motion_controller.cpp src/main.cpp
   src/can/lib.cpp src/can/can_adaptor.cpp src/can/can_send.cpp src/can/data_relayer.cpp src/can/can_dump.cpp
 )
-ament_target_dependencies(wm_motion_controller_node rclcpp std_msgs geometry_msgs)
+
+ament_target_dependencies(wm_motion_controller_node rclcpp std_msgs geometry_msgs can_msgs)
 
 install(TARGETS
   wm_motion_controller_node
