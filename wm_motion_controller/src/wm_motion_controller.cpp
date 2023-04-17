@@ -12,8 +12,10 @@ WmMotionController::WmMotionController()
 	m_cb_group_can_chw = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	rclcpp::SubscriptionOptions sub_cmdvel_options;
 	rclcpp::SubscriptionOptions sub_can_chw_options;
-	m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(m_tp_cmdvel,m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1));
-	m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(m_tp_cmdvel,m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1));
+	sub_cmdvel_options.callback_group = m_cb_group_cmd_vel;
+	sub_can_chw_options.callback_group = m_cb_group_can_chw;
+	m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(m_tp_cmdvel,m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1),sub_cmdvel_options);
+	m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(m_tp_can_chw,m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1),sub_can_chw_options);
 	
 	std::thread thread_run(&WmMotionController::fn_can_run,this);
     thread_run.detach();
@@ -47,7 +49,8 @@ void WmMotionController::fn_can_run(){
 	std::cout << "***can end!!!***" << std::endl;
 }
 void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw){
-
+	std::cout<< "chw_callback : "<< can_chw->horn << " : " << can_chw->head_light <<" : "<<can_chw->right_light<<" : "<<can_chw->left_light<<std::endl; 
+	obj.ControlHardware(can_chw->horn,can_chw->head_light,can_chw->right_light,can_chw->left_light);
 }
 
 /**
