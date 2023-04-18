@@ -17,3 +17,30 @@ Next, the nodes that control the robot transmit accordingly to the command proto
 * CAN
 * DDS
 * IPC
+
+### Compile
+1. wm_motion_controller
+    ```
+    ${packages_dir} / colcon build --packages-select wm_motion_controller
+    ```
+
+### Test
+0. Setting
+    ```bash
+    source ./.bashrc or ./.bashrc_foxy
+    source ${packages_dir}/install/setup.bash
+    ```
+1. Run<br/>
+    2.1. wm_motion_controller run
+    ```bash
+    ros2 run wm_motion_controller_node
+    ```
+
+### Topic
+* Subscriber
+    + cmd_vel<br/>
+
+* Publisher 
+ 
+    
+

@@ -23,10 +23,6 @@ Next, the nodes that control the robot transmit accordingly to the command proto
     ```
     ${packages_dir} / colcon build --packages-select can_msgs
     ```
-2. wm_motion_controller
-    ```
-    ${packages_dir} / colcon build --packages-select wm_motion_controller
-    ```
 
 ### Test
 0. Setting
@@ -35,27 +31,6 @@ Next, the nodes that control the robot transmit accordingly to the command proto
     source ${packages_dir}/install/setup.bash
     ```
 
-1. Compile<br/>
-    1.1. can_led_keyboard
-    ```bash
-    ${packages_dir} / colcon build --packages-select can_led_keyboard
-    ```
-2. Run<br/>
-    2.1. wm_motion_controller run
-    ```bash
-    ros2 run wm_motion_controller_node
-    ```
-    2.2 can_led_keyboard
-    ```bash
-    ros2 run can_led_keyboard
-    h : horrn, l : head_light, j : left_light, k : right_light, s : all off, a : all on
-    ```
 
-### Topic
-* Subscriber
-    + cmd_vel<br/>
-    + can/control_hardware<br/>
-
-* Publisher 
-    + can/control_hardware<br/>    
+    
 
