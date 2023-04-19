@@ -327,6 +327,7 @@ void DataRelayer::SendTest(){
   dat_1.iecu_horn_control = 0;
   dat_1.iecu_left_turn_light = 1;
   dat_1.iecu_right_turn_light = 1;
+  //
   canlib_->PostCanMessage<iECU_Control_Hardware>(dat_1,IECU_CONTROL_HARDWARE,device_type[CAN1]);
 
     // iECU_Control_Accelerate dat_2;
