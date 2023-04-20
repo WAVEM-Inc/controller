@@ -1,11 +1,9 @@
 #include"can/can_manager.hpp"
-CanMGR::CanMGR(){
+CanMGR::CanMGR(IMotionMediator* motion_mediator):MotionColleague(motion_mediator){
     fn_can_init();
-
 }
-void CanMGR::fn_run(){
+void CanMGR::fn_can_run(){
 	std::cout << "***can run start!!!***" << std::endl;
-	obj.Run();
 	while(state){
 		sleep(5);
 	}
@@ -21,6 +19,7 @@ void CanMGR::fn_run(){
 int CanMGR::fn_can_init(){
 	obj.RegistFaultCallback<CanMGR>(this, &CanMGR::faultCallback);
 	obj.RegistRpmCallback<CanMGR>(this, &CanMGR::rpmCallback);
+    obj.Run();
     return 0;
 }
 
@@ -43,9 +42,9 @@ void CanMGR::faultCallback(int can_falut,int dbs_fault){
 	  std::cout << "[main] callback DBS_Status : " << (int)can_falut<< "," << (int)dbs_fault<< std::endl; 
 }
 
+
 /**
  * @brief 
- * 
  * @param remote_f_horn 
  * @param remote_d_headlight 
  * @param remote_b_motor_holding_brake 
@@ -55,8 +54,23 @@ void CanMGR::rpmCallback(int remote_f_horn
                     ,int remote_b_motor_holding_brake
                     ){
 
-  cout << "[main] callback RPM Status : " << (int)remote_f_horn
+  std::cout << "[can_manager] callback RPM Status : " << (int)remote_f_horn
   << "," << (int)remote_d_headlight
   << "," << (int)remote_b_motor_holding_brake
-  << endl;
+  << std::endl;
+}
+
+void CanMGR::fn_send_control_hardware(bool horn,bool head_light,bool right_light,bool left_light){
+    obj.ControlHardware(horn,head_light,right_light,left_light);
+}
+void CanMGR::fn_send_control_steering(float angular){
+    obj.ControlSteering(angular);
+}
+
+void CanMGR::fn_send_control_vel(float linear){
+    obj.ControlVel(linear);
+}
+
+CanMGR::~CanMGR(){
+    
 }
