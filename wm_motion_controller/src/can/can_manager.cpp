@@ -1,5 +1,5 @@
 #include"can/can_manager.hpp"
-CanMGR::CanMGR(IMotionMediator* motion_mediator):MotionColleague(motion_mediator){
+CanMGR::CanMGR(IMotionMediator* motion_mediator):IMotionColleague(motion_mediator){
     fn_can_init();
 }
 void CanMGR::fn_can_run(){
@@ -62,6 +62,7 @@ void CanMGR::rpmCallback(int remote_f_horn
 
 void CanMGR::fn_send_control_hardware(bool horn,bool head_light,bool right_light,bool left_light){
     obj.ControlHardware(horn,head_light,right_light,left_light);
+    fn_send_value(1);
 }
 void CanMGR::fn_send_control_steering(float angular){
     obj.ControlSteering(angular);
@@ -73,4 +74,14 @@ void CanMGR::fn_send_control_vel(float linear){
 
 CanMGR::~CanMGR(){
     
+}
+
+void CanMGR::fn_send_value(const int& value){
+    std::cout<< "override can_mannager"<<std::endl;
+    m_i_motion_mediator->fn_send_value(value,this);
+}
+
+void CanMGR::fn_recv_value(const int& value){
+    std::cout<< "override can_mannager "<<value<<std::endl;
+
 }
