@@ -4,16 +4,18 @@
  * @author changunAn(changun516@wavem.net)
  * @date 23.04.06
  */
-WmMotionController::WmMotionController(IMotionMediator* motion_mediator)
+WmMotionController::WmMotionController(IMotionMediator* motion_mediator,CanMGR* can_mgr)
 :Node("WmMotionControllerNode"),
-MotionColleague(motion_mediator),
+IMotionColleague(motion_mediator),
+m_can_manager(can_mgr),
 m_steer_max_ang(STEER_MAX_ANGLE),
 m_tp_cmdvel(TP_CMDVEL),
 m_tp_queue_size(TP_QUEUE_SIZE),
 m_tp_can_chw(TP_CONTROL_HARD_WARE){
 	std::cout<<"WmMotionContoller Start"<<std::endl;
-	m_can_manager = new CanMGR();
 	
+	//m_can_manager = new CanMGR(motion_mediator);
+
 	m_cb_group_cmd_vel = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	m_cb_group_can_chw = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	rclcpp::SubscriptionOptions sub_cmdvel_options;
@@ -64,9 +66,13 @@ float WmMotionController::fn_kmph2mps(float kmph){
 	return kmph * 1000 / 3600;  // kmph를 mps로 변환
 }
 
-/*
-void WmMotionController::fn_wm_motion_controller_function(int value) {
-        // CanMGR 객체로부터 받은 값을 처리하는 로직
-        // ...
+
+void WmMotionController::fn_send_value(const int& value){
+    std::cout<< "override WmMotionController"<<std::endl;
+    m_i_motion_mediator->fn_send_value(value,this);
 }
-*/
+
+void WmMotionController::fn_recv_value(const int& value){
+    std::cout<< "override WmMotionController "<<value<<std::endl;
+
+}

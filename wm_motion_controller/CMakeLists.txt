@@ -27,6 +27,7 @@ find_package(can_msgs REQUIRED)
 
 add_executable(wm_motion_controller_node src/wm_motion_controller.cpp src/main.cpp
   src/can/lib.cpp src/can/can_adaptor.cpp src/can/can_send.cpp src/can/data_relayer.cpp src/can/can_dump.cpp src/can/can_manager.cpp
+  src/colleague/motion_colleague.cpp  src/mediator/concrete_motion_mediator.cpp
 )
 
 ament_target_dependencies(wm_motion_controller_node rclcpp std_msgs geometry_msgs can_msgs)

@@ -11,7 +11,7 @@
 #include <unistd.h> //sleep
 
 #include "mediator/i_motion_mediator.hpp"
-#include "colleague/motion_colleague.hpp"
+#include "colleague/i_motion_colleague.hpp"
 //extern int optind, opterr, optopt;
 //static char *progname;
 static volatile int state = 1;
@@ -25,7 +25,7 @@ static void sigterm(int signo)
 	state = 0;
 }
 
-class CanMGR:public ICanConnect, public MotionColleague{
+class CanMGR:public ICanConnect, public IMotionColleague{
     private :
         DataRelayer obj;
         //WmMotionController* m_wmc;
@@ -38,6 +38,8 @@ class CanMGR:public ICanConnect, public MotionColleague{
         void fn_send_control_steering(float angular);
         void fn_send_control_vel(float linear);
         //void fn_set_m_wmc(WmMotionController& wmc);
+        void fn_send_value(const int& value) override;
+        void fn_recv_value(const int& value) override;
         CanMGR(IMotionMediator* motion_colleague);
         virtual ~CanMGR();
 

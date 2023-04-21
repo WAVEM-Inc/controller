@@ -19,17 +19,18 @@
 // can header file
 #include "can/can_manager.hpp"
 
-#include "colleague/motion_colleague.hpp"
+#include "colleague/i_motion_colleague.hpp"
 #include "mediator/i_motion_mediator.hpp"
+#include "mediator/concrete_motion_mediator.hpp"
 
 using std::placeholders::_1;
-
+class IMotionMediator;
 /**
  * @brief Class controlled by robot motion can communication
  * @author changunAn(changun516@wavem.net)
  * @date 23.04.05
  */
-class WmMotionController : public rclcpp::Node,public MotionColleague{
+class WmMotionController : public rclcpp::Node,public IMotionColleague{
     private :
         const int m_steer_max_ang;
         const int m_tp_queue_size;
@@ -47,9 +48,13 @@ class WmMotionController : public rclcpp::Node,public MotionColleague{
         //void fn_wm_motion_controller_function(int value);
         float fn_mps2kmph(float mps);
         float fn_kmph2mps(float kmph);
+        //
+
     public :
-        WmMotionController(IMotionMediator* motion_colleague);
+        WmMotionController(IMotionMediator* motion_colleague,CanMGR* can_mgr);
         virtual ~WmMotionController();
+        void fn_send_value(const int& value) override;
+        void fn_recv_value(const int& value) override;
 };
 
 #endif
