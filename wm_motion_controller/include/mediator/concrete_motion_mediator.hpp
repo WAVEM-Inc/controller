@@ -3,6 +3,7 @@
 #include"mediator/i_motion_mediator.hpp"
 #include"can/can_manager.hpp"
 #include"wm_motion_controller/wm_motion_controller.hpp"
+#include <mutex>
 
 class WmMotionController;
 class ConcreteMotionMediator : public IMotionMediator{
@@ -13,6 +14,7 @@ class ConcreteMotionMediator : public IMotionMediator{
     private : 
         CanMGR* m_can_mgr;
         WmMotionController* m_wm_motion_controller;
+        std::mutex m_mutex; 
 };
 
 #endif
