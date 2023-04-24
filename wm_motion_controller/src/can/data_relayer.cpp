@@ -307,6 +307,21 @@ void DataRelayer::StopPostMessage(unsigned int id){
 }
 
 /**
+ * @brief Use when you need a lower HeartBeat
+ * 
+ */
+void DataRelayer::HeartBeat(){
+  Mode_Control_Flag dat_5;
+  memset(&dat_5,0x00,8);
+  dat_5.mode_control_request_flag = 1;
+	while(true){
+    std::cout << "***can run heartbeat!!!***" << std::endl;
+    canlib_->PostCanMessage<Mode_Control_Flag>(dat_5,MODE_CONTROL_FLAG,device_type[CAN1]);
+		sleep(1);
+	}
+}
+
+/**
 * @brief data send test
 * @details
 * @param

@@ -48,6 +48,8 @@ class DataRelayer {
     void ControlHardware(bool horn, bool head_light, bool right_light, bool left_light);
     void StopPostMessage(unsigned int id);
 
+    void HeartBeat();
+
     void RegistRpmCallback(void(*pfunc)(int,int,int));
     void RegistFaultCallback(void(*pfunc)(int,int));
 
