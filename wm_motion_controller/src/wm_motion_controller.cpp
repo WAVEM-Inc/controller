@@ -48,7 +48,7 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 	float vel_linear = 0,vel_angular = 0;
 	vel_linear = cmd_vel->linear.x;
 	vel_angular = cmd_vel->angular.z;
-    RCLCPP_INFO(this->get_logger(),"linear = %.02f,angular = %.02f\n", vel_linear, vel_angular);
+    RCLCPP_INFO(this->get_logger(),"!!!!!!@@@@@@linear = %.02f,angular = %.02f\n", vel_linear, vel_angular);
 	m_can_manager->fn_send_control_steering(vel_angular);
 	m_can_manager->fn_send_control_vel(vel_linear);
 }
