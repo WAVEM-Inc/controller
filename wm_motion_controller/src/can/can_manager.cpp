@@ -1,5 +1,5 @@
 #include"can/can_manager.hpp"
-CanMGR::CanMGR(IMotionMediator* motion_mediator):IMotionColleague(motion_mediator){
+CanMGR::CanMGR(std::shared_ptr<IMotionMediator> motion_mediator):IMotionColleague(motion_mediator){
     fn_can_init();
 }
 void CanMGR::fn_can_run(){
@@ -78,7 +78,7 @@ CanMGR::~CanMGR(){
 
 void CanMGR::fn_send_value(const int& value){
     std::cout<< "override can_mannager"<<std::endl;
-    m_i_motion_mediator->fn_send_value(value,this);
+    m_i_motion_mediator->fn_send_value(value,shared_from_this());
 }
 
 void CanMGR::fn_recv_value(const int& value){

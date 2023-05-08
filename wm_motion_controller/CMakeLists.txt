@@ -16,7 +16,6 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -25,7 +24,9 @@ find_package(geometry_msgs REQUIRED)
 find_package(actionlib_msgs REQUIRED)
 find_package(can_msgs REQUIRED)
 
-add_executable(wm_motion_controller_node src/wm_motion_controller.cpp src/main.cpp
+add_executable(wm_motion_controller_node 
+  src/main.cpp  
+  src/wm_motion_controller/wm_motion_controller.cpp
   src/can/lib.cpp src/can/can_adaptor.cpp src/can/can_send.cpp src/can/data_relayer.cpp src/can/can_dump.cpp src/can/can_manager.cpp
   src/colleague/motion_colleague.cpp  src/mediator/concrete_motion_mediator.cpp
 )

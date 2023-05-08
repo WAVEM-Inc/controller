@@ -108,6 +108,7 @@ void DataRelayer::SendMessageControlSteering(float steering_angle_cmd){
   dat_1.iecu_steering_angle_cmd = (steering_angle_cmd + OFFSET_STEERING) * RESOLUTION_STEERING_CTRL;
   dat_1.iecu_steering_valid = 1;
 
+  //changun CAN 1->0 230427
   canlib_->PostCanMessage<iECU_Control_Steering>(dat_1,IECU_CONTROL_STEERING,device_type[CAN1]);
 };
 
@@ -128,19 +129,21 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
   } else {
     gear = NEUTRAL;
   }
-
+  HeartBeat(); 
   iECU_Control_Accelerate dat_1;
   memset(&dat_1,0x00,CAN_MAX_DLEN);
   dat_1.iecu_accelerate_gear = gear; // (vel >0) = 1, (vel = 0) = 2, (vel < 0) = 3
   dat_1.iecu_accelerate_valid = 1;
   dat_1.iecu_accelerate_work_mode = 1;
   dat_1.iecu_speed_control = [](float v){return v * CNV_SPEED_FACTOR * RESOLUTION_SPEED_CTRL;}(vel) ;
+  std::cout<<"@@@@@@@ : "<<gear<<' '<<dat_1.iecu_speed_control<<'\n';
   dat_1.iecu_torque_control = 0;
+  //changun 0->1 230427
   canlib_->PostCanMessage<iECU_Control_Accelerate>(dat_1,IECU_CONTROL_ACCELERATE,device_type[CAN1]);
 
   iECU_Control_Brake dat_2;
   memset(&dat_2,0x00,CAN_MAX_DLEN);
-  dat_2.iecu_brakepressure_cmd = 100;
+  dat_2.iecu_brakepressure_cmd = 100; //origin 100
   dat_2.iecu_dbs_valid = 1;
   canlib_->PostCanMessage<iECU_Control_Brake>(dat_2,IECU_CONTROL_BRAKE,device_type[CAN1]);
 };
@@ -276,14 +279,18 @@ void DataRelayer::Run(){
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_EPS_Control_Request,VCU_EPS_CONTROL_REQUEST,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_Shake,REMOTE_CONTROL_SHAKE_2,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_IO,REMOTE_CONTROL_IO,device_type[CAN1]);
-  canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_DBS_Status,DBS_STATUS,device_type[CAN1]);
+  std::cout << "test1"<<'\n';
+  //changun 1->0 230427
+  canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_DBS_Status,DBS_STATUS,device_type[CAN1]); // changun 
+    std::cout << "test2"<< '\n';
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_DBS_Request,VCU_DBS_REQUEST,device_type[CAN1]);1
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_MCU_Torque_Feedback,TORQUE_FEEDBACK,device_type[CAN0]);
-
+  std::cout << "test3"<< '\n';
   // 수신 리스너 오픈
   vector<string> device;
-  //device.push_back(device_type[CAN1]);
   device.push_back(device_type[CAN0]);
+  //changun 0->1 230427
+  device.push_back(device_type[CAN1]);
 
   int ret = 0;
    
@@ -292,7 +299,7 @@ void DataRelayer::Run(){
     cout << "open fail" << endl;
     sleep(CAN_ALIVE_CHECKTIME);      
   }
-    
+    //changun 1->0 230427
   while(canlib_->RunControlFlag(1,device_type[CAN1]) != 0 ){
     cout << "run config flag fail" << endl;
     sleep(CAN_ALIVE_CHECKTIME);
@@ -304,6 +311,21 @@ void DataRelayer::Run(){
 
 void DataRelayer::StopPostMessage(unsigned int id){
   canlib_->StopPostMessage(id);
+}
+
+/**
+ * @brief Use when you need a lower HeartBeat
+ * 
+ */
+void DataRelayer::HeartBeat(){
+  Mode_Control_Flag dat_5;
+  memset(&dat_5,0x00,8);
+  dat_5.mode_control_request_flag = 1;
+	//while(true){
+    std::cout << "***can run heartbeat!!!***" << std::endl;
+    canlib_->PostCanMessage<Mode_Control_Flag>(dat_5,MODE_CONTROL_FLAG,device_type[CAN1]);
+	//	sleep(1);
+	//}
 }
 
 /**
