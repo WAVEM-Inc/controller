@@ -25,7 +25,7 @@ static void sigterm(int signo)
 	state = 0;
 }
 
-class CanMGR:public ICanConnect, public IMotionColleague{
+class CanMGR:public ICanConnect, public IMotionColleague, public std::enable_shared_from_this<CanMGR>{
     private :
         DataRelayer obj;
         //WmMotionController* m_wmc;
@@ -40,7 +40,7 @@ class CanMGR:public ICanConnect, public IMotionColleague{
         //void fn_set_m_wmc(WmMotionController& wmc);
         void fn_send_value(const int& value) override;
         void fn_recv_value(const int& value) override;
-        CanMGR(IMotionMediator* motion_colleague);
+        CanMGR(std::shared_ptr<IMotionMediator> motion_colleague);
         virtual ~CanMGR();
 
 };

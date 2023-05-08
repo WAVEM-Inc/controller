@@ -40,10 +40,19 @@ enum ACC_GEAR {
 };
 
 enum CHANNEL_TYPE { CAN0,CAN1 } ;
-//static const char *device_type[] =
-//        { "can0", "can0"};
+
+/**
+ * @brief Test device type
+ * 
 static const char *device_type[] =
         { "can0", "can1"};
+*/
+/**
+ * @brief Test device type
+ * 
+ */
+static const char *device_type[] =
+        { "vcan0", "vcan1"};
 #define CAN_ALIVE_CHECKTIME 2 // second
 #define CAN_RECV_RETRY_TIME 2 // second
 

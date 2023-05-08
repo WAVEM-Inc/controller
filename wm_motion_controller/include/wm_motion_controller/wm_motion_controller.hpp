@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include <functional>
-
+#include <memory>
 // ros2 header file
 #include"rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
@@ -30,7 +30,7 @@ class IMotionMediator;
  * @author changunAn(changun516@wavem.net)
  * @date 23.04.05
  */
-class WmMotionController : public rclcpp::Node,public IMotionColleague{
+class WmMotionController : public rclcpp::Node,public IMotionColleague,public std::enable_shared_from_this<WmMotionController> {
     private :
         const int m_steer_max_ang;
         const int m_tp_queue_size;
@@ -43,7 +43,7 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague{
         rclcpp::Subscription<can_msgs::msg::ControlHardware>::SharedPtr m_sub_can_chw;
         void fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw);
         void fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel);
-        CanMGR* m_can_manager;
+        std::shared_ptr<CanMGR> m_can_manager;
         //override
         //void fn_wm_motion_controller_function(int value);
         float fn_mps2kmph(float mps);
@@ -51,7 +51,7 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague{
         //
 
     public :
-        WmMotionController(IMotionMediator* motion_colleague,CanMGR* can_mgr);
+        WmMotionController(std::shared_ptr<IMotionMediator> motion_colleague,std::shared_ptr<CanMGR> can_mgr);
         virtual ~WmMotionController();
         void fn_send_value(const int& value) override;
         void fn_recv_value(const int& value) override;

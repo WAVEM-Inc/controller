@@ -4,7 +4,7 @@
  * @author changunAn(changun516@wavem.net)
  * @date 23.04.06
  */
-WmMotionController::WmMotionController(IMotionMediator* motion_mediator,CanMGR* can_mgr)
+WmMotionController::WmMotionController(std::shared_ptr<IMotionMediator> motion_mediator,std::shared_ptr<CanMGR> can_mgr)
 :Node("WmMotionControllerNode"),
 IMotionColleague(motion_mediator),
 m_can_manager(can_mgr),
@@ -69,7 +69,7 @@ float WmMotionController::fn_kmph2mps(float kmph){
 
 void WmMotionController::fn_send_value(const int& value){
     std::cout<< "override WmMotionController"<<std::endl;
-    m_i_motion_mediator->fn_send_value(value,this);
+    m_i_motion_mediator->fn_send_value(value,enable_shared_from_this<WmMotionController>::shared_from_this());
 }
 
 void WmMotionController::fn_recv_value(const int& value){

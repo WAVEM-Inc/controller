@@ -20,15 +20,13 @@ int main(int argc, char** argv){
 =======================================================================================================================)"<<std::endl;
 
 	std::cout<<"main start"<<std::endl;
-	ConcreteMotionMediator* mediator = new ConcreteMotionMediator();
-	CanMGR* can_mgr = new CanMGR(mediator);
+	std::shared_ptr<ConcreteMotionMediator> mediator = std::make_shared<ConcreteMotionMediator>();
+	std::shared_ptr<CanMGR> can_mgr =  std::make_shared<CanMGR>(mediator);
 	mediator->fn_set_can_mgr(can_mgr);
     auto node = std::make_shared<WmMotionController>(mediator,can_mgr);
-	mediator->fn_set_wm_motion_controller(node.get());
+	mediator->fn_set_wm_motion_controller(node);
     rclcpp::spin(node);	
 	rclcpp::shutdown();
 
-	delete can_mgr;
-	delete mediator;
 	return 0;
 }
