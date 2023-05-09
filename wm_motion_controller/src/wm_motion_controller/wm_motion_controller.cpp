@@ -32,7 +32,11 @@ WmMotionController::~WmMotionController(){
 
 }
 
-
+/**
+ * @brief Callback function for controlling horn, light, when can_msgs:msgControlHardWare message is received
+ * @author changunAn(changun516@wavem.net)
+ * @param can_chw 
+ */
 void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw){
 	std::cout<< "chw_callback : "<< can_chw->horn << " : " << can_chw->head_light <<" : "<<can_chw->right_light<<" : "<<can_chw->left_light<<std::endl; 
 	m_can_manager->fn_send_control_hardware(can_chw->horn,can_chw->head_light,can_chw->right_light,can_chw->left_light);
@@ -56,22 +60,37 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 /**
  * @brief m/s to km/h
  * @param mps 
+ * @author changunAn(changun516@wavem.net)
  * @return float 
  */
 float WmMotionController::fn_mps2kmph(float mps){
 	return mps * 3600 / 1000;  // mps를 kmph로 변환
 }
-
+/**
+ * @brief km/h to m/s
+ * @param kmph 
+ * @author changunAn(changun516@wavem.net)
+ * @return float 
+ */
 float WmMotionController::fn_kmph2mps(float kmph){
 	return kmph * 1000 / 3600;  // kmph를 mps로 변환
 }
 
 
+/**
+ * @brief Function for sending data to CanMGR via arbitrator
+ * @author changunAn(changun516@wavem.net)
+ * @param value 
+ */
 void WmMotionController::fn_send_value(const int& value){
     std::cout<< "override WmMotionController"<<std::endl;
     m_i_motion_mediator->fn_send_value(value,enable_shared_from_this<WmMotionController>::shared_from_this());
 }
-
+/**
+ * @brief Function for receiving data from CanMGR through arbitrator
+ * @author changunAn(changun516@wavem.net)
+ * @param value 
+ */
 void WmMotionController::fn_recv_value(const int& value){
     std::cout<< "override WmMotionController "<<value<<std::endl;
 

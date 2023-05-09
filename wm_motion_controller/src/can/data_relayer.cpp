@@ -315,7 +315,8 @@ void DataRelayer::StopPostMessage(unsigned int id){
 
 /**
  * @brief Use when you need a lower HeartBeat
- * 
+ * @details Must be passed together when controlling the robot
+ * @author changunAn(changun516@wavem.net)
  */
 void DataRelayer::HeartBeat(){
   Mode_Control_Flag dat_5;

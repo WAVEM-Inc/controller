@@ -1,7 +1,17 @@
 #include"can/can_manager.hpp"
+/**
+ * @brief Construct a new Can M G R:: Can M G R object
+ * @author changunAn(changun516@wavem.net)
+ * @param motion_mediator 
+ */
 CanMGR::CanMGR(std::shared_ptr<IMotionMediator> motion_mediator):IMotionColleague(motion_mediator){
     fn_can_init();
 }
+
+/**
+ * @brief can operation function
+ * @author changunAn(changun516@wavem.net)
+ */
 void CanMGR::fn_can_run(){
 	std::cout << "***can run start!!!***" << std::endl;
 	while(state){
@@ -17,9 +27,9 @@ void CanMGR::fn_can_run(){
  * @date 23.04.06
  */
 int CanMGR::fn_can_init(){
-	obj.RegistFaultCallback<CanMGR>(this, &CanMGR::faultCallback);
-	obj.RegistRpmCallback<CanMGR>(this, &CanMGR::rpmCallback);
-    obj.Run();
+	obj_.RegistFaultCallback<CanMGR>(this, &CanMGR::faultCallback);
+	obj_.RegistRpmCallback<CanMGR>(this, &CanMGR::rpmCallback);
+    obj_.Run();
     return 0;
 }
 
@@ -44,43 +54,74 @@ void CanMGR::faultCallback(int can_falut,int dbs_fault){
 
 
 /**
- * @brief 
- * @param remote_f_horn 
- * @param remote_d_headlight 
- * @param remote_b_motor_holding_brake 
+ * @brief  Function to respond to rpm reception through can communication
+ * @details DataRelayer::Handler_MCU_Torque_Feedback
+ * @author changunAn(changun516@wavem.net)
+ * @param mcu_shift : msg.mcu_shift 
+ * @param mcu_speed : msg.mcu_speed -- rpm
+ * @param mcu_torque : msg.mcu_torque //
+ * @see DataRelayer
  */
-void CanMGR::rpmCallback(int remote_f_horn
-                    ,int remote_d_headlight
-                    ,int remote_b_motor_holding_brake
+void CanMGR::rpmCallback(int mcu_shift
+                    ,int mcu_speed
+                    ,int mcu_torque
                     ){
-
-  std::cout << "[can_manager] callback RPM Status : " << (int)remote_f_horn
-  << "," << (int)remote_d_headlight
-  << "," << (int)remote_b_motor_holding_brake
+  //  callback_time_ = std::chrono::high_resolution_clock::now(); 0.1
+  std::cout << "[can_manager] callback RPM Status : " << (int)mcu_shift
+  << "," << (int)mcu_speed
+  << "," << (int)mcu_torque
   << std::endl;
+
 }
 
+/**
+ * @brief Function for controlling horn, head_light, right, left_light from robot to VCU via Can communication
+ * @param horn 
+ * @param head_light 
+ * @param right_light 
+ * @param left_light 
+ * @author changunAn(changun516@wavem.net) 
+ */
 void CanMGR::fn_send_control_hardware(bool horn,bool head_light,bool right_light,bool left_light){
-    obj.ControlHardware(horn,head_light,right_light,left_light);
+    obj_.ControlHardware(horn,head_light,right_light,left_light);
     fn_send_value(1);
 }
-void CanMGR::fn_send_control_steering(float angular){
-    obj.ControlSteering(angular);
-}
 
+
+/**
+ * @brief Function for sending steering control values from robot to VCU via Can communication
+ * @author changunAn(changun516@wavem.net) 
+ * @param angular 
+ */
+void CanMGR::fn_send_control_steering(float angular){
+    obj_.ControlSteering(angular);
+}
+/**
+ * @brief Function for sending motor control values from robot to VCU via Can communication
+ * @author changunAn(changun516@wavem.net) 
+ * @param linear 
+ */
 void CanMGR::fn_send_control_vel(float linear){
-    obj.ControlVel(linear);
+    obj_.ControlVel(linear);
 }
 
 CanMGR::~CanMGR(){
     
 }
-
+/**
+ * @brief Ability to send data from VCU to robot via Can communication to wm_motion_controller
+ * @author changunAn(changun516@wavem.net) 
+ * @param value 
+ */
 void CanMGR::fn_send_value(const int& value){
     std::cout<< "override can_mannager"<<std::endl;
     m_i_motion_mediator->fn_send_value(value,shared_from_this());
 }
-
+/**
+ * @brief 
+ * @author changunAn(changun516@wavem.net) 
+ * @param value 
+ */
 void CanMGR::fn_recv_value(const int& value){
     std::cout<< "override can_mannager "<<value<<std::endl;
 

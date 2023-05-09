@@ -3,6 +3,11 @@
 #include "mediator/i_motion_mediator.hpp"
 #include <memory>
 class IMotionMediator;
+
+/**
+ * @brief Collegue interface for using mediator patterns
+ * @author changunAn(changun516@wavem.net)
+ */
 class IMotionColleague{
     public : 
         IMotionColleague(std::shared_ptr<IMotionMediator> motion_mediator):m_i_motion_mediator(motion_mediator){};

@@ -29,7 +29,7 @@ class DataRelayer {
     typedef std::function<void(int,int,int)> func_rpm_callback; // Callback function pointer variable definition
     //typedef std::function<void(int,int,int)> func_other_callback; // Callback function pointer variable definition
 
-    func_fault_callback faultCallback;
+    func_fault_callback faultCallback;// Callback function pointer variable definition
     func_rpm_callback rpmCallback; // Callback function pointer variable definition
     //func_other_callback otherCallback; // Callback function pointer variable definition
 
