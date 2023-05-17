@@ -52,7 +52,7 @@ static const char *device_type[] =
  * 
  */
 static const char *device_type[] =
-        { "vcan0", "vcan1"};
+        { "can0", "can1"};
 #define CAN_ALIVE_CHECKTIME 2 // second
 #define CAN_RECV_RETRY_TIME 2 // second
 

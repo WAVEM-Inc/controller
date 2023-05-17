@@ -12,7 +12,7 @@
 
 #include "mediator/i_motion_mediator.hpp"
 #include "colleague/i_motion_colleague.hpp"
-
+#include <iomanip>
 #include <chrono> // time
 //extern int optind, opterr, optopt;
 //static char *progname;
@@ -42,6 +42,8 @@ class CanMGR:public ICanConnect, public IMotionColleague, public std::enable_sha
         int fn_can_init(); // can callback function register 
         void faultCallback(int can_falut,int dbs_fault);
         void rpmCallback(int mcu_shift,int mcu_speed,int mcu_torque);
+
+        void log(std::string call_name);
     public :
         void fn_can_run();
         void fn_send_control_hardware(bool horn,bool head_light,bool right_light,bool left_light);
