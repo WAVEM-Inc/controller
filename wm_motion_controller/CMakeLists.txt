@@ -23,16 +23,16 @@ find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(actionlib_msgs REQUIRED)
 find_package(can_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
 add_executable(wm_motion_controller_node 
   src/main.cpp  
   src/wm_motion_controller/wm_motion_controller.cpp
   src/can/lib.cpp src/can/can_adaptor.cpp src/can/can_send.cpp src/can/data_relayer.cpp src/can/can_dump.cpp src/can/can_manager.cpp
   src/colleague/motion_colleague.cpp  src/mediator/concrete_motion_mediator.cpp
+  src/converter/ugv_converter.cpp src/entity/ugv.cpp
 )
-
-ament_target_dependencies(wm_motion_controller_node rclcpp std_msgs geometry_msgs can_msgs)
-
+ament_target_dependencies(wm_motion_controller_node rclcpp std_msgs geometry_msgs can_msgs sensor_msgs)
 install(TARGETS
   wm_motion_controller_node
   DESTINATION lib/${PROJECT_NAME}

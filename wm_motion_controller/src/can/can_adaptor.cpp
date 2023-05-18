@@ -536,6 +536,10 @@ bool CanAdaptor::IsConnected(string device){
   return true;
 }
 
+/**
+ * @brief Map State Print
+ * @param name 
+ */
 void CanAdaptor::PrintMapState(string name){
 
   if ( funcsmap_.size() <= 0 ){
