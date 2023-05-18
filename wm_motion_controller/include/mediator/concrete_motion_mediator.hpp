@@ -16,6 +16,7 @@ class ConcreteMotionMediator : public IMotionMediator{
         void fn_set_can_mgr(std::shared_ptr<CanMGR> can_mgr);
         void fn_set_wm_motion_controller(std::shared_ptr<WmMotionController> wm_motion_controller);
         void fn_send_value(const int& value, std::shared_ptr<IMotionColleague> sender) override;
+        void fn_send_rpm(const float& rpm, const std::chrono::system_clock::time_point cur_time ,std::shared_ptr<IMotionColleague> sender) override;
     private : 
         std::shared_ptr<CanMGR> m_can_mgr; 
         std::shared_ptr<WmMotionController> m_wm_motion_controller;

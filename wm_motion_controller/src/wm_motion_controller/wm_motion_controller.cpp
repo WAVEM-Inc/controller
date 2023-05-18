@@ -1,4 +1,6 @@
 #include "wm_motion_controller/wm_motion_controller.hpp"
+#include "converter/ugv_converter.hpp"
+
 /**
  * @brief Construct a new Wm Motion Controller:: Wm Motion Controller object
  * @author changunAn(changun516@wavem.net)
@@ -15,6 +17,12 @@ m_tp_can_chw(TP_CONTROL_HARD_WARE){
 	std::cout<<"WmMotionContoller Start"<<std::endl;
 	
 	//m_can_manager = new CanMGR(motion_mediator);
+	//
+	prev_ugv_ = std::make_shared<ENTITY::UGV>();
+	(*prev_ugv_).set_cur_rpm(0);
+	(*prev_ugv_).set_cur_time(std::chrono::system_clock::now());
+	cur_ugv_ = std::make_shared<ENTITY::UGV>();
+	//
 
 	m_cb_group_cmd_vel = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	m_cb_group_can_chw = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
@@ -94,4 +102,20 @@ void WmMotionController::fn_send_value(const int& value){
 void WmMotionController::fn_recv_value(const int& value){
     std::cout<< "override WmMotionController "<<value<<std::endl;
 
+}
+
+void WmMotionController::fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
+	
+}
+/**
+ * @brief RPM data coming over CAN communication
+ * 
+ * @param rpm 
+ * @param cur_time 
+ */
+void WmMotionController::fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
+	//
+    std::unique_ptr<CONVERTER::UGVConverter> converter = std::make_unique<CONVERTER::UGVConverter>();
+	(*converter).rpm_to_distance(*prev_ugv_,*cur_ugv_);
+	//
 }

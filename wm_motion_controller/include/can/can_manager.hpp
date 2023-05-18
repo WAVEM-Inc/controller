@@ -51,9 +51,12 @@ class CanMGR:public ICanConnect, public IMotionColleague, public std::enable_sha
         void fn_send_control_vel(float linear);
         void fn_send_value(const int& value) override;
         void fn_recv_value(const int& value) override;
+        void fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time) override;
+        void fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time) override;
+        
         CanMGR(std::shared_ptr<IMotionMediator> motion_colleague);
+
         virtual ~CanMGR();
 
 };
-
 #endif

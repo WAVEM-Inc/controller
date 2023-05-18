@@ -71,7 +71,7 @@ void CanMGR::rpmCallback(int mcu_shift
   << "," << (int)mcu_speed
   << "," << (int)mcu_torque
   << std::endl;
-
+    fn_send_rpm(mcu_speed,std::chrono::system_clock::now());
 }
 
 /**
@@ -138,5 +138,20 @@ std::cout << callback_time_tm->tm_year + 1900 << "-" << std::setw(2) << std::set
 std::cout << " " << std::setw(2) << std::setfill('0') << callback_time_tm->tm_hour << ":" << std::setw(2) << std::setfill('0') << callback_time_tm->tm_min << ":" << std::setw(2) << std::setfill('0') << callback_time_tm->tm_sec;
 std::cout << "." << std::setw(9) << std::setfill('0') << nanoseconds.count();
 std::cout << std::endl;
+
+}
+
+/**
+ * @brief Function that passes rpm and time entered over Can communication to wm_motion_controller
+ * 
+ * @param rpm 
+ * @param cur_time 
+ */
+void CanMGR::fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
+	m_i_motion_mediator->fn_send_rpm(rpm,cur_time,shared_from_this());
+}
+
+void CanMGR::fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
+	
 
 }
