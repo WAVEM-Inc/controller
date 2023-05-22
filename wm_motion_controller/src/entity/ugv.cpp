@@ -4,7 +4,8 @@ ENTITY::UGV::UGV():
     wheel_(WHEEL),
     ugv_id_(UGV_ID),
     max_speed_(MAX_SPEED),
-    gear_ratio_(GEAR_RATIO){
+    gear_ratio_(GEAR_RATIO),
+    cur_distance_(0){
         //cur_rpm = 0;
 }
 
@@ -45,4 +46,11 @@ const float ENTITY::UGV::get_cur_rpm(){
 }
 const std::chrono::system_clock::time_point  ENTITY::UGV::get_cur_time(){
     return cur_time_;
+}
+
+void ENTITY::UGV::set_cur_distance(const float& cur_dis){
+    cur_distance_ = cur_dis;
+}
+float ENTITY::UGV::get_cur_distnace(){
+    return cur_distance_;
 }

@@ -27,11 +27,13 @@ void ConcreteMotionMediator::fn_send_value(const int& value,std::shared_ptr<IMot
    if(sender == m_can_mgr){
         std::cout<<"test2"<<std::endl;
         std::lock_guard<std::mutex> lock(m_mutex); // 뮤텍스 락
+        std::cout<<m_wm_motion_controller.use_count()<<'\n';
         m_wm_motion_controller->fn_recv_value(value);
    }
    else if(sender == m_wm_motion_controller){
         std::cout<<"test3"<<std::endl;
         std::lock_guard<std::mutex> lock(m_mutex); // 뮤텍스 락
+        std::cout<<m_can_mgr.use_count()<<'\n';
         m_can_mgr->fn_recv_value(value);
    }
 }
@@ -45,13 +47,18 @@ void ConcreteMotionMediator::fn_send_value(const int& value,std::shared_ptr<IMot
  */
 void ConcreteMotionMediator::fn_send_rpm(const float& rpm, const std::chrono::system_clock::time_point cur_time, std::shared_ptr<IMotionColleague> sender){
     if(sender == m_can_mgr){
-        std::cout<<"test2"<<std::endl;
+        std::cout<<"rpm_test2"<<std::endl;
         std::lock_guard<std::mutex> lock(m_mutex); // 뮤텍스 락
-        m_wm_motion_controller->fn_recv_rpm(rpm,cur_time);
+        if(m_wm_motion_controller.use_count()>0){
+            m_wm_motion_controller->fn_recv_rpm(rpm,cur_time);
+        }
+        else{
+            std::cout<<m_wm_motion_controller.use_count()<<'\n';
+        }
    }
    else if(sender == m_wm_motion_controller){
-        std::cout<<"test3"<<std::endl;
-        std::lock_guard<std::mutex> lock(m_mutex); // 뮤텍스 락
+        std::cout<<"rpm_test3"<<std::endl;
+        //std::lock_guard<std::mutex> lock(m_mutex); // 뮤텍스 락
         m_can_mgr->fn_recv_rpm(rpm,cur_time);
    }
 
