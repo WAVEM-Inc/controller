@@ -279,13 +279,13 @@ void DataRelayer::Run(){
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_EPS_Control_Request,VCU_EPS_CONTROL_REQUEST,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_Shake,REMOTE_CONTROL_SHAKE_2,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_IO,REMOTE_CONTROL_IO,device_type[CAN1]);
-  std::cout << "test1"<<'\n';
+  std::cout << "can_test1"<<'\n';
   //changun 1->0 230427
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_DBS_Status,DBS_STATUS,device_type[CAN1]); // changun 
-    std::cout << "test2"<< '\n';
+    std::cout << "can_test2"<< '\n';
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_DBS_Request,VCU_DBS_REQUEST,device_type[CAN1]);1
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_MCU_Torque_Feedback,TORQUE_FEEDBACK,device_type[CAN0]);
-  std::cout << "test3"<< '\n';
+  std::cout << "can_test3"<< '\n';
   // 수신 리스너 오픈
   vector<string> device;
   device.push_back(device_type[CAN0]);
