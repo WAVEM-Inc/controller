@@ -11,12 +11,21 @@ float CONVERTER::UGVConverter::rpm_to_speed(){
 
 
 float CONVERTER::UGVConverter::rpm_to_distance(ENTITY::UGV prev_ugv, ENTITY::UGV cur_ugv){
-    std::cout<<"rpm_to_distance : "<<prev_ugv.get_cur_rpm()<<' '<<cur_ugv.get_cur_rpm()<<'\n';
+    std::cout<<"==[CONVERTER::UGVConverter__rpm_to_distance__param]== "<<prev_ugv.get_cur_rpm()<<' '<<cur_ugv.get_cur_rpm()<<'\n';
     //auto time_dif=calculate_time_difference(prev_ugv.get_cur_time(),cur_ugv.get_cur_time());
     float time_dif=0.2;
-    std::cout<<cur_ugv.get_wheel()<<' '<<cur_ugv.get_wheel()*M_PI <<' '<<((RPM_STANDARD-prev_ugv.get_cur_rpm())+(RPM_STANDARD-cur_ugv.get_cur_rpm()))/2<< time_dif/60<<' '<<cur_ugv.get_gear_ratio()<<'\n';
-    auto result = (cur_ugv.get_wheel()*M_PI) * ((RPM_STANDARD-prev_ugv.get_cur_rpm())+(RPM_STANDARD-cur_ugv.get_cur_rpm()))/2 * (time_dif/60) / cur_ugv.get_gear_ratio();
-    std::cout<<"result "<< result<<'\n';
+    //std::cout<<cur_ugv.get_wheel()<<' '<<cur_ugv.get_wheel()*M_PI <<' '<<((RPM_STANDARD-prev_ugv.get_cur_rpm())+(RPM_STANDARD-cur_ugv.get_cur_rpm()))/2<< time_dif/60<<' '<<cur_ugv.get_gear_ratio()<<'\n';
+    auto temp_correction=1.33;
+    float result =0;
+    if(RPM_STANDARD<cur_ugv.get_cur_rpm()){
+        result = (cur_ugv.get_wheel()*M_PI) * ((prev_ugv.get_cur_rpm()-RPM_STANDARD)+(cur_ugv.get_cur_rpm()-RPM_STANDARD))/2 * (time_dif/60) / cur_ugv.get_gear_ratio();
+    }
+    else{
+        result = (cur_ugv.get_wheel()*M_PI) * ((RPM_STANDARD-prev_ugv.get_cur_rpm())+(RPM_STANDARD-cur_ugv.get_cur_rpm()))/2 * (time_dif/60) / cur_ugv.get_gear_ratio();
+    }
+    std::cout<<"==[CONVERTER::UGVConverter__rpm_to_distance__result1]== "<< result<<'\n';
+    result*= temp_correction;
+    std::cout<<"==[CONVERTER::UGVConverter__rpm_to_distance__result2]== "<< result<<'\n';
     return static_cast<float>(result);
 }
 

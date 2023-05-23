@@ -53,6 +53,7 @@ class DataRelayer {
     void RegistRpmCallback(void(*pfunc)(int,int,int));
     void RegistFaultCallback(void(*pfunc)(int,int));
 
+
     /**
     * @brief Register a RPM callback function
     * @details Registering class member function callbacks (std:funcion)

@@ -16,7 +16,6 @@
 #include "nav_msgs/msg/odometry.hpp"
 
 // define header file
-#include "wm_motion_controller/df_motion_controller.hpp"
 #include "wm_motion_controller/wm_motion_controller_constants.hpp"
 
 // can header file
@@ -45,6 +44,7 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         std::shared_ptr<CanMGR> m_can_manager;
         // timer 
         rclcpp::TimerBase::SharedPtr timer_;
+        rclcpp::TimerBase::SharedPtr tf_timer_;
         // callback group list 
         rclcpp::CallbackGroup::SharedPtr m_cb_group_cmd_vel;
         rclcpp::CallbackGroup::SharedPtr m_cb_group_can_chw;

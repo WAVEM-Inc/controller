@@ -25,7 +25,7 @@ origin_y_(0){
 	last_time_ = current_time_= imu_time_ =odom_time_=this->now();
 
 	prev_ugv_ = std::make_shared<ENTITY::UGV>();
-	(*prev_ugv_).set_cur_rpm(0);
+	(*prev_ugv_).set_cur_rpm(100000);
 	(*prev_ugv_).set_cur_time(std::chrono::system_clock::now());
 	cur_ugv_ = std::make_shared<ENTITY::UGV>();
 
@@ -52,6 +52,7 @@ origin_y_(0){
 	//
 	pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
 	timer_ = this->create_wall_timer(10ms,std::bind(&WmMotionController::pub_odometry,this));
+	tf_timer_ = this->create_wall_timer(10ms,std::bind(&WmMotionController::update_transform,this));
 	//
 
 	std::thread thread_run(&CanMGR::fn_can_run,m_can_manager);
@@ -68,7 +69,7 @@ WmMotionController::~WmMotionController(){
  * @param can_chw 
  */
 void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw){
-	std::cout<< "chw_callback : "<< can_chw->horn << " : " << can_chw->head_light <<" : "<<can_chw->right_light<<" : "<<can_chw->left_light<<std::endl; 
+	std::cout<< constants_->log_chw_callback<< can_chw->horn << " : " << can_chw->head_light <<" : "<<can_chw->right_light<<" : "<<can_chw->left_light<<std::endl; 
 	m_can_manager->fn_send_control_hardware(can_chw->horn,can_chw->head_light,can_chw->right_light,can_chw->left_light);
 }
 
@@ -79,16 +80,19 @@ void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardwar
  * @date 23.04.06
  */
 void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel){
+    RCLCPP_INFO(this->get_logger(),constants_->log_cmd_callback+"linear = %.02f,angular = %.02f\n", cmd_vel->linear.x, cmd_vel->angular.z);
 	float vel_linear = 0,vel_angular = 0;
 	vel_linear = cmd_vel->linear.x;
 	vel_angular = cmd_vel->angular.z;
-    RCLCPP_INFO(this->get_logger(),"!!!!!!@@@@@@linear = %.02f,angular = %.02f\n", vel_linear, vel_angular);
+
 	m_can_manager->fn_send_control_steering(vel_angular);
 	m_can_manager->fn_send_control_vel(vel_linear);
+	
 }
 
 
   void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu){
+		RCLCPP_INFO(this->get_logger(),constants_->log_imu_callback);
 		current_time_ = this->now();
 		qua_.setterX(imu->orientation.x);
 		qua_.setterY(imu->orientation.y);
@@ -156,11 +160,11 @@ void WmMotionController::fn_send_rpm(const float& rpm,const std::chrono::system_
  * @param cur_time 
  */
 void WmMotionController::fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
-	std::cout<<"rpm_test!! : "<<rpm<<'\n';
+	RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_check+"%.02f",rpm);
 	cur_ugv_->set_cur_rpm(rpm);
     std::shared_ptr<CONVERTER::UGVConverter> converter = std::make_shared<CONVERTER::UGVConverter>();
 	cur_ugv_->set_cur_distance((*converter).rpm_to_distance(*prev_ugv_,*cur_ugv_));
-	std::cout<<"[WM_MOTION_CONTROLLER__RECV_RPM__DISTANCE] : "<<cur_ugv_->get_cur_distnace()<<'\n';
+	RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_distance+"%.02f",cur_ugv_->get_cur_distnace());
 	prev_ugv_->set_cur_rpm(cur_ugv_->get_cur_rpm());
 	prev_ugv_->set_cur_time(cur_ugv_->get_cur_time());
 }
@@ -168,22 +172,16 @@ void WmMotionController::fn_recv_rpm(const float& rpm,const std::chrono::system_
 
 
 void WmMotionController::pub_odometry(){
-	std::cout<<"pub_odom"<<'\n';
 	calculate_next_position();
-	//calculate_next_orientation();
+	calculate_next_orientation();
 	nav_msgs::msg::Odometry odom;
 	odom.header.frame_id = constants_->odom_frame_id_;    // LJM 160110: map
 	odom.child_frame_id = constants_->child_frame_id_;
-	//! 위치 값 채우기 
 	odom.header.stamp = current_time_;
-	
 	odom.pose.pose.position.x = lo_x_;
 	odom.pose.pose.position.y = lo_y_;
 	odom.pose.pose.position.z = constants_->clear_zero_;
-	//odom->pose.pose.orientation = odom_quat_;
-	odom.pose.pose.orientation.w = constants_->clear_zero_;
-	odom.pose.pose.orientation.z = 1;
-	//! 속도 값 채우기
+	odom.pose.pose.orientation = odom_quat_;
 	odom.twist.twist.linear.x = vel_x_;
 	odom.twist.twist.linear.y = constants_->clear_zero_;
 	odom.twist.twist.linear.z = constants_->clear_zero_;
@@ -194,25 +192,17 @@ void WmMotionController::pub_odometry(){
 	pub_odom_->publish(odom);
 }
 void WmMotionController::update_transform(){
-	/*
 	geometry_msgs::msg::TransformStamped odom_trans;
-	//odom_trans->header.frame_id = "/odom";    // LJM 160110: map
-	//odom_trans->child_frame_id = "base_footprint";
-	//auto cur_time = this->now();
-	std::unique_ptr<tf2_ros::TransformBroadcaster> m_broadcaster;
+	std::unique_ptr<tf2_ros::TransformBroadcaster> broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(this);
 	odom_trans.header.stamp = current_time_;	
 	odom_trans.transform.translation.x = lo_x_;
 	odom_trans.transform.translation.y = lo_y_;
 	odom_trans.transform.translation.z = 0.0;
-	//odom_trans.transform.rotation = tf::createQuaternionMsgFromRollPitchYaw(m_qua.getterRoll(),m_qua.getterPitch(),m_qua.getterYaw());
 	odom_trans.transform.rotation.x=qua_.getterX();
 	odom_trans.transform.rotation.y=qua_.getterY();
 	odom_trans.transform.rotation.w=qua_.getterW();
 	odom_trans.transform.rotation.z=qua_.getterZ();
-	*/
-	//m_broadcaster->sendTransform(odom_trans);    
-	
-
+	broadcaster->sendTransform(odom_trans); 
 }
 void WmMotionController::calculate_next_position(){
 	current_time_ = this->now();	

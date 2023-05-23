@@ -10,6 +10,10 @@
 #define ODOM_FRAME_ID "/odom"
 #define CHILD_FRAME_ID "base_footprint"
 #define TP_IMU "/imu/data"
-#define LOG_CONSTRUCTOR "==[WmMotionContoller_CONSTRUCTOR]=="
-
+#define LOG_CONSTRUCTOR "==[WmMotionContoller__CONSTRUCTOR]== "
+#define LOG_FUNC_CHW_CALLBACK "==[WmMotionController__can_chw_callback]== "
+#define LOG_FUNC_IMU_CALLBACK "==[WmMotionController__imu_callback]== "
+#define LOG_FUNC_CMD_CALLBACK "==[WmMotionController__cmdvel_callback]== "
+#define LOG_MEDIATOR_RECV_RPM_DISTANCE "==[WmMotionController__recv_rpm__distance]== "
+#define LOG_MEDIATOR_RECV_RPM_CHECK "==[WmMotionController__recv_rpm__check]== "
 #endif

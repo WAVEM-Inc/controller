@@ -10,6 +10,11 @@ tp_odom_(TP_ODOM),
 odom_frame_id_(ODOM_FRAME_ID),
 child_frame_id_(CHILD_FRAME_ID),
 clear_zero_(CLEAR_FLOAT_ZERO),
-log_constructor(LOG_CONSTRUCTOR){
+log_constructor(LOG_CONSTRUCTOR),
+log_chw_callback(LOG_FUNC_CHW_CALLBACK),
+log_imu_callback(LOG_FUNC_IMU_CALLBACK),
+log_cmd_callback(LOG_FUNC_CMD_CALLBACK),
+log_mediator_recv_rpm_distance(LOG_MEDIATOR_RECV_RPM_DISTANCE),
+log_mediator_recv_rpm_check(LOG_MEDIATOR_RECV_RPM_CHECK){
 
 }

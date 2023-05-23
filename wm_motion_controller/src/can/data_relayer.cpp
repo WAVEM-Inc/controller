@@ -129,11 +129,12 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
   } else {
     gear = NEUTRAL;
   }
+
   HeartBeat(); 
   iECU_Control_Accelerate dat_1;
   memset(&dat_1,0x00,CAN_MAX_DLEN);
   dat_1.iecu_accelerate_gear = gear; // (vel >0) = 1, (vel = 0) = 2, (vel < 0) = 3
-  dat_1.iecu_accelerate_valid = 1;
+  dat_1.iecu_accelerate_valid = 1; // 1
   dat_1.iecu_accelerate_work_mode = 1;
   dat_1.iecu_speed_control = [](float v){return v * CNV_SPEED_FACTOR * RESOLUTION_SPEED_CTRL;}(vel) ;
   std::cout<<"@@@@@@@ : "<<gear<<' '<<dat_1.iecu_speed_control<<'\n';
@@ -143,10 +144,12 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
 
   iECU_Control_Brake dat_2;
   memset(&dat_2,0x00,CAN_MAX_DLEN);
-  dat_2.iecu_brakepressure_cmd = 100; //origin 100
-  dat_2.iecu_dbs_valid = 1;
+  dat_2.iecu_brakepressure_cmd = 50; //origin 100
+  (std::fabs(vel)<0.001)?  dat_2.iecu_dbs_valid = 1: dat_2.iecu_dbs_valid = 0;
+  //dat_2.iecu_dbs_valid = 1;
   canlib_->PostCanMessage<iECU_Control_Brake>(dat_2,IECU_CONTROL_BRAKE,device_type[CAN1]);
 };
+
 
 /**
 * @brief send API(ControlHardware)

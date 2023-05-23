@@ -23,8 +23,8 @@ struct iECU_Control_Accelerate{
 
 
 struct iECU_Control_Brake{
-  unsigned char iecu_brakepressure_cmd;
   unsigned char iecu_dbs_valid;
+  unsigned char iecu_brakepressure_cmd;
   unsigned char reserved[6];
 };
 
