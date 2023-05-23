@@ -148,7 +148,8 @@ std::cout << std::endl;
  * @param cur_time 
  */
 void CanMGR::fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
-	m_i_motion_mediator->fn_send_rpm(rpm,cur_time,shared_from_this());
+
+    m_i_motion_mediator->fn_send_rpm(rpm,cur_time,shared_from_this());
 }
 
 void CanMGR::fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){

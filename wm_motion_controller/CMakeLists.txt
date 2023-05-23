@@ -25,10 +25,11 @@ find_package(actionlib_msgs REQUIRED)
 find_package(can_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
 
 add_executable(wm_motion_controller_node 
   src/main.cpp  
-  src/wm_motion_controller/wm_motion_controller.cpp
+  src/wm_motion_controller/wm_motion_controller.cpp src/wm_motion_controller/wm_motion_controller_constants.cpp
   src/can/lib.cpp src/can/can_adaptor.cpp src/can/can_send.cpp src/can/data_relayer.cpp src/can/can_dump.cpp src/can/can_manager.cpp
   src/colleague/motion_colleague.cpp  src/mediator/concrete_motion_mediator.cpp
   src/converter/ugv_converter.cpp src/entity/ugv.cpp
@@ -40,7 +41,9 @@ std_msgs
 geometry_msgs 
 can_msgs 
 sensor_msgs
-nav_msgs)
+nav_msgs
+tf2_ros
+)
 install(TARGETS
   wm_motion_controller_node
   DESTINATION lib/${PROJECT_NAME}
