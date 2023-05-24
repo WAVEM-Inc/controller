@@ -129,11 +129,12 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
   } else {
     gear = NEUTRAL;
   }
+
   HeartBeat(); 
   iECU_Control_Accelerate dat_1;
   memset(&dat_1,0x00,CAN_MAX_DLEN);
   dat_1.iecu_accelerate_gear = gear; // (vel >0) = 1, (vel = 0) = 2, (vel < 0) = 3
-  dat_1.iecu_accelerate_valid = 1;
+  dat_1.iecu_accelerate_valid = 1; // 1
   dat_1.iecu_accelerate_work_mode = 1;
   dat_1.iecu_speed_control = [](float v){return v * CNV_SPEED_FACTOR * RESOLUTION_SPEED_CTRL;}(vel) ;
   std::cout<<"@@@@@@@ : "<<gear<<' '<<dat_1.iecu_speed_control<<'\n';
@@ -143,10 +144,12 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
 
   iECU_Control_Brake dat_2;
   memset(&dat_2,0x00,CAN_MAX_DLEN);
-  dat_2.iecu_brakepressure_cmd = 100; //origin 100
-  dat_2.iecu_dbs_valid = 1;
+  dat_2.iecu_brakepressure_cmd = 50; //origin 100
+  (std::fabs(vel)<0.001)?  dat_2.iecu_dbs_valid = 1: dat_2.iecu_dbs_valid = 0;
+  //dat_2.iecu_dbs_valid = 1;
   canlib_->PostCanMessage<iECU_Control_Brake>(dat_2,IECU_CONTROL_BRAKE,device_type[CAN1]);
 };
+
 
 /**
 * @brief send API(ControlHardware)
@@ -279,13 +282,13 @@ void DataRelayer::Run(){
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_EPS_Control_Request,VCU_EPS_CONTROL_REQUEST,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_Shake,REMOTE_CONTROL_SHAKE_2,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_IO,REMOTE_CONTROL_IO,device_type[CAN1]);
-  std::cout << "test1"<<'\n';
+  std::cout << "can_test1"<<'\n';
   //changun 1->0 230427
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_DBS_Status,DBS_STATUS,device_type[CAN1]); // changun 
-    std::cout << "test2"<< '\n';
+    std::cout << "can_test2"<< '\n';
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_DBS_Request,VCU_DBS_REQUEST,device_type[CAN1]);1
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_MCU_Torque_Feedback,TORQUE_FEEDBACK,device_type[CAN0]);
-  std::cout << "test3"<< '\n';
+  std::cout << "can_test3"<< '\n';
   // 수신 리스너 오픈
   vector<string> device;
   device.push_back(device_type[CAN0]);

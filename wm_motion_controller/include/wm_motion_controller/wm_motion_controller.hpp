@@ -12,10 +12,11 @@
 #include"rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "can_msgs/msg/control_hardware.hpp"
-
+#include "sensor_msgs/msg/imu.hpp"
+#include "nav_msgs/msg/odometry.hpp"
 
 // define header file
-#include "wm_motion_controller/df_motion_controller.hpp"
+#include "wm_motion_controller/wm_motion_controller_constants.hpp"
 
 // can header file
 #include "can/can_manager.hpp"
@@ -27,6 +28,8 @@
 
 #include "entity/ugv.hpp"
 
+#include "quaternion/quaternion.hpp"
+
 using std::placeholders::_1;
 class IMotionMediator;
 /**
@@ -36,31 +39,70 @@ class IMotionMediator;
  */
 class WmMotionController : public rclcpp::Node,public IMotionColleague,public std::enable_shared_from_this<WmMotionController> {
     private :
-        const int m_steer_max_ang;
-        const int m_tp_queue_size;
-        const std::string m_tp_cmdvel;
-        const std::string m_tp_can_chw;
-        rclcpp::TimerBase::SharedPtr m_timer;
+        std::shared_ptr<WmMotionControllerConstants> constants_;
+
+        std::shared_ptr<CanMGR> m_can_manager;
+        // timer 
+        rclcpp::TimerBase::SharedPtr timer_;
+        rclcpp::TimerBase::SharedPtr tf_timer_;
+        // callback group list 
         rclcpp::CallbackGroup::SharedPtr m_cb_group_cmd_vel;
         rclcpp::CallbackGroup::SharedPtr m_cb_group_can_chw;
+        rclcpp::CallbackGroup::SharedPtr cb_group_imu_;
+        rclcpp::CallbackGroup::SharedPtr cb_group_odom_;
+
+        // subscription list
         rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr m_sub_cmdvel;
         rclcpp::Subscription<can_msgs::msg::ControlHardware>::SharedPtr m_sub_can_chw;
+        rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr sub_imu_;
+
+        rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr pub_odom_;
+
+        // callback fucntion list
         void fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw);
         void fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel);
-        std::shared_ptr<CanMGR> m_can_manager;
+        void imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu);
 
+        // ugv calculate 
         std::shared_ptr<ENTITY::UGV> prev_ugv_;
         std::shared_ptr<ENTITY::UGV> cur_ugv_;
 
-        //override
-        //void fn_wm_motion_controller_function(int value);
         float fn_mps2kmph(float mps);
         float fn_kmph2mps(float kmph);
+        // refactoring target list
+        Quaternion qua_;
+        float pose_yaw_;
+        float prev_pose_yaw_;
+        rclcpp::Time imu_time_;
+        rclcpp::Time odom_time_;
+        double lo_x_;
+        double lo_y_;
+        double lo_th_;
+        double dxy_;
+        double vel_x_;
+        double vel_th_;
+        double odom_dist_;
+        double origin_corr_;
+        double origin_x_;
+        double origin_y_;
+        double imu_th_;
+        double prev_imu_th_;
+        geometry_msgs::msg::Quaternion odom_quat_;
+        //rclcpp::TimerBase::SharedPtr timer_;
+        rclcpp::Time current_time_;  //!< 현재 시각
+		rclcpp::Time last_time_;	 //!< 가장 최근 오도메트리 공표 시각: 델타 계산에 필요
+        // Robot Control function list
+        void pub_odometry();
+        void update_transform();
+        void calculate_next_position();
+        void calculate_next_orientation();
         //
 
     public :
         WmMotionController(std::shared_ptr<IMotionMediator> motion_colleague,std::shared_ptr<CanMGR> can_mgr);
         virtual ~WmMotionController();
+
+        // mediator function list
         void fn_send_value(const int& value) override;
         void fn_recv_value(const int& value) override;
         void fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time) override;
