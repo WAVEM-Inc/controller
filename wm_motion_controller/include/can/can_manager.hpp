@@ -34,6 +34,7 @@ static void sigterm(int signo)
  * @see IMotionColleague
  * @warning Be careful of problems caused by Mutex
  */
+class IMotionMediator;
 class CanMGR:public ICanConnect, public IMotionColleague, public std::enable_shared_from_this<CanMGR>{
     private :
         DataRelayer obj_; // Member variables for calling Can-related functions
@@ -42,7 +43,7 @@ class CanMGR:public ICanConnect, public IMotionColleague, public std::enable_sha
         int fn_can_init(); // can callback function register 
         void faultCallback(int can_falut,int dbs_fault);
         void rpmCallback(int mcu_shift,int mcu_speed,int mcu_torque);
-
+  
         void log(std::string call_name);
     public :
         void fn_can_run();

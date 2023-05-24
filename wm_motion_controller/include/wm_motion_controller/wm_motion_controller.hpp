@@ -16,7 +16,7 @@
 #include "nav_msgs/msg/odometry.hpp"
 
 // define header file
-#include "wm_motion_controller/df_motion_controller.hpp"
+#include "wm_motion_controller/wm_motion_controller_constants.hpp"
 
 // can header file
 #include "can/can_manager.hpp"
@@ -39,20 +39,17 @@ class IMotionMediator;
  */
 class WmMotionController : public rclcpp::Node,public IMotionColleague,public std::enable_shared_from_this<WmMotionController> {
     private :
-        // static field
-        const int m_steer_max_ang;
-        const int m_tp_queue_size;
-        const std::string m_tp_cmdvel;
-        const std::string m_tp_can_chw;
-        const std::string tp_imu_;
+        std::shared_ptr<WmMotionControllerConstants> constants_;
 
         std::shared_ptr<CanMGR> m_can_manager;
         // timer 
-        rclcpp::TimerBase::SharedPtr m_timer;
+        rclcpp::TimerBase::SharedPtr timer_;
+        rclcpp::TimerBase::SharedPtr tf_timer_;
         // callback group list 
         rclcpp::CallbackGroup::SharedPtr m_cb_group_cmd_vel;
         rclcpp::CallbackGroup::SharedPtr m_cb_group_can_chw;
         rclcpp::CallbackGroup::SharedPtr cb_group_imu_;
+        rclcpp::CallbackGroup::SharedPtr cb_group_odom_;
 
         // subscription list
         rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr m_sub_cmdvel;
@@ -91,7 +88,7 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         double imu_th_;
         double prev_imu_th_;
         geometry_msgs::msg::Quaternion odom_quat_;
-        rclcpp::TimerBase::SharedPtr timer_;
+        //rclcpp::TimerBase::SharedPtr timer_;
         rclcpp::Time current_time_;  //!< 현재 시각
 		rclcpp::Time last_time_;	 //!< 가장 최근 오도메트리 공표 시각: 델타 계산에 필요
         // Robot Control function list
