@@ -25,7 +25,7 @@ origin_y_(0){
 	last_time_ = current_time_= imu_time_ =odom_time_=this->now();
 
 	prev_ugv_ = std::make_shared<ENTITY::UGV>();
-	(*prev_ugv_).set_cur_rpm(100000);
+	(*prev_ugv_).set_cur_rpm(constants_->rpm_center_);
 	(*prev_ugv_).set_cur_time(std::chrono::system_clock::now());
 	cur_ugv_ = std::make_shared<ENTITY::UGV>();
 
@@ -69,7 +69,7 @@ WmMotionController::~WmMotionController(){
  * @param can_chw 
  */
 void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw){
-	std::cout<< constants_->log_chw_callback<< can_chw->horn << " : " << can_chw->head_light <<" : "<<can_chw->right_light<<" : "<<can_chw->left_light<<std::endl; 
+	std::cout<<constants_->log_chw_callback<<' '<<can_chw->horn<<' '<<can_chw->head_light<<' '<<can_chw->right_light<<' '<<can_chw->left_light<<'\n'; 
 	m_can_manager->fn_send_control_hardware(can_chw->horn,can_chw->head_light,can_chw->right_light,can_chw->left_light);
 }
 
@@ -87,7 +87,61 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 
 	m_can_manager->fn_send_control_steering(vel_angular);
 	m_can_manager->fn_send_control_vel(vel_linear);
-	
+	/*
+	float steer_angle, steer_val;
+	steer_angle= (vel_angular)/(0.0001+vel_linear*2);
+	if(steer_angle > 0.7){
+		steer_angle = 0.7;
+	}
+	else if(steer_angle < -0.7){
+		steer_angle = -0.7;
+	}
+	steer_val = steer_angle/0.7*2000;
+	if((fabs(steer_val) <= 2000) ){
+			//acmotor_pulse = acmotor_pulse+steer_val-ac_angular_bak;
+			//ac_angular_bak = steer_val;
+		
+	}
+	if(vel_linear > 0.09){
+		dcmotor_set_speed(1,(vel_linear+0.05)*80);
+		dcmotor_set_speed(2,(vel_linear+0.05)*80+15);
+	}
+	else if(vel_linear <-0.09)
+	{
+		dcmotor_set_speed(1,(vel_linear-0.05)*80);
+		dcmotor_set_speed(2,(vel_linear-0.05)*80);
+	}
+	else if(vel_linear > 0.001)
+	{
+		//dcmotor_set_speed(1,(vel_linear+fabs(vel_angular)*0.2+0.05)*80);
+		//dcmotor_set_speed(2,(vel_linear+fabs(vel_angular)*0.2+0.05)*80+15);
+		dcmotor_set_speed(1,(vel_linear+fabs(vel_angular)*0.2+0.05)*80);
+		dcmotor_set_speed(2,(vel_linear+fabs(vel_angular)*0.2+0.05)*80+15);
+	}
+	else if(vel_linear <-0.001)
+	{
+		dcmotor_set_speed(1,(vel_linear-fabs(vel_angular)*0.2-0.05)*80);
+		dcmotor_set_speed(2,(vel_linear-fabs(vel_angular)*0.2-0.05)*80);
+		m_can_manager->fn_send_control_steering(vel_angular*0.5+0.2)*80;
+	}
+	else if(vel_angular > 0)
+	{
+		//dcmotor_set_speed(1,(fabs(vel_angular)*0.5+0.2)*80);
+		//dcmotor_set_speed(2,(fabs(vel_angular)*0.5+0.2)*80+15);
+		m_can_manager->fn_send_control_steering(std::fabs(vel_angular)*0.5+0.2)*80;
+	}
+	else if(vel_angular < 0)
+	{
+		//dcmotor_set_speed(1,(fabs(vel_angular)*0.5+0.2)*80);
+		//dcmotor_set_speed(2,(fabs(vel_angular)*0.5+0.2)*80);
+		m_can_manager->fn_send_control_steering(std::fabs(vel_angular)*0.5+0.2)*80;
+	}
+	else{
+		//dcmotor_set_speed(1,0);
+		//dcmotor_set_speed(2,0);
+		m_can_manager->fn_send_control_vel(0);
+	}
+	*/
 }
 
 
@@ -103,7 +157,7 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 		auto sub_time = current_time_-imu_time_;
 		double time_seconds = sub_time.seconds();
 		vel_th_ = (pose_yaw_-prev_pose_yaw_)/(time_seconds);
-		if(std::fabs(vel_th_)<0.008){
+		if(std::fabs(vel_th_)<constants_->zero_approximation_){
 			vel_th_=0;
 		}
 		prev_pose_yaw_ = pose_yaw_;
@@ -170,7 +224,10 @@ void WmMotionController::fn_recv_rpm(const float& rpm,const std::chrono::system_
 }
 
 
-
+/**
+ * @brief 
+ * 
+ */
 void WmMotionController::pub_odometry(){
 	calculate_next_position();
 	calculate_next_orientation();
@@ -191,19 +248,27 @@ void WmMotionController::pub_odometry(){
 	last_time_ = current_time_;
 	pub_odom_->publish(odom);
 }
+/**
+ * @brief 
+ * 
+ */
 void WmMotionController::update_transform(){
 	geometry_msgs::msg::TransformStamped odom_trans;
 	std::unique_ptr<tf2_ros::TransformBroadcaster> broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(this);
 	odom_trans.header.stamp = current_time_;	
 	odom_trans.transform.translation.x = lo_x_;
 	odom_trans.transform.translation.y = lo_y_;
-	odom_trans.transform.translation.z = 0.0;
+	odom_trans.transform.translation.z = constants_->clear_zero_;
 	odom_trans.transform.rotation.x=qua_.getterX();
 	odom_trans.transform.rotation.y=qua_.getterY();
 	odom_trans.transform.rotation.w=qua_.getterW();
 	odom_trans.transform.rotation.z=qua_.getterZ();
 	broadcaster->sendTransform(odom_trans); 
 }
+/**
+ * @brief 
+ * 
+ */
 void WmMotionController::calculate_next_position(){
 	current_time_ = this->now();	
 	dxy_ = (cur_ugv_->get_cur_distnace());
@@ -224,6 +289,10 @@ void WmMotionController::calculate_next_position(){
 	prev_imu_th_ = imu_th_;
 	odom_time_ = current_time_;
 }
+/**
+ * @brief 
+ * 
+ */
 void WmMotionController::calculate_next_orientation(){
 	odom_quat_.x=qua_.getterX();
 	odom_quat_.y=qua_.getterY();

@@ -13,6 +13,9 @@ class WmMotionControllerConstants{
         const std::string odom_frame_id_;
         const std::string child_frame_id_;
         const float clear_zero_;
+        const float rpm_center_;
+        const float zero_approximation_;
+
         const std::string log_constructor;
         const std::string log_chw_callback;
         const std::string log_imu_callback;
