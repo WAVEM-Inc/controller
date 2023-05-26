@@ -393,9 +393,9 @@ void DataRelayer::SendTest(){
     void DataRelayer::static_break(UGV::BREAK break_status){
         iECU_Control_Brake dat_2;
         memset(&dat_2,0x00,CAN_MAX_DLEN);
-        dat_2.iecu_dbs_valid = 15;
+        dat_2.iecu_dbs_valid = 1;
         if(UGV::BREAK::LED==break_status){
-          dat_2.iecu_brakepressure_cmd = 0;
+          dat_2.iecu_brakepressure_cmd = 15;
         }
         else if(UGV::BREAK::GO==break_status){
           dat_2.iecu_dbs_valid = 0;
