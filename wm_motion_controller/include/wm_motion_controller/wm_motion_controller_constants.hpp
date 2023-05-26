@@ -15,13 +15,14 @@ class WmMotionControllerConstants{
         const float clear_zero_;
         const float rpm_center_;
         const float zero_approximation_;
-
+        const float rpm_break;
         const std::string log_constructor;
         const std::string log_chw_callback;
         const std::string log_imu_callback;
         const std::string log_cmd_callback;
         const std::string log_mediator_recv_rpm_distance;
         const std::string log_mediator_recv_rpm_check;
+
         WmMotionControllerConstants();
 };
 

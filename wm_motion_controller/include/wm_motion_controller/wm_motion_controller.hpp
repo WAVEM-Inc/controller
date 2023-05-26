@@ -27,7 +27,6 @@
 #include "mediator/concrete_motion_mediator.hpp"
 
 #include "entity/ugv.hpp"
-
 #include "quaternion/quaternion.hpp"
 
 using std::placeholders::_1;
@@ -97,6 +96,7 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         void calculate_next_position();
         void calculate_next_orientation();
         //
+        
 
     public :
         WmMotionController(std::shared_ptr<IMotionMediator> motion_colleague,std::shared_ptr<CanMGR> can_mgr);

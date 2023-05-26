@@ -2,6 +2,7 @@
 #include "converter/ugv_converter.hpp"
 #include "geometry_msgs/msg/transform_stamped.hpp"
 #include "tf2_ros/transform_broadcaster.h"
+#include "entity/df_ugv.hpp"
 /**
  * @brief Construct a new Wm Motion Controller:: Wm Motion Controller object
  * @author changunAn(changun516@wavem.net)
@@ -84,6 +85,21 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 	float vel_linear = 0,vel_angular = 0;
 	vel_linear = cmd_vel->linear.x;
 	vel_angular = cmd_vel->angular.z;
+
+	float cur_rpm = cur_ugv_->get_cur_rpm();
+	if(std::fabs(vel_linear)<0.001 && constants_->rpm_center_+constants_->rpm_break > cur_rpm&&
+	constants_->rpm_center_-constants_->rpm_break< cur_rpm){
+		prev_ugv_->get_cur_rpm(), cur_ugv_->get_cur_rpm();
+		m_can_manager->static_break(UGV::BREAK::LED);
+	}
+	else if(std::fabs(vel_linear)<0.001 && constants_->rpm_center_+constants_->rpm_break < cur_rpm&&
+	constants_->rpm_center_-constants_->rpm_break > cur_rpm){
+		prev_ugv_->get_cur_rpm(), cur_ugv_->get_cur_rpm();
+		m_can_manager->static_break(UGV::BREAK::STOP);
+	}
+	else{
+		m_can_manager->static_break(UGV::BREAK::GO);
+	}
 
 	m_can_manager->fn_send_control_steering(vel_angular);
 	m_can_manager->fn_send_control_vel(vel_linear);

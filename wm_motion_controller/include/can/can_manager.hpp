@@ -16,6 +16,7 @@
 #include <chrono> // time
 //extern int optind, opterr, optopt;
 //static char *progname;
+#include "entity/df_ugv.hpp"
 static volatile int state = 1;
 /**
  * @brief 
@@ -46,6 +47,8 @@ class CanMGR:public ICanConnect, public IMotionColleague, public std::enable_sha
   
         void log(std::string call_name);
     public :
+        void static_break(bool flag);
+        void static_break(UGV::BREAK break_status);
         void fn_can_run();
         void fn_send_control_hardware(bool horn,bool head_light,bool right_light,bool left_light);
         void fn_send_control_steering(float angular);

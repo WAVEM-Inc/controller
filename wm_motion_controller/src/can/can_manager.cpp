@@ -154,3 +154,8 @@ void CanMGR::fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_
 	
 
 }
+
+
+void CanMGR::static_break(UGV::BREAK break_status){
+    obj_.static_break(break_status);
+}

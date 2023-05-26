@@ -127,7 +127,7 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
   } else if ( vel < 0 ) {
     gear = REVERSE;
   } else {
-    gear = NEUTRAL;
+    gear = PARKING;
   }
 
   HeartBeat(); 
@@ -142,13 +142,14 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
   dat_1.iecu_torque_control = 0;
   //changun 0->1 230427
   canlib_->PostCanMessage<iECU_Control_Accelerate>(dat_1,IECU_CONTROL_ACCELERATE,device_type[CAN1]);
-
+/*
   iECU_Control_Brake dat_2;
   memset(&dat_2,0x00,CAN_MAX_DLEN);
   dat_2.iecu_brakepressure_cmd = 100; //origin 100
   (std::fabs(vel)<0.001)?  dat_2.iecu_dbs_valid = 1: dat_2.iecu_dbs_valid = 0;
   //dat_2.iecu_dbs_valid = 1;
   canlib_->PostCanMessage<iECU_Control_Brake>(dat_2,IECU_CONTROL_BRAKE,device_type[CAN1]);
+  */
 };
 
 
@@ -389,5 +390,22 @@ void DataRelayer::SendTest(){
   */
 }
 
+    void DataRelayer::static_break(UGV::BREAK break_status){
+        iECU_Control_Brake dat_2;
+        memset(&dat_2,0x00,CAN_MAX_DLEN);
+        dat_2.iecu_dbs_valid = 15;
+        if(UGV::BREAK::LED==break_status){
+          dat_2.iecu_brakepressure_cmd = 0;
+        }
+        else if(UGV::BREAK::GO==break_status){
+          dat_2.iecu_dbs_valid = 0;
+          dat_2.iecu_brakepressure_cmd = 0;
+        }
+        else if(UGV::BREAK::STOP==break_status){
+          dat_2.iecu_brakepressure_cmd = 100; //origin 100
+        }   
+        //dat_2.iecu_dbs_valid = 1;
+        canlib_->PostCanMessage<iECU_Control_Brake>(dat_2,IECU_CONTROL_BRAKE,device_type[CAN1]);
+    }
 
 

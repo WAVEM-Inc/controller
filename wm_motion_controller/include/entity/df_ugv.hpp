@@ -4,4 +4,12 @@
 #define UGV_ID "UGV"
 #define MAX_SPEED 40
 #define GEAR_RATIO 20
+
+namespace UGV{
+    enum class BREAK{
+        LED=1,
+        STOP=100,
+        GO=0
+    };
+}
 #endif

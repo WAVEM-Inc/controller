@@ -8,7 +8,7 @@
 #include <arpa/inet.h>
 
 #include "can/w1candbc.h"
-
+#include "entity/df_ugv.hpp"
 
 using namespace std;
 
@@ -49,7 +49,8 @@ class DataRelayer {
     void StopPostMessage(unsigned int id);
 
     void HeartBeat();
-
+    //void static_break(bool flag);
+    void static_break(UGV::BREAK break_status);
     void RegistRpmCallback(void(*pfunc)(int,int,int));
     void RegistFaultCallback(void(*pfunc)(int,int));
 

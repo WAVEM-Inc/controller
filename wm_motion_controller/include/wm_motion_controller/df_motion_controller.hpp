@@ -12,6 +12,7 @@
 #define TP_IMU "/imu/data"
 #define RPM_CENTER 100000.0
 #define ZERO_APPROXIMATION 0.008
+#define RPM_BREAK 10
 
 #define LOG_CONSTRUCTOR "==[WmMotionContoller__CONSTRUCTOR]== "
 #define LOG_FUNC_CHW_CALLBACK "==[WmMotionController__can_chw_callback]== "
