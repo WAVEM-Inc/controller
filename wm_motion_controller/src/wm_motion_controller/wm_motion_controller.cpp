@@ -70,7 +70,7 @@ WmMotionController::~WmMotionController(){
  * @param can_chw 
  */
 void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw){
-	std::cout<<constants_->log_chw_callback<<' '<<can_chw->horn<<' '<<can_chw->head_light<<' '<<can_chw->right_light<<' '<<can_chw->left_light<<'\n'; 
+	//std::cout<<constants_->log_chw_callback<<' '<<can_chw->horn<<' '<<can_chw->head_light<<' '<<can_chw->right_light<<' '<<can_chw->left_light<<'\n'; 
 	m_can_manager->fn_send_control_hardware(can_chw->horn,can_chw->head_light,can_chw->right_light,can_chw->left_light);
 }
 
@@ -81,7 +81,7 @@ void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardwar
  * @date 23.04.06
  */
 void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel){
-    RCLCPP_INFO(this->get_logger(),constants_->log_cmd_callback+"linear = %.02f,angular = %.02f\n", cmd_vel->linear.x, cmd_vel->angular.z);
+    //RCLCPP_INFO(this->get_logger(),constants_->log_cmd_callback+"linear = %.02f,angular = %.02f\n", cmd_vel->linear.x, cmd_vel->angular.z);
 	float vel_linear = 0,vel_angular = 0;
 	vel_linear = cmd_vel->linear.x;
 	vel_angular = cmd_vel->angular.z;
@@ -230,11 +230,12 @@ void WmMotionController::fn_send_rpm(const float& rpm,const std::chrono::system_
  * @param cur_time 
  */
 void WmMotionController::fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
-	RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_check+"%.02f",rpm);
+	//RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_check+"%.02f",rpm);
 	cur_ugv_->set_cur_rpm(rpm);
+	cur_ugv_->set_cur_time(cur_time);
     std::shared_ptr<CONVERTER::UGVConverter> converter = std::make_shared<CONVERTER::UGVConverter>();
 	cur_ugv_->set_cur_distance((*converter).rpm_to_distance(*prev_ugv_,*cur_ugv_));
-	RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_distance+"%.02f",cur_ugv_->get_cur_distnace());
+	//RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_distance+"%.02f",cur_ugv_->get_cur_distnace());
 	prev_ugv_->set_cur_rpm(cur_ugv_->get_cur_rpm());
 	prev_ugv_->set_cur_time(cur_ugv_->get_cur_time());
 }
@@ -287,11 +288,13 @@ void WmMotionController::update_transform(){
  */
 void WmMotionController::calculate_next_position(){
 	current_time_ = this->now();	
-	dxy_ = (cur_ugv_->get_cur_distnace());
+	dxy_ = static_cast<double>(cur_ugv_->get_cur_distnace());
+	test += dxy_;
 	odom_dist_+= dxy_;
 	auto sub_time = current_time_-odom_time_;
 	double time_seconds = sub_time.seconds();
-	vel_x_ = dxy_/time_seconds;
+	vel_x_ = dxy_;
+	std::cout<<"calculate_next_position"<< lo_x_<<' '<<dxy_<<' '<<test<<'\n';
 	if (dxy_ != 0) {
 		lo_x_ += ( dxy_ * cosf( qua_.getterYaw()));	//minseok 200611 before x
 		lo_y_ += ( dxy_ * sinf(  qua_.getterYaw()));

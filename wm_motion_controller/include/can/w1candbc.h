@@ -103,6 +103,7 @@ struct MCU_Torque_Feedback{
   unsigned char mcu_errorcode;
 };
 
+
 #pragma pack(pop)
 
 #endif

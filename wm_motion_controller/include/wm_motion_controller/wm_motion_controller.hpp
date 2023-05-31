@@ -39,7 +39,7 @@ class IMotionMediator;
 class WmMotionController : public rclcpp::Node,public IMotionColleague,public std::enable_shared_from_this<WmMotionController> {
     private :
         std::shared_ptr<WmMotionControllerConstants> constants_;
-
+        float test;
         std::shared_ptr<CanMGR> m_can_manager;
         // timer 
         rclcpp::TimerBase::SharedPtr timer_;

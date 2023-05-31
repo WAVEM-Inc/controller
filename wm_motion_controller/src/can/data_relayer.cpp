@@ -128,6 +128,7 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
     gear = REVERSE;
   } else {
     gear = PARKING;
+    //gear = NEUTRAL;
   }
 
   HeartBeat(); 
@@ -138,7 +139,7 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
   dat_1.iecu_accelerate_work_mode = 1;
 
   dat_1.iecu_speed_control = [](float v){return v * CNV_SPEED_FACTOR * RESOLUTION_SPEED_CTRL;}(std::fabs(vel)) ;
-  std::cout<<"@@@@@@@ : "<<gear<<' '<<dat_1.iecu_speed_control<<'\n';
+ // std::cout<<"@@@@@@@ : "<<gear<<' '<<dat_1.iecu_speed_control<<'\n';
   dat_1.iecu_torque_control = 0;
   //changun 0->1 230427
   canlib_->PostCanMessage<iECU_Control_Accelerate>(dat_1,IECU_CONTROL_ACCELERATE,device_type[CAN1]);
@@ -193,7 +194,7 @@ void DataRelayer::Handler_VCU_EPS_Control_Request (VCU_EPS_Control_Request msg){
 
   double strangle_value = (vcu_eps_strangle / RESOLUTION_STEERING_CTRL ) - OFFSET_STRANGLE ;
 
-  cout << "[recv] VCU_EPS_Control_Request : " << vcu_eps_strangle <<"("<<strangle_value<<"),"<< (int)msg.vcu_eps_ctrlenable <<","<< (int)msg.vcu_eps_ctrlmode << endl;
+ // cout << "[recv] VCU_EPS_Control_Request : " << vcu_eps_strangle <<"("<<strangle_value<<"),"<< (int)msg.vcu_eps_ctrlenable <<","<< (int)msg.vcu_eps_ctrlmode << endl;
 
 }
 
@@ -205,7 +206,7 @@ void DataRelayer::Handler_VCU_EPS_Control_Request (VCU_EPS_Control_Request msg){
 * @exception
 */
 void DataRelayer::Handler_Remote_Control_Shake (Remote_Control_Shake msg){
-  cout << "[recv] Remote_Control_Shake : " << (int)msg.remote_y1_longitudinal_control <<","<<(int)msg.remote_x2_lateral_control << endl;
+ // cout << "[recv] Remote_Control_Shake : " << (int)msg.remote_y1_longitudinal_control <<","<<(int)msg.remote_x2_lateral_control << endl;
 }
 
 /**
@@ -232,7 +233,7 @@ void DataRelayer::Handler_Remote_Control_IO (Remote_Control_IO msg){
 * @exception
 */
 void DataRelayer::Handler_DBS_Status (DBS_Status msg){
-  cout << "[recv] DBS_Status : " << (int)msg.dbs_fault_code <<","<<(int)msg.dbs_hp_pressure <<","<<(int)msg.dbs_system_status << endl;
+ // cout << "[recv] DBS_Status : " << (int)msg.dbs_fault_code <<","<<(int)msg.dbs_hp_pressure <<","<<(int)msg.dbs_system_status << endl;
 
   faultCallback(CAN_NO_FAULT,msg.dbs_fault_code);
 }
@@ -245,7 +246,7 @@ void DataRelayer::Handler_DBS_Status (DBS_Status msg){
 * @exception
 */
 void DataRelayer::Handler_VCU_DBS_Request (VCU_DBS_Request msg){
-  cout << "[recv] VCU_DBS_Request : " << (int)msg.vcu_dbs_pressure_request <<","<<(int)msg.vcu_dbs_request_flag << endl;
+//  cout << "[recv] VCU_DBS_Request : " << (int)msg.vcu_dbs_pressure_request <<","<<(int)msg.vcu_dbs_request_flag << endl;
 }
 
 /**
@@ -256,13 +257,14 @@ void DataRelayer::Handler_VCU_DBS_Request (VCU_DBS_Request msg){
 * @exception
 */
 void DataRelayer::Handler_MCU_Torque_Feedback (MCU_Torque_Feedback msg){
+  /*
   cout << "[recv] MCU_Torque_Feedback : " << (int)msg.mcu_current
     <<","<<(int)msg.mcu_errorcode
     <<","<<(int)msg.mcu_motortemp
     <<","<<(int)msg.mcu_shift
     <<","<<(int)msg.mcu_speed
     <<","<<(int)msg.mcu_torque << endl;
-
+*/
   rpmCallback((int)msg.mcu_shift
                     ,(int)msg.mcu_speed
                     ,(int)msg.mcu_torque);
@@ -284,13 +286,13 @@ void DataRelayer::Run(){
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_EPS_Control_Request,VCU_EPS_CONTROL_REQUEST,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_Shake,REMOTE_CONTROL_SHAKE_2,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_IO,REMOTE_CONTROL_IO,device_type[CAN1]);
-  std::cout << "can_test1"<<'\n';
+  //std::cout << "can_test1"<<'\n';
   //changun 1->0 230427
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_DBS_Status,DBS_STATUS,device_type[CAN1]); // changun 
-    std::cout << "can_test2"<< '\n';
+    //std::cout << "can_test2"<< '\n';
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_DBS_Request,VCU_DBS_REQUEST,device_type[CAN1]);1
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_MCU_Torque_Feedback,TORQUE_FEEDBACK,device_type[CAN0]);
-  std::cout << "can_test3"<< '\n';
+  //std::cout << "can_test3"<< '\n';
   // 수신 리스너 오픈
   vector<string> device;
   device.push_back(device_type[CAN0]);

@@ -49,7 +49,7 @@ int CanMGR::fn_can_init(){
  * @date 23.04.07
  */
 void CanMGR::faultCallback(int can_falut,int dbs_fault){
-	  std::cout << "[main] callback DBS_Status : " << (int)can_falut<< "," << (int)dbs_fault<< std::endl; 
+	//  std::cout << "[main] callback DBS_Status : " << (int)can_falut<< "," << (int)dbs_fault<< std::endl; 
 }
 
 
@@ -66,11 +66,11 @@ void CanMGR::rpmCallback(int mcu_shift
                     ,int mcu_speed
                     ,int mcu_torque
                     ){
-  log("rpmCallback");
-  std::cout << "[can_manager] callback RPM Status : " << (int)mcu_shift
+  //log("rpmCallback");
+  /*std::cout << "[can_manager] callback RPM Status : " << (int)mcu_shift
   << "," << (int)mcu_speed
   << "," << (int)mcu_torque
-  << std::endl;
+  << std::endl;*/
     fn_send_rpm(mcu_speed,std::chrono::system_clock::now());
 }
 
@@ -113,7 +113,7 @@ CanMGR::~CanMGR(){
  * @param value 
  */
 void CanMGR::fn_send_value(const int& value){
-    std::cout<< "override can_mannager"<<std::endl;
+   // std::cout<< "override can_mannager"<<std::endl;
     m_i_motion_mediator->fn_send_value(value,shared_from_this());
 }
 /**
@@ -122,7 +122,7 @@ void CanMGR::fn_send_value(const int& value){
  * @param value 
  */
 void CanMGR::fn_recv_value(const int& value){
-    std::cout<< "override can_mannager "<<value<<std::endl;
+   // std::cout<< "override can_mannager "<<value<<std::endl;
 
 }
 void CanMGR::log(std::string call_name){
@@ -131,13 +131,13 @@ std::time_t callback_time_t = std::chrono::system_clock::to_time_t(callback_time
 std::tm* callback_time_tm = std::localtime(&callback_time_t);
 auto duration = callback_time.time_since_epoch();
 auto nanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(duration) % std::chrono::seconds(1);
-
+/*
 std::cout <<'['<< call_name<<']' <<" Date and Time: ";
 std::cout << callback_time_tm->tm_year + 1900 << "-" << std::setw(2) << std::setfill('0') << callback_time_tm->tm_mon + 1 << "-" << std::setw(2) << std::setfill('0') << callback_time_tm->tm_mday;
 std::cout << " " << std::setw(2) << std::setfill('0') << callback_time_tm->tm_hour << ":" << std::setw(2) << std::setfill('0') << callback_time_tm->tm_min << ":" << std::setw(2) << std::setfill('0') << callback_time_tm->tm_sec;
 std::cout << "." << std::setw(9) << std::setfill('0') << nanoseconds.count();
 std::cout << std::endl;
-
+*/
 }
 
 /**

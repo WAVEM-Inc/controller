@@ -232,7 +232,7 @@ void CanAdaptor::Receive(byte* data,int canid) {
   std::shared_ptr<CanCallbackFunc> object = value->second;
   //cout << " count  : "<< object.use_count() << "," << object << endl;
   CanCallbackFunc* lpCls = (CanCallbackFunc*)value->second.get();
-  cout << "[recv] canid :"<< lpCls->getCanid() << ", channel :" << lpCls->getChannel() << endl;
+  //cout << "[recv] canid :"<< lpCls->getCanid() << ", channel :" << lpCls->getChannel() << endl;
   std::function<void(byte*)> func = lpCls->getHandler();
   //data 파싱 및 등록된 callback 함수를 호출한다.
   //std::future<void> ret = std::async(std::launch::async, func,data);
@@ -397,7 +397,7 @@ void CanAdaptor::StopPostMessage(unsigned int canid){
 * @exception
 */
 void CanAdaptor::PostMessageByType(iECU_Control_Hardware data,int msgid,string device){
-  cout <<  "send iECU_Control_Hardware msg "<< endl;
+  //cout <<  "send iECU_Control_Hardware msg "<< endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -416,7 +416,7 @@ void CanAdaptor::PostMessageByType(iECU_Control_Hardware data,int msgid,string d
 * @exception
 */
 void CanAdaptor::PostMessageByType(iECU_Control_Accelerate data,int msgid,string device){
-  cout <<  "send iECU_Control_Accelerate msg "<< endl;
+ // cout <<  "send iECU_Control_Accelerate msg "<< endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -434,7 +434,7 @@ void CanAdaptor::PostMessageByType(iECU_Control_Accelerate data,int msgid,string
 * @exception
 */
 void CanAdaptor::PostMessageByType(iECU_Control_Brake data,int msgid,string device){
-  cout <<  "send iECU_Control_Brake msg "<< endl;
+  //cout <<  "send iECU_Control_Brake msg "<< endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -452,7 +452,7 @@ void CanAdaptor::PostMessageByType(iECU_Control_Brake data,int msgid,string devi
 * @exception
 */
 void CanAdaptor::PostMessageByType(iECU_Control_Steering data,int msgid,string device){
-  cout <<  "send iECU_Control_Steering msg "<< endl;
+  //cout <<  "send iECU_Control_Steering msg "<< endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -470,7 +470,7 @@ void CanAdaptor::PostMessageByType(iECU_Control_Steering data,int msgid,string d
 * @exception
 */
 void CanAdaptor::PostMessageByType(Mode_Control_Flag data,int msgid,string device){
-  cout <<  "send Mode_Control_Flag msg : "<< device << endl;
+  //cout <<  "send Mode_Control_Flag msg : "<< device << endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
