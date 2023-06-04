@@ -14,7 +14,7 @@
 #include "can_msgs/msg/control_hardware.hpp"
 #include "sensor_msgs/msg/imu.hpp"
 #include "nav_msgs/msg/odometry.hpp"
-
+#include "geometry_msgs/msg/pose_stamped.hpp"
 // define header file
 #include "wm_motion_controller/wm_motion_controller_constants.hpp"
 
@@ -49,6 +49,7 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         rclcpp::CallbackGroup::SharedPtr m_cb_group_can_chw;
         rclcpp::CallbackGroup::SharedPtr cb_group_imu_;
         rclcpp::CallbackGroup::SharedPtr cb_group_odom_;
+        rclcpp::CallbackGroup::SharedPtr cb_group_rtt_odom_;
 
         // subscription list
         rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr m_sub_cmdvel;
@@ -56,6 +57,7 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr sub_imu_;
 
         rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr pub_odom_;
+        rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pub_rtt_;
 
         // callback fucntion list
         void fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw);

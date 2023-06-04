@@ -22,7 +22,7 @@ class WmMotionControllerConstants{
         const std::string log_cmd_callback;
         const std::string log_mediator_recv_rpm_distance;
         const std::string log_mediator_recv_rpm_check;
-
+        const std::string tp_rtt_odom_;
         WmMotionControllerConstants();
 };
 

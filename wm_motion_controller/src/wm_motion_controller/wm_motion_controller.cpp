@@ -35,16 +35,19 @@ origin_y_(0){
 	m_cb_group_can_chw = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	cb_group_imu_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	cb_group_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+	cb_group_rtt_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 
 	rclcpp::SubscriptionOptions sub_cmdvel_options;
 	rclcpp::SubscriptionOptions sub_can_chw_options;
 	rclcpp::SubscriptionOptions sub_imu_options;
 	rclcpp::PublisherOptions pub_odom_options;
+	rclcpp::PublisherOptions pub_rtt_odom_options;
 
 	sub_cmdvel_options.callback_group = m_cb_group_cmd_vel;
 	sub_can_chw_options.callback_group = m_cb_group_can_chw;
 	sub_imu_options.callback_group = cb_group_imu_;
 	pub_odom_options.callback_group = cb_group_odom_;
+	pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
 
 	m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(constants_->m_tp_cmdvel,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1),sub_cmdvel_options);
 	m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(constants_->m_tp_can_chw,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1),sub_can_chw_options);
@@ -52,8 +55,10 @@ origin_y_(0){
 
 	//
 	pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
-	timer_ = this->create_wall_timer(10ms,std::bind(&WmMotionController::pub_odometry,this));
-	tf_timer_ = this->create_wall_timer(10ms,std::bind(&WmMotionController::update_transform,this));
+	pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
+
+	timer_ = this->create_wall_timer(100ms,std::bind(&WmMotionController::pub_odometry,this));
+	tf_timer_ = this->create_wall_timer(100ms,std::bind(&WmMotionController::update_transform,this));
 	//
 
 	std::thread thread_run(&CanMGR::fn_can_run,m_can_manager);
@@ -264,6 +269,10 @@ void WmMotionController::pub_odometry(){
 	odom.twist.twist.angular.z = vel_th_;
 	last_time_ = current_time_;
 	pub_odom_->publish(odom);
+	geometry_msgs::msg::PoseStamped rtt_value;
+	rtt_value.pose.position.x = odom_dist_;
+	rtt_value.pose.orientation.x = qua_.getterYaw()/*+origin_corr*/;
+	pub_rtt_->publish(rtt_value);
 }
 /**
  * @brief 
@@ -271,6 +280,8 @@ void WmMotionController::pub_odometry(){
  */
 void WmMotionController::update_transform(){
 	geometry_msgs::msg::TransformStamped odom_trans;
+	odom_trans.header.frame_id = constants_->odom_frame_id_;
+	odom_trans.child_frame_id = constants_->child_frame_id_;
 	std::unique_ptr<tf2_ros::TransformBroadcaster> broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(this);
 	odom_trans.header.stamp = current_time_;	
 	odom_trans.transform.translation.x = lo_x_;
@@ -296,8 +307,8 @@ void WmMotionController::calculate_next_position(){
 	vel_x_ = dxy_;
 	std::cout<<"calculate_next_position"<< lo_x_<<' '<<dxy_<<' '<<test<<'\n';
 	if (dxy_ != 0) {
-		lo_x_ += ( dxy_ * cosf( qua_.getterYaw()));	//minseok 200611 before x
-		lo_y_ += ( dxy_ * sinf(  qua_.getterYaw()));
+		lo_x_ += ( dxy_ * cosf( qua_.getterYaw()+1.5708));	//minseok 200611 before x
+		lo_y_ += ( dxy_ * sinf(  qua_.getterYaw()+1.5708));
 		origin_x_ += ( dxy_ * cosf( qua_.getterYaw()+origin_corr_ ));	//minseok 200611 before x
 		origin_y_ += ( dxy_ * sinf(  qua_.getterYaw()+origin_corr_));
 	}
