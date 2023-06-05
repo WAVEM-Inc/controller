@@ -8,7 +8,7 @@
 #include <arpa/inet.h>
 
 #include "can/w1candbc.h"
-
+#include "entity/df_ugv.hpp"
 
 using namespace std;
 
@@ -29,7 +29,7 @@ class DataRelayer {
     typedef std::function<void(int,int,int)> func_rpm_callback; // Callback function pointer variable definition
     //typedef std::function<void(int,int,int)> func_other_callback; // Callback function pointer variable definition
 
-    func_fault_callback faultCallback;
+    func_fault_callback faultCallback;// Callback function pointer variable definition
     func_rpm_callback rpmCallback; // Callback function pointer variable definition
     //func_other_callback otherCallback; // Callback function pointer variable definition
 
@@ -48,8 +48,12 @@ class DataRelayer {
     void ControlHardware(bool horn, bool head_light, bool right_light, bool left_light);
     void StopPostMessage(unsigned int id);
 
+    void HeartBeat();
+    //void static_break(bool flag);
+    void static_break(UGV::BREAK break_status);
     void RegistRpmCallback(void(*pfunc)(int,int,int));
     void RegistFaultCallback(void(*pfunc)(int,int));
+
 
     /**
     * @brief Register a RPM callback function

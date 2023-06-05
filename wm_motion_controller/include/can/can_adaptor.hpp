@@ -57,6 +57,7 @@ class CanAdaptor {
     typedef std::function<void(DBS_Status)> func_DBS_Status;
     typedef std::function<void(VCU_DBS_Request)> func_VCU_DBS_Request;
     typedef std::function<void(MCU_Torque_Feedback)> func_MCU_Torque_Feedback;
+    
 
     func_VCU_EPS_Control_Request handler_vcr;
     func_Remote_Control_Shake handler_rcs;
