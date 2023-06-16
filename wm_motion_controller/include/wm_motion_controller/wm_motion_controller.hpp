@@ -15,6 +15,7 @@
 #include "sensor_msgs/msg/imu.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
+#include "tf2/LinearMath/Quaternion.h"
 // define header file
 #include "wm_motion_controller/wm_motion_controller_constants.hpp"
 
@@ -72,6 +73,7 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         float fn_kmph2mps(float kmph);
         // refactoring target list
         Quaternion qua_;
+        tf2::Quaternion q;
         float pose_yaw_;
         float prev_pose_yaw_;
         rclcpp::Time imu_time_;
@@ -98,7 +100,7 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         void calculate_next_position();
         void calculate_next_orientation();
         //
-        
+        float cmd_angel_convert(const float& ori_angel,const float& ori_linaer);
 
     public :
         WmMotionController(std::shared_ptr<IMotionMediator> motion_colleague,std::shared_ptr<CanMGR> can_mgr);

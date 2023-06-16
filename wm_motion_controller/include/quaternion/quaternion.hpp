@@ -39,7 +39,8 @@ class Quaternion
 		float getterY();
 		float getterZ();
 		float getterW();
-		void EulerToQuaternion(double yaw,double pitch,double roll);		double getterEulerX();
+		void EulerToQuaternion(double yaw,double pitch,double roll);		
+		double getterEulerX();
 		double getterEulerY();
 		double getterEulerZ();
 		double getterEulerW();

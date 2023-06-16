@@ -3,6 +3,7 @@
 #include "geometry_msgs/msg/transform_stamped.hpp"
 #include "tf2_ros/transform_broadcaster.h"
 #include "entity/df_ugv.hpp"
+#include "tf2/LinearMath/Quaternion.h"
 /**
  * @brief Construct a new Wm Motion Controller:: Wm Motion Controller object
  * @author changunAn(changun516@wavem.net)
@@ -89,7 +90,7 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
     //RCLCPP_INFO(this->get_logger(),constants_->log_cmd_callback+"linear = %.02f,angular = %.02f\n", cmd_vel->linear.x, cmd_vel->angular.z);
 	float vel_linear = 0,vel_angular = 0;
 	vel_linear = cmd_vel->linear.x;
-	vel_angular = cmd_vel->angular.z;
+	vel_angular = cmd_angel_convert(cmd_vel->angular.z,vel_linear);
 
 	float cur_rpm = cur_ugv_->get_cur_rpm();
 	if(std::fabs(vel_linear)<0.001 && constants_->rpm_center_+constants_->rpm_break > cur_rpm&&
@@ -108,61 +109,7 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 
 	m_can_manager->fn_send_control_steering(vel_angular);
 	m_can_manager->fn_send_control_vel(vel_linear);
-	/*
-	float steer_angle, steer_val;
-	steer_angle= (vel_angular)/(0.0001+vel_linear*2);
-	if(steer_angle > 0.7){
-		steer_angle = 0.7;
-	}
-	else if(steer_angle < -0.7){
-		steer_angle = -0.7;
-	}
-	steer_val = steer_angle/0.7*2000;
-	if((fabs(steer_val) <= 2000) ){
-			//acmotor_pulse = acmotor_pulse+steer_val-ac_angular_bak;
-			//ac_angular_bak = steer_val;
-		
-	}
-	if(vel_linear > 0.09){
-		dcmotor_set_speed(1,(vel_linear+0.05)*80);
-		dcmotor_set_speed(2,(vel_linear+0.05)*80+15);
-	}
-	else if(vel_linear <-0.09)
-	{
-		dcmotor_set_speed(1,(vel_linear-0.05)*80);
-		dcmotor_set_speed(2,(vel_linear-0.05)*80);
-	}
-	else if(vel_linear > 0.001)
-	{
-		//dcmotor_set_speed(1,(vel_linear+fabs(vel_angular)*0.2+0.05)*80);
-		//dcmotor_set_speed(2,(vel_linear+fabs(vel_angular)*0.2+0.05)*80+15);
-		dcmotor_set_speed(1,(vel_linear+fabs(vel_angular)*0.2+0.05)*80);
-		dcmotor_set_speed(2,(vel_linear+fabs(vel_angular)*0.2+0.05)*80+15);
-	}
-	else if(vel_linear <-0.001)
-	{
-		dcmotor_set_speed(1,(vel_linear-fabs(vel_angular)*0.2-0.05)*80);
-		dcmotor_set_speed(2,(vel_linear-fabs(vel_angular)*0.2-0.05)*80);
-		m_can_manager->fn_send_control_steering(vel_angular*0.5+0.2)*80;
-	}
-	else if(vel_angular > 0)
-	{
-		//dcmotor_set_speed(1,(fabs(vel_angular)*0.5+0.2)*80);
-		//dcmotor_set_speed(2,(fabs(vel_angular)*0.5+0.2)*80+15);
-		m_can_manager->fn_send_control_steering(std::fabs(vel_angular)*0.5+0.2)*80;
-	}
-	else if(vel_angular < 0)
-	{
-		//dcmotor_set_speed(1,(fabs(vel_angular)*0.5+0.2)*80);
-		//dcmotor_set_speed(2,(fabs(vel_angular)*0.5+0.2)*80);
-		m_can_manager->fn_send_control_steering(std::fabs(vel_angular)*0.5+0.2)*80;
-	}
-	else{
-		//dcmotor_set_speed(1,0);
-		//dcmotor_set_speed(2,0);
-		m_can_manager->fn_send_control_vel(0);
-	}
-	*/
+	//	
 }
 
 
@@ -173,6 +120,18 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 		qua_.setterY(imu->orientation.y);
 		qua_.setterZ(imu->orientation.z);
 		qua_.setterW(imu->orientation.w);
+		
+		qua_.QuaternionToEulerAngles();
+
+		qua_.EulerToQuaternion(-qua_.getterYaw()+0*M_PI/180,qua_.getterPitch(), qua_.getterRoll());
+		
+		qua_.setterX(qua_.getterEulerX());
+		qua_.setterY(qua_.getterEulerY());
+		qua_.setterW(qua_.getterEulerW());
+		qua_.setterZ(qua_.getterEulerZ());
+
+		//tf2::Quaternion q;
+		//q.setRPY(0,0,qua_.getterYaw());
 		qua_.QuaternionToEulerAngles();
 		pose_yaw_ = qua_.getterYaw();
 		auto sub_time = current_time_-imu_time_;
@@ -260,7 +219,8 @@ void WmMotionController::pub_odometry(){
 	odom.pose.pose.position.x = lo_x_;
 	odom.pose.pose.position.y = lo_y_;
 	odom.pose.pose.position.z = constants_->clear_zero_;
-	odom.pose.pose.orientation = odom_quat_;
+	odom.pose.pose.orientation.w = odom_quat_.w;
+	odom.pose.pose.orientation.z = odom_quat_.z;
 	odom.twist.twist.linear.x = vel_x_;
 	odom.twist.twist.linear.y = constants_->clear_zero_;
 	odom.twist.twist.linear.z = constants_->clear_zero_;
@@ -271,7 +231,8 @@ void WmMotionController::pub_odometry(){
 	pub_odom_->publish(odom);
 	geometry_msgs::msg::PoseStamped rtt_value;
 	rtt_value.pose.position.x = odom_dist_;
-	rtt_value.pose.orientation.x = qua_.getterYaw()/*+origin_corr*/;
+	rtt_value.pose.orientation.x = qua_.getterYaw()-90*M_PI/180; //+ (-180*M_PI/180)/*+origin_corr*/;
+	rtt_value.pose.orientation.y = (qua_.getterYaw() -90*M_PI/180 )*180/M_PI;
 	pub_rtt_->publish(rtt_value);
 }
 /**
@@ -286,11 +247,17 @@ void WmMotionController::update_transform(){
 	odom_trans.header.stamp = current_time_;	
 	odom_trans.transform.translation.x = lo_x_;
 	odom_trans.transform.translation.y = lo_y_;
-	odom_trans.transform.translation.z = constants_->clear_zero_;
+	//odom_trans.transform.translation.z = constants_->clear_zero_;
+	//odom_trans.transform.translation.x = q.getX();
+	//odom_trans.transform.translation.y = q.getY();
+	//odom_trans.transform.rotation = q.getW();
+	//odom_trans.transform.translation.z= q.getAngle();
+	
 	odom_trans.transform.rotation.x=qua_.getterX();
 	odom_trans.transform.rotation.y=qua_.getterY();
 	odom_trans.transform.rotation.w=qua_.getterW();
 	odom_trans.transform.rotation.z=qua_.getterZ();
+	
 	broadcaster->sendTransform(odom_trans); 
 }
 /**
@@ -307,8 +274,10 @@ void WmMotionController::calculate_next_position(){
 	vel_x_ = dxy_;
 	std::cout<<"calculate_next_position"<< lo_x_<<' '<<dxy_<<' '<<test<<'\n';
 	if (dxy_ != 0) {
-		lo_x_ += ( dxy_ * cosf( qua_.getterYaw()+1.5708));	//minseok 200611 before x
-		lo_y_ += ( dxy_ * sinf(  qua_.getterYaw()+1.5708));
+		lo_x_ += ( dxy_ * cosf( qua_.getterYaw()));	//minseok 200611 before x
+		lo_y_ += ( dxy_ * sinf(  qua_.getterYaw() ));
+		//lo_x_ += ( dxy_ * cosf( qua_.getterYaw()));	//minseok 200611 before x
+		//lo_y_ += ( dxy_ * sinf(  qua_.getterYaw() ));
 		origin_x_ += ( dxy_ * cosf( qua_.getterYaw()+origin_corr_ ));	//minseok 200611 before x
 		origin_y_ += ( dxy_ * sinf(  qua_.getterYaw()+origin_corr_));
 	}
@@ -328,4 +297,26 @@ void WmMotionController::calculate_next_orientation(){
 	odom_quat_.y=qua_.getterY();
 	odom_quat_.w=qua_.getterW();
 	odom_quat_.z=qua_.getterZ();
+}
+
+float WmMotionController::cmd_angel_convert(const float& ori_angel,const float& ori_linear){
+	int MAX = 30;
+	/*
+	float result = 0.0;
+	result = ori_data*30/1;
+	return (result>=30)?30:result;
+	*/
+	float steer_angle, steer_val;
+	steer_angle= (ori_angel)/(0.0001+ori_linear*2);
+	if(steer_angle > 0.7){
+		steer_angle = 0.7;
+	}
+	else if(steer_angle < -0.7){
+		steer_angle = -0.7;
+	}
+	steer_angle= steer_angle/0.7*30;
+	std::cout << "!!!!!!!!!!!!!! "<< steer_angle<<'\n';
+	return steer_angle;
+	//return steer_angle;
+	//return 0;
 }

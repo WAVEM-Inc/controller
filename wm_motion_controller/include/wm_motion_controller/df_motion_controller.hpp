@@ -5,12 +5,12 @@
 #define CLEAR_FLOAT_ZERO 0.0
 #define TP_CMDVEL "/cmd_vel"
 #define TP_CONTROL_HARD_WARE "/can/control_hardware"
-#define TP_QUEUE_SIZE 10
+#define TP_QUEUE_SIZE 1
 #define TP_ODOM "/odom"
 #define TP_RTT_ODOM "/rtt_odom"
 #define ODOM_FRAME_ID "odom"
 #define CHILD_FRAME_ID "base_footprint"
-#define TP_IMU "/imu/data"
+#define TP_IMU "/imu/data_raw"
 #define RPM_CENTER 100000.0
 #define ZERO_APPROXIMATION 0.008
 #define RPM_BREAK 10
