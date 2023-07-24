@@ -21,6 +21,11 @@ lo_y_(0),
 origin_corr_(0),
 origin_x_(0),
 origin_y_(0){
+	std::cout<<"===="<<'\n';
+	this->declare_parameter<float>("correction", correction_);
+  
+    this->get_parameter("correction", correction_);
+	std::cout <<"test : "<<correction_<<'\n';
 	constants_ = std::make_shared<WmMotionControllerConstants>();
 	std::cout<<constants_->log_constructor<<std::endl;
 
@@ -114,7 +119,7 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 
 
   void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu){
-		RCLCPP_INFO(this->get_logger(),constants_->log_imu_callback);
+		//RCLCPP_INFO(this->get_logger(),constants_->log_imu_callback);
 		current_time_ = this->now();
 		qua_.setterX(imu->orientation.x);
 		qua_.setterY(imu->orientation.y);
@@ -123,8 +128,8 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 		
 		qua_.QuaternionToEulerAngles();
 
-		qua_.EulerToQuaternion(-qua_.getterYaw()+0*M_PI/180,qua_.getterPitch(), qua_.getterRoll());
-		
+		qua_.EulerToQuaternion(qua_.getterYaw()+(180+correction_)*M_PI/180,qua_.getterPitch(), qua_.getterRoll());
+			
 		qua_.setterX(qua_.getterEulerX());
 		qua_.setterY(qua_.getterEulerY());
 		qua_.setterW(qua_.getterEulerW());
@@ -231,8 +236,23 @@ void WmMotionController::pub_odometry(){
 	pub_odom_->publish(odom);
 	geometry_msgs::msg::PoseStamped rtt_value;
 	rtt_value.pose.position.x = odom_dist_;
-	rtt_value.pose.orientation.x = qua_.getterYaw()-90*M_PI/180; //+ (-180*M_PI/180)/*+origin_corr*/;
-	rtt_value.pose.orientation.y = (qua_.getterYaw() -90*M_PI/180 )*180/M_PI;
+
+	rtt_value.pose.orientation.x = qua_.getterYaw();//-90*M_PI/180;
+//	if(qua_.getterYaw()/*-90*M_PI/180*/>M_PI){ 
+//		rtt_value.pose.orientation.x -= 2*M_PI;
+//	}
+//	else if(qua_.getterYaw()/*-90*M_PI/180*/<-M_PI){
+//		rtt_value.pose.orientation.x += 2*M_PI;
+//	} //+ (-180*M_PI/180)/*+origin_corr*/;
+	if(rtt_value.pose.orientation.x/*-90*M_PI/180*/>M_PI){ 
+		rtt_value.pose.orientation.x -= 2*M_PI;
+	}
+	else if(rtt_value.pose.orientation.x/*-90*M_PI/180*/<-M_PI){
+		rtt_value.pose.orientation.x += 2*M_PI;
+	} //+ (-180*M_PI/180)/*+origin_corr*/;
+	//rtt_value.pose.orientation.y = (qua_.getterYaw() -90*M_PI/180 )*180/M_PI;
+	rtt_value.pose.orientation.y = (rtt_value.pose.orientation.x)*180/M_PI;
+
 	pub_rtt_->publish(rtt_value);
 }
 /**
