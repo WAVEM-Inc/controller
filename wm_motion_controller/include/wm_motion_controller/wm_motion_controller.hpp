@@ -101,7 +101,7 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         void calculate_next_orientation();
         //
         float cmd_angel_convert(const float& ori_angel,const float& ori_linaer);
-
+        float correction_;
     public :
         WmMotionController(std::shared_ptr<IMotionMediator> motion_colleague,std::shared_ptr<CanMGR> can_mgr);
         virtual ~WmMotionController();

@@ -10,7 +10,7 @@
 #define TP_RTT_ODOM "/rtt_odom"
 #define ODOM_FRAME_ID "odom"
 #define CHILD_FRAME_ID "base_footprint"
-#define TP_IMU "/imu/data_raw"
+#define TP_IMU "/imu/data"
 #define RPM_CENTER 100000.0
 #define ZERO_APPROXIMATION 0.008
 #define RPM_BREAK 10
