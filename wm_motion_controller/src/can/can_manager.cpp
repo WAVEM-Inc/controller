@@ -93,6 +93,7 @@ void CanMGR::fn_send_control_hardware(bool horn,bool head_light,bool right_light
  * @param angular 
  */
 void CanMGR::fn_send_control_steering(float angular){
+    std::cout<< "230726"<<angular <<'\n';
     obj_.ControlSteering(angular);
 }
 /**

@@ -28,7 +28,7 @@ origin_y_(0){
 	std::cout <<"test : "<<correction_<<'\n';
 	constants_ = std::make_shared<WmMotionControllerConstants>();
 	std::cout<<constants_->log_constructor<<std::endl;
-
+	control_mode_ = false;
 	last_time_ = current_time_= imu_time_ =odom_time_=this->now();
 
 	prev_ugv_ = std::make_shared<ENTITY::UGV>();
@@ -42,23 +42,25 @@ origin_y_(0){
 	cb_group_imu_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	cb_group_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	cb_group_rtt_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-
+	cb_group_mode_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	rclcpp::SubscriptionOptions sub_cmdvel_options;
 	rclcpp::SubscriptionOptions sub_can_chw_options;
 	rclcpp::SubscriptionOptions sub_imu_options;
+	rclcpp::SubscriptionOptions sub_controller_mode_options;
 	rclcpp::PublisherOptions pub_odom_options;
 	rclcpp::PublisherOptions pub_rtt_odom_options;
 
 	sub_cmdvel_options.callback_group = m_cb_group_cmd_vel;
 	sub_can_chw_options.callback_group = m_cb_group_can_chw;
 	sub_imu_options.callback_group = cb_group_imu_;
+	sub_controller_mode_options.callback_group = cb_group_mode_;
 	pub_odom_options.callback_group = cb_group_odom_;
 	pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
 
 	m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(constants_->m_tp_cmdvel,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1),sub_cmdvel_options);
 	m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(constants_->m_tp_can_chw,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1),sub_can_chw_options);
 	sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
-
+	sub_mode_ = this->create_subscription<can_msgs::msg::Mode>("/control/mode",1,std::bind(&WmMotionController::slam_mode_callback,this,_1),sub_controller_mode_options);
 	//
 	pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
 	pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
@@ -96,25 +98,67 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 	float vel_linear = 0,vel_angular = 0;
 	vel_linear = cmd_vel->linear.x;
 	vel_angular = cmd_angel_convert(cmd_vel->angular.z,vel_linear);
-
 	float cur_rpm = cur_ugv_->get_cur_rpm();
+	//==
+	
+		// 차후 토픽으로 수신 예정
+	//control_mode_ = true;
+	if(vel_angular==0 || control_mode_==false){
+		cmd_vel_break(vel_linear, cur_rpm);
+		m_can_manager->fn_send_control_steering(vel_angular);
+		m_can_manager->fn_send_control_vel(vel_linear);
+	}else{
+		if(vel_linear>0){
+			if(vel_linear>0.5){
+				m_can_manager->fn_send_control_steering(vel_angular);
+				m_can_manager->fn_send_control_vel(vel_linear);
+			}
+			else{
+				m_can_manager->fn_send_control_steering(vel_angular);
+				m_can_manager->fn_send_control_vel(vel_linear+vel_angular/100);
+			}
+		}
+		else if(vel_linear<0){
+			if(vel_linear<-0.5){
+				m_can_manager->fn_send_control_steering(vel_angular);
+				m_can_manager->fn_send_control_vel(vel_linear);
+			}
+			else{
+				m_can_manager->fn_send_control_steering(vel_angular);
+				m_can_manager->fn_send_control_vel(vel_linear-vel_angular/100);
+			}
+		}
+		else{
+			if(vel_angular>0){
+				m_can_manager->fn_send_control_steering(vel_angular);
+				m_can_manager->fn_send_control_vel(std::fabs(vel_angular/100));
+			}
+			else{
+				m_can_manager->fn_send_control_steering(vel_angular);
+				m_can_manager->fn_send_control_vel(std::fabs(vel_angular/100));
+			}
+		}
+	}
+
+	
+	//	
+}
+void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){
 	if(std::fabs(vel_linear)<0.001 && constants_->rpm_center_+constants_->rpm_break > cur_rpm&&
 	constants_->rpm_center_-constants_->rpm_break< cur_rpm){
-		prev_ugv_->get_cur_rpm(), cur_ugv_->get_cur_rpm();
+		prev_ugv_->get_cur_rpm();
+		cur_ugv_->get_cur_rpm();
 		m_can_manager->static_break(UGV::BREAK::LED);
 	}
 	else if(std::fabs(vel_linear)<0.001 && constants_->rpm_center_+constants_->rpm_break < cur_rpm&&
 	constants_->rpm_center_-constants_->rpm_break > cur_rpm){
-		prev_ugv_->get_cur_rpm(), cur_ugv_->get_cur_rpm();
+		prev_ugv_->get_cur_rpm();
+		cur_ugv_->get_cur_rpm();
 		m_can_manager->static_break(UGV::BREAK::STOP);
 	}
 	else{
 		m_can_manager->static_break(UGV::BREAK::GO);
 	}
-
-	m_can_manager->fn_send_control_steering(vel_angular);
-	m_can_manager->fn_send_control_vel(vel_linear);
-	//	
 }
 
 
@@ -335,8 +379,12 @@ float WmMotionController::cmd_angel_convert(const float& ori_angel,const float& 
 		steer_angle = -0.7;
 	}
 	steer_angle= steer_angle/0.7*30;
-	std::cout << "!!!!!!!!!!!!!! "<< steer_angle<<'\n';
+	std::cout << "!!!!!!!!!!!!!!bms "<< steer_angle<<'\n';
 	return steer_angle;
 	//return steer_angle;
 	//return 0;
+}
+
+void WmMotionController::slam_mode_callback(const can_msgs::msg::Mode::SharedPtr mode){
+	control_mode_ = mode->slam_mode;
 }
