@@ -6,7 +6,7 @@ def generate_launch_description():
     motion_node = Node(
         package='wm_motion_controller',
         executable='wm_motion_controller_node',
-        parameters=[{'correction': 0.0}],
+        parameters=[{'correction': 90.0}],
         output='screen'
     )
 
