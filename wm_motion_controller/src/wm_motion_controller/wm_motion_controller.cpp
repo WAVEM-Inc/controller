@@ -101,48 +101,37 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 	float cur_rpm = cur_ugv_->get_cur_rpm();
 	//==
 	
-		// 차후 토픽으로 수신 예정
-	//control_mode_ = true;
 	if(vel_angular==0 || control_mode_==false){
 		cmd_vel_break(vel_linear, cur_rpm);
-		m_can_manager->fn_send_control_steering(vel_angular);
-		m_can_manager->fn_send_control_vel(vel_linear);
+		cmd_vel_run(vel_linear,vel_angular);
 	}else{
 		if(vel_linear>0){
-			if(vel_linear>0.5){
-				m_can_manager->fn_send_control_steering(vel_angular);
-				m_can_manager->fn_send_control_vel(vel_linear);
+			if(vel_linear>constants_->slam_mode_fast_speed_){
+				cmd_vel_run(vel_linear,vel_angular);
 			}
 			else{
-				m_can_manager->fn_send_control_steering(vel_angular);
-				m_can_manager->fn_send_control_vel(vel_linear+vel_angular/100);
+				cmd_vel_run(vel_linear+vel_angular/constants_->slam_mode_ang_cor_,vel_angular);
 			}
 		}
 		else if(vel_linear<0){
-			if(vel_linear<-0.5){
-				m_can_manager->fn_send_control_steering(vel_angular);
-				m_can_manager->fn_send_control_vel(vel_linear);
+			if(vel_linear<-(constants_->slam_mode_fast_speed_)){
+				cmd_vel_run(vel_linear,vel_angular);
 			}
 			else{
-				m_can_manager->fn_send_control_steering(vel_angular);
-				m_can_manager->fn_send_control_vel(vel_linear-vel_angular/100);
+				cmd_vel_run(vel_linear-vel_angular/constants_->slam_mode_ang_cor_,vel_angular);
 			}
 		}
 		else{
-			if(vel_angular>0){
-				m_can_manager->fn_send_control_steering(vel_angular);
-				m_can_manager->fn_send_control_vel(std::fabs(vel_angular/100));
-			}
-			else{
-				m_can_manager->fn_send_control_steering(vel_angular);
-				m_can_manager->fn_send_control_vel(std::fabs(vel_angular/100));
-			}
+			cmd_vel_run(std::fabs(vel_angular/constants_->slam_mode_ang_cor_),vel_angular);
 		}
 	}
-
-	
 	//	
 }
+void WmMotionController::cmd_vel_run(float vel_linear, float vel_angular){
+	m_can_manager->fn_send_control_steering(vel_angular);
+	m_can_manager->fn_send_control_vel(vel_linear);
+}
+
 void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){
 	if(std::fabs(vel_linear)<0.001 && constants_->rpm_center_+constants_->rpm_break > cur_rpm&&
 	constants_->rpm_center_-constants_->rpm_break< cur_rpm){
