@@ -15,6 +15,9 @@
 #define ZERO_APPROXIMATION 0.008
 #define RPM_BREAK 10
 
+#define SLAM_MODE_FAST_SPEED 0.5
+#define SLAM_MODE_ANG_COR 100
+
 #define LOG_CONSTRUCTOR "==[WmMotionContoller__CONSTRUCTOR]== "
 #define LOG_FUNC_CHW_CALLBACK "==[WmMotionController__can_chw_callback]== "
 #define LOG_FUNC_IMU_CALLBACK "==[WmMotionController__imu_callback]== "

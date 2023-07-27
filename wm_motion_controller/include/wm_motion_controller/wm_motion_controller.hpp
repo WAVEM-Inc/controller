@@ -94,6 +94,8 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         double origin_y_;
         double imu_th_;
         double prev_imu_th_;
+        float correction_;
+        bool control_mode_;
         geometry_msgs::msg::Quaternion odom_quat_;
         //rclcpp::TimerBase::SharedPtr timer_;
         rclcpp::Time current_time_;  //!< 현재 시각
@@ -104,11 +106,9 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         void calculate_next_position();
         void calculate_next_orientation();
         void cmd_vel_break(float vel_linear, float cur_rpm);
-        
+        void cmd_vel_run(float vel_linear, float vel_angular);
         //
         float cmd_angel_convert(const float& ori_angel,const float& ori_linaer);
-        float correction_;
-        bool control_mode_;
     public :
         WmMotionController(std::shared_ptr<IMotionMediator> motion_colleague,std::shared_ptr<CanMGR> can_mgr);
         virtual ~WmMotionController();

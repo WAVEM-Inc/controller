@@ -16,6 +16,9 @@ class WmMotionControllerConstants{
         const float rpm_center_;
         const float zero_approximation_;
         const float rpm_break;
+        const float slam_mode_fast_speed_;
+        const float slam_mode_ang_cor_;
+
         const std::string log_constructor;
         const std::string log_chw_callback;
         const std::string log_imu_callback;
