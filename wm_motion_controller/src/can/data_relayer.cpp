@@ -34,7 +34,7 @@ void DataRelayer::ControlSteering(float angle){
 * @return void
 * @exception
 */
-void DataRelayer::ControlVel(float vel){//iECU_Control_Accelerate, iECU_Control_Brake둘다 사용)
+void DataRelayer::ControlVel(float vel){//AD_CONTROL_ACCELERATE, AD_Control_Brake둘다 사용)
   SendMessageControlAccelerate(vel);
 }
 
@@ -102,14 +102,14 @@ void DataRelayer::SendMessageControlSteering(float steering_angle_cmd){
     return;
   }
 
-  iECU_Control_Steering dat_1;
+  AD_Control_Steering dat_1;
   memset(&dat_1,0x00,CAN_MAX_DLEN);
 
   dat_1.iecu_steering_angle_cmd = (steering_angle_cmd + OFFSET_STEERING) * RESOLUTION_STEERING_CTRL;
   dat_1.iecu_steering_valid = 1;
 
   //changun CAN 1->0 230427
-  canlib_->PostCanMessage<iECU_Control_Steering>(dat_1,IECU_CONTROL_STEERING,device_type[CAN1]);
+  canlib_->PostCanMessage<AD_Control_Steering>(dat_1,AD_CONTROL_ACCELERATE,device_type[CAN1]);
 };
 
 /**
@@ -132,7 +132,7 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
   }
 
   HeartBeat(); 
-  iECU_Control_Accelerate dat_1;
+  AD_Control_Accelerate dat_1;
   memset(&dat_1,0x00,CAN_MAX_DLEN);
   dat_1.iecu_accelerate_gear = gear; // (vel >0) = 1, (vel = 0) = 2, (vel < 0) = 3
   dat_1.iecu_accelerate_valid = 1; // 1
@@ -142,14 +142,14 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
  // std::cout<<"@@@@@@@ : "<<gear<<' '<<dat_1.iecu_speed_control<<'\n';
   dat_1.iecu_torque_control = 0;
   //changun 0->1 230427
-  canlib_->PostCanMessage<iECU_Control_Accelerate>(dat_1,IECU_CONTROL_ACCELERATE,device_type[CAN1]);
+  canlib_->PostCanMessage<AD_Control_Accelerate>(dat_1,AD_CONTROL_ACCELERATE,device_type[CAN1]);
 /*
-  iECU_Control_Brake dat_2;
+  AD_Control_Brake dat_2;
   memset(&dat_2,0x00,CAN_MAX_DLEN);
   dat_2.iecu_brakepressure_cmd = 100; //origin 100
   (std::fabs(vel)<0.001)?  dat_2.iecu_dbs_valid = 1: dat_2.iecu_dbs_valid = 0;
   //dat_2.iecu_dbs_valid = 1;
-  canlib_->PostCanMessage<iECU_Control_Brake>(dat_2,IECU_CONTROL_BRAKE,device_type[CAN1]);
+  canlib_->PostCanMessage<AD_Control_Brake>(dat_2,AD_Control_Brake,device_type[CAN1]);
   */
 };
 
@@ -165,13 +165,13 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
 * @exception
 */
 void DataRelayer::SendMessageControlHardware(bool Horn,bool HeadLight,bool Right_Turn_Light, bool Left_Turn_Light){
-  iECU_Control_Hardware dat_1;
+  AD_Control_Body  dat_1;
   memset(&dat_1,0x00,CAN_MAX_DLEN);
   dat_1.iecu_headlight = HeadLight?1:0;
   dat_1.iecu_horn_control = Horn?1:0;
   dat_1.iecu_left_turn_light = Left_Turn_Light?1:0;
   dat_1.iecu_right_turn_light = Right_Turn_Light?1:0;
-  canlib_->PostCanMessage<iECU_Control_Hardware>(dat_1,IECU_CONTROL_HARDWARE,device_type[CAN1]);
+  canlib_->PostCanMessage<AD_Control_Body >(dat_1,AD_CONTROL_BODY ,device_type[CAN1]);
 };
 // 필요에 따라 추가 한다.외부 인터페이스 API 정의 필요
 
@@ -326,12 +326,12 @@ void DataRelayer::StopPostMessage(unsigned int id){
  * @author changunAn(changun516@wavem.net)
  */
 void DataRelayer::HeartBeat(){
-  Mode_Control_Flag dat_5;
+  AD_Control_Flag dat_5;
   memset(&dat_5,0x00,8);
   dat_5.mode_control_request_flag = 1;
 	//while(true){
     std::cout << "***can run heartbeat!!!***" << std::endl;
-    canlib_->PostCanMessage<Mode_Control_Flag>(dat_5,MODE_CONTROL_FLAG,device_type[CAN1]);
+    canlib_->PostCanMessage<AD_Control_Flag>(dat_5,AD_CONTROL_FLAG,device_type[CAN1]);
 	//	sleep(1);
 	//}
 }
@@ -345,41 +345,41 @@ void DataRelayer::HeartBeat(){
 */
 void DataRelayer::SendTest(){
 
-    // Mode_Control_Flag dat_5;
+    // AD_Control_Flag dat_5;
     // memset(&dat_5,0x00,8);
     // dat_5.mode_control_request_flag = 1;
-    // canlib->PostCanMessage<Mode_Control_Flag>(dat_5,MODE_CONTROL_FLAG,device_type[CAN1]);
+    // canlib->PostCanMessage<AD_Control_Flag>(dat_5,AD_Control_Flag,device_type[CAN1]);
 
   // 전송 테스트
-  iECU_Control_Hardware dat_1;
+  AD_Control_Body  dat_1;
   memset(&dat_1,0x00,CAN_MAX_DLEN);
   dat_1.iecu_headlight = 1;
   dat_1.iecu_horn_control = 0;
   dat_1.iecu_left_turn_light = 1;
   dat_1.iecu_right_turn_light = 1;
   //
-  canlib_->PostCanMessage<iECU_Control_Hardware>(dat_1,IECU_CONTROL_HARDWARE,device_type[CAN1]);
+  canlib_->PostCanMessage<AD_Control_Body >(dat_1,AD_CONTROL_BODY ,device_type[CAN1]);
 
-    // iECU_Control_Accelerate dat_2;
+    // AD_CONTROL_ACCELERATE dat_2;
     // memset(&dat_2,0x00,8);
     // dat_2.iecu_accelerate_gear = 1;
     // dat_2.iecu_accelerate_valid = 1;
     // dat_2.iecu_accelerate_work_mode = 1;
     // dat_2.iecu_speed_control = 1;
     // dat_2.iecu_torque_control = 1;
-    // canlib->PostCanMessage<iECU_Control_Accelerate>(dat_2,IECU_CONTROL_ACCELERATE,device_type[CAN1]);
+    // canlib->PostCanMessage<AD_CONTROL_ACCELERATE>(dat_2,AD_CONTROL_ACCELERATE,device_type[CAN1]);
 
-    // iECU_Control_Brake dat_3;
+    // AD_Control_Brake dat_3;
     // memset(&dat_3,0x00,8);
     // dat_3.iecu_brakepressure_cmd = 1;
     // dat_3.iecu_dbs_valid = 1;
-    // canlib->PostCanMessage<iECU_Control_Brake>(dat_3,IECU_CONTROL_BRAKE,device_type[CAN1]);
+    // canlib->PostCanMessage<AD_Control_Brake>(dat_3,AD_Control_Brake,device_type[CAN1]);
 
-    // iECU_Control_Steering dat_4;
+    // AD_Control_Steering dat_4;
     // memset(&dat_4,0x00,8);
     // dat_4.iecu_steering_angle_cmd = 1;
     // dat_4.iecu_steering_valid = 1;
-    // canlib->PostCanMessage<iECU_Control_Steering>(dat_4,IECU_CONTROL_STEERING,device_type[CAN1]);
+    // canlib->PostCanMessage<AD_Control_Steering>(dat_4,AD_Control_Steering,device_type[CAN1]);
 
 
    /*
@@ -393,7 +393,7 @@ void DataRelayer::SendTest(){
 }
 
     void DataRelayer::static_break(UGV::BREAK break_status){
-        iECU_Control_Brake dat_2;
+        AD_Control_Brake dat_2;
         memset(&dat_2,0x00,CAN_MAX_DLEN);
         dat_2.iecu_dbs_valid = 1;
         if(UGV::BREAK::LED==break_status){
@@ -407,7 +407,7 @@ void DataRelayer::SendTest(){
           dat_2.iecu_brakepressure_cmd = 100; //origin 100
         }   
         //dat_2.iecu_dbs_valid = 1;
-        canlib_->PostCanMessage<iECU_Control_Brake>(dat_2,IECU_CONTROL_BRAKE,device_type[CAN1]);
+        canlib_->PostCanMessage<AD_Control_Brake>(dat_2,AD_CONTROL_BRAKE,device_type[CAN1]);
     }
 
 
