@@ -249,10 +249,10 @@ void CanAdaptor::Receive(byte* data,int canid) {
 */
 int CanAdaptor::RunControlFlag(int flag, string device ){
     
-  Mode_Control_Flag data;
+  AD_Control_Flag data;
   memset(&data,0x00,CAN_MAX_DLEN);
   data.mode_control_request_flag = (unsigned char)flag;
-    //postCanMessage<Mode_Control_Flag>(data,MODE_CONTROL_FLAG,device_type[CAN1]);
+    //postCanMessage<AD_Control_Flag>(data,AD_Control_Flag,device_type[CAN1]);
     //for synchronously
   byte temp[CAN_MAX_DLEN];
     //byte* body = makeframebody(temp,data);
@@ -265,7 +265,7 @@ int CanAdaptor::RunControlFlag(int flag, string device ){
   int (CanAdaptor::*pFunc)(vector<byte>, unsigned int, string) = &CanAdaptor::Send;
   function<void(vector<byte>, unsigned int, string)> postMessagefunc = move(bind(pFunc, this, placeholders::_1, placeholders::_2, placeholders::_3));
 
-  int ret = Send(body, MODE_CONTROL_FLAG, (char*)device.c_str());   
+  int ret = Send(body, AD_Control_Flag, (char*)device.c_str());   
 
   return ret;
 }
@@ -387,17 +387,17 @@ void CanAdaptor::StopPostMessage(unsigned int canid){
 }
 
 /**
-* @brief iECU_Control_Hardware type is transmitted through the CAN network.
+* @brief AD_CONTROL_BODY  type is transmitted through the CAN network.
 * @details
-* @param body iECU_Control_Hardware data
+* @param body AD_CONTROL_BODY  data
 * @param canid can id
 * @param device can channel
 * @return  void
 * @warning
 * @exception
 */
-void CanAdaptor::PostMessageByType(iECU_Control_Hardware data,int msgid,string device){
-  //cout <<  "send iECU_Control_Hardware msg "<< endl;
+void CanAdaptor::PostMessageByType(AD_Control_Body  data,int msgid,string device){
+  //cout <<  "send AD_CONTROL_BODY  msg "<< endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -406,17 +406,17 @@ void CanAdaptor::PostMessageByType(iECU_Control_Hardware data,int msgid,string d
 }
 
 /**
-* @brief iECU_Control_Accelerate type is transmitted through the CAN network.
+* @brief AD_Control_Accelerate type is transmitted through the CAN network.
 * @details
-* @param body iECU_Control_Hardware data
+* @param body AD_CONTROL_BODY  data
 * @param canid can id
 * @param device can channel
 * @return  void
 * @warning
 * @exception
 */
-void CanAdaptor::PostMessageByType(iECU_Control_Accelerate data,int msgid,string device){
- // cout <<  "send iECU_Control_Accelerate msg "<< endl;
+void CanAdaptor::PostMessageByType(AD_Control_Accelerate data,int msgid,string device){
+ // cout <<  "send AD_Control_Accelerate msg "<< endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -424,17 +424,17 @@ void CanAdaptor::PostMessageByType(iECU_Control_Accelerate data,int msgid,string
 }
 
 /**
-* @brief iECU_Control_Brake type is transmitted through the CAN network.
+* @brief AD_Control_Brake type is transmitted through the CAN network.
 * @details
-* @param body iECU_Control_Hardware data
+* @param body AD_CONTROL_BODY  data
 * @param canid can id
 * @param device can channel
 * @return  void
 * @warning
 * @exception
 */
-void CanAdaptor::PostMessageByType(iECU_Control_Brake data,int msgid,string device){
-  //cout <<  "send iECU_Control_Brake msg "<< endl;
+void CanAdaptor::PostMessageByType(AD_Control_Brake data,int msgid,string device){
+  //cout <<  "send AD_Control_Brake msg "<< endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -442,17 +442,17 @@ void CanAdaptor::PostMessageByType(iECU_Control_Brake data,int msgid,string devi
 }
 
 /**
-* @brief iECU_Control_Steering type is transmitted through the CAN network.
+* @brief AD_Control_Steering type is transmitted through the CAN network.
 * @details
-* @param body iECU_Control_Hardware data
+* @param body AD_CONTROL_BODY  data
 * @param canid can id
 * @param device can channel
 * @return  void
 * @warning
 * @exception
 */
-void CanAdaptor::PostMessageByType(iECU_Control_Steering data,int msgid,string device){
-  //cout <<  "send iECU_Control_Steering msg "<< endl;
+void CanAdaptor::PostMessageByType(AD_Control_Steering data,int msgid,string device){
+  //cout <<  "send AD_Control_Steering msg "<< endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -460,17 +460,17 @@ void CanAdaptor::PostMessageByType(iECU_Control_Steering data,int msgid,string d
 }
 
 /**
-* @brief Mode_Control_Flag type is transmitted through the CAN network.
+* @brief AD_Control_Flag type is transmitted through the CAN network.
 * @details
-* @param body iECU_Control_Hardware data
+* @param body AD_CONTROL_BODY  data
 * @param canid can id
 * @param device can channel
 * @return  void
 * @warning
 * @exception
 */
-void CanAdaptor::PostMessageByType(Mode_Control_Flag data,int msgid,string device){
-  //cout <<  "send Mode_Control_Flag msg : "<< device << endl;
+void CanAdaptor::PostMessageByType(AD_Control_Flag data,int msgid,string device){
+  //cout <<  "send AD_Control_Flag msg : "<< device << endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -486,7 +486,7 @@ void CanAdaptor::PostMessageByType(Mode_Control_Flag data,int msgid,string devic
 * @warning
 * @exception
 */
-byte * CanAdaptor::MakeFramebody(byte* body,iECU_Control_Hardware data){
+byte * CanAdaptor::MakeFramebody(byte* body,AD_Control_Body  data){
 
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
   // data를 body로 변환

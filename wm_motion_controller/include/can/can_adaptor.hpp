@@ -72,7 +72,7 @@ class CanAdaptor {
     std::shared_ptr<CanSend> ptr_can_send_ = NULL;
     
     typedef std::map<unsigned int, pthread_t> ThreadMap;
-    ThreadMap psotmsg_tm_;
+    ThreadMap psotmsg_tm_;l_Brake
 
   private:
     //int socketopen(char* device );
@@ -83,14 +83,14 @@ class CanAdaptor {
        
     void PrintMapState(string name);
 
-    byte* MakeFramebody(byte* body,iECU_Control_Hardware data); //< strunct를 byte형 body로 변환
+    byte* MakeFramebody(byte* body,AD_Control_Body  data); //< strunct를 byte형 body로 변환
     // can network 데이터 전송 함수  - 전송 데이터 타입 별로 생성......
 
-    void PostMessageByType(iECU_Control_Hardware body,int msgid,string device);
-    void PostMessageByType(iECU_Control_Accelerate body,int msgid,string device);
-    void PostMessageByType(iECU_Control_Brake body,int msgid,string device);
-    void PostMessageByType(iECU_Control_Steering body,int msgid,string device);
-    void PostMessageByType(Mode_Control_Flag body,int msgid,string device);
+    void PostMessageByType(AD_Control_Body  body,int msgid,string device);
+    void PostMessageByType(AD_Control_Accelerate body,int msgid,string device);
+    void PostMessageByType(AD_Control_Brake body,int msgid,string device);
+    void PostMessageByType(AD_Control_Steering body,int msgid,string device);
+    void PostMessageByType(AD_Control_Flag body,int msgid,string device);
     void PostMessageByType(byte* body, unsigned int canid, string device );
     void PostMessageByType(byte* data, unsigned int canid, string device,int duration );
     
