@@ -251,7 +251,8 @@ int CanAdaptor::RunControlFlag(int flag, string device ){
     
   AD_Control_Flag data;
   memset(&data,0x00,CAN_MAX_DLEN);
-  data.mode_control_request_flag = (unsigned char)flag;
+  data.ad_control_request_flag = (unsigned char)flag;
+  data.ad_flag_msgcntr = 15; // new heartbeat
     //postCanMessage<AD_Control_Flag>(data,AD_Control_Flag,device_type[CAN1]);
     //for synchronously
   byte temp[CAN_MAX_DLEN];
@@ -265,7 +266,7 @@ int CanAdaptor::RunControlFlag(int flag, string device ){
   int (CanAdaptor::*pFunc)(vector<byte>, unsigned int, string) = &CanAdaptor::Send;
   function<void(vector<byte>, unsigned int, string)> postMessagefunc = move(bind(pFunc, this, placeholders::_1, placeholders::_2, placeholders::_3));
 
-  int ret = Send(body, AD_Control_Flag, (char*)device.c_str());   
+  int ret = Send(body, AD_CONTROL_FLAG, (char*)device.c_str());   
 
   return ret;
 }

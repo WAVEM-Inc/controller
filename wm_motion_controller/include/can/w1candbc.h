@@ -34,7 +34,7 @@ struct AD_Control_Brake {
 };
 
 struct AD_Control_Steering {
-	unsigned char ad_dbs_valid:4;
+	unsigned char ad_steering_valid:4;
 	unsigned char ad_steering_msgcntr:4;
 	unsigned short reserved1;
 	unsigned short ad_steering_angle_cmd;

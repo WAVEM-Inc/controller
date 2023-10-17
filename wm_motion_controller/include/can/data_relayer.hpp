@@ -99,7 +99,7 @@ class DataRelayer {
     void Handler_VCU_EPS_Control_Request (VCU_EPS_Control_Request msg);
     void Handler_Remote_Control_Shake (Remote_Control_Shake msg);
     void Handler_Remote_Control_IO (Remote_Control_IO msg);
-    void Handler_DBS_Status (DBS_Status msg);
+    void Handler_DBS_Status (DBS_Status2 msg);
     void Handler_VCU_DBS_Request (VCU_DBS_Request msg);
     void Handler_MCU_Torque_Feedback (MCU_Torque_Feedback msg);
     unsigned short ConvertSpeedUnits(float vel);
