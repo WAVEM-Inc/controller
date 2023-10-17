@@ -54,7 +54,7 @@ class CanAdaptor {
     typedef std::function<void(VCU_EPS_Control_Request)> func_VCU_EPS_Control_Request;
     typedef std::function<void(Remote_Control_Shake)> func_Remote_Control_Shake;
     typedef std::function<void(Remote_Control_IO)> func_Remote_Control_IO;
-    typedef std::function<void(DBS_Status)> func_DBS_Status;
+    typedef std::function<void(DBS_Status2)> func_DBS_Status;
     typedef std::function<void(VCU_DBS_Request)> func_VCU_DBS_Request;
     typedef std::function<void(MCU_Torque_Feedback)> func_MCU_Torque_Feedback;
     
@@ -72,7 +72,7 @@ class CanAdaptor {
     std::shared_ptr<CanSend> ptr_can_send_ = NULL;
     
     typedef std::map<unsigned int, pthread_t> ThreadMap;
-    ThreadMap psotmsg_tm_;l_Brake
+    ThreadMap psotmsg_tm_;
 
   private:
     //int socketopen(char* device );
@@ -234,7 +234,7 @@ class CanAdaptor {
     * @exception
     */
     template<typename T>
-    void SetHandler(T *pClassType,void(T::*pfunc)(DBS_Status),int canid,string device){        
+    void SetHandler(T *pClassType,void(T::*pfunc)(DBS_Status2),int canid,string device){        
       handler_ds = move(bind(pfunc, pClassType, placeholders::_1));
       //int canid = string2hex(msgid);
       
@@ -243,11 +243,11 @@ class CanAdaptor {
                 ,device
                 ,[&](byte* data) { 
                   // data를 DBS_Status 맞춰서 넣는다.
-                  DBS_Status r;
+                  DBS_Status2 r;
                   memcpy((void*)&r,data,CAN_MAX_DLEN);
                   //this->handler_h(r);
                   //cout<< "call DBS_Status" << endl;
-                  handler_ds((DBS_Status)r);
+                  handler_ds((DBS_Status2)r);
                  // cout<< "end DBS_Status" << endl;
                 }
                 );
