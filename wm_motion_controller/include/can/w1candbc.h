@@ -34,11 +34,12 @@ struct AD_Control_Brake {
 };
 
 struct AD_Control_Steering {
-	unsigned char ad_steering_valid:4;
-	unsigned char ad_steering_msgcntr:4;
-	unsigned short reserved1;
+	unsigned char ad_steering_valid:4; //1byte 4bit
+	unsigned char ad_steering_msgcntr:4; //1byte 4bit
+	unsigned short reserved1; // 2byte 16bit
+	unsigned char reserved2;
 	unsigned short ad_steering_angle_cmd;
-	unsigned char reserved[3];
+	unsigned char reserved[2];
 };
 
 struct AD_Control_Flag {
@@ -48,9 +49,9 @@ struct AD_Control_Flag {
 };
 
 struct VCU_EPS_Control_Request{
-	unsigned char vcu_eps_ctrlenable:1; // 1bit
-	unsigned char vcu_eps_ctrlmode:1; //1bit
-	unsigned char reserved2:6; // 6bit
+	unsigned char vcu_eps_ctrlenable:1; // 1bit 
+	unsigned char vcu_eps_ctrlmode:1; //1bit 
+	unsigned char reserved2:6; // 6bit 
 	unsigned char reserved3; // 1Byte
 	unsigned short vcu_eps_strangle_req;
 	unsigned char reserved4[4];
