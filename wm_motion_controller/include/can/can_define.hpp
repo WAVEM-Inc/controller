@@ -45,6 +45,25 @@ enum ACC_GEAR {
 
 enum CHANNEL_TYPE { CAN0,CAN1 } ;
 
+enum class CAN1_HEART_BEAT:int{
+  ZERO=0 ,
+  ONE ,
+  TWO ,
+  THREE ,
+  FOUR ,
+  FIVE ,
+  SIX ,
+  SEVEN ,
+  EIGHT ,
+  NINE ,
+  TEN ,
+  ELEVEN ,
+  TWELVE ,
+  THIRTEEN,
+  FOURTEEN ,
+  FIFTEEN
+};
+
 /**
  * @brief Test device type
  * 
