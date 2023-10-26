@@ -144,7 +144,7 @@ void DataRelayer::SendMessageControlAccelerate(float vel){
   dat_1.ad_accelerate_work_mode = 1;
 
   dat_1.ad_speed_control = [](float v){return v * CNV_SPEED_FACTOR * RESOLUTION_SPEED_CTRL;}(std::fabs(vel)) ;
- // std::cout<<"@@@@@@@ : "<<gear<<' '<<dat_1.iecu_speed_control<<'\n';
+  std::cout<<"@@@@@@@ : "<<gear<<' '<<dat_1.ad_speed_control<<'\n';
   dat_1.ad_torque_control = 0;
   dat_1.ad_accelerate_msgcntr =  static_cast<int>(CAN1_HEART_BEAT::FIFTEEN); // new heart beat
   //changun 0->1 230427

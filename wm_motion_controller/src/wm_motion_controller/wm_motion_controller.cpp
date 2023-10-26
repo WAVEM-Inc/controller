@@ -96,7 +96,7 @@ void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardwar
 void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel){
     //RCLCPP_INFO(this->get_logger(),constants_->log_cmd_callback+"linear = %.02f,angular = %.02f\n", cmd_vel->linear.x, cmd_vel->angular.z);
 	float vel_linear = 0,vel_angular = 0;
-	vel_linear = cmd_vel->linear.x;
+	vel_linear = (cmd_vel->linear.x);
 	vel_angular = cmd_angel_convert(cmd_vel->angular.z,vel_linear);
 	float cur_rpm = cur_ugv_->get_cur_rpm();
 	//==
