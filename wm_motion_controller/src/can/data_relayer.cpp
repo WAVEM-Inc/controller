@@ -97,19 +97,14 @@ void DataRelayer::SetmsgMap(int svcid,int msgid,string device){
 * @exception
 */
 void DataRelayer::SendMessageControlSteering(float steering_angle_cmd){
-
-  if ( steering_angle_cmd > MAX_STEERING || steering_angle_cmd < MIN_STEERING ){
-    	 std::cout<<"MAX or MIN"<<std::endl;
-	  return;
-  }
-
   AD_Control_Steering dat_1;
   memset(&dat_1,0x00,CAN_MAX_DLEN);
-
-  dat_1.ad_steering_angle_cmd = (steering_angle_cmd + OFFSET_STEERING) * RESOLUTION_STEERING_CTRL;
   std::cout<<"cmd : "<<steering_angle_cmd<<std::endl;
-  //dat_1.ad_steering_angle_cmd = steering_angle_cmd;
-  std::cout<<"test : "<<dat_1.ad_steering_angle_cmd<<std::endl;
+  dat_1.ad_steering_angle_cmd = (steering_angle_cmd + OFFSET_STEERING) * RESOLUTION_STEERING_CTRL;
+  std::cout<<"cmd2 : "<<dat_1.ad_steering_angle_cmd<<std::endl;
+  //dat_1.ad_steering_angle_cmd = (steering_angle_cmd * OFFSET_STEERING) / CORRECTION_STEERING;
+
+  //std::cout<<"test : "<<dat_1.ad_steering_angle_cmd<<std::endl;
   dat_1.ad_steering_valid = 1;
   dat_1.ad_steering_msgcntr = static_cast<int>(CAN1_HEART_BEAT::FIFTEEN); // new heartbeat
 

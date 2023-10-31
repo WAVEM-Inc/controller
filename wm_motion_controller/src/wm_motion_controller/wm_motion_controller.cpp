@@ -4,6 +4,8 @@
 #include "tf2_ros/transform_broadcaster.h"
 #include "entity/df_ugv.hpp"
 #include "tf2/LinearMath/Quaternion.h"
+
+#include "can/can_define.hpp"
 /**
  * @brief Construct a new Wm Motion Controller:: Wm Motion Controller object
  * @author changunAn(changun516@wavem.net)
@@ -28,7 +30,7 @@ origin_y_(0){
 	std::cout <<"test : "<<correction_<<'\n';
 	constants_ = std::make_shared<WmMotionControllerConstants>();
 	std::cout<<constants_->log_constructor<<std::endl;
-	control_mode_ = false;
+	control_mode_ = true;
 	last_time_ = current_time_= imu_time_ =odom_time_=this->now();
 
 	prev_ugv_ = std::make_shared<ENTITY::UGV>();
@@ -97,34 +99,20 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
     //RCLCPP_INFO(this->get_logger(),constants_->log_cmd_callback+"linear = %.02f,angular = %.02f\n", cmd_vel->linear.x, cmd_vel->angular.z);
 	float vel_linear = 0,vel_angular = 0;
 	vel_linear = (cmd_vel->linear.x);
-	vel_angular = cmd_angel_convert(cmd_vel->angular.z,vel_linear);
+	vel_angular = cmd_vel->angular.z;
 	float cur_rpm = cur_ugv_->get_cur_rpm();
 	//==
-	
-	if(vel_angular==0 || control_mode_==false){
-		cmd_vel_break(vel_linear, cur_rpm);
-		cmd_vel_run(vel_linear,vel_angular);
-	}else{
-		if(vel_linear>0){
-			if(vel_linear>constants_->slam_mode_fast_speed_){
-				cmd_vel_run(vel_linear,vel_angular);
-			}
-			else{
-				cmd_vel_run(vel_linear+vel_angular/constants_->slam_mode_ang_cor_,vel_angular);
-			}
-		}
-		else if(vel_linear<0){
-			if(vel_linear<-(constants_->slam_mode_fast_speed_)){
-				cmd_vel_run(vel_linear,vel_angular);
-			}
-			else{
-				cmd_vel_run(vel_linear-vel_angular/constants_->slam_mode_ang_cor_,vel_angular);
-			}
-		}
-		else{
-			cmd_vel_run(std::fabs(vel_angular/constants_->slam_mode_ang_cor_),vel_angular);
-		}
+	//std::cout<<"test "<< vel_angular;
+	vel_angular = (vel_angular==0 || control_mode_==false) ?cmd_angel_convert(vel_angular,vel_linear) : vel_angular/(vel_linear+0.0001)*OFFSET_STEERING/CORRECTION_STEERING;
+
+	cmd_vel_break(vel_linear, cur_rpm);
+	if(vel_angular>30){
+		vel_angular=30;
 	}
+	else if(vel_angular<-30){
+		vel_angular = -30;
+	}
+	cmd_vel_run(vel_linear,vel_angular);
 	//	
 }
 void WmMotionController::cmd_vel_run(float vel_linear, float vel_angular){
