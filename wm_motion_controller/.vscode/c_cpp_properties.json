@@ -5,8 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/opt/ros/foxy/include",
-                "/home/nuc-bs/ros2_ws/src/controller/WmMotionController-ATC_Dev_Changun_231013_Can_DBC_Test/can_msgs/install/can_msgs/include/**",
-                "/home/nuc-bs/ros2_ws/src/controller/WmMotionController-ATC_Dev_Changun_231013_Can_DBC_Test/wm_motion_controller/**"
+                "/home/nuc-bs/ros2_ws/src/controller/MotionController/install/can_msgs/include/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

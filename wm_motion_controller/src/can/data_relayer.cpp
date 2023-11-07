@@ -237,8 +237,8 @@ void DataRelayer::Handler_Remote_Control_IO (Remote_Control_IO msg){
 */
 void DataRelayer::Handler_DBS_Status (DBS_Status2 msg){
  // cout << "[recv] DBS_Status : " << (int)msg.dbs_fault_code <<","<<(int)msg.dbs_hp_pressure <<","<<(int)msg.dbs_system_status << endl;
-
   faultCallback(CAN_NO_FAULT,msg.dbs_fault_code);
+
 }
 
 /**
@@ -260,14 +260,6 @@ void DataRelayer::Handler_VCU_DBS_Request (VCU_DBS_Request msg){
 * @exception
 */
 void DataRelayer::Handler_MCU_Torque_Feedback (MCU_Torque_Feedback msg){
-  
-  cout << "[recv] MCU_Torque_Feedback : " << (int)msg.mcu_current
-    <<","<<(int)msg.mcu_errorcode
-    <<","<<(int)msg.mcu_motortemp
-    <<","<<(int)msg.mcu_shift
-    <<","<<(int)msg.mcu_speed
-    <<","<<(int)msg.mcu_torque << endl;
-
   rpmCallback((int)msg.mcu_shift
                     ,(int)msg.mcu_speed
                     ,(int)msg.mcu_torque);
@@ -290,12 +282,13 @@ void DataRelayer::Run(){
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_Shake,REMOTE_CONTROL_SHAKE_2,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_IO,REMOTE_CONTROL_IO,device_type[CAN1]);
   //std::cout << "can_test1"<<'\n';
-  //changun 1->0 230427
+  //changun
+
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_DBS_Status,DBS_STATUS2,device_type[CAN1]); // changun 
-    //std::cout << "can_test2"<< '\n';
+
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_DBS_Request,VCU_DBS_REQUEST,device_type[CAN1]);1
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_MCU_Torque_Feedback,TORQUE_FEEDBACK,device_type[CAN1]);
-  //std::cout << "can_test3"<< '\n';
+
   // 수신 리스너 오픈
   vector<string> device;
   device.push_back(device_type[CAN0]);
@@ -316,7 +309,7 @@ void DataRelayer::Run(){
   }
   //포트 오픈 체크 스레드
   cout << "Start checking for can channel fault" << endl;
-  canlib_->CheckSocketStatus(device,faultCallback);    
+  canlib_->CheckSocketStatus(device,rpmCallback);    
 }
 
 void DataRelayer::StopPostMessage(unsigned int id){
@@ -339,66 +332,7 @@ void DataRelayer::HeartBeat(){
 	//	sleep(1);
 	//}
 }
-
-/**
-* @brief data send test
-* @details
-* @param
-* @return void
-* @exception
-*/
-void DataRelayer::SendTest(){
-
-    // AD_Control_Flag dat_5;
-    // memset(&dat_5,0x00,8);
-    // dat_5.mode_control_request_flag = 1;
-    // canlib->PostCanMessage<AD_Control_Flag>(dat_5,AD_Control_Flag,device_type[CAN1]);
-
-  // 전송 테스트
-  AD_Control_Body  dat_1;
-  memset(&dat_1,0x00,CAN_MAX_DLEN);
-  dat_1.ad_headlight = 1;
-  dat_1.ad_horn_control = 0;
-  dat_1.ad_left_turn_light = 1;
-  dat_1.ad_right_turn_light = 1;
-  dat_1.ad_body_msgcntr =  static_cast<int>(CAN1_HEART_BEAT::FIFTEEN);
-  dat_1.ad_brake_light = 0;
-  //
-  canlib_->PostCanMessage<AD_Control_Body >(dat_1,AD_CONTROL_BODY ,device_type[CAN1]);
-
-    // AD_CONTROL_ACCELERATE dat_2;
-    // memset(&dat_2,0x00,8);
-    // dat_2.iecu_accelerate_gear = 1;
-    // dat_2.iecu_accelerate_valid = 1;
-    // dat_2.iecu_accelerate_work_mode = 1;
-    // dat_2.iecu_speed_control = 1;
-    // dat_2.iecu_torque_control = 1;
-    // canlib->PostCanMessage<AD_CONTROL_ACCELERATE>(dat_2,AD_CONTROL_ACCELERATE,device_type[CAN1]);
-
-    // AD_Control_Brake dat_3;
-    // memset(&dat_3,0x00,8);
-    // dat_3.iecu_brakepressure_cmd = 1;
-    // dat_3.iecu_dbs_valid = 1;
-    // canlib->PostCanMessage<AD_Control_Brake>(dat_3,AD_Control_Brake,device_type[CAN1]);
-
-    // AD_Control_Steering dat_4;
-    // memset(&dat_4,0x00,8);
-    // dat_4.iecu_steering_angle_cmd = 1;
-    // dat_4.iecu_steering_valid = 1;
-    // canlib->PostCanMessage<AD_Control_Steering>(dat_4,AD_Control_Steering,device_type[CAN1]);
-
-
-   /*
-    //canlib->print_map_state("data_relayer");
-    // memcpy(bydata,&dat_2,8);
-    // for(unsigned char d : bydata){
-    //   fprintf(stdout,"0x%02x ",d);
-    // }
-    // cout << endl;
-  */
-}
-
-    void DataRelayer::static_break(UGV::BREAK break_status){
+void DataRelayer::static_break(UGV::BREAK break_status){
         AD_Control_Brake dat_2;
         memset(&dat_2,0x00,CAN_MAX_DLEN);
         dat_2.ad_dbs_valid = 1;

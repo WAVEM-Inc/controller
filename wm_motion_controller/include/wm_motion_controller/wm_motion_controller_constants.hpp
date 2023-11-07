@@ -12,6 +12,7 @@ class WmMotionControllerConstants{
         const std::string tp_odom_;
         const std::string odom_frame_id_;
         const std::string child_frame_id_;
+
         const float clear_zero_;
         const float rpm_center_;
         const float zero_approximation_;
@@ -26,6 +27,8 @@ class WmMotionControllerConstants{
         const std::string log_mediator_recv_rpm_distance;
         const std::string log_mediator_recv_rpm_check;
         const std::string tp_rtt_odom_;
+        const std::string tp_control_mode_;
+        const std::string tp_emergency_;
         WmMotionControllerConstants();
 };
 

@@ -45,10 +45,12 @@ origin_y_(0){
 	cb_group_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	cb_group_rtt_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	cb_group_mode_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+	cb_group_emergency_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	rclcpp::SubscriptionOptions sub_cmdvel_options;
 	rclcpp::SubscriptionOptions sub_can_chw_options;
 	rclcpp::SubscriptionOptions sub_imu_options;
 	rclcpp::SubscriptionOptions sub_controller_mode_options;
+	rclcpp::SubscriptionOptions sub_emergency_options;
 	rclcpp::PublisherOptions pub_odom_options;
 	rclcpp::PublisherOptions pub_rtt_odom_options;
 
@@ -56,13 +58,16 @@ origin_y_(0){
 	sub_can_chw_options.callback_group = m_cb_group_can_chw;
 	sub_imu_options.callback_group = cb_group_imu_;
 	sub_controller_mode_options.callback_group = cb_group_mode_;
+	sub_emergency_options.callback_group = cb_group_emergency_;
+
 	pub_odom_options.callback_group = cb_group_odom_;
 	pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
 
 	m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(constants_->m_tp_cmdvel,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1),sub_cmdvel_options);
 	m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(constants_->m_tp_can_chw,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1),sub_can_chw_options);
 	sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
-	sub_mode_ = this->create_subscription<can_msgs::msg::Mode>("/control/mode",1,std::bind(&WmMotionController::slam_mode_callback,this,_1),sub_controller_mode_options);
+	sub_mode_ = this->create_subscription<can_msgs::msg::Mode>(constants_->tp_control_mode_,1,std::bind(&WmMotionController::slam_mode_callback,this,_1),sub_controller_mode_options);
+	sub_emergency_ = this->create_subscription<can_msgs::msg::Emergency>(constants_->tp_emergency_,1,std::bind(&WmMotionController::emergency_callback,this,_1),sub_emergency_options);
 	//
 	pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
 	pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
@@ -116,8 +121,10 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 	//	
 }
 void WmMotionController::cmd_vel_run(float vel_linear, float vel_angular){
-	m_can_manager->fn_send_control_steering(vel_angular);
-	m_can_manager->fn_send_control_vel(vel_linear);
+	if(!emergency_check_){
+		m_can_manager->fn_send_control_steering(vel_angular);
+		m_can_manager->fn_send_control_vel(vel_linear);
+	}
 }
 
 void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){
@@ -149,7 +156,7 @@ void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){
 		
 		qua_.QuaternionToEulerAngles();
 
-		qua_.EulerToQuaternion(qua_.getterYaw()+(180+correction_)*M_PI/180,qua_.getterPitch(), qua_.getterRoll());
+		qua_.EulerToQuaternion(-qua_.getterYaw()+(180+correction_)*M_PI/180,qua_.getterPitch(), qua_.getterRoll());
 			
 		qua_.setterX(qua_.getterEulerX());
 		qua_.setterY(qua_.getterEulerY());
@@ -220,14 +227,21 @@ void WmMotionController::fn_send_rpm(const float& rpm,const std::chrono::system_
  * @param cur_time 
  */
 void WmMotionController::fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
-	//RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_check+"%.02f",rpm);
+	RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_check+"%.02f",rpm);
+	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 	cur_ugv_->set_cur_rpm(rpm);
+	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 	cur_ugv_->set_cur_time(cur_time);
+	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
     std::shared_ptr<CONVERTER::UGVConverter> converter = std::make_shared<CONVERTER::UGVConverter>();
+	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 	cur_ugv_->set_cur_distance((*converter).rpm_to_distance(*prev_ugv_,*cur_ugv_));
+	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 	//RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_distance+"%.02f",cur_ugv_->get_cur_distnace());
 	prev_ugv_->set_cur_rpm(cur_ugv_->get_cur_rpm());
+	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 	prev_ugv_->set_cur_time(cur_ugv_->get_cur_time());
+	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 }
 
 
@@ -313,7 +327,7 @@ void WmMotionController::calculate_next_position(){
 	auto sub_time = current_time_-odom_time_;
 	double time_seconds = sub_time.seconds();
 	vel_x_ = dxy_;
-	std::cout<<"calculate_next_position"<< lo_x_<<' '<<dxy_<<' '<<test<<'\n';
+	//std::cout<<"calculate_next_position"<< lo_x_<<' '<<dxy_<<' '<<test<<'\n';
 	if (dxy_ != 0) {
 		lo_x_ += ( dxy_ * cosf( qua_.getterYaw()));	//minseok 200611 before x
 		lo_y_ += ( dxy_ * sinf(  qua_.getterYaw() ));
@@ -356,7 +370,7 @@ float WmMotionController::cmd_angel_convert(const float& ori_angel,const float& 
 		steer_angle = -0.7;
 	}
 	steer_angle= steer_angle/0.7*30;
-	std::cout << "!!!!!!!!!!!!!!bms "<< steer_angle<<'\n';
+	//std::cout << "!!!!!!!!!!!!!!bms "<< steer_angle<<'\n';
 	return steer_angle;
 	//return steer_angle;
 	//return 0;
@@ -364,4 +378,8 @@ float WmMotionController::cmd_angel_convert(const float& ori_angel,const float& 
 
 void WmMotionController::slam_mode_callback(const can_msgs::msg::Mode::SharedPtr mode){
 	control_mode_ = mode->slam_mode;
+}
+
+void WmMotionController::emergency_callback(const can_msgs::msg::Emergency::SharedPtr stop){
+	emergency_check_=stop->stop;	
 }

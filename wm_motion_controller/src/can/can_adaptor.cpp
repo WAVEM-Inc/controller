@@ -131,6 +131,7 @@ int CanAdaptor::ROpen(vector<string> device){
    // can_dump->open(parametermap.size(), arg,this,&CanAdaptor::receive);
    // thread 방법
   try{
+    std::cout<<"can_adaptor.cpp"<<__LINE__<<std::endl;
     thread recvthread([&](int argc, vector<string> argv,CanAdaptor* pClassType,void(CanAdaptor::*func)(unsigned char* data,int canid)) {
 	 					       this->CanOpen(argc,argv,pClassType,func);
                          }, parametermap.size(),argval,this,&CanAdaptor::Receive);
@@ -180,12 +181,11 @@ int CanAdaptor::CanOpen(int argc, vector<string> arg,CanAdaptor* pClassType,void
 * @warning 
 * @exception
 */
-void CanAdaptor::CheckSocketStatus(vector<string> device,std::function<void(int,int)> callbackfunc){
+void CanAdaptor::CheckSocketStatus(vector<string> device,std::function<void(int,int,int)> callbackfunc){
 
   int (CanAdaptor::*pFunc1)(vector<string>) = &CanAdaptor::SOpen;
   function<int(vector<string>)> openfunc = move(bind(pFunc1, this, placeholders::_1));
-  //cout << "thread check socket OK!!! : " << endl;        
-  std::thread ([&](vector<string> dev,std::function<void(int,int)> func) {
+  std::thread ([&](vector<string> dev,std::function<void(int,int,int)> func) {
           
     while (true){
 
@@ -197,14 +197,14 @@ void CanAdaptor::CheckSocketStatus(vector<string> device,std::function<void(int,
         if ( IsConnected((char*)iter->c_str()) == false ){
           cerr << "[ERR]Socket check result :  invalid can device - " << iter->c_str() << endl;        
           // call function (can device fault) 
-          func(CAN_DEVICE_FAULT,0x00);
+          func(CAN_DEVICE_FAULT,0x00,0x00);
           Release();             
           isConn = false; 
 
           cout << "try reopen socket : " << endl;        
           if ( SOpen(dev) == 0 ){
             // call function (can device normal)
-            func(CAN_NO_FAULT,0x00);                
+            func(CAN_NO_FAULT,0x00,0x00);                
           }                         
           break;
         }              
@@ -225,18 +225,29 @@ void CanAdaptor::CheckSocketStatus(vector<string> device,std::function<void(int,
 * @exception
 */
 void CanAdaptor::Receive(byte* data,int canid) {
-
+  std::cout<< "recieve"<<std::endl;
   //function map에서 canid에 해당하는 callback을 조회하여 호출한다.
-  auto value = funcsmap_.find(canid);
-  //cout << " map key  : "<< value->first << endl;
-  std::shared_ptr<CanCallbackFunc> object = value->second;
-  //cout << " count  : "<< object.use_count() << "," << object << endl;
-  CanCallbackFunc* lpCls = (CanCallbackFunc*)value->second.get();
-  //cout << "[recv] canid :"<< lpCls->getCanid() << ", channel :" << lpCls->getChannel() << endl;
-  std::function<void(byte*)> func = lpCls->getHandler();
-  //data 파싱 및 등록된 callback 함수를 호출한다.
-  //std::future<void> ret = std::async(std::launch::async, func,data);
-  func(data);
+  try{
+    auto value = funcsmap_.find(canid);
+    if(value==funcsmap_.end()){
+      return;
+    }
+    else{
+      std::cout<< "recieve else"<<std::endl;
+      cout << " map key  : "<< value->first << endl;
+      std::shared_ptr<CanCallbackFunc> object = value->second;
+      cout << " count  : "<< object.use_count() << "," << object << endl;
+      CanCallbackFunc* lpCls = (CanCallbackFunc*)value->second.get();
+      cout << "[recv] canid :"<< lpCls->getCanid() << ", channel :" << lpCls->getChannel() << endl;
+      std::function<void(byte*)> func = lpCls->getHandler();
+      //data 파싱 및 등록된 callback 함수를 호출한다.
+      //std::future<void> ret = std::async(std::launch::async, func,data);
+      func(data);
+    }
+  }
+  catch(exception e){
+    std::cout<< "receive excetion" <<std::endl;
+  }
 }
 
 /**

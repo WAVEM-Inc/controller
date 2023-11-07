@@ -21,6 +21,7 @@ int main(int argc, char** argv){
 
 	std::cout<<"main start"<<std::endl;
 	std::shared_ptr<ConcreteMotionMediator> mediator = std::make_shared<ConcreteMotionMediator>();
+	
 	std::shared_ptr<CanMGR> can_mgr =  std::make_shared<CanMGR>(mediator);
 	mediator->fn_set_can_mgr(can_mgr);
     auto node = std::make_shared<WmMotionController>(mediator,can_mgr);
