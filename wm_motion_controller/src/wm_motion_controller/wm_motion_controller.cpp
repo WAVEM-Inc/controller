@@ -73,7 +73,7 @@ origin_y_(0){
 	pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
 
 	timer_ = this->create_wall_timer(100ms,std::bind(&WmMotionController::pub_odometry,this));
-	tf_timer_ = this->create_wall_timer(100ms,std::bind(&WmMotionController::update_transform,this));
+	tf_timer_ = this->create_wall_timer(20ms,std::bind(&WmMotionController::update_transform,this));
 	//
 
 	std::thread thread_run(&CanMGR::fn_can_run,m_can_manager);
@@ -148,7 +148,7 @@ void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){
 
   void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu){
 		//RCLCPP_INFO(this->get_logger(),constants_->log_imu_callback);
-		current_time_ = this->now();
+		current_time_ = current_time_;
 		qua_.setterX(imu->orientation.x);
 		qua_.setterY(imu->orientation.y);
 		qua_.setterZ(imu->orientation.z);
@@ -156,16 +156,16 @@ void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){
 		
 		qua_.QuaternionToEulerAngles();
 
-		qua_.EulerToQuaternion(-qua_.getterYaw()+(180+correction_)*M_PI/180,qua_.getterPitch(), qua_.getterRoll());
+//		qua_.EulerToQuaternion(-qua_.getterYaw()+(180+correction_)*M_PI/180,qua_.getterPitch(), qua_.getterRoll());
 			
-		qua_.setterX(qua_.getterEulerX());
-		qua_.setterY(qua_.getterEulerY());
-		qua_.setterW(qua_.getterEulerW());
-		qua_.setterZ(qua_.getterEulerZ());
+//		qua_.setterX(qua_.getterEulerX());
+//		qua_.setterY(qua_.getterEulerY());
+//		qua_.setterW(qua_.getterEulerW());
+//		qua_.setterZ(qua_.getterEulerZ());
 
 		//tf2::Quaternion q;
 		//q.setRPY(0,0,qua_.getterYaw());
-		qua_.QuaternionToEulerAngles();
+//		qua_.QuaternionToEulerAngles();
 		pose_yaw_ = qua_.getterYaw();
 		auto sub_time = current_time_-imu_time_;
 		double time_seconds = sub_time.seconds();
@@ -250,6 +250,7 @@ void WmMotionController::fn_recv_rpm(const float& rpm,const std::chrono::system_
  * 
  */
 void WmMotionController::pub_odometry(){
+	current_time_= this->now();
 	calculate_next_position();
 	calculate_next_orientation();
 	nav_msgs::msg::Odometry odom;
@@ -299,7 +300,7 @@ void WmMotionController::update_transform(){
 	odom_trans.header.frame_id = constants_->odom_frame_id_;
 	odom_trans.child_frame_id = constants_->child_frame_id_;
 	std::unique_ptr<tf2_ros::TransformBroadcaster> broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(this);
-	odom_trans.header.stamp = current_time_;	
+	odom_trans.header.stamp = this->now();	
 	odom_trans.transform.translation.x = lo_x_;
 	odom_trans.transform.translation.y = lo_y_;
 	//odom_trans.transform.translation.z = constants_->clear_zero_;
@@ -320,7 +321,7 @@ void WmMotionController::update_transform(){
  * 
  */
 void WmMotionController::calculate_next_position(){
-	current_time_ = this->now();	
+	//current_time_ = ;	
 	dxy_ = static_cast<double>(cur_ugv_->get_cur_distnace());
 	test += dxy_;
 	odom_dist_+= dxy_;
