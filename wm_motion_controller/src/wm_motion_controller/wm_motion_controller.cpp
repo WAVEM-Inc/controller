@@ -1,7 +1,7 @@
 #include "wm_motion_controller/wm_motion_controller.hpp"
 #include "converter/ugv_converter.hpp"
 #include "geometry_msgs/msg/transform_stamped.hpp"
-#include "tf2_ros/transform_broadcaster.h"
+
 #include "entity/df_ugv.hpp"
 #include "tf2/LinearMath/Quaternion.h"
 
@@ -62,7 +62,7 @@ origin_y_(0){
 
 	pub_odom_options.callback_group = cb_group_odom_;
 	pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
-
+	broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(this);
 	m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(constants_->m_tp_cmdvel,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1),sub_cmdvel_options);
 	m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(constants_->m_tp_can_chw,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1),sub_can_chw_options);
 	sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
@@ -72,10 +72,10 @@ origin_y_(0){
 	pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
 	pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
 
-	timer_ = this->create_wall_timer(100ms,std::bind(&WmMotionController::pub_odometry,this));
-	tf_timer_ = this->create_wall_timer(20ms,std::bind(&WmMotionController::update_transform,this));
+	timer_ = this->create_wall_timer(1000ms,std::bind(&WmMotionController::pub_odometry,this));
+	tf_timer_ = this->create_wall_timer(100ms,std::bind(&WmMotionController::update_transform,this));
 	//
-
+	
 	std::thread thread_run(&CanMGR::fn_can_run,m_can_manager);
     thread_run.detach();
 
@@ -148,7 +148,7 @@ void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){
 
   void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu){
 		//RCLCPP_INFO(this->get_logger(),constants_->log_imu_callback);
-		current_time_ = current_time_;
+		current_time_ = this->now();
 		qua_.setterX(imu->orientation.x);
 		qua_.setterY(imu->orientation.y);
 		qua_.setterZ(imu->orientation.z);
@@ -250,7 +250,7 @@ void WmMotionController::fn_recv_rpm(const float& rpm,const std::chrono::system_
  * 
  */
 void WmMotionController::pub_odometry(){
-	current_time_= this->now();
+	//current_time_= this->now();
 	calculate_next_position();
 	calculate_next_orientation();
 	nav_msgs::msg::Odometry odom;
@@ -299,15 +299,9 @@ void WmMotionController::update_transform(){
 	geometry_msgs::msg::TransformStamped odom_trans;
 	odom_trans.header.frame_id = constants_->odom_frame_id_;
 	odom_trans.child_frame_id = constants_->child_frame_id_;
-	std::unique_ptr<tf2_ros::TransformBroadcaster> broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(this);
-	odom_trans.header.stamp = this->now();	
+	odom_trans.header.stamp = current_time_;	
 	odom_trans.transform.translation.x = lo_x_;
 	odom_trans.transform.translation.y = lo_y_;
-	//odom_trans.transform.translation.z = constants_->clear_zero_;
-	//odom_trans.transform.translation.x = q.getX();
-	//odom_trans.transform.translation.y = q.getY();
-	//odom_trans.transform.rotation = q.getW();
-	//odom_trans.transform.translation.z= q.getAngle();
 	
 	odom_trans.transform.rotation.x=qua_.getterX();
 	odom_trans.transform.rotation.y=qua_.getterY();
@@ -321,7 +315,7 @@ void WmMotionController::update_transform(){
  * 
  */
 void WmMotionController::calculate_next_position(){
-	//current_time_ = ;	
+	current_time_ = this->now();	
 	dxy_ = static_cast<double>(cur_ugv_->get_cur_distnace());
 	test += dxy_;
 	odom_dist_+= dxy_;

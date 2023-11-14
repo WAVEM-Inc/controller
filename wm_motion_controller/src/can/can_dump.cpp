@@ -339,7 +339,14 @@ int CanDump::Open(int argc, std::vector<std::string> argval,CanAdaptor* pClassTy
             function<void(unsigned char*,int)>  handler = move(bind(func, pClassType, placeholders::_1,placeholders::_2));
 			std::cout<<"can_dump.cpp" <<' '<<__LINE__<<' '<<frame.data<<' '<<frame.can_id<<std::endl; 
 			std::cout<<"!!"<<func<<std::endl;
-			handler(frame.data,frame.can_id);
+			if(sizeof(frame.data)!=0){
+				try{
+					handler(frame.data,frame.can_id);
+				}
+				catch(exception e){
+					std::cout<<" Capybara "<<std::endl;
+				}
+			}
 			std::cout<<"can_dump.cpp" <<__LINE__<<std::endl; 
 		}
 	  }
