@@ -12,74 +12,74 @@
  * @date 23.04.06
  */
 WmMotionController::WmMotionController(std::shared_ptr<IMotionMediator> motion_mediator,std::shared_ptr<CanMGR> can_mgr)
-:Node("WmMotionControllerNode"),
-IMotionColleague(motion_mediator), 
-m_can_manager(can_mgr),
-pose_yaw_(0),
-prev_pose_yaw_(0),
-odom_dist_(0),
-lo_x_(0),
-lo_y_(0),
-origin_corr_(0),
-origin_x_(0),
-origin_y_(0){
-	std::cout<<"===="<<'\n';
-	this->declare_parameter<float>("correction", correction_);
-  
-    this->get_parameter("correction", correction_);
-	std::cout <<"test : "<<correction_<<'\n';
-	constants_ = std::make_shared<WmMotionControllerConstants>();
-	std::cout<<constants_->log_constructor<<std::endl;
-	control_mode_ = true;
-	last_time_ = current_time_= imu_time_ =odom_time_=this->now();
+	:Node("WmMotionControllerNode"),
+	IMotionColleague(motion_mediator), 
+	m_can_manager(can_mgr),
+	pose_yaw_(0),
+	prev_pose_yaw_(0),
+	odom_dist_(0),
+	lo_x_(0),
+	lo_y_(0),
+	origin_corr_(0),
+	origin_x_(0),
+	origin_y_(0){
+		std::cout<<"===="<<'\n';
+		this->declare_parameter<float>("correction", correction_);
 
-	prev_ugv_ = std::make_shared<ENTITY::UGV>();
-	(*prev_ugv_).set_cur_rpm(constants_->rpm_center_);
-	(*prev_ugv_).set_cur_time(std::chrono::system_clock::now());
-	cur_ugv_ = std::make_shared<ENTITY::UGV>();
+		this->get_parameter("correction", correction_);
+		std::cout <<"test : "<<correction_<<'\n';
+		constants_ = std::make_shared<WmMotionControllerConstants>();
+		std::cout<<constants_->log_constructor<<std::endl;
+		control_mode_ = true;
+		last_time_ = current_time_= imu_time_ =odom_time_=this->now();
 
-	//
-	m_cb_group_cmd_vel = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-	m_cb_group_can_chw = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-	cb_group_imu_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-	cb_group_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-	cb_group_rtt_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-	cb_group_mode_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-	cb_group_emergency_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-	rclcpp::SubscriptionOptions sub_cmdvel_options;
-	rclcpp::SubscriptionOptions sub_can_chw_options;
-	rclcpp::SubscriptionOptions sub_imu_options;
-	rclcpp::SubscriptionOptions sub_controller_mode_options;
-	rclcpp::SubscriptionOptions sub_emergency_options;
-	rclcpp::PublisherOptions pub_odom_options;
-	rclcpp::PublisherOptions pub_rtt_odom_options;
+		prev_ugv_ = std::make_shared<ENTITY::UGV>();
+		(*prev_ugv_).set_cur_rpm(constants_->rpm_center_);
+		(*prev_ugv_).set_cur_time(std::chrono::system_clock::now());
+		cur_ugv_ = std::make_shared<ENTITY::UGV>();
 
-	sub_cmdvel_options.callback_group = m_cb_group_cmd_vel;
-	sub_can_chw_options.callback_group = m_cb_group_can_chw;
-	sub_imu_options.callback_group = cb_group_imu_;
-	sub_controller_mode_options.callback_group = cb_group_mode_;
-	sub_emergency_options.callback_group = cb_group_emergency_;
+		//
+		m_cb_group_cmd_vel = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+		m_cb_group_can_chw = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+		cb_group_imu_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+		cb_group_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+		cb_group_rtt_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+		cb_group_mode_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+		cb_group_emergency_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+		rclcpp::SubscriptionOptions sub_cmdvel_options;
+		rclcpp::SubscriptionOptions sub_can_chw_options;
+		rclcpp::SubscriptionOptions sub_imu_options;
+		rclcpp::SubscriptionOptions sub_controller_mode_options;
+		rclcpp::SubscriptionOptions sub_emergency_options;
+		rclcpp::PublisherOptions pub_odom_options;
+		rclcpp::PublisherOptions pub_rtt_odom_options;
 
-	pub_odom_options.callback_group = cb_group_odom_;
-	pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
-	broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(this);
-	m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(constants_->m_tp_cmdvel,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1),sub_cmdvel_options);
-	m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(constants_->m_tp_can_chw,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1),sub_can_chw_options);
-	sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
-	sub_mode_ = this->create_subscription<can_msgs::msg::Mode>(constants_->tp_control_mode_,1,std::bind(&WmMotionController::slam_mode_callback,this,_1),sub_controller_mode_options);
-	sub_emergency_ = this->create_subscription<can_msgs::msg::Emergency>(constants_->tp_emergency_,1,std::bind(&WmMotionController::emergency_callback,this,_1),sub_emergency_options);
-	//
-	pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
-	pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
+		sub_cmdvel_options.callback_group = m_cb_group_cmd_vel;
+		sub_can_chw_options.callback_group = m_cb_group_can_chw;
+		sub_imu_options.callback_group = cb_group_imu_;
+		sub_controller_mode_options.callback_group = cb_group_mode_;
+		sub_emergency_options.callback_group = cb_group_emergency_;
 
-	timer_ = this->create_wall_timer(1000ms,std::bind(&WmMotionController::pub_odometry,this));
-	tf_timer_ = this->create_wall_timer(100ms,std::bind(&WmMotionController::update_transform,this));
-	//
-	
-	std::thread thread_run(&CanMGR::fn_can_run,m_can_manager);
-    thread_run.detach();
+		pub_odom_options.callback_group = cb_group_odom_;
+		pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
+		broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(this);
+		m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(constants_->m_tp_cmdvel,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1),sub_cmdvel_options);
+		m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(constants_->m_tp_can_chw,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1),sub_can_chw_options);
+		sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
+		sub_mode_ = this->create_subscription<can_msgs::msg::Mode>(constants_->tp_control_mode_,1,std::bind(&WmMotionController::slam_mode_callback,this,_1),sub_controller_mode_options);
+		sub_emergency_ = this->create_subscription<can_msgs::msg::Emergency>(constants_->tp_emergency_,1,std::bind(&WmMotionController::emergency_callback,this,_1),sub_emergency_options);
+		//
+		pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
+		pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
 
-}
+		timer_ = this->create_wall_timer(100ms,std::bind(&WmMotionController::pub_odometry,this));
+		tf_timer_ = this->create_wall_timer(100ms,std::bind(&WmMotionController::update_transform,this));
+		//
+
+		std::thread thread_run(&CanMGR::fn_can_run,m_can_manager);
+		thread_run.detach();
+
+	}
 WmMotionController::~WmMotionController(){
 
 }
@@ -101,7 +101,7 @@ void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardwar
  * @date 23.04.06
  */
 void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel){
-    //RCLCPP_INFO(this->get_logger(),constants_->log_cmd_callback+"linear = %.02f,angular = %.02f\n", cmd_vel->linear.x, cmd_vel->angular.z);
+	//RCLCPP_INFO(this->get_logger(),constants_->log_cmd_callback+"linear = %.02f,angular = %.02f\n", cmd_vel->linear.x, cmd_vel->angular.z);
 	float vel_linear = 0,vel_angular = 0;
 	vel_linear = (cmd_vel->linear.x);
 	vel_angular = cmd_vel->angular.z;
@@ -125,17 +125,20 @@ void WmMotionController::cmd_vel_run(float vel_linear, float vel_angular){
 		m_can_manager->fn_send_control_steering(vel_angular);
 		m_can_manager->fn_send_control_vel(vel_linear);
 	}
+	else{
+		m_can_manager->static_break(UGV::BREAK::STOP);
+	}
 }
 
 void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){
 	if(std::fabs(vel_linear)<0.001 && constants_->rpm_center_+constants_->rpm_break > cur_rpm&&
-	constants_->rpm_center_-constants_->rpm_break< cur_rpm){
+			constants_->rpm_center_-constants_->rpm_break< cur_rpm){
 		prev_ugv_->get_cur_rpm();
 		cur_ugv_->get_cur_rpm();
 		m_can_manager->static_break(UGV::BREAK::LED);
 	}
 	else if(std::fabs(vel_linear)<0.001 && constants_->rpm_center_+constants_->rpm_break < cur_rpm&&
-	constants_->rpm_center_-constants_->rpm_break > cur_rpm){
+			constants_->rpm_center_-constants_->rpm_break > cur_rpm){
 		prev_ugv_->get_cur_rpm();
 		cur_ugv_->get_cur_rpm();
 		m_can_manager->static_break(UGV::BREAK::STOP);
@@ -146,36 +149,44 @@ void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){
 }
 
 
-  void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu){
-		//RCLCPP_INFO(this->get_logger(),constants_->log_imu_callback);
-		current_time_ = this->now();
-		qua_.setterX(imu->orientation.x);
-		qua_.setterY(imu->orientation.y);
-		qua_.setterZ(imu->orientation.z);
-		qua_.setterW(imu->orientation.w);
-		
-		qua_.QuaternionToEulerAngles();
+void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu){
+	//RCLCPP_INFO(this->get_logger(),constants_->log_imu_callback);
+	current_time_ = this->now();
+	qua_.setterX(imu->orientation.x);
+	qua_.setterY(imu->orientation.y);
+	qua_.setterZ(imu->orientation.z);
+	qua_.setterW(imu->orientation.w);
 
-//		qua_.EulerToQuaternion(-qua_.getterYaw()+(180+correction_)*M_PI/180,qua_.getterPitch(), qua_.getterRoll());
-			
-//		qua_.setterX(qua_.getterEulerX());
-//		qua_.setterY(qua_.getterEulerY());
-//		qua_.setterW(qua_.getterEulerW());
-//		qua_.setterZ(qua_.getterEulerZ());
+	qua_.QuaternionToEulerAngles();
 
-		//tf2::Quaternion q;
-		//q.setRPY(0,0,qua_.getterYaw());
-//		qua_.QuaternionToEulerAngles();
-		pose_yaw_ = qua_.getterYaw();
-		auto sub_time = current_time_-imu_time_;
-		double time_seconds = sub_time.seconds();
-		vel_th_ = (pose_yaw_-prev_pose_yaw_)/(time_seconds);
-		if(std::fabs(vel_th_)<constants_->zero_approximation_){
-			vel_th_=0;
-		}
-		prev_pose_yaw_ = pose_yaw_;
-		imu_time_ = current_time_;
-  }
+	//		qua_.EulerToQuaternion(-qua_.getterYaw()+(180+correction_)*M_PI/180,qua_.getterPitch(), qua_.getterRoll());
+
+	//		qua_.setterX(qua_.getterEulerX());
+	//		qua_.setterY(qua_.getterEulerY());
+	//		qua_.setterW(qua_.getterEulerW());
+	//		qua_.setterZ(qua_.getterEulerZ());
+
+	//tf2::Quaternion q;
+	//q.setRPY(0,0,qua_.getterYaw());
+	//		qua_.QuaternionToEulerAngles();
+
+	qua_.EulerToQuaternion(qua_.getterYaw()+(180+correction_)*M_PI/180,-qua_.getterRoll(), qua_.getterPitch());
+	qua_.setterX(qua_.getterEulerX());
+	qua_.setterY(qua_.getterEulerY());
+	qua_.setterW(qua_.getterEulerW());
+	qua_.setterZ(qua_.getterEulerZ());
+	qua_.QuaternionToEulerAngles();
+
+	pose_yaw_ = qua_.getterYaw();
+	auto sub_time = current_time_-imu_time_;
+	double time_seconds = sub_time.seconds();
+	vel_th_ = (pose_yaw_-prev_pose_yaw_)/(time_seconds);
+	if(std::fabs(vel_th_)<constants_->zero_approximation_){
+		vel_th_=0;
+	}
+	prev_pose_yaw_ = pose_yaw_;
+	imu_time_ = current_time_;
+}
 
 
 /**
@@ -204,8 +215,8 @@ float WmMotionController::fn_kmph2mps(float kmph){
  * @param value 
  */
 void WmMotionController::fn_send_value(const int& value){
-    std::cout<< "override WmMotionController"<<std::endl;
-    m_i_motion_mediator->fn_send_value(value,enable_shared_from_this<WmMotionController>::shared_from_this());
+	std::cout<< "override WmMotionController"<<std::endl;
+	m_i_motion_mediator->fn_send_value(value,enable_shared_from_this<WmMotionController>::shared_from_this());
 }
 /**
  * @brief Function for receiving data from CanMGR through arbitrator
@@ -213,12 +224,12 @@ void WmMotionController::fn_send_value(const int& value){
  * @param value 
  */
 void WmMotionController::fn_recv_value(const int& value){
-    std::cout<< "override WmMotionController "<<value<<std::endl;
+	std::cout<< "override WmMotionController "<<value<<std::endl;
 
 }
 
 void WmMotionController::fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
-	
+
 }
 /**
  * @brief RPM data coming over CAN communication
@@ -228,20 +239,20 @@ void WmMotionController::fn_send_rpm(const float& rpm,const std::chrono::system_
  */
 void WmMotionController::fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
 	RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_check+"%.02f",rpm);
-	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
+	//std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 	cur_ugv_->set_cur_rpm(rpm);
-	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
+	//std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 	cur_ugv_->set_cur_time(cur_time);
-	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
-    std::shared_ptr<CONVERTER::UGVConverter> converter = std::make_shared<CONVERTER::UGVConverter>();
-	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
+	//std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
+	std::shared_ptr<CONVERTER::UGVConverter> converter = std::make_shared<CONVERTER::UGVConverter>();
+	//std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 	cur_ugv_->set_cur_distance((*converter).rpm_to_distance(*prev_ugv_,*cur_ugv_));
-	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
+	//std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 	//RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_distance+"%.02f",cur_ugv_->get_cur_distnace());
 	prev_ugv_->set_cur_rpm(cur_ugv_->get_cur_rpm());
-	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
+	//std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 	prev_ugv_->set_cur_time(cur_ugv_->get_cur_time());
-	std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
+	//std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 }
 
 
@@ -274,12 +285,12 @@ void WmMotionController::pub_odometry(){
 	rtt_value.pose.position.x = odom_dist_;
 
 	rtt_value.pose.orientation.x = qua_.getterYaw();//-90*M_PI/180;
-//	if(qua_.getterYaw()/*-90*M_PI/180*/>M_PI){ 
-//		rtt_value.pose.orientation.x -= 2*M_PI;
-//	}
-//	else if(qua_.getterYaw()/*-90*M_PI/180*/<-M_PI){
-//		rtt_value.pose.orientation.x += 2*M_PI;
-//	} //+ (-180*M_PI/180)/*+origin_corr*/;
+	//	if(qua_.getterYaw()/*-90*M_PI/180*/>M_PI){ 
+	//		rtt_value.pose.orientation.x -= 2*M_PI;
+	//	}
+	//	else if(qua_.getterYaw()/*-90*M_PI/180*/<-M_PI){
+	//		rtt_value.pose.orientation.x += 2*M_PI;
+	//	} //+ (-180*M_PI/180)/*+origin_corr*/;
 	if(rtt_value.pose.orientation.x/*-90*M_PI/180*/>M_PI){ 
 		rtt_value.pose.orientation.x -= 2*M_PI;
 	}
@@ -302,12 +313,12 @@ void WmMotionController::update_transform(){
 	odom_trans.header.stamp = current_time_;	
 	odom_trans.transform.translation.x = lo_x_;
 	odom_trans.transform.translation.y = lo_y_;
-	
+
 	odom_trans.transform.rotation.x=qua_.getterX();
 	odom_trans.transform.rotation.y=qua_.getterY();
 	odom_trans.transform.rotation.w=qua_.getterW();
 	odom_trans.transform.rotation.z=qua_.getterZ();
-	
+
 	broadcaster->sendTransform(odom_trans); 
 }
 /**
@@ -332,7 +343,7 @@ void WmMotionController::calculate_next_position(){
 		origin_y_ += ( dxy_ * sinf(  qua_.getterYaw()+origin_corr_));
 	}
 	if(imu_th_ != 0 && imu_th_ != prev_imu_th_){
-//		th = gyro_theta + initial_th;
+		//		th = gyro_theta + initial_th;
 		lo_th_ = qua_.getterYaw();
 	}
 	prev_imu_th_ = imu_th_;
@@ -352,10 +363,10 @@ void WmMotionController::calculate_next_orientation(){
 float WmMotionController::cmd_angel_convert(const float& ori_angel,const float& ori_linear){
 	int MAX = 30;
 	/*
-	float result = 0.0;
-	result = ori_data*30/1;
-	return (result>=30)?30:result;
-	*/
+	   float result = 0.0;
+	   result = ori_data*30/1;
+	   return (result>=30)?30:result;
+	   */
 	float steer_angle, steer_val;
 	steer_angle= (ori_angel)/(0.0001+ori_linear*2);
 	if(steer_angle > 0.7){

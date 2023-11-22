@@ -278,7 +278,9 @@ void DataRelayer::Run(){
   canlib_->Initialize(system_endian_);
 
   // 수신 핸들러 등록
-  canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_EPS_Control_Request,VCU_EPS_CONTROL_REQUEST,device_type[CAN1]);
+  
+  //canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_EPS_Control_Request,VCU_EPS_CONTROL_REQUEST,device_type[CAN1]);
+  
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_Shake,REMOTE_CONTROL_SHAKE_2,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_IO,REMOTE_CONTROL_IO,device_type[CAN1]);
   //std::cout << "can_test1"<<'\n';

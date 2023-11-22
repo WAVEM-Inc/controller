@@ -121,18 +121,11 @@ void CanMGR::fn_recv_value(const int& value){
 
 }
 void CanMGR::log(std::string call_name){
-std::chrono::system_clock::time_point callback_time = std::chrono::system_clock::now();
-std::time_t callback_time_t = std::chrono::system_clock::to_time_t(callback_time);
-std::tm* callback_time_tm = std::localtime(&callback_time_t);
-auto duration = callback_time.time_since_epoch();
-auto nanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(duration) % std::chrono::seconds(1);
-/*
-std::cout <<'['<< call_name<<']' <<" Date and Time: ";
-std::cout << callback_time_tm->tm_year + 1900 << "-" << std::setw(2) << std::setfill('0') << callback_time_tm->tm_mon + 1 << "-" << std::setw(2) << std::setfill('0') << callback_time_tm->tm_mday;
-std::cout << " " << std::setw(2) << std::setfill('0') << callback_time_tm->tm_hour << ":" << std::setw(2) << std::setfill('0') << callback_time_tm->tm_min << ":" << std::setw(2) << std::setfill('0') << callback_time_tm->tm_sec;
-std::cout << "." << std::setw(9) << std::setfill('0') << nanoseconds.count();
-std::cout << std::endl;
-*/
+    std::chrono::system_clock::time_point callback_time = std::chrono::system_clock::now();
+    std::time_t callback_time_t = std::chrono::system_clock::to_time_t(callback_time);
+    std::tm* callback_time_tm = std::localtime(&callback_time_t);
+    auto duration = callback_time.time_since_epoch();
+    auto nanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(duration) % std::chrono::seconds(1);
 }
 
 /**
