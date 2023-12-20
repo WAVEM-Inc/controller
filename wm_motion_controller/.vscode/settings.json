@@ -75,6 +75,7 @@
     ],
     "files.associations": {
         "functional": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "fstream": "cpp"
     }
 }

@@ -227,6 +227,9 @@ void CanAdaptor::CheckSocketStatus(vector<string> device,std::function<void(int,
 void CanAdaptor::Receive(byte* data,int canid) {
   std::cout<< "recieve"<<std::endl;
   //function map에서 canid에 해당하는 callback을 조회하여 호출한다.
+  if(funcsmap_.size()==0){
+    return;
+  }
   try{
     auto value = funcsmap_.find(canid);
     if(value==funcsmap_.end()){
