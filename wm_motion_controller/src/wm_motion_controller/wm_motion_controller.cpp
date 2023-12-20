@@ -320,6 +320,26 @@ void WmMotionController::update_transform(){
 	odom_trans.transform.rotation.z=qua_.getterZ();
 
 	broadcaster->sendTransform(odom_trans); 
+
+	odom_trans.header.frame_id = constants_->odom_frame_id_;
+	odom_trans.child_frame_id = "base_map_link";
+	odom_trans.header.stamp = current_time_;	
+	odom_trans.transform.translation.x = lo_x_;
+	odom_trans.transform.translation.y = lo_y_;
+	qua_.EulerToQuaternion(qua_.getterYaw(),0,0);
+
+	qua_.setterX(qua_.getterEulerX());
+	qua_.setterY(qua_.getterEulerY());
+	qua_.setterW(qua_.getterEulerW());
+	qua_.setterZ(qua_.getterEulerZ());
+
+	qua_.QuaternionToEulerAngles();
+
+	odom_trans.transform.rotation.x=qua_.getterX();
+	odom_trans.transform.rotation.y=qua_.getterY();
+	odom_trans.transform.rotation.w=qua_.getterW();
+	odom_trans.transform.rotation.z=qua_.getterZ();
+	broadcaster->sendTransform(odom_trans); 
 }
 /**
  * @brief 

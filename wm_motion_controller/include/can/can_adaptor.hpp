@@ -186,7 +186,8 @@ class CanAdaptor {
                 );
       
        cout << "setHandler(Remote_Control_IO) : " + device << ", canid : "<< canid << endl;          
-       funcsmap_.insert(make_pair(canid,object));           
+       funcsmap_.insert(make_pair(canid,object));
+       registe_check_ = true;               
   //    print_map_state("Remote_Control_IO");
    };
 
@@ -220,7 +221,8 @@ class CanAdaptor {
                 );
       
       cout << "setHandler(Remote_Control_Shake_2) : " + device << ", canid : "<< canid << endl;          
-      funcsmap_.insert(make_pair(canid,object));           
+      funcsmap_.insert(make_pair(canid,object));
+      registe_check_ = true;               
 //      print_map_state("Remote_Control_Shake_2");
    };
 
@@ -254,7 +256,8 @@ class CanAdaptor {
                 );
       
        cout << "setHandler(DBS_Status) : " + device << ", canid : "<< canid << endl;          
-       funcsmap_.insert(make_pair(canid,object));           
+       funcsmap_.insert(make_pair(canid,object)); 
+       registe_check_ = true;              
 //    print_map_state("DBS_Status");
    };
 
@@ -288,7 +291,8 @@ class CanAdaptor {
                 );
       
       cout << "setHandler(VCU_DBS_Request) : " + device << ", canid : "<< canid << endl;          
-      funcsmap_.insert(make_pair(canid,object));           
+      funcsmap_.insert(make_pair(canid,object)); 
+      registe_check_ = true;              
 //      print_map_state("VCU_DBS_Request");
    };
    
@@ -323,7 +327,8 @@ class CanAdaptor {
                 );
       
        cout << "setHandler(MCU_Torque_Feedback) : " + device << ", canid : "<< canid << endl;          
-       funcsmap_.insert(make_pair(canid,object));           
+       funcsmap_.insert(make_pair(canid,object));
+       registe_check_ = true;               
 //      print_map_state("MCU_Torque_Feedback");
    };
 

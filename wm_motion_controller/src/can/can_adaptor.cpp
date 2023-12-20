@@ -132,6 +132,8 @@ int CanAdaptor::ROpen(vector<string> device){
    // thread 방법
   try{
     std::cout<<"can_adaptor.cpp"<<__LINE__<<std::endl;
+    sleep(1);
+
     thread recvthread([&](int argc, vector<string> argv,CanAdaptor* pClassType,void(CanAdaptor::*func)(unsigned char* data,int canid)) {
 	 					       this->CanOpen(argc,argv,pClassType,func);
                          }, parametermap.size(),argval,this,&CanAdaptor::Receive);
