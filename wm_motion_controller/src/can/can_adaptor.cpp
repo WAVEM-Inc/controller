@@ -231,6 +231,11 @@ void CanAdaptor::Receive(byte* data,int canid) {
     return;
   }
   try{
+    std::cout<< "MapSize " << funcsmap_.size() <<std::endl;
+    if(registe_check_==false ||funcsmap_.empty()){
+      return;
+    }
+    std::cout<< "CanId " << canid <<std::endl;
     auto value = funcsmap_.find(canid);
     if(value==funcsmap_.end()){
       return;

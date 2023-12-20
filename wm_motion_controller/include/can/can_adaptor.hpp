@@ -67,7 +67,7 @@ class CanAdaptor {
     func_MCU_Torque_Feedback handler_mtf;
 
     bool isBigEndian_ = 0;
-
+    bool registe_check_= false;
     std::shared_ptr<CanDump> ptr_can_dump_ = NULL;
     std::shared_ptr<CanSend> ptr_can_send_ = NULL;
     
@@ -151,7 +151,8 @@ class CanAdaptor {
                 }
                 );                
      cout << "setHandler(VCU_EPS_Control_Request) : " + device << ", canid : "<< canid << endl;          
-     funcsmap_.insert(make_pair(canid,object));     
+     funcsmap_.insert(make_pair(canid,object));
+     registe_check_ = true;     
 //     print_map_state("VCU_EPS_Control_Request");
    };
 
