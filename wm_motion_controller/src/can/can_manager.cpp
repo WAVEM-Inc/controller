@@ -49,7 +49,7 @@ int CanMGR::fn_can_init(){
  * @date 23.04.07
  */
 void CanMGR::faultCallback(int can_falut,int dbs_fault){
-	//  std::cout << "[main] callback DBS_Status : " << (int)can_falut<< "," << (int)dbs_fault<< std::endl; 
+	  std::cout << "[main] callback DBS_Status : " << (int)can_falut<< "," << (int)dbs_fault<< std::endl; 
 }
 
 
@@ -66,11 +66,6 @@ void CanMGR::rpmCallback(int mcu_shift
                     ,int mcu_speed
                     ,int mcu_torque
                     ){
-  //log("rpmCallback");
-  /*std::cout << "[can_manager] callback RPM Status : " << (int)mcu_shift
-  << "," << (int)mcu_speed
-  << "," << (int)mcu_torque
-  << std::endl;*/
     fn_send_rpm(mcu_speed,std::chrono::system_clock::now());
 }
 

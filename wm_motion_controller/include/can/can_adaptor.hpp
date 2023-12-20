@@ -103,7 +103,7 @@ class CanAdaptor {
     int  Open(vector<string> device); //< open can channel, warning : callback function을 전부 등록후 호출한다.
     int  RunControlFlag(int flag, string device);
     bool IsConnected(string device);           
-    void CheckSocketStatus(vector<string> device,std::function<void(int,int)> func);
+    void CheckSocketStatus(vector<string> device,std::function<void(int,int,int)> func);
     void StopPostMessage(unsigned int canid);
    /**
     * @brief Returns a singleton object.
