@@ -6,6 +6,9 @@
 
 #include "can/can_define.hpp"
 #include "wm_motion_controller/wm_motion_controller.hpp"
+
+#define TEST 1 //1 develop
+
 DataRelayer::DataRelayer() {
   system_endian_ = is_big_endian();
 }
@@ -74,7 +77,9 @@ void DataRelayer::RegistRpmCallback(void(*pfunc)(int,int,int)){
 void DataRelayer::RegistFaultCallback(void(*pfunc)(int,int)){
   faultCallback = static_cast<void(*)(int,int)>(pfunc);
 };
-
+void DataRelayer::RegistRequestCallback(void(*pfunc)(short)){
+  requestCallback = static_cast<void(*)(short)>(pfunc);
+}
 
 
 /**
@@ -194,7 +199,7 @@ void DataRelayer::Handler_VCU_EPS_Control_Request (VCU_EPS_Control_Request msg){
   //  cout << endl;
    // Motorola  LSB
   short vcu_eps_strangle = htons(msg.vcu_eps_strangle_req);
-
+  
   double strangle_value = (vcu_eps_strangle / RESOLUTION_STEERING_CTRL ) - OFFSET_STRANGLE ;
 
  // cout << "[recv] VCU_EPS_Control_Request : " << vcu_eps_strangle <<"("<<strangle_value<<"),"<< (int)msg.vcu_eps_ctrlenable <<","<< (int)msg.vcu_eps_ctrlmode << endl;
@@ -238,7 +243,6 @@ void DataRelayer::Handler_Remote_Control_IO (Remote_Control_IO msg){
 void DataRelayer::Handler_DBS_Status (DBS_Status2 msg){
  // cout << "[recv] DBS_Status : " << (int)msg.dbs_fault_code <<","<<(int)msg.dbs_hp_pressure <<","<<(int)msg.dbs_system_status << endl;
   faultCallback(CAN_NO_FAULT,msg.dbs_fault_code);
-
 }
 
 /**
@@ -278,16 +282,15 @@ void DataRelayer::Run(){
   canlib_->Initialize(system_endian_);
 
   // 수신 핸들러 등록
-  
-  //canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_EPS_Control_Request,VCU_EPS_CONTROL_REQUEST,device_type[CAN1]);
+  canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_EPS_Control_Request,VCU_EPS_CONTROL_REQUEST,device_type[CAN1]);
   
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_Shake,REMOTE_CONTROL_SHAKE_2,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_IO,REMOTE_CONTROL_IO,device_type[CAN1]);
   //std::cout << "can_test1"<<'\n';
   //changun
-
+/*
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_DBS_Status,DBS_STATUS2,device_type[CAN1]); // changun 
-
+*/
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_DBS_Request,VCU_DBS_REQUEST,device_type[CAN1]);1
   canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_MCU_Torque_Feedback,TORQUE_FEEDBACK,device_type[CAN1]);
 

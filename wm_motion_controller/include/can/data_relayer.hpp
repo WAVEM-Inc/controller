@@ -28,9 +28,10 @@ class DataRelayer {
     typedef std::function<void(int,int)> func_fault_callback; // Callback function pointer variable definition
     typedef std::function<void(int,int,int)> func_rpm_callback; // Callback function pointer variable definition
     //typedef std::function<void(int,int,int)> func_other_callback; // Callback function pointer variable definition
-
+    typedef std::function<void(short)> func_request_callback;
     func_fault_callback faultCallback;// Callback function pointer variable definition
     func_rpm_callback rpmCallback; // Callback function pointer variable definition
+    func_request_callback requestCallback;
     //func_other_callback otherCallback; // Callback function pointer variable definition
 
     bool system_endian_ = 0;
@@ -53,7 +54,7 @@ class DataRelayer {
     void static_break(UGV::BREAK break_status);
     void RegistRpmCallback(void(*pfunc)(int,int,int));
     void RegistFaultCallback(void(*pfunc)(int,int));
-
+    void RegistRequestCallback(void(*pfunc)(short));
 
     /**
     * @brief Register a RPM callback function
@@ -86,6 +87,10 @@ class DataRelayer {
         ));
     }
 
+    template<typename T>
+    void RegistRequestCallback(T *pCalssType,void(T::*pfunc)(short)){
+      requestCallback = move(bind(pfunc,pCalssType,placeholders::_1));
+    }
     void Run();
     void SendTest();
 

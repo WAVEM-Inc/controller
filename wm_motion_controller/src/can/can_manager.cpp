@@ -1,4 +1,5 @@
 #include"can/can_manager.hpp"
+#include <unistd.h>
 /**
  * @brief Construct a new Can M G R:: Can M G R object
  * @author changunAn(changun516@wavem.net)
@@ -27,8 +28,9 @@ void CanMGR::fn_can_run(){
  * @date 23.04.06
  */
 int CanMGR::fn_can_init(){
-	obj_.RegistFaultCallback<CanMGR>(this, &CanMGR::faultCallback);
+	//obj_.RegistFaultCallback<CanMGR>(this, &CanMGR::faultCallback);
 	obj_.RegistRpmCallback<CanMGR>(this, &CanMGR::rpmCallback);
+    //obj_.RegistRequestCallback<CanMGR>(this,&CanMGR::requestCallback);
     obj_.Run();
     return 0;
 }
@@ -67,7 +69,16 @@ void CanMGR::rpmCallback(int mcu_shift
                     ,int mcu_torque
                     ){
     fn_send_rpm(mcu_speed,std::chrono::system_clock::now());
+    std::cout<<"[can] spped callback"<<std::endl;
 }
+
+/**
+ * 
+*/
+void CanMGR::requestCallback(short temp){
+
+}
+
 
 /**
  * @brief Function for controlling horn, head_light, right, left_light from robot to VCU via Can communication

@@ -6746,7 +6746,7 @@
 											"top": 151,
 											"width": 157.498046875,
 											"height": 13,
-											"text": "iECU_Control_Accelerate"
+											"text": "AD_Control_Accelerate"
 										},
 										{
 											"_type": "LabelView",
@@ -9242,7 +9242,7 @@
 											"top": 327,
 											"width": 150.97900390625,
 											"height": 13,
-											"text": "iECU_Control_Hardware"
+											"text": "AD_CONTROL_BODY "
 										},
 										{
 											"_type": "LabelView",
@@ -9408,7 +9408,7 @@
 											"top": 55,
 											"width": 174,
 											"height": 13,
-											"text": "iECU_Control_Steering"
+											"text": "AD_Control_Steering"
 										},
 										{
 											"_type": "LabelView",
@@ -9752,7 +9752,7 @@
 											"top": 431,
 											"width": 121.33544921875,
 											"height": 13,
-											"text": "Mode_Control_Flag"
+											"text": "AD_Control_Flag"
 										},
 										{
 											"_type": "LabelView",
@@ -11421,7 +11421,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGJCjTsLLSfhNs="
 					},
-					"name": "iECU_Control_Accelerate"
+					"name": "AD_Control_Accelerate"
 				},
 				{
 					"_type": "UMLClass",
@@ -11614,7 +11614,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGJCjTsLLSfhNs="
 					},
-					"name": "iECU_Control_Hardware"
+					"name": "AD_CONTROL_BODY "
 				},
 				{
 					"_type": "UMLClass",
@@ -11622,7 +11622,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGJCjTsLLSfhNs="
 					},
-					"name": "iECU_Control_Steering"
+					"name": "AD_Control_Steering"
 				},
 				{
 					"_type": "UMLClass",
@@ -11638,7 +11638,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGJCjTsLLSfhNs="
 					},
-					"name": "Mode_Control_Flag"
+					"name": "AD_Control_Flag"
 				},
 				{
 					"_type": "UMLClass",
