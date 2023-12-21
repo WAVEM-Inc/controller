@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/nuc-bt/ros2_ws/src/drive/controller/build/can_led_keyboard/can_led_keyboard_node" "TARGETS" "can_led_keyboard_node" "DESTINATION" "lib/can_led_keyboard")

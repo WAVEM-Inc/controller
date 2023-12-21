@@ -1,0 +1,1 @@
+/home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs/rosidl_generator_c/can_msgs/msg/emergency.h

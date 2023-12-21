@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/nuc-bt/ros2_ws/src/drive/controller/build/fake_controller/fake_controller_node" "TARGETS" "fake_controller_node" "DESTINATION" "lib/fake_controller")

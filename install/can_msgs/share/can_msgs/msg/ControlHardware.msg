@@ -1,0 +1,1 @@
+/home/nuc-bt/ros2_ws/src/drive/controller/MotionController/can_msgs/msg/ControlHardware.msg

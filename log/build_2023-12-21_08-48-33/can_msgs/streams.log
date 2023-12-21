@@ -1,0 +1,260 @@
+[0.178s] Invoking command in '/home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-bt/ros2_ws/src/drive/example/install/turtlebot3_teleop:/home/nuc-bt/ros2_ws/src/drive/example/install/turtlebot3_example:/home/nuc-bt/ros2_ws/src/drive/amr-navigation/install/nav2_simple_commander:/opt/ros/humble /usr/bin/cmake /home/nuc-bt/ros2_ws/src/drive/controller/MotionController/can_msgs -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs
+[0.237s] -- The C compiler identification is GNU 11.4.0
+[0.282s] -- The CXX compiler identification is GNU 11.4.0
+[0.289s] -- Detecting C compiler ABI info
+[0.361s] -- Detecting C compiler ABI info - done
+[0.366s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.366s] -- Detecting C compile features
+[0.366s] -- Detecting C compile features - done
+[0.368s] -- Detecting CXX compiler ABI info
+[0.447s] -- Detecting CXX compiler ABI info - done
+[0.453s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.453s] -- Detecting CXX compile features
+[0.453s] -- Detecting CXX compile features - done
+[0.458s] -- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.623s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[0.673s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.748s] -- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)
+[0.817s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.828s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.841s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.859s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.889s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.977s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.985s] -- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.115s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.143s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.189s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.208s] -- Looking for pthread.h
+[1.281s] -- Looking for pthread.h - found
+[1.282s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.356s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.357s] -- Found Threads: TRUE  
+[1.482s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[1.504s] -- Found nav_msgs: 4.2.3 (/opt/ros/humble/share/nav_msgs/cmake)
+[1.814s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[2.190s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.333s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.355s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[2.360s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[2.386s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[2.386s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.386s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[2.387s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[2.406s] -- Found PythonExtra: .so  
+[2.522s] -- Configuring done
+[2.548s] -- Generating done
+[2.550s] -- Build files have been written to: /home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs
+[2.559s] Invoked command in '/home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-bt/ros2_ws/src/drive/example/install/turtlebot3_teleop:/home/nuc-bt/ros2_ws/src/drive/example/install/turtlebot3_example:/home/nuc-bt/ros2_ws/src/drive/amr-navigation/install/nav2_simple_commander:/opt/ros/humble /usr/bin/cmake /home/nuc-bt/ros2_ws/src/drive/controller/MotionController/can_msgs -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs
+[2.560s] Invoking command in '/home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-bt/ros2_ws/src/drive/example/install/turtlebot3_teleop:/home/nuc-bt/ros2_ws/src/drive/example/install/turtlebot3_example:/home/nuc-bt/ros2_ws/src/drive/amr-navigation/install/nav2_simple_commander:/opt/ros/humble /usr/bin/cmake --build /home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs -- -j8 -l8
+[2.620s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[2.627s] [  4%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[2.647s] [  4%] Built target ament_cmake_python_symlink_can_msgs
+[2.838s] running egg_info
+[2.838s] creating can_msgs.egg-info
+[2.839s] writing can_msgs.egg-info/PKG-INFO
+[2.839s] writing dependency_links to can_msgs.egg-info/dependency_links.txt
+[2.839s] writing top-level names to can_msgs.egg-info/top_level.txt
+[2.839s] writing manifest file 'can_msgs.egg-info/SOURCES.txt'
+[2.840s] reading manifest file 'can_msgs.egg-info/SOURCES.txt'
+[2.841s] writing manifest file 'can_msgs.egg-info/SOURCES.txt'
+[2.866s] [  4%] Built target ament_cmake_python_build_can_msgs_egg
+[2.951s] [  6%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_generator_c.dir/rosidl_generator_c/can_msgs/msg/detail/mode__functions.c.o[0m
+[2.952s] [  8%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_generator_c.dir/rosidl_generator_c/can_msgs/msg/detail/emergency__functions.c.o[0m
+[2.957s] [ 10%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_generator_c.dir/rosidl_generator_c/can_msgs/msg/detail/control_hardware__functions.c.o[0m
+[3.011s] [ 12%] [32m[1mLinking C shared library libcan_msgs__rosidl_generator_c.so[0m
+[3.055s] [ 12%] Built target can_msgs__rosidl_generator_c
+[3.084s] [ 14%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[3.089s] [ 17%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[3.100s] [ 19%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[3.100s] [ 19%] Built target can_msgs__cpp
+[3.125s] [ 21%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[3.132s] [ 25%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[3.133s] [ 25%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[3.526s] [ 27%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/can_msgs/msg/control_hardware__type_support.cpp.o[0m
+[3.541s] [ 29%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/can_msgs/msg/mode__type_support.cpp.o[0m
+[3.553s] [ 31%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/can_msgs/msg/control_hardware__type_support.cpp.o[0m
+[3.558s] [ 34%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/can_msgs/msg/detail/control_hardware__type_support.c.o[0m
+[3.584s] [ 36%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/can_msgs/msg/mode__type_support.cpp.o[0m
+[3.598s] [ 38%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/can_msgs/msg/detail/mode__type_support.c.o[0m
+[3.608s] [ 40%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/can_msgs/msg/emergency__type_support.cpp.o[0m
+[3.622s] [ 42%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/can_msgs/msg/detail/control_hardware__type_support.cpp.o[0m
+[3.627s] [ 44%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/can_msgs/msg/detail/control_hardware__type_support_c.cpp.o[0m
+[3.659s] [ 46%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/can_msgs/msg/detail/mode__type_support.cpp.o[0m
+[3.682s] [ 48%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/can_msgs/msg/detail/emergency__type_support.c.o[0m
+[3.688s] [ 51%] [32m[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_c.so[0m
+[3.737s] [ 53%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/can_msgs/msg/detail/dds_fastrtps/control_hardware__type_support.cpp.o[0m
+[3.795s] [ 55%] [32m[1mLinking C shared library libcan_msgs__rosidl_typesupport_introspection_c.so[0m
+[3.884s] [ 55%] Built target can_msgs__rosidl_typesupport_c
+[3.906s] [ 57%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/can_msgs/msg/detail/dds_fastrtps/mode__type_support.cpp.o[0m
+[3.930s] [ 59%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/can_msgs/msg/emergency__type_support.cpp.o[0m
+[3.931s] [ 59%] Built target can_msgs__rosidl_typesupport_introspection_c
+[3.951s] [ 61%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/can_msgs/msg/detail/dds_fastrtps/emergency__type_support.cpp.o[0m
+[4.026s] [ 63%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/can_msgs/msg/detail/mode__type_support_c.cpp.o[0m
+[4.104s] [ 65%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/can_msgs/msg/detail/emergency__type_support_c.cpp.o[0m
+[4.115s] [ 68%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/can_msgs/msg/detail/emergency__type_support.cpp.o[0m
+[4.356s] [ 70%] [32m[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_cpp.so[0m
+[4.398s] [ 72%] [32m[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[4.438s] [ 72%] Built target can_msgs__rosidl_typesupport_cpp
+[4.493s] [ 74%] [32m[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[4.515s] [ 74%] Built target can_msgs__rosidl_typesupport_fastrtps_cpp
+[4.553s] [ 76%] [32m[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[4.570s] [ 76%] Built target can_msgs__rosidl_typesupport_fastrtps_c
+[4.613s] [ 76%] Built target can_msgs__rosidl_typesupport_introspection_cpp
+[4.642s] [ 76%] Built target can_msgs
+[4.671s] [ 78%] [34m[1mGenerating Python code for ROS interfaces[0m
+[5.020s] [ 78%] Built target can_msgs__py
+[5.049s] [ 85%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_generator_py.dir/rosidl_generator_py/can_msgs/msg/_emergency_s.c.o[0m
+[5.049s] [ 85%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_generator_py.dir/rosidl_generator_py/can_msgs/msg/_control_hardware_s.c.o[0m
+[5.049s] [ 85%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_generator_py.dir/rosidl_generator_py/can_msgs/msg/_mode_s.c.o[0m
+[5.127s] [ 87%] [32m[1mLinking C shared library rosidl_generator_py/can_msgs/libcan_msgs__rosidl_generator_py.so[0m
+[5.170s] [ 87%] Built target can_msgs__rosidl_generator_py
+[5.199s] [ 93%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/can_msgs/_can_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[5.199s] [ 93%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/can_msgs/_can_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[5.199s] [ 93%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/can_msgs/_can_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[5.278s] [ 97%] [32m[1mLinking C shared library rosidl_generator_py/can_msgs/can_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.278s] [ 97%] [32m[1mLinking C shared library rosidl_generator_py/can_msgs/can_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.283s] [100%] [32m[1mLinking C shared library rosidl_generator_py/can_msgs/can_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.321s] [100%] Built target can_msgs__rosidl_typesupport_fastrtps_c__pyext
+[5.321s] [100%] Built target can_msgs__rosidl_typesupport_introspection_c__pyext
+[5.332s] [100%] Built target can_msgs__rosidl_typesupport_c__pyext
+[5.344s] Invoked command in '/home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-bt/ros2_ws/src/drive/example/install/turtlebot3_teleop:/home/nuc-bt/ros2_ws/src/drive/example/install/turtlebot3_example:/home/nuc-bt/ros2_ws/src/drive/amr-navigation/install/nav2_simple_commander:/opt/ros/humble /usr/bin/cmake --build /home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs -- -j8 -l8
+[5.587s] Invoking command in '/home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-bt/ros2_ws/src/drive/example/install/turtlebot3_teleop:/home/nuc-bt/ros2_ws/src/drive/example/install/turtlebot3_example:/home/nuc-bt/ros2_ws/src/drive/amr-navigation/install/nav2_simple_commander:/opt/ros/humble /usr/bin/cmake --install /home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs
+[5.596s] -- Install configuration: ""
+[5.597s] -- Execute custom install script
+[5.597s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/ament_index/resource_index/rosidl_interfaces/can_msgs
+[5.607s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/control_hardware.h
+[5.617s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/control_hardware__functions.h
+[5.629s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/control_hardware__struct.h
+[5.638s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/control_hardware__type_support.h
+[5.648s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/emergency__functions.h
+[5.658s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/emergency__struct.h
+[5.668s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/emergency__type_support.h
+[5.677s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/mode__functions.h
+[5.687s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/mode__struct.h
+[5.697s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/mode__type_support.h
+[5.706s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/emergency.h
+[5.716s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/mode.h
+[5.727s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/rosidl_generator_c__visibility_control.h
+[5.738s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/environment/library_path.sh
+[5.747s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/environment/library_path.dsv
+[5.758s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/control_hardware__rosidl_typesupport_fastrtps_c.h
+[5.767s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/emergency__rosidl_typesupport_fastrtps_c.h
+[5.777s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/mode__rosidl_typesupport_fastrtps_c.h
+[5.787s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[5.797s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/control_hardware.hpp
+[5.807s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/control_hardware__builder.hpp
+[5.816s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/control_hardware__struct.hpp
+[5.826s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/control_hardware__traits.hpp
+[5.836s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/emergency__builder.hpp
+[5.847s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/emergency__struct.hpp
+[5.856s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/emergency__traits.hpp
+[5.865s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/mode__builder.hpp
+[5.875s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/mode__struct.hpp
+[5.885s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/mode__traits.hpp
+[5.894s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/emergency.hpp
+[5.904s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/mode.hpp
+[5.914s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/control_hardware__rosidl_typesupport_fastrtps_cpp.hpp
+[5.924s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/emergency__rosidl_typesupport_fastrtps_cpp.hpp
+[5.934s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/mode__rosidl_typesupport_fastrtps_cpp.hpp
+[5.944s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[5.954s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/control_hardware__rosidl_typesupport_introspection_c.h
+[5.965s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/emergency__rosidl_typesupport_introspection_c.h
+[5.975s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/mode__rosidl_typesupport_introspection_c.h
+[5.985s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[5.995s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/control_hardware__rosidl_typesupport_introspection_cpp.hpp
+[6.005s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/emergency__rosidl_typesupport_introspection_cpp.hpp
+[6.015s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/include/can_msgs/can_msgs/msg/detail/mode__rosidl_typesupport_introspection_cpp.hpp
+[6.025s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/environment/pythonpath.sh
+[6.037s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/environment/pythonpath.dsv
+[6.047s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs-0.0.0-py3.10.egg-info/PKG-INFO
+[6.058s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs-0.0.0-py3.10.egg-info/SOURCES.txt
+[6.068s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs-0.0.0-py3.10.egg-info/dependency_links.txt
+[6.078s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs-0.0.0-py3.10.egg-info/top_level.txt
+[6.089s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/__init__.py
+[6.100s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/_can_msgs_s.ep.rosidl_typesupport_c.c
+[6.109s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/_can_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[6.119s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/_can_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[6.129s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/can_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[6.142s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/can_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[6.152s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/can_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[6.162s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/libcan_msgs__rosidl_generator_py.so
+[6.171s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/msg/__init__.py
+[6.181s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/msg/_control_hardware.py
+[6.191s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/msg/_control_hardware_s.c
+[6.200s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/msg/_emergency.py
+[6.210s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/msg/_emergency_s.c
+[6.220s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/msg/_mode.py
+[6.230s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/msg/_mode_s.c
+[6.240s] -- Up-to-date symlink: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/can_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[6.241s] -- Up-to-date symlink: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/can_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[6.241s] -- Up-to-date symlink: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/can_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[6.241s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/msg/ControlHardware.idl
+[6.251s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/msg/Mode.idl
+[6.260s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/msg/Emergency.idl
+[6.270s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/msg/ControlHardware.msg
+[6.280s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/msg/Mode.msg
+[6.290s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/msg/Emergency.msg
+[6.300s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/ament_index/resource_index/package_run_dependencies/can_msgs
+[6.309s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/ament_index/resource_index/parent_prefix_path/can_msgs
+[6.319s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/environment/ament_prefix_path.sh
+[6.330s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/environment/ament_prefix_path.dsv
+[6.340s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/environment/path.sh
+[6.350s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/environment/path.dsv
+[6.359s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/local_setup.bash
+[6.370s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/local_setup.sh
+[6.380s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/local_setup.zsh
+[6.390s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/local_setup.dsv
+[6.400s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/package.dsv
+[6.409s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/ament_index/resource_index/packages/can_msgs
+[6.419s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/rosidl_cmake-extras.cmake
+[6.429s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[6.439s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[6.449s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[6.458s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[6.468s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[6.478s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[6.488s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/can_msgsConfig.cmake
+[6.498s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/can_msgsConfig-version.cmake
+[6.510s] -- Symlinking: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/package.xml
+[6.521s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_generator_c.so
+[6.521s] -- Set runtime path of "/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_generator_c.so" to ""
+[6.521s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_c.so
+[6.521s] -- Set runtime path of "/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[6.522s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_cpp.so
+[6.522s] -- Set runtime path of "/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[6.522s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_c.so
+[6.522s] -- Set runtime path of "/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_c.so" to ""
+[6.522s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_c.so
+[6.522s] -- Set runtime path of "/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_c.so" to ""
+[6.522s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_cpp.so
+[6.522s] -- Set runtime path of "/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[6.522s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_cpp.so
+[6.523s] -- Set runtime path of "/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_cpp.so" to ""
+[6.558s] Listing '/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs'...
+[6.558s] Compiling '/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/__init__.py'...
+[6.558s] Listing '/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/msg'...
+[6.558s] Compiling '/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/msg/__init__.py'...
+[6.558s] Compiling '/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/msg/_control_hardware.py'...
+[6.558s] Compiling '/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/msg/_emergency.py'...
+[6.558s] Compiling '/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/local/lib/python3.10/dist-packages/can_msgs/msg/_mode.py'...
+[6.561s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_generator_py.so
+[6.561s] -- Set runtime path of "/home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/lib/libcan_msgs__rosidl_generator_py.so" to ""
+[6.561s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/export_can_msgs__rosidl_generator_cExport.cmake
+[6.561s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/export_can_msgs__rosidl_generator_cExport-noconfig.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/export_can_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/export_can_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/export_can_msgs__rosidl_generator_cppExport.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/export_can_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/export_can_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cExport.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cExport.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cppExport.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/export_can_msgs__rosidl_generator_pyExport.cmake
+[6.562s] -- Installing: /home/nuc-bt/ros2_ws/src/drive/controller/install/can_msgs/share/can_msgs/cmake/export_can_msgs__rosidl_generator_pyExport-noconfig.cmake
+[6.564s] Invoked command in '/home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-bt/ros2_ws/src/drive/example/install/turtlebot3_teleop:/home/nuc-bt/ros2_ws/src/drive/example/install/turtlebot3_example:/home/nuc-bt/ros2_ws/src/drive/amr-navigation/install/nav2_simple_commander:/opt/ros/humble /usr/bin/cmake --install /home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs

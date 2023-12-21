@@ -1,0 +1,1 @@
+/home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs/rosidl_typesupport_fastrtps_cpp/can_msgs/msg/detail/control_hardware__rosidl_typesupport_fastrtps_cpp.hpp

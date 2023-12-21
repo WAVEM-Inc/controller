@@ -1,0 +1,1 @@
+/home/nuc-bt/ros2_ws/src/drive/controller/build/MotionController/ament_cmake_core/MotionControllerConfig-version.cmake
