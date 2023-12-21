@@ -1,1 +1,0 @@
-/home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs/rosidl_generator_py/can_msgs/_can_msgs_s.ep.rosidl_typesupport_c.c

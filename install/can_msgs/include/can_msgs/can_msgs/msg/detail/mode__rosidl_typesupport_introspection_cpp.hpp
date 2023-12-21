@@ -1,1 +1,0 @@
-/home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs/rosidl_typesupport_introspection_cpp/can_msgs/msg/detail/mode__rosidl_typesupport_introspection_cpp.hpp

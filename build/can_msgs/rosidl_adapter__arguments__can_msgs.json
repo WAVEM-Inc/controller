@@ -1,8 +1,0 @@
-{
-  "package_name": "can_msgs",
-  "non_idl_tuples": [
-    "/home/nuc-bt/ros2_ws/src/drive/controller/MotionController/can_msgs:msg/ControlHardware.msg",
-    "/home/nuc-bt/ros2_ws/src/drive/controller/MotionController/can_msgs:msg/Mode.msg",
-    "/home/nuc-bt/ros2_ws/src/drive/controller/MotionController/can_msgs:msg/Emergency.msg"
-  ]
-}

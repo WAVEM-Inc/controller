@@ -1,1 +1,0 @@
-/home/nuc-bt/ros2_ws/src/drive/controller/build/can_msgs/rosidl_cmake/rosidl_cmake_export_typesupport_targets-extras.cmake

@@ -1,9 +1,0 @@
-/home/nuc-bt/ros2_ws/src/drive/controller/build/MotionController/CMakeFiles/uninstall.dir
-/home/nuc-bt/ros2_ws/src/drive/controller/build/MotionController/CMakeFiles/MotionController_uninstall.dir
-/home/nuc-bt/ros2_ws/src/drive/controller/build/MotionController/CMakeFiles/test.dir
-/home/nuc-bt/ros2_ws/src/drive/controller/build/MotionController/CMakeFiles/edit_cache.dir
-/home/nuc-bt/ros2_ws/src/drive/controller/build/MotionController/CMakeFiles/rebuild_cache.dir
-/home/nuc-bt/ros2_ws/src/drive/controller/build/MotionController/CMakeFiles/list_install_components.dir
-/home/nuc-bt/ros2_ws/src/drive/controller/build/MotionController/CMakeFiles/install.dir
-/home/nuc-bt/ros2_ws/src/drive/controller/build/MotionController/CMakeFiles/install/local.dir
-/home/nuc-bt/ros2_ws/src/drive/controller/build/MotionController/CMakeFiles/install/strip.dir

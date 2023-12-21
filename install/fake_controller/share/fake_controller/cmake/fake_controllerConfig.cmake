@@ -1,1 +1,0 @@
-/home/nuc-bt/ros2_ws/src/drive/controller/build/fake_controller/ament_cmake_core/fake_controllerConfig.cmake
