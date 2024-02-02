@@ -1,0 +1,8 @@
+<map id="CanAdaptor::ROpen" name="CanAdaptor::ROpen">
+<area shape="rect" id="node1" title="Open a can channel for reception." alt="" coords="5,81,155,108"/>
+<area shape="rect" id="node2" href="$class_can_adaptor.html#aac14f5162a9af703c6293a6a05feb98d" title="Function to open can channel." alt="" coords="203,5,368,32"/>
+<area shape="rect" id="node3" href="$class_can_callback_func.html#ae23d0b2de0aa3588c988ff38970fd157" title=" " alt="" coords="424,56,623,83"/>
+<area shape="rect" id="node4" href="$class_can_callback_func.html#ac2c5122460f222f9c542fd488a1ee9e5" title=" " alt="" coords="416,157,631,184"/>
+<area shape="rect" id="node5" href="$class_can_adaptor.html#af85789530a136f168b97c592dfbf2b78" title="Receive data from can network." alt="" coords="206,107,365,133"/>
+<area shape="rect" id="node6" href="$class_can_callback_func.html#a18afd0d8869f35e11bb91ea5ee2a381e" title=" " alt="" coords="417,107,630,133"/>
+</map>

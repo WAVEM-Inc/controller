@@ -1,0 +1,27 @@
+<map id="CanMGR::fn_can_init" name="CanMGR::fn_can_init">
+<area shape="rect" id="node1" title="Register callback function for can communication response." alt="" coords="5,169,163,196"/>
+<area shape="rect" id="node2" href="$class_can_m_g_r.html#ab4b2df15089369c156497edf57184464" title=" " alt="" coords="244,52,416,79"/>
+<area shape="rect" id="node3" href="$class_data_relayer.html#ac4178378e46c212e9e08ad4241007c1a" title="Register a FAULT callback function." alt="" coords="238,103,422,145"/>
+<area shape="rect" id="node4" href="$class_data_relayer.html#a524a189194dd751832d7c210a8ad0a15" title="Register a RPM callback function." alt="" coords="211,169,449,196"/>
+<area shape="rect" id="node5" href="$class_can_m_g_r.html#a14262244cf40caa0c850ff205c963755" title="Function to respond to rpm reception through can communication." alt="" coords="246,220,414,247"/>
+<area shape="rect" id="node6" href="$class_data_relayer.html#a69859deb649fb5e182df1cb4aba837fe" title="run test" alt="" coords="262,271,398,297"/>
+<area shape="rect" id="node7" href="$class_can_adaptor.html#ab64865d36529e292bcfa6616b9cf5cf9" title="Check whether the can channel is activated." alt="" coords="497,31,728,57"/>
+<area shape="rect" id="node11" href="$class_can_adaptor.html#affa02055d8a2b7aaec6a928c7e9c3363" title="Returns a singleton object." alt="" coords="521,81,704,108"/>
+<area shape="rect" id="node12" href="$class_data_relayer.html#a1e444933be3500431c9655c2bdccde74" title="Callback function to register with CanAdaptor::" alt="" coords="531,133,694,174"/>
+<area shape="rect" id="node13" href="$class_data_relayer.html#a01006987d1b92a0f36685088c56f5af6" title="Callback function to register with CanAdaptor::" alt="" coords="523,198,702,239"/>
+<area shape="rect" id="node14" href="$class_data_relayer.html#aff7e17fd7c11e994a08792ed1a7167a8" title="Callback function to register with CanAdaptor::" alt="" coords="511,263,714,305"/>
+<area shape="rect" id="node15" href="$class_can_adaptor.html#ad163eb33ce2ed8f2a4a31af7be86ee03" title="initialization task" alt="" coords="531,329,694,356"/>
+<area shape="rect" id="node16" href="$class_can_adaptor.html#a8e1ba351506c463f6fdff20d0e58530a" title="Open a can channel." alt="" coords="543,380,683,407"/>
+<area shape="rect" id="node23" href="$class_can_adaptor.html#afc5f3ce8f22c04db95c3b46e4bda42c4" title="iECU mode, need to remote control" alt="" coords="509,431,716,457"/>
+<area shape="rect" id="node25" href="$class_can_adaptor.html#a7da630a5fab713f1d1379b8a1f590a51" title="Register a callback function.(VCU_EPS_Control_Request)" alt="" coords="523,481,702,508"/>
+<area shape="rect" id="node8" href="$class_can_adaptor.html#a04dcde64d86743b7916e802c1a6830ff" title="Check can device connection status." alt="" coords="776,56,963,83"/>
+<area shape="rect" id="node9" href="$class_can_adaptor.html#a1e96d40f496d6b6e743b8d93b36685eb" title="release task" alt="" coords="790,5,949,32"/>
+<area shape="rect" id="node10" href="$class_can_adaptor.html#a46b42321aacccd7080889ba0a52b0740" title="Open a can channel for send." alt="" coords="795,205,943,232"/>
+<area shape="rect" id="node17" href="$class_can_adaptor.html#a0ac054e51c147f3f22636a60b978e06f" title="Open a can channel for reception." alt="" coords="795,380,944,407"/>
+<area shape="rect" id="node18" href="$class_can_adaptor.html#aac14f5162a9af703c6293a6a05feb98d" title="Function to open can channel." alt="" coords="1011,304,1176,331"/>
+<area shape="rect" id="node19" href="$class_can_callback_func.html#ae23d0b2de0aa3588c988ff38970fd157" title=" " alt="" coords="1232,355,1431,381"/>
+<area shape="rect" id="node20" href="$class_can_callback_func.html#ac2c5122460f222f9c542fd488a1ee9e5" title=" " alt="" coords="1224,456,1439,483"/>
+<area shape="rect" id="node21" href="$class_can_adaptor.html#af85789530a136f168b97c592dfbf2b78" title="Receive data from can network." alt="" coords="1014,405,1173,432"/>
+<area shape="rect" id="node22" href="$class_can_callback_func.html#a18afd0d8869f35e11bb91ea5ee2a381e" title=" " alt="" coords="1225,405,1438,432"/>
+<area shape="rect" id="node24" href="$class_can_adaptor.html#ae3a6d62b3980b9a0e4bba2f709884e80" title="Send data to the CAN network." alt="" coords="800,431,939,457"/>
+</map>

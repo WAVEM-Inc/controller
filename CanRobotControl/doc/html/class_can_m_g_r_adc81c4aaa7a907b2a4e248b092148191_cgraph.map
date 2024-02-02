@@ -1,0 +1,8 @@
+<map id="CanMGR::fn_send_control_vel" name="CanMGR::fn_send_control_vel">
+<area shape="rect" id="node1" title="Function for sending motor control values from robot to VCU via Can communication." alt="" coords="5,31,221,57"/>
+<area shape="rect" id="node2" href="$class_data_relayer.html#ab03906d443fb8a6945ee2efe97b4e54f" title="Send control commands.(ControlVel)" alt="" coords="269,31,448,57"/>
+<area shape="rect" id="node3" href="$class_data_relayer.html#a4cdd03e9d501460548d72112a0f904b2" title="send API(ControlAccelerate)" alt="" coords="496,23,697,65"/>
+<area shape="rect" id="node4" href="$class_data_relayer.html#a7f9ab4030b59f3dd85826d337e8a5811" title="Use when you need a lower HeartBeat." alt="" coords="745,5,923,32"/>
+<area shape="rect" id="node5" href="$class_can_adaptor.html#af85bd813da08af4bfa87e74c65b39d2b" title="Register a callback function." alt="" coords="971,31,1188,57"/>
+<area shape="rect" id="node6" href="$class_can_adaptor.html#aa3c09d9af30e82bdb7b027ee71048310" title="iECU_Control_Hardware type is transmitted through the CAN network." alt="" coords="1236,31,1475,57"/>
+</map>

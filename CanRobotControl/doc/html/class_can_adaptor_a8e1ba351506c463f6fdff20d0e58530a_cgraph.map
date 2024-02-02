@@ -1,0 +1,10 @@
+<map id="CanAdaptor::Open" name="CanAdaptor::Open">
+<area shape="rect" id="node1" title="Open a can channel." alt="" coords="5,107,145,133"/>
+<area shape="rect" id="node2" href="$class_can_adaptor.html#a0ac054e51c147f3f22636a60b978e06f" title="Open a can channel for reception." alt="" coords="193,81,343,108"/>
+<area shape="rect" id="node8" href="$class_can_adaptor.html#a46b42321aacccd7080889ba0a52b0740" title="Open a can channel for send." alt="" coords="194,132,342,159"/>
+<area shape="rect" id="node3" href="$class_can_adaptor.html#aac14f5162a9af703c6293a6a05feb98d" title="Function to open can channel." alt="" coords="391,5,556,32"/>
+<area shape="rect" id="node4" href="$class_can_callback_func.html#ae23d0b2de0aa3588c988ff38970fd157" title=" " alt="" coords="612,56,811,83"/>
+<area shape="rect" id="node5" href="$class_can_callback_func.html#ac2c5122460f222f9c542fd488a1ee9e5" title=" " alt="" coords="604,157,819,184"/>
+<area shape="rect" id="node6" href="$class_can_adaptor.html#af85789530a136f168b97c592dfbf2b78" title="Receive data from can network." alt="" coords="394,107,553,133"/>
+<area shape="rect" id="node7" href="$class_can_callback_func.html#a18afd0d8869f35e11bb91ea5ee2a381e" title=" " alt="" coords="605,107,818,133"/>
+</map>

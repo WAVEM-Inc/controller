@@ -1,0 +1,229 @@
+\hypertarget{class_can_callback_func}{}\doxysection{Can\+Callback\+Func Class Reference}
+\label{class_can_callback_func}\index{CanCallbackFunc@{CanCallbackFunc}}
+
+
+Callback function storage class mapped with Can Id.  
+
+
+
+
+{\ttfamily \#include $<$cancallbackfunc.\+hpp$>$}
+
+
+
+Collaboration diagram for Can\+Callback\+Func\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{class_can_callback_func__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_can_callback_func_ae92ea921bbace3e221826f2d3d0cee5f}{Can\+Callback\+Func}} (int id, string ch, \mbox{\hyperlink{cancallbackfunc_8hpp_a3fe37fc692e43ee85b446bbbb7511919}{func\+\_\+callback}} func)
+\begin{DoxyCompactList}\small\item\em call back function ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_callback_func_af26b0838fa1776f3955b7fe521c3a701}{set\+Handler}} (\mbox{\hyperlink{cancallbackfunc_8hpp_a3fe37fc692e43ee85b446bbbb7511919}{func\+\_\+callback}} func)
+\item 
+\mbox{\hyperlink{cancallbackfunc_8hpp_a3fe37fc692e43ee85b446bbbb7511919}{func\+\_\+callback}} \mbox{\hyperlink{class_can_callback_func_a18afd0d8869f35e11bb91ea5ee2a381e}{get\+Handler}} ()
+\item 
+int \mbox{\hyperlink{class_can_callback_func_ae23d0b2de0aa3588c988ff38970fd157}{get\+Canid}} ()
+\item 
+string \mbox{\hyperlink{class_can_callback_func_ac2c5122460f222f9c542fd488a1ee9e5}{get\+Channel}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_can_callback_func_a80a59536c37dce478ad21d3b9c02efad}{canid\+\_\+}}
+\item 
+string \mbox{\hyperlink{class_can_callback_func_a373e106312316f0d320b88964e441a25}{channel\+\_\+}}
+\begin{DoxyCompactList}\small\item\em can id \end{DoxyCompactList}\item 
+\mbox{\hyperlink{cancallbackfunc_8hpp_a3fe37fc692e43ee85b446bbbb7511919}{func\+\_\+callback}} \mbox{\hyperlink{class_can_callback_func_aff9a1b88c16711ee5b78f90b20690002}{handler\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Channel used. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Callback function storage class mapped with Can Id. 
+
+\begin{DoxyDate}{Date}
+2023-\/02-\/14 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+ys.\+kwon(\href{mailto:ys.kwon@wavem.net}{\texttt{ ys.\+kwon@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+
+Definition at line 23 of file cancallbackfunc.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_can_callback_func_ae92ea921bbace3e221826f2d3d0cee5f}\label{class_can_callback_func_ae92ea921bbace3e221826f2d3d0cee5f}} 
+\index{CanCallbackFunc@{CanCallbackFunc}!CanCallbackFunc@{CanCallbackFunc}}
+\index{CanCallbackFunc@{CanCallbackFunc}!CanCallbackFunc@{CanCallbackFunc}}
+\doxysubsubsection{\texorpdfstring{CanCallbackFunc()}{CanCallbackFunc()}}
+{\footnotesize\ttfamily Can\+Callback\+Func\+::\+Can\+Callback\+Func (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{string}]{ch,  }\item[{\mbox{\hyperlink{cancallbackfunc_8hpp_a3fe37fc692e43ee85b446bbbb7511919}{func\+\_\+callback}}}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+call back function ~\newline
+ 
+
+
+
+Definition at line 33 of file cancallbackfunc.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{33                                                         \{}
+\DoxyCodeLine{34        \mbox{\hyperlink{class_can_callback_func_aff9a1b88c16711ee5b78f90b20690002}{handler\_}} = move(func);}
+\DoxyCodeLine{35        \mbox{\hyperlink{class_can_callback_func_a80a59536c37dce478ad21d3b9c02efad}{canid\_}} = id;}
+\DoxyCodeLine{36        \mbox{\hyperlink{class_can_callback_func_a373e106312316f0d320b88964e441a25}{channel\_}} = ch;}
+\DoxyCodeLine{37     \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_can_callback_func_ae23d0b2de0aa3588c988ff38970fd157}\label{class_can_callback_func_ae23d0b2de0aa3588c988ff38970fd157}} 
+\index{CanCallbackFunc@{CanCallbackFunc}!getCanid@{getCanid}}
+\index{getCanid@{getCanid}!CanCallbackFunc@{CanCallbackFunc}}
+\doxysubsubsection{\texorpdfstring{getCanid()}{getCanid()}}
+{\footnotesize\ttfamily int Can\+Callback\+Func\+::get\+Canid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 47 of file cancallbackfunc.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{47                   \{}
+\DoxyCodeLine{48       \textcolor{keywordflow}{return} \mbox{\hyperlink{class_can_callback_func_a80a59536c37dce478ad21d3b9c02efad}{canid\_}};}
+\DoxyCodeLine{49     \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_callback_func_ae23d0b2de0aa3588c988ff38970fd157_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_callback_func_ac2c5122460f222f9c542fd488a1ee9e5}\label{class_can_callback_func_ac2c5122460f222f9c542fd488a1ee9e5}} 
+\index{CanCallbackFunc@{CanCallbackFunc}!getChannel@{getChannel}}
+\index{getChannel@{getChannel}!CanCallbackFunc@{CanCallbackFunc}}
+\doxysubsubsection{\texorpdfstring{getChannel()}{getChannel()}}
+{\footnotesize\ttfamily string Can\+Callback\+Func\+::get\+Channel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 51 of file cancallbackfunc.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{51                        \{}
+\DoxyCodeLine{52       \textcolor{keywordflow}{return} \mbox{\hyperlink{class_can_callback_func_a373e106312316f0d320b88964e441a25}{channel\_}};}
+\DoxyCodeLine{53     \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_callback_func_ac2c5122460f222f9c542fd488a1ee9e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_callback_func_a18afd0d8869f35e11bb91ea5ee2a381e}\label{class_can_callback_func_a18afd0d8869f35e11bb91ea5ee2a381e}} 
+\index{CanCallbackFunc@{CanCallbackFunc}!getHandler@{getHandler}}
+\index{getHandler@{getHandler}!CanCallbackFunc@{CanCallbackFunc}}
+\doxysubsubsection{\texorpdfstring{getHandler()}{getHandler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cancallbackfunc_8hpp_a3fe37fc692e43ee85b446bbbb7511919}{func\+\_\+callback}} Can\+Callback\+Func\+::get\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 43 of file cancallbackfunc.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{43                               \{}
+\DoxyCodeLine{44       \textcolor{keywordflow}{return} \mbox{\hyperlink{class_can_callback_func_aff9a1b88c16711ee5b78f90b20690002}{handler\_}};}
+\DoxyCodeLine{45     \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_callback_func_a18afd0d8869f35e11bb91ea5ee2a381e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_callback_func_af26b0838fa1776f3955b7fe521c3a701}\label{class_can_callback_func_af26b0838fa1776f3955b7fe521c3a701}} 
+\index{CanCallbackFunc@{CanCallbackFunc}!setHandler@{setHandler}}
+\index{setHandler@{setHandler}!CanCallbackFunc@{CanCallbackFunc}}
+\doxysubsubsection{\texorpdfstring{setHandler()}{setHandler()}}
+{\footnotesize\ttfamily void Can\+Callback\+Func\+::set\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{cancallbackfunc_8hpp_a3fe37fc692e43ee85b446bbbb7511919}{func\+\_\+callback}}}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 39 of file cancallbackfunc.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{39                                         \{}
+\DoxyCodeLine{40         \mbox{\hyperlink{class_can_callback_func_aff9a1b88c16711ee5b78f90b20690002}{handler\_}} = move(func);}
+\DoxyCodeLine{41     \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_can_callback_func_a80a59536c37dce478ad21d3b9c02efad}\label{class_can_callback_func_a80a59536c37dce478ad21d3b9c02efad}} 
+\index{CanCallbackFunc@{CanCallbackFunc}!canid\_@{canid\_}}
+\index{canid\_@{canid\_}!CanCallbackFunc@{CanCallbackFunc}}
+\doxysubsubsection{\texorpdfstring{canid\_}{canid\_}}
+{\footnotesize\ttfamily int Can\+Callback\+Func\+::canid\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 27 of file cancallbackfunc.\+hpp.
+
+\mbox{\Hypertarget{class_can_callback_func_a373e106312316f0d320b88964e441a25}\label{class_can_callback_func_a373e106312316f0d320b88964e441a25}} 
+\index{CanCallbackFunc@{CanCallbackFunc}!channel\_@{channel\_}}
+\index{channel\_@{channel\_}!CanCallbackFunc@{CanCallbackFunc}}
+\doxysubsubsection{\texorpdfstring{channel\_}{channel\_}}
+{\footnotesize\ttfamily string Can\+Callback\+Func\+::channel\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+can id 
+
+
+
+Definition at line 28 of file cancallbackfunc.\+hpp.
+
+\mbox{\Hypertarget{class_can_callback_func_aff9a1b88c16711ee5b78f90b20690002}\label{class_can_callback_func_aff9a1b88c16711ee5b78f90b20690002}} 
+\index{CanCallbackFunc@{CanCallbackFunc}!handler\_@{handler\_}}
+\index{handler\_@{handler\_}!CanCallbackFunc@{CanCallbackFunc}}
+\doxysubsubsection{\texorpdfstring{handler\_}{handler\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cancallbackfunc_8hpp_a3fe37fc692e43ee85b446bbbb7511919}{func\+\_\+callback}} Can\+Callback\+Func\+::handler\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Channel used. 
+
+
+
+Definition at line 29 of file cancallbackfunc.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/can/\mbox{\hyperlink{cancallbackfunc_8hpp}{cancallbackfunc.\+hpp}}\end{DoxyCompactItemize}

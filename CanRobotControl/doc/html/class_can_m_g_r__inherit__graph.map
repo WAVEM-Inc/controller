@@ -1,0 +1,6 @@
+<map id="CanMGR" name="CanMGR">
+<area shape="rect" id="node1" title="Class to control CAN communication." alt="" coords="129,160,347,413"/>
+<area shape="rect" id="node2" href="$class_i_can_connect.html" title="Interface for communication." alt="" coords="5,13,124,105"/>
+<area shape="rect" id="node3" href="$class_i_motion_colleague.html" title="Collegue interface for using mediator patterns." alt="" coords="148,5,328,112"/>
+<area shape="rect" id="node4" title=" " alt="" coords="352,13,529,105"/>
+</map>

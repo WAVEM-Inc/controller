@@ -1,0 +1,5 @@
+<map id="CanAdaptor::StopPostMessage" name="CanAdaptor::StopPostMessage">
+<area shape="rect" id="node1" title="Stop messages that are sent repeatedly over the CAN network." alt="" coords="292,31,513,57"/>
+<area shape="rect" id="node2" href="$class_can_adaptor.html#a4c7b907c75b89e31c6abeb30291830c4" title="Each data type is transmitted repeatedly over the CAN network." alt="" coords="5,5,244,32"/>
+<area shape="rect" id="node3" href="$class_data_relayer.html#a2f1337345535dadeeb5da26d1f7fd595" title=" " alt="" coords="11,56,238,83"/>
+</map>

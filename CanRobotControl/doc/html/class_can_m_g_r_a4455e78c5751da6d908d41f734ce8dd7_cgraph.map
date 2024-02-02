@@ -1,0 +1,7 @@
+<map id="CanMGR::fn_send_control_steering" name="CanMGR::fn_send_control_steering">
+<area shape="rect" id="node1" title="Function for sending steering control values from robot to VCU via Can communication." alt="" coords="5,5,195,47"/>
+<area shape="rect" id="node2" href="$class_data_relayer.html#ae4d20fbc26da73335bf14ef9ae9f3c51" title="Send control commands.(ControlSteering)" alt="" coords="243,13,455,39"/>
+<area shape="rect" id="node3" href="$class_data_relayer.html#a741a5ed7df04ab346d31f4bae101b84e" title="send API(ControlSteering)" alt="" coords="503,5,704,47"/>
+<area shape="rect" id="node4" href="$class_can_adaptor.html#af85bd813da08af4bfa87e74c65b39d2b" title="Register a callback function." alt="" coords="752,13,969,39"/>
+<area shape="rect" id="node5" href="$class_can_adaptor.html#aa3c09d9af30e82bdb7b027ee71048310" title="iECU_Control_Hardware type is transmitted through the CAN network." alt="" coords="1017,13,1256,39"/>
+</map>

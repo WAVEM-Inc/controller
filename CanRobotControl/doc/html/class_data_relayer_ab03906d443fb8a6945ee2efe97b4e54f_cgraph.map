@@ -1,0 +1,7 @@
+<map id="DataRelayer::ControlVel" name="DataRelayer::ControlVel">
+<area shape="rect" id="node1" title="Send control commands.(ControlVel)" alt="" coords="5,31,184,57"/>
+<area shape="rect" id="node2" href="$class_data_relayer.html#a4cdd03e9d501460548d72112a0f904b2" title="send API(ControlAccelerate)" alt="" coords="232,23,433,65"/>
+<area shape="rect" id="node3" href="$class_data_relayer.html#a7f9ab4030b59f3dd85826d337e8a5811" title="Use when you need a lower HeartBeat." alt="" coords="481,5,659,32"/>
+<area shape="rect" id="node4" href="$class_can_adaptor.html#af85bd813da08af4bfa87e74c65b39d2b" title="Register a callback function." alt="" coords="707,31,924,57"/>
+<area shape="rect" id="node5" href="$class_can_adaptor.html#aa3c09d9af30e82bdb7b027ee71048310" title="iECU_Control_Hardware type is transmitted through the CAN network." alt="" coords="972,31,1211,57"/>
+</map>

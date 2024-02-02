@@ -1,0 +1,5 @@
+<map id="DataRelayer::RegistRpmCallback" name="DataRelayer::RegistRpmCallback">
+<area shape="rect" id="node1" title="Register a RPM callback function." alt="" coords="401,5,640,32"/>
+<area shape="rect" id="node2" href="$class_can_m_g_r.html#a1449780d560c49e377b41093777d1847" title="Register callback function for can communication response." alt="" coords="196,5,353,32"/>
+<area shape="rect" id="node3" href="$class_can_m_g_r.html#a96304dd3b1c7e978f7c979d7cf7c7122" title="Construct a new Can M G R:: Can M G R object." alt="" coords="5,5,148,32"/>
+</map>

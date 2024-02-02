@@ -1,0 +1,4 @@
+<map id="DataRelayer" name="DataRelayer">
+<area shape="rect" id="node1" title="Wrapping classes for CAN data conversion and relaying." alt="" coords="5,659,252,1191"/>
+<area shape="rect" id="node2" href="$class_can_adaptor.html" title="CAN network relaying class." alt="" coords="41,5,216,596"/>
+</map>

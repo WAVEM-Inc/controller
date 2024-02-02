@@ -1,0 +1,6 @@
+<map id="CanAdaptor::Receive" name="CanAdaptor::Receive">
+<area shape="rect" id="node1" title="Receive data from can network." alt="" coords="5,56,164,83"/>
+<area shape="rect" id="node2" href="$class_can_callback_func.html#ae23d0b2de0aa3588c988ff38970fd157" title=" " alt="" coords="220,5,419,32"/>
+<area shape="rect" id="node3" href="$class_can_callback_func.html#ac2c5122460f222f9c542fd488a1ee9e5" title=" " alt="" coords="212,56,427,83"/>
+<area shape="rect" id="node4" href="$class_can_callback_func.html#a18afd0d8869f35e11bb91ea5ee2a381e" title=" " alt="" coords="213,107,426,133"/>
+</map>

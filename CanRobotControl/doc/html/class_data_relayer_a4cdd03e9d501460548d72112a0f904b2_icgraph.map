@@ -1,0 +1,5 @@
+<map id="DataRelayer::SendMessageControlAccelerate" name="DataRelayer::SendMessageControlAccelerate">
+<area shape="rect" id="node1" title="send API(ControlAccelerate)" alt="" coords="496,5,697,47"/>
+<area shape="rect" id="node2" href="$class_data_relayer.html#ab03906d443fb8a6945ee2efe97b4e54f" title="Send control commands.(ControlVel)" alt="" coords="269,13,448,39"/>
+<area shape="rect" id="node3" href="$class_can_m_g_r.html#adc81c4aaa7a907b2a4e248b092148191" title="Function for sending motor control values from robot to VCU via Can communication." alt="" coords="5,13,221,39"/>
+</map>

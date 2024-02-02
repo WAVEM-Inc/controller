@@ -1,0 +1,5 @@
+<map id="DataRelayer::SendMessageControlSteering" name="DataRelayer::SendMessageControlSteering">
+<area shape="rect" id="node1" title="send API(ControlSteering)" alt="" coords="503,5,704,47"/>
+<area shape="rect" id="node2" href="$class_data_relayer.html#ae4d20fbc26da73335bf14ef9ae9f3c51" title="Send control commands.(ControlSteering)" alt="" coords="243,13,455,39"/>
+<area shape="rect" id="node3" href="$class_can_m_g_r.html#a4455e78c5751da6d908d41f734ce8dd7" title="Function for sending steering control values from robot to VCU via Can communication." alt="" coords="5,5,195,47"/>
+</map>

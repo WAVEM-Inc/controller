@@ -1,0 +1,49 @@
+\hypertarget{_c_make_lists_8txt}{}\doxysection{/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/\+C\+Make\+Lists.txt File Reference}
+\label{_c_make_lists_8txt}\index{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/CMakeLists.txt@{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/CMakeLists.txt}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_c_make_lists_8txt_aded58c3fde61329be80836c12d339674}{cmake\+\_\+minimum\+\_\+required}} (V\+E\+R\+S\+I\+ON 3.\+5) project(wm\+\_\+motion\+\_\+controller) \mbox{\hyperlink{_c_make_lists_8txt_addea44dde8a31700a77e5b107ddd2f38}{if}}(N\+OT C\+M\+A\+K\+E\+\_\+\+C\+X\+X\+\_\+\+S\+T\+A\+N\+D\+A\+RD) set(C\+M\+A\+K\+E\+\_\+\+C\+X\+X\+\_\+\+S\+T\+A\+N\+D\+A\+RD 14) endif() include\+\_\+directories(include include/\$
+\item 
+\mbox{\hyperlink{_c_make_lists_8txt_addea44dde8a31700a77e5b107ddd2f38}{if}} (C\+M\+A\+K\+E\+\_\+\+C\+O\+M\+P\+I\+L\+E\+R\+\_\+\+I\+S\+\_\+\+G\+N\+U\+C\+XX OR C\+M\+A\+K\+E\+\_\+\+C\+X\+X\+\_\+\+C\+O\+M\+P\+I\+L\+E\+R\+\_\+\+ID M\+A\+T\+C\+H\+ES \char`\"{}Clang\char`\"{}) add\+\_\+compile\+\_\+options(-\/Wall -\/Wextra -\/Wpedantic) endif() find\+\_\+package(ament\+\_\+cmake R\+E\+Q\+U\+I\+R\+ED) find\+\_\+package(rclcpp R\+E\+Q\+U\+I\+R\+ED) find\+\_\+package(std\+\_\+msgs R\+E\+Q\+U\+I\+R\+ED) find\+\_\+package(geometry\+\_\+msgs R\+E\+Q\+U\+I\+R\+ED) find\+\_\+package(actionlib\+\_\+msgs R\+E\+Q\+U\+I\+R\+ED) find\+\_\+package(can\+\_\+msgs R\+E\+Q\+U\+I\+R\+ED) add\+\_\+executable(wm\+\_\+motion\+\_\+controller\+\_\+node src/main.\+cpp src/wm\+\_\+motion\+\_\+controller/wm\+\_\+motion\+\_\+controller.\+cpp src/can/lib.\+cpp src/can/can\+\_\+adaptor.\+cpp src/can/can\+\_\+send.\+cpp src/can/data\+\_\+relayer.\+cpp src/can/can\+\_\+dump.\+cpp src/can/can\+\_\+manager.\+cpp src/colleague/motion\+\_\+colleague.\+cpp src/mediator/concrete\+\_\+motion\+\_\+mediator.\+cpp) ament\+\_\+target\+\_\+dependencies(wm\+\_\+motion\+\_\+controller\+\_\+node rclcpp std\+\_\+msgs geometry\+\_\+msgs can\+\_\+msgs) install(T\+A\+R\+G\+E\+TS wm\+\_\+motion\+\_\+controller\+\_\+node D\+E\+S\+T\+I\+N\+A\+T\+I\+ON lib/\$
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_c_make_lists_8txt_aded58c3fde61329be80836c12d339674}\label{_c_make_lists_8txt_aded58c3fde61329be80836c12d339674}} 
+\index{CMakeLists.txt@{CMakeLists.txt}!cmake\_minimum\_required@{cmake\_minimum\_required}}
+\index{cmake\_minimum\_required@{cmake\_minimum\_required}!CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsubsection{\texorpdfstring{cmake\_minimum\_required()}{cmake\_minimum\_required()}}
+{\footnotesize\ttfamily cmake\+\_\+minimum\+\_\+required (\begin{DoxyParamCaption}\item[{V\+E\+R\+S\+I\+ON 3.}]{5 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1 of file C\+Make\+Lists.\+txt.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11            \{PROJECT\_NAME\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_c_make_lists_8txt_addea44dde8a31700a77e5b107ddd2f38}\label{_c_make_lists_8txt_addea44dde8a31700a77e5b107ddd2f38}} 
+\index{CMakeLists.txt@{CMakeLists.txt}!if@{if}}
+\index{if@{if}!CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}}
+{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{C\+M\+A\+K\+E\+\_\+\+C\+O\+M\+P\+I\+L\+E\+R\+\_\+\+I\+S\+\_\+\+G\+N\+U\+C\+XX OR C\+M\+A\+K\+E\+\_\+\+C\+X\+X\+\_\+\+C\+O\+M\+P\+I\+L\+E\+R\+\_\+\+ID M\+A\+T\+C\+H\+ES \char`\"{}Clang\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file C\+Make\+Lists.\+txt.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{36                    \{PROJECT\_NAME\}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_c_make_lists_8txt_addea44dde8a31700a77e5b107ddd2f38_icgraph}
+\end{center}
+\end{figure}

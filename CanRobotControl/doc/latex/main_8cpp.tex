@@ -1,0 +1,68 @@
+\hypertarget{main_8cpp}{}\doxysection{/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/src/main.cpp File Reference}
+\label{main_8cpp}\index{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/src/main.cpp@{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/src/main.cpp}}
+{\ttfamily \#include \char`\"{}wm\+\_\+motion\+\_\+controller/wm\+\_\+motion\+\_\+controller.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}can/can\+\_\+manager.\+hpp\char`\"{}}\newline
+Include dependency graph for main.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em The main function of the \mbox{\hyperlink{class_wm_motion_controller}{Wm\+Motion\+Controller}} node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+The main function of the \mbox{\hyperlink{class_wm_motion_controller}{Wm\+Motion\+Controller}} node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & int paramter , Number of factors delivered at the start of the program \\
+\hline
+{\em argv} & char$\ast$$\ast$, The factors you gave me at the start of the program \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Program normal operation 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23.\+04.\+06 
+\end{DoxyDate}
+
+
+Definition at line 12 of file main.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12                                \{}
+\DoxyCodeLine{13     rclcpp::init(argc, argv);}
+\DoxyCodeLine{14     std::cout<< R\textcolor{stringliteral}{"(=======================================================================================================================}}
+\DoxyCodeLine{15 \textcolor{stringliteral}{███    ███  ██████  ████████ ██  ██████  ███    ██          ██████  ██████  ███    ██ ████████ ██████   ██████  ██     }}
+\DoxyCodeLine{16 \textcolor{stringliteral}{████  ████ ██    ██    ██    ██ ██    ██ ████   ██         ██      ██    ██ ████   ██    ██    ██   ██ ██    ██ ██     }}
+\DoxyCodeLine{17 \textcolor{stringliteral}{██ ████ ██ ██    ██    ██    ██ ██    ██ ██ ██  ██         ██      ██    ██ ██ ██  ██    ██    ██████  ██    ██ ██     }}
+\DoxyCodeLine{18 \textcolor{stringliteral}{██  ██  ██ ██    ██    ██    ██ ██    ██ ██  ██ ██         ██      ██    ██ ██  ██ ██    ██    ██   ██ ██    ██ ██     }}
+\DoxyCodeLine{19 \textcolor{stringliteral}{██      ██  ██████     ██    ██  ██████  ██   ████ ███████  ██████  ██████  ██   ████    ██    ██   ██  ██████  ███████}}
+\DoxyCodeLine{20 \textcolor{stringliteral}{=======================================================================================================================)"<<std::endl;}}
+\DoxyCodeLine{21 \textcolor{stringliteral}{}}
+\DoxyCodeLine{22 \textcolor{stringliteral}{    std::cout<<}\textcolor{stringliteral}{"main start"}<<std::endl;}
+\DoxyCodeLine{23     std::shared\_ptr<ConcreteMotionMediator> mediator = std::make\_shared<ConcreteMotionMediator>();}
+\DoxyCodeLine{24     std::shared\_ptr<CanMGR> can\_mgr =  std::make\_shared<CanMGR>(mediator);}
+\DoxyCodeLine{25     mediator-\/>fn\_set\_can\_mgr(can\_mgr);}
+\DoxyCodeLine{26     \textcolor{keyword}{auto} node = std::make\_shared<WmMotionController>(mediator,can\_mgr);}
+
+\end{DoxyCode}

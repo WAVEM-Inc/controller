@@ -1,0 +1,8 @@
+<map id="CanAdaptor::Send" name="CanAdaptor::Send">
+<area shape="rect" id="node1" title="Send data to the CAN network." alt="" coords="872,31,1011,57"/>
+<area shape="rect" id="node2" href="$class_can_adaptor.html#aecd13e37e943601319ff2eaa40be68dc" title="Each data type is transmitted through the CAN network." alt="" coords="585,5,824,32"/>
+<area shape="rect" id="node3" href="$class_can_adaptor.html#afc5f3ce8f22c04db95c3b46e4bda42c4" title="iECU mode, need to remote control" alt="" coords="601,56,808,83"/>
+<area shape="rect" id="node4" href="$class_data_relayer.html#a69859deb649fb5e182df1cb4aba837fe" title="run test" alt="" coords="401,56,537,83"/>
+<area shape="rect" id="node5" href="$class_can_m_g_r.html#a1449780d560c49e377b41093777d1847" title="Register callback function for can communication response." alt="" coords="196,56,353,83"/>
+<area shape="rect" id="node6" href="$class_can_m_g_r.html#a96304dd3b1c7e978f7c979d7cf7c7122" title="Construct a new Can M G R:: Can M G R object." alt="" coords="5,56,148,83"/>
+</map>

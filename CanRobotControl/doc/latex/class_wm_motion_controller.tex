@@ -1,0 +1,503 @@
+\hypertarget{class_wm_motion_controller}{}\doxysection{Wm\+Motion\+Controller Class Reference}
+\label{class_wm_motion_controller}\index{WmMotionController@{WmMotionController}}
+
+
+Class controlled by robot motion can communication.  
+
+
+
+
+{\ttfamily \#include $<$wm\+\_\+motion\+\_\+controller.\+hpp$>$}
+
+
+
+Inheritance diagram for Wm\+Motion\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_wm_motion_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Wm\+Motion\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_wm_motion_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_wm_motion_controller_a17a0c7f1bab634c650f6e1f1e00ddb41}{Wm\+Motion\+Controller}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_motion_mediator}{I\+Motion\+Mediator}} $>$ motion\+\_\+colleague, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} $>$ can\+\_\+mgr)
+\begin{DoxyCompactList}\small\item\em Construct a new Wm Motion Controller\+:\+: Wm Motion Controller object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_wm_motion_controller_a52858fb58c5360d8a32b77c54718db37}{$\sim$\+Wm\+Motion\+Controller}} ()
+\item 
+void \mbox{\hyperlink{class_wm_motion_controller_ae37a240d300187323cef35057380f3f6}{fn\+\_\+send\+\_\+value}} (const int \&value) override
+\begin{DoxyCompactList}\small\item\em Function for sending data to \mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} via arbitrator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wm_motion_controller_a91664b143502f39dbf41352f2303f22f}{fn\+\_\+recv\+\_\+value}} (const int \&value) override
+\begin{DoxyCompactList}\small\item\em Function for receiving data from \mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} through arbitrator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_motion_mediator}{I\+Motion\+Mediator}} $>$ \mbox{\hyperlink{class_i_motion_colleague_acf64c62d52403d4de89e675ae3792211}{m\+\_\+i\+\_\+motion\+\_\+mediator}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_wm_motion_controller_af6348e6acb27970d5f9634215b87bd54}{fn\+\_\+can\+\_\+chw\+\_\+callback}} (const can\+\_\+msgs\+::msg\+::\+Control\+Hardware\+::\+Shared\+Ptr can\+\_\+chw)
+\begin{DoxyCompactList}\small\item\em Callback function for controlling horn, light, when can\+\_\+msgs\+:msg\+Control\+Hard\+Ware message is received. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wm_motion_controller_aeb742da6eaf54dba11bdbfdb55410a76}{fn\+\_\+cmdvel\+\_\+callback}} (const geometry\+\_\+msgs\+::msg\+::\+Twist\+::\+Shared\+Ptr cmd\+\_\+vel)
+\begin{DoxyCompactList}\small\item\em cmd\+\_\+vel receive function for robot control \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_wm_motion_controller_ade65d8f9ddc633763d770861ebd5a96e}{fn\+\_\+mps2kmph}} (float mps)
+\begin{DoxyCompactList}\small\item\em m/s to km/h \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_wm_motion_controller_a2e77a4941fae4016d5d9c667f25b18f3}{fn\+\_\+kmph2mps}} (float kmph)
+\begin{DoxyCompactList}\small\item\em km/h to m/s \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{class_wm_motion_controller_a0264ab535717834cad0ef2fca06f2c79}{m\+\_\+steer\+\_\+max\+\_\+ang}}
+\item 
+const int \mbox{\hyperlink{class_wm_motion_controller_acad083de53df95ae23c0039f58dcfaae}{m\+\_\+tp\+\_\+queue\+\_\+size}}
+\item 
+const std\+::string \mbox{\hyperlink{class_wm_motion_controller_a19d05a8569f0f24ff97fd3dfe6f65cfb}{m\+\_\+tp\+\_\+cmdvel}}
+\item 
+const std\+::string \mbox{\hyperlink{class_wm_motion_controller_a4eee8788fb18567d543a8e66a52c959f}{m\+\_\+tp\+\_\+can\+\_\+chw}}
+\item 
+rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr \mbox{\hyperlink{class_wm_motion_controller_a1c69cb48f2c78706b3694863499ae113}{m\+\_\+timer}}
+\item 
+rclcpp\+::\+Callback\+Group\+::\+Shared\+Ptr \mbox{\hyperlink{class_wm_motion_controller_a63ecb4f211a5f695e7549635c087b9e8}{m\+\_\+cb\+\_\+group\+\_\+cmd\+\_\+vel}}
+\item 
+rclcpp\+::\+Callback\+Group\+::\+Shared\+Ptr \mbox{\hyperlink{class_wm_motion_controller_abc64cf106314fd521910ba4bfbe5d1a4}{m\+\_\+cb\+\_\+group\+\_\+can\+\_\+chw}}
+\item 
+rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Twist $>$\+::Shared\+Ptr \mbox{\hyperlink{class_wm_motion_controller_a8798a60b91016913c8e2d8255d2cf39b}{m\+\_\+sub\+\_\+cmdvel}}
+\item 
+rclcpp\+::\+Subscription$<$ can\+\_\+msgs\+::msg\+::\+Control\+Hardware $>$\+::Shared\+Ptr \mbox{\hyperlink{class_wm_motion_controller_a552d3bdf330573290c443bc70687cbd0}{m\+\_\+sub\+\_\+can\+\_\+chw}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} $>$ \mbox{\hyperlink{class_wm_motion_controller_a09732533b2ef6256b928b91d67d4d39e}{m\+\_\+can\+\_\+manager}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class controlled by robot motion can communication. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23.\+04.\+05 
+\end{DoxyDate}
+
+
+Definition at line 33 of file wm\+\_\+motion\+\_\+controller.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_wm_motion_controller_a17a0c7f1bab634c650f6e1f1e00ddb41}\label{class_wm_motion_controller_a17a0c7f1bab634c650f6e1f1e00ddb41}} 
+\index{WmMotionController@{WmMotionController}!WmMotionController@{WmMotionController}}
+\index{WmMotionController@{WmMotionController}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{WmMotionController()}{WmMotionController()}}
+{\footnotesize\ttfamily Wm\+Motion\+Controller\+::\+Wm\+Motion\+Controller (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_motion_mediator}{I\+Motion\+Mediator}} $>$}]{motion\+\_\+mediator,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} $>$}]{can\+\_\+mgr }\end{DoxyParamCaption})}
+
+
+
+Construct a new Wm Motion Controller\+:\+: Wm Motion Controller object. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23.\+04.\+06 
+\end{DoxyDate}
+
+
+Definition at line 7 of file wm\+\_\+motion\+\_\+controller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{8 :Node(\textcolor{stringliteral}{"WmMotionControllerNode"}),}
+\DoxyCodeLine{9 \mbox{\hyperlink{class_i_motion_colleague_abdc7a0fa800b5e817240a49dddf79bb8}{IMotionColleague}}(motion\_mediator),}
+\DoxyCodeLine{10 \mbox{\hyperlink{class_wm_motion_controller_a09732533b2ef6256b928b91d67d4d39e}{m\_can\_manager}}(can\_mgr),}
+\DoxyCodeLine{11 \mbox{\hyperlink{class_wm_motion_controller_a0264ab535717834cad0ef2fca06f2c79}{m\_steer\_max\_ang}}(\mbox{\hyperlink{df__motion__controller_8hpp_a567298f27c940e2f2944046966118bc8}{STEER\_MAX\_ANGLE}}),}
+\DoxyCodeLine{12 \mbox{\hyperlink{class_wm_motion_controller_a19d05a8569f0f24ff97fd3dfe6f65cfb}{m\_tp\_cmdvel}}(\mbox{\hyperlink{df__motion__controller_8hpp_aae964ec7bba011bee07ea0d09d095382}{TP\_CMDVEL}}),}
+\DoxyCodeLine{13 \mbox{\hyperlink{class_wm_motion_controller_acad083de53df95ae23c0039f58dcfaae}{m\_tp\_queue\_size}}(TP\_QUEUE\_SIZE),}
+\DoxyCodeLine{14 \mbox{\hyperlink{class_wm_motion_controller_a4eee8788fb18567d543a8e66a52c959f}{m\_tp\_can\_chw}}(\mbox{\hyperlink{df__motion__controller_8hpp_ad4c1e7262aaa1b3a774fc2911366d5ab}{TP\_CONTROL\_HARD\_WARE}})\{}
+\DoxyCodeLine{15     std::cout<<\textcolor{stringliteral}{"WmMotionContoller Start"}<<std::endl;}
+\DoxyCodeLine{16     }
+\DoxyCodeLine{17     \textcolor{comment}{//m\_can\_manager = new CanMGR(motion\_mediator);}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \mbox{\hyperlink{class_wm_motion_controller_a63ecb4f211a5f695e7549635c087b9e8}{m\_cb\_group\_cmd\_vel}} = create\_callback\_group(rclcpp::CallbackGroupType::MutuallyExclusive);}
+\DoxyCodeLine{20     \mbox{\hyperlink{class_wm_motion_controller_abc64cf106314fd521910ba4bfbe5d1a4}{m\_cb\_group\_can\_chw}} = create\_callback\_group(rclcpp::CallbackGroupType::MutuallyExclusive);}
+\DoxyCodeLine{21     rclcpp::SubscriptionOptions sub\_cmdvel\_options;}
+\DoxyCodeLine{22     rclcpp::SubscriptionOptions sub\_can\_chw\_options;}
+\DoxyCodeLine{23     sub\_cmdvel\_options.callback\_group = \mbox{\hyperlink{class_wm_motion_controller_a63ecb4f211a5f695e7549635c087b9e8}{m\_cb\_group\_cmd\_vel}};}
+\DoxyCodeLine{24     sub\_can\_chw\_options.callback\_group = \mbox{\hyperlink{class_wm_motion_controller_abc64cf106314fd521910ba4bfbe5d1a4}{m\_cb\_group\_can\_chw}};}
+\DoxyCodeLine{25     \mbox{\hyperlink{class_wm_motion_controller_a8798a60b91016913c8e2d8255d2cf39b}{m\_sub\_cmdvel}} = this-\/>create\_subscription<geometry\_msgs::msg::Twist>(\mbox{\hyperlink{class_wm_motion_controller_a19d05a8569f0f24ff97fd3dfe6f65cfb}{m\_tp\_cmdvel}},\mbox{\hyperlink{class_wm_motion_controller_acad083de53df95ae23c0039f58dcfaae}{m\_tp\_queue\_size}},std::bind(\&\mbox{\hyperlink{class_wm_motion_controller_aeb742da6eaf54dba11bdbfdb55410a76}{WmMotionController::fn\_cmdvel\_callback}},\textcolor{keyword}{this},\_1),sub\_cmdvel\_options);}
+\DoxyCodeLine{26     \mbox{\hyperlink{class_wm_motion_controller_a552d3bdf330573290c443bc70687cbd0}{m\_sub\_can\_chw}} = this-\/>create\_subscription<can\_msgs::msg::ControlHardware>(\mbox{\hyperlink{class_wm_motion_controller_a4eee8788fb18567d543a8e66a52c959f}{m\_tp\_can\_chw}},\mbox{\hyperlink{class_wm_motion_controller_acad083de53df95ae23c0039f58dcfaae}{m\_tp\_queue\_size}},std::bind(\&\mbox{\hyperlink{class_wm_motion_controller_af6348e6acb27970d5f9634215b87bd54}{WmMotionController::fn\_can\_chw\_callback}},\textcolor{keyword}{this},\_1),sub\_can\_chw\_options);}
+\DoxyCodeLine{27     }
+\DoxyCodeLine{28     std::thread thread\_run(\&\mbox{\hyperlink{class_can_m_g_r_a41d884e26149d3b30c39116689ffddf8}{CanMGR::fn\_can\_run}},\mbox{\hyperlink{class_wm_motion_controller_a09732533b2ef6256b928b91d67d4d39e}{m\_can\_manager}});}
+\DoxyCodeLine{29     thread\_run.detach();}
+\DoxyCodeLine{30 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_wm_motion_controller_a17a0c7f1bab634c650f6e1f1e00ddb41_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_wm_motion_controller_a52858fb58c5360d8a32b77c54718db37}\label{class_wm_motion_controller_a52858fb58c5360d8a32b77c54718db37}} 
+\index{WmMotionController@{WmMotionController}!````~WmMotionController@{$\sim$WmMotionController}}
+\index{````~WmMotionController@{$\sim$WmMotionController}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{$\sim$WmMotionController()}{~WmMotionController()}}
+{\footnotesize\ttfamily Wm\+Motion\+Controller\+::$\sim$\+Wm\+Motion\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line 31 of file wm\+\_\+motion\+\_\+controller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{31                                        \{}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_wm_motion_controller_af6348e6acb27970d5f9634215b87bd54}\label{class_wm_motion_controller_af6348e6acb27970d5f9634215b87bd54}} 
+\index{WmMotionController@{WmMotionController}!fn\_can\_chw\_callback@{fn\_can\_chw\_callback}}
+\index{fn\_can\_chw\_callback@{fn\_can\_chw\_callback}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{fn\_can\_chw\_callback()}{fn\_can\_chw\_callback()}}
+{\footnotesize\ttfamily void Wm\+Motion\+Controller\+::fn\+\_\+can\+\_\+chw\+\_\+callback (\begin{DoxyParamCaption}\item[{const can\+\_\+msgs\+::msg\+::\+Control\+Hardware\+::\+Shared\+Ptr}]{can\+\_\+chw }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Callback function for controlling horn, light, when can\+\_\+msgs\+:msg\+Control\+Hard\+Ware message is received. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em can\+\_\+chw} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 40 of file wm\+\_\+motion\+\_\+controller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{40                                                                                              \{}
+\DoxyCodeLine{41     std::cout<< \textcolor{stringliteral}{"chw\_callback : "}<< can\_chw-\/>horn << \textcolor{stringliteral}{" : "} << can\_chw-\/>head\_light <<\textcolor{stringliteral}{" : "}<<can\_chw-\/>right\_light<<\textcolor{stringliteral}{" : "}<<can\_chw-\/>left\_light<<std::endl; }
+\DoxyCodeLine{42     \mbox{\hyperlink{class_wm_motion_controller_a09732533b2ef6256b928b91d67d4d39e}{m\_can\_manager}}-\/>fn\_send\_control\_hardware(can\_chw-\/>horn,can\_chw-\/>head\_light,can\_chw-\/>right\_light,can\_chw-\/>left\_light);}
+\DoxyCodeLine{43 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_wm_motion_controller_af6348e6acb27970d5f9634215b87bd54_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_wm_motion_controller_aeb742da6eaf54dba11bdbfdb55410a76}\label{class_wm_motion_controller_aeb742da6eaf54dba11bdbfdb55410a76}} 
+\index{WmMotionController@{WmMotionController}!fn\_cmdvel\_callback@{fn\_cmdvel\_callback}}
+\index{fn\_cmdvel\_callback@{fn\_cmdvel\_callback}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{fn\_cmdvel\_callback()}{fn\_cmdvel\_callback()}}
+{\footnotesize\ttfamily void Wm\+Motion\+Controller\+::fn\+\_\+cmdvel\+\_\+callback (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Twist\+::\+Shared\+Ptr}]{cmd\+\_\+vel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+cmd\+\_\+vel receive function for robot control 
+
+
+\begin{DoxyParams}{Parameters}
+{\em twist\+\_\+aux} & Received cmd\+\_\+vel data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23.\+04.\+06 
+\end{DoxyDate}
+
+
+Definition at line 51 of file wm\+\_\+motion\+\_\+controller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{51                                                                                        \{}
+\DoxyCodeLine{52     \textcolor{keywordtype}{float} vel\_linear = 0,vel\_angular = 0;}
+\DoxyCodeLine{53     vel\_linear = cmd\_vel-\/>linear.x;}
+\DoxyCodeLine{54     vel\_angular = cmd\_vel-\/>angular.z;}
+\DoxyCodeLine{55     RCLCPP\_INFO(this-\/>get\_logger(),\textcolor{stringliteral}{"!!!!!!@@@@@@linear = \%.02f,angular = \%.02f\(\backslash\)n"}, vel\_linear, vel\_angular);}
+\DoxyCodeLine{56     \mbox{\hyperlink{class_wm_motion_controller_a09732533b2ef6256b928b91d67d4d39e}{m\_can\_manager}}-\/>fn\_send\_control\_steering(vel\_angular);}
+\DoxyCodeLine{57     \mbox{\hyperlink{class_wm_motion_controller_a09732533b2ef6256b928b91d67d4d39e}{m\_can\_manager}}-\/>fn\_send\_control\_vel(vel\_linear);}
+\DoxyCodeLine{58 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_wm_motion_controller_aeb742da6eaf54dba11bdbfdb55410a76_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_wm_motion_controller_a2e77a4941fae4016d5d9c667f25b18f3}\label{class_wm_motion_controller_a2e77a4941fae4016d5d9c667f25b18f3}} 
+\index{WmMotionController@{WmMotionController}!fn\_kmph2mps@{fn\_kmph2mps}}
+\index{fn\_kmph2mps@{fn\_kmph2mps}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{fn\_kmph2mps()}{fn\_kmph2mps()}}
+{\footnotesize\ttfamily float Wm\+Motion\+Controller\+::fn\+\_\+kmph2mps (\begin{DoxyParamCaption}\item[{float}]{kmph }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+km/h to m/s 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kmph} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Definition at line 75 of file wm\+\_\+motion\+\_\+controller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{75                                                \{}
+\DoxyCodeLine{76     \textcolor{keywordflow}{return} kmph * 1000 / 3600;  \textcolor{comment}{// kmph를 mps로 변환}}
+\DoxyCodeLine{77 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_wm_motion_controller_ade65d8f9ddc633763d770861ebd5a96e}\label{class_wm_motion_controller_ade65d8f9ddc633763d770861ebd5a96e}} 
+\index{WmMotionController@{WmMotionController}!fn\_mps2kmph@{fn\_mps2kmph}}
+\index{fn\_mps2kmph@{fn\_mps2kmph}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{fn\_mps2kmph()}{fn\_mps2kmph()}}
+{\footnotesize\ttfamily float Wm\+Motion\+Controller\+::fn\+\_\+mps2kmph (\begin{DoxyParamCaption}\item[{float}]{mps }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+m/s to km/h 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mps} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Definition at line 66 of file wm\+\_\+motion\+\_\+controller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{66                                               \{}
+\DoxyCodeLine{67     \textcolor{keywordflow}{return} mps * 3600 / 1000;  \textcolor{comment}{// mps를 kmph로 변환}}
+\DoxyCodeLine{68 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_wm_motion_controller_a91664b143502f39dbf41352f2303f22f}\label{class_wm_motion_controller_a91664b143502f39dbf41352f2303f22f}} 
+\index{WmMotionController@{WmMotionController}!fn\_recv\_value@{fn\_recv\_value}}
+\index{fn\_recv\_value@{fn\_recv\_value}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{fn\_recv\_value()}{fn\_recv\_value()}}
+{\footnotesize\ttfamily void Wm\+Motion\+Controller\+::fn\+\_\+recv\+\_\+value (\begin{DoxyParamCaption}\item[{const int \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Function for receiving data from \mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} through arbitrator. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_motion_colleague_a4a8fbac50eb196dd0cd01382f3ac7103}{I\+Motion\+Colleague}}.
+
+
+
+Definition at line 94 of file wm\+\_\+motion\+\_\+controller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{94                                                       \{}
+\DoxyCodeLine{95     std::cout<< \textcolor{stringliteral}{"override WmMotionController "}<<value<<std::endl;}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_wm_motion_controller_ae37a240d300187323cef35057380f3f6}\label{class_wm_motion_controller_ae37a240d300187323cef35057380f3f6}} 
+\index{WmMotionController@{WmMotionController}!fn\_send\_value@{fn\_send\_value}}
+\index{fn\_send\_value@{fn\_send\_value}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{fn\_send\_value()}{fn\_send\_value()}}
+{\footnotesize\ttfamily void Wm\+Motion\+Controller\+::fn\+\_\+send\+\_\+value (\begin{DoxyParamCaption}\item[{const int \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Function for sending data to \mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} via arbitrator. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_motion_colleague_a4ddb0780808558ec8affd766349e16cc}{I\+Motion\+Colleague}}.
+
+
+
+Definition at line 85 of file wm\+\_\+motion\+\_\+controller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{85                                                       \{}
+\DoxyCodeLine{86     std::cout<< \textcolor{stringliteral}{"override WmMotionController"}<<std::endl;}
+\DoxyCodeLine{87     \mbox{\hyperlink{class_i_motion_colleague_acf64c62d52403d4de89e675ae3792211}{m\_i\_motion\_mediator}}-\/>fn\_send\_value(value,enable\_shared\_from\_this<WmMotionController>::shared\_from\_this());}
+\DoxyCodeLine{88 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_wm_motion_controller_a09732533b2ef6256b928b91d67d4d39e}\label{class_wm_motion_controller_a09732533b2ef6256b928b91d67d4d39e}} 
+\index{WmMotionController@{WmMotionController}!m\_can\_manager@{m\_can\_manager}}
+\index{m\_can\_manager@{m\_can\_manager}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{m\_can\_manager}{m\_can\_manager}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}}$>$ Wm\+Motion\+Controller\+::m\+\_\+can\+\_\+manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 46 of file wm\+\_\+motion\+\_\+controller.\+hpp.
+
+\mbox{\Hypertarget{class_wm_motion_controller_abc64cf106314fd521910ba4bfbe5d1a4}\label{class_wm_motion_controller_abc64cf106314fd521910ba4bfbe5d1a4}} 
+\index{WmMotionController@{WmMotionController}!m\_cb\_group\_can\_chw@{m\_cb\_group\_can\_chw}}
+\index{m\_cb\_group\_can\_chw@{m\_cb\_group\_can\_chw}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{m\_cb\_group\_can\_chw}{m\_cb\_group\_can\_chw}}
+{\footnotesize\ttfamily rclcpp\+::\+Callback\+Group\+::\+Shared\+Ptr Wm\+Motion\+Controller\+::m\+\_\+cb\+\_\+group\+\_\+can\+\_\+chw\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 41 of file wm\+\_\+motion\+\_\+controller.\+hpp.
+
+\mbox{\Hypertarget{class_wm_motion_controller_a63ecb4f211a5f695e7549635c087b9e8}\label{class_wm_motion_controller_a63ecb4f211a5f695e7549635c087b9e8}} 
+\index{WmMotionController@{WmMotionController}!m\_cb\_group\_cmd\_vel@{m\_cb\_group\_cmd\_vel}}
+\index{m\_cb\_group\_cmd\_vel@{m\_cb\_group\_cmd\_vel}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{m\_cb\_group\_cmd\_vel}{m\_cb\_group\_cmd\_vel}}
+{\footnotesize\ttfamily rclcpp\+::\+Callback\+Group\+::\+Shared\+Ptr Wm\+Motion\+Controller\+::m\+\_\+cb\+\_\+group\+\_\+cmd\+\_\+vel\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 40 of file wm\+\_\+motion\+\_\+controller.\+hpp.
+
+\mbox{\Hypertarget{class_i_motion_colleague_acf64c62d52403d4de89e675ae3792211}\label{class_i_motion_colleague_acf64c62d52403d4de89e675ae3792211}} 
+\index{WmMotionController@{WmMotionController}!m\_i\_motion\_mediator@{m\_i\_motion\_mediator}}
+\index{m\_i\_motion\_mediator@{m\_i\_motion\_mediator}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{m\_i\_motion\_mediator}{m\_i\_motion\_mediator}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_i_motion_mediator}{I\+Motion\+Mediator}}$>$ I\+Motion\+Colleague\+::m\+\_\+i\+\_\+motion\+\_\+mediator\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 17 of file i\+\_\+motion\+\_\+colleague.\+hpp.
+
+\mbox{\Hypertarget{class_wm_motion_controller_a0264ab535717834cad0ef2fca06f2c79}\label{class_wm_motion_controller_a0264ab535717834cad0ef2fca06f2c79}} 
+\index{WmMotionController@{WmMotionController}!m\_steer\_max\_ang@{m\_steer\_max\_ang}}
+\index{m\_steer\_max\_ang@{m\_steer\_max\_ang}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{m\_steer\_max\_ang}{m\_steer\_max\_ang}}
+{\footnotesize\ttfamily const int Wm\+Motion\+Controller\+::m\+\_\+steer\+\_\+max\+\_\+ang\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 35 of file wm\+\_\+motion\+\_\+controller.\+hpp.
+
+\mbox{\Hypertarget{class_wm_motion_controller_a552d3bdf330573290c443bc70687cbd0}\label{class_wm_motion_controller_a552d3bdf330573290c443bc70687cbd0}} 
+\index{WmMotionController@{WmMotionController}!m\_sub\_can\_chw@{m\_sub\_can\_chw}}
+\index{m\_sub\_can\_chw@{m\_sub\_can\_chw}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{m\_sub\_can\_chw}{m\_sub\_can\_chw}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$can\+\_\+msgs\+::msg\+::\+Control\+Hardware$>$\+::Shared\+Ptr Wm\+Motion\+Controller\+::m\+\_\+sub\+\_\+can\+\_\+chw\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 43 of file wm\+\_\+motion\+\_\+controller.\+hpp.
+
+\mbox{\Hypertarget{class_wm_motion_controller_a8798a60b91016913c8e2d8255d2cf39b}\label{class_wm_motion_controller_a8798a60b91016913c8e2d8255d2cf39b}} 
+\index{WmMotionController@{WmMotionController}!m\_sub\_cmdvel@{m\_sub\_cmdvel}}
+\index{m\_sub\_cmdvel@{m\_sub\_cmdvel}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{m\_sub\_cmdvel}{m\_sub\_cmdvel}}
+{\footnotesize\ttfamily rclcpp\+::\+Subscription$<$geometry\+\_\+msgs\+::msg\+::\+Twist$>$\+::Shared\+Ptr Wm\+Motion\+Controller\+::m\+\_\+sub\+\_\+cmdvel\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 42 of file wm\+\_\+motion\+\_\+controller.\+hpp.
+
+\mbox{\Hypertarget{class_wm_motion_controller_a1c69cb48f2c78706b3694863499ae113}\label{class_wm_motion_controller_a1c69cb48f2c78706b3694863499ae113}} 
+\index{WmMotionController@{WmMotionController}!m\_timer@{m\_timer}}
+\index{m\_timer@{m\_timer}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{m\_timer}{m\_timer}}
+{\footnotesize\ttfamily rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr Wm\+Motion\+Controller\+::m\+\_\+timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 39 of file wm\+\_\+motion\+\_\+controller.\+hpp.
+
+\mbox{\Hypertarget{class_wm_motion_controller_a4eee8788fb18567d543a8e66a52c959f}\label{class_wm_motion_controller_a4eee8788fb18567d543a8e66a52c959f}} 
+\index{WmMotionController@{WmMotionController}!m\_tp\_can\_chw@{m\_tp\_can\_chw}}
+\index{m\_tp\_can\_chw@{m\_tp\_can\_chw}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{m\_tp\_can\_chw}{m\_tp\_can\_chw}}
+{\footnotesize\ttfamily const std\+::string Wm\+Motion\+Controller\+::m\+\_\+tp\+\_\+can\+\_\+chw\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 38 of file wm\+\_\+motion\+\_\+controller.\+hpp.
+
+\mbox{\Hypertarget{class_wm_motion_controller_a19d05a8569f0f24ff97fd3dfe6f65cfb}\label{class_wm_motion_controller_a19d05a8569f0f24ff97fd3dfe6f65cfb}} 
+\index{WmMotionController@{WmMotionController}!m\_tp\_cmdvel@{m\_tp\_cmdvel}}
+\index{m\_tp\_cmdvel@{m\_tp\_cmdvel}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{m\_tp\_cmdvel}{m\_tp\_cmdvel}}
+{\footnotesize\ttfamily const std\+::string Wm\+Motion\+Controller\+::m\+\_\+tp\+\_\+cmdvel\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 37 of file wm\+\_\+motion\+\_\+controller.\+hpp.
+
+\mbox{\Hypertarget{class_wm_motion_controller_acad083de53df95ae23c0039f58dcfaae}\label{class_wm_motion_controller_acad083de53df95ae23c0039f58dcfaae}} 
+\index{WmMotionController@{WmMotionController}!m\_tp\_queue\_size@{m\_tp\_queue\_size}}
+\index{m\_tp\_queue\_size@{m\_tp\_queue\_size}!WmMotionController@{WmMotionController}}
+\doxysubsubsection{\texorpdfstring{m\_tp\_queue\_size}{m\_tp\_queue\_size}}
+{\footnotesize\ttfamily const int Wm\+Motion\+Controller\+::m\+\_\+tp\+\_\+queue\+\_\+size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 36 of file wm\+\_\+motion\+\_\+controller.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/wm\+\_\+motion\+\_\+controller/\mbox{\hyperlink{wm__motion__controller_8hpp}{wm\+\_\+motion\+\_\+controller.\+hpp}}\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/src/wm\+\_\+motion\+\_\+controller/\mbox{\hyperlink{wm__motion__controller_8cpp}{wm\+\_\+motion\+\_\+controller.\+cpp}}\end{DoxyCompactItemize}

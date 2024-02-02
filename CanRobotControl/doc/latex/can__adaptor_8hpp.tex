@@ -1,0 +1,88 @@
+\hypertarget{can__adaptor_8hpp}{}\doxysection{/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/can/can\+\_\+adaptor.hpp File Reference}
+\label{can__adaptor_8hpp}\index{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/include/can/can\_adaptor.hpp@{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/include/can/can\_adaptor.hpp}}
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$net/if.\+h$>$}\newline
+{\ttfamily \#include $<$linux/can.\+h$>$}\newline
+{\ttfamily \#include $<$linux/can/raw.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}can/w1candbc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cancallbackfunc.\+hpp\char`\"{}}\newline
+Include dependency graph for can\+\_\+adaptor.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can__adaptor_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can__adaptor_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}
+\begin{DoxyCompactList}\small\item\em C\+AN network relaying class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}}~unsigned char
+\item 
+\#define \mbox{\hyperlink{can__adaptor_8hpp_aecb95f243bd240e41d4757e69a070937}{O\+N\+L\+Y\+\_\+\+S\+FF}}~\char`\"{}7FF\char`\"{}
+\item 
+\#define \mbox{\hyperlink{can__adaptor_8hpp_a19fadc61d5f98584341976b3c2af10c2}{C\+A\+N\+\_\+\+N\+O\+\_\+\+F\+A\+U\+LT}}~0x00
+\item 
+\#define \mbox{\hyperlink{can__adaptor_8hpp_a267af6b5c581a541140e95e4385eade7}{C\+A\+N\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+F\+A\+U\+LT}}~0x01
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}\label{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}} 
+\index{can\_adaptor.hpp@{can\_adaptor.hpp}!byte@{byte}}
+\index{byte@{byte}!can\_adaptor.hpp@{can\_adaptor.hpp}}
+\doxysubsubsection{\texorpdfstring{byte}{byte}}
+{\footnotesize\ttfamily \#define byte~unsigned char}
+
+
+
+Definition at line 21 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{can__adaptor_8hpp_a267af6b5c581a541140e95e4385eade7}\label{can__adaptor_8hpp_a267af6b5c581a541140e95e4385eade7}} 
+\index{can\_adaptor.hpp@{can\_adaptor.hpp}!CAN\_DEVICE\_FAULT@{CAN\_DEVICE\_FAULT}}
+\index{CAN\_DEVICE\_FAULT@{CAN\_DEVICE\_FAULT}!can\_adaptor.hpp@{can\_adaptor.hpp}}
+\doxysubsubsection{\texorpdfstring{CAN\_DEVICE\_FAULT}{CAN\_DEVICE\_FAULT}}
+{\footnotesize\ttfamily \#define C\+A\+N\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+F\+A\+U\+LT~0x01}
+
+
+
+Definition at line 26 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{can__adaptor_8hpp_a19fadc61d5f98584341976b3c2af10c2}\label{can__adaptor_8hpp_a19fadc61d5f98584341976b3c2af10c2}} 
+\index{can\_adaptor.hpp@{can\_adaptor.hpp}!CAN\_NO\_FAULT@{CAN\_NO\_FAULT}}
+\index{CAN\_NO\_FAULT@{CAN\_NO\_FAULT}!can\_adaptor.hpp@{can\_adaptor.hpp}}
+\doxysubsubsection{\texorpdfstring{CAN\_NO\_FAULT}{CAN\_NO\_FAULT}}
+{\footnotesize\ttfamily \#define C\+A\+N\+\_\+\+N\+O\+\_\+\+F\+A\+U\+LT~0x00}
+
+
+
+Definition at line 25 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{can__adaptor_8hpp_aecb95f243bd240e41d4757e69a070937}\label{can__adaptor_8hpp_aecb95f243bd240e41d4757e69a070937}} 
+\index{can\_adaptor.hpp@{can\_adaptor.hpp}!ONLY\_SFF@{ONLY\_SFF}}
+\index{ONLY\_SFF@{ONLY\_SFF}!can\_adaptor.hpp@{can\_adaptor.hpp}}
+\doxysubsubsection{\texorpdfstring{ONLY\_SFF}{ONLY\_SFF}}
+{\footnotesize\ttfamily \#define O\+N\+L\+Y\+\_\+\+S\+FF~\char`\"{}7FF\char`\"{}}
+
+
+
+Definition at line 23 of file can\+\_\+adaptor.\+hpp.
+

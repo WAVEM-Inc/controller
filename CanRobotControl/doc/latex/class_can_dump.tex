@@ -1,0 +1,533 @@
+\hypertarget{class_can_dump}{}\doxysection{Can\+Dump Class Reference}
+\label{class_can_dump}\index{CanDump@{CanDump}}
+
+
+Can network data listening class.  
+
+
+
+
+{\ttfamily \#include $<$can\+\_\+dump.\+hpp$>$}
+
+
+
+Collaboration diagram for Can\+Dump\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_can_dump__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_can_dump_ab99f4835456cd4363cf6e3b44c025cbf}{Open}} (int argc, std\+::vector$<$ std\+::string $>$ argval, \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}} $\ast$p\+Class\+Type, void(Can\+Adaptor\+::$\ast$func)(unsigned char $\ast$data, int canid))
+\begin{DoxyCompactList}\small\item\em Channel open for receiving C\+AN data. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_can_dump_af9180c1dd57c9878b1c87910964d16ae}{idx2dindex}} (int ifidx, int socket)
+\item 
+void \mbox{\hyperlink{class_can_dump_afe4112c3b9f0d94168dace3dee06d324}{Socket\+Close}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structif__info}{if\+\_\+info}} \mbox{\hyperlink{class_can_dump_ac268bdbd4663139712b6011832008fcc}{sock\+\_\+info}} \mbox{[}\mbox{\hyperlink{can__dump_8hpp_a8d992b2deae3aef6f9e6515897bb2110}{M\+A\+X\+S\+O\+CK}}\mbox{]}
+\item 
+int \mbox{\hyperlink{class_can_dump_aeb71fbbcb56b185b28a8b6036af2b638}{fd\+\_\+epoll}}
+\item 
+int \mbox{\hyperlink{class_can_dump_a6d60d04eef250ab7e785afef8f073601}{currmax}}
+\item 
+char $\ast$ \mbox{\hyperlink{class_can_dump_ac6e40b22510e1a8f1f73a93a59b373a1}{progname}}
+\item 
+char \mbox{\hyperlink{class_can_dump_a4df7b38684c0d562161936f37a32dde8}{devname}} \mbox{[}\mbox{\hyperlink{can__dump_8hpp_ad84d35b07a20c51ed7e7359806da6f14}{M\+A\+X\+I\+F\+N\+A\+M\+ES}}\mbox{]}\mbox{[}I\+F\+N\+A\+M\+S\+IZ+1\mbox{]}
+\item 
+int \mbox{\hyperlink{class_can_dump_a35fd764c3435fa9daf49ac8bf1dbf2f9}{dindex}} \mbox{[}\mbox{\hyperlink{can__dump_8hpp_ad84d35b07a20c51ed7e7359806da6f14}{M\+A\+X\+I\+F\+N\+A\+M\+ES}}\mbox{]}
+\item 
+int \mbox{\hyperlink{class_can_dump_aab33e0cef49a187c6f2359b6059d6ba2}{max\+\_\+devname\+\_\+len}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Can network data listening class. 
+
+\begin{DoxyDate}{Date}
+2023-\/02-\/14 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+ys.\+kwon(\href{mailto:ys.kwon@wavem.net}{\texttt{ ys.\+kwon@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+
+Definition at line 46 of file can\+\_\+dump.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_can_dump_af9180c1dd57c9878b1c87910964d16ae}\label{class_can_dump_af9180c1dd57c9878b1c87910964d16ae}} 
+\index{CanDump@{CanDump}!idx2dindex@{idx2dindex}}
+\index{idx2dindex@{idx2dindex}!CanDump@{CanDump}}
+\doxysubsubsection{\texorpdfstring{idx2dindex()}{idx2dindex()}}
+{\footnotesize\ttfamily int Can\+Dump\+::idx2dindex (\begin{DoxyParamCaption}\item[{int}]{ifidx,  }\item[{int}]{socket }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_can_dump_ab99f4835456cd4363cf6e3b44c025cbf}\label{class_can_dump_ab99f4835456cd4363cf6e3b44c025cbf}} 
+\index{CanDump@{CanDump}!Open@{Open}}
+\index{Open@{Open}!CanDump@{CanDump}}
+\doxysubsubsection{\texorpdfstring{Open()}{Open()}}
+{\footnotesize\ttfamily int Can\+Dump\+::\+Open (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{std\+::vector$<$ std\+::string $>$}]{argval,  }\item[{\mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}} $\ast$}]{p\+Class\+Type,  }\item[{void(Can\+Adaptor\+::$\ast$)(unsigned char $\ast$data, int canid)}]{func }\end{DoxyParamCaption})}
+
+
+
+Channel open for receiving C\+AN data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & number of channels \\
+\hline
+{\em argv} & Channel to open and filtering message information \\
+\hline
+{\em p\+Class\+Type} & Class for calling callback functions \\
+\hline
+{\em func} & Callback function when receiving C\+AN data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of processing, 0 if successful 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 51 of file can\+\_\+dump.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{52 \{   }
+\DoxyCodeLine{53   \textcolor{keywordtype}{string} argv[\mbox{\hyperlink{can__dump_8hpp_a49a1ae43ac49e587db92ab12c701721d}{MAXCN}}];}
+\DoxyCodeLine{54   \textcolor{keywordtype}{int} idx = 0;}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} down\_causes\_exit = 1;   }
+\DoxyCodeLine{57   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} view = 0;}
+\DoxyCodeLine{58     }
+\DoxyCodeLine{59   \textcolor{keywordtype}{int} rcvbuf\_size = 0;}
+\DoxyCodeLine{60   \textcolor{keywordtype}{int} num\_events;}
+\DoxyCodeLine{61   \textcolor{keywordtype}{int} numfilter;    }
+\DoxyCodeLine{62   \textcolor{keywordtype}{char} *ptr, *nptr;}
+\DoxyCodeLine{63   \textcolor{keyword}{struct }sockaddr\_can addr;}
+\DoxyCodeLine{64   \textcolor{keywordtype}{char} ctrlmsg[CMSG\_SPACE(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} timeval)) +}
+\DoxyCodeLine{65                CMSG\_SPACE(3 * \textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} timespec)) +}
+\DoxyCodeLine{66                CMSG\_SPACE(\textcolor{keyword}{sizeof}(\_\_u32))];}
+\DoxyCodeLine{67   \textcolor{keyword}{struct }iovec iov;}
+\DoxyCodeLine{68   \textcolor{keyword}{struct }msghdr msg;}
+\DoxyCodeLine{69   \textcolor{keyword}{struct }cmsghdr *cmsg;}
+\DoxyCodeLine{70   \textcolor{keyword}{struct }can\_filter *rfilter;}
+\DoxyCodeLine{71   can\_err\_mask\_t err\_mask;}
+\DoxyCodeLine{72   \textcolor{keyword}{struct }canfd\_frame frame;}
+\DoxyCodeLine{73   \textcolor{keywordtype}{int} nbytes, sockCnt, maxdlen;}
+\DoxyCodeLine{74   \textcolor{keyword}{struct }ifreq ifr;}
+\DoxyCodeLine{75   \textcolor{keyword}{struct }timeval tv;}
+\DoxyCodeLine{76   \textcolor{keywordtype}{int} timeout\_ms = -\/1; \textcolor{comment}{/* default to no timeout */}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78   \textcolor{keywordtype}{bool} retry = \textcolor{keyword}{true}; }
+\DoxyCodeLine{79     \textcolor{comment}{// signal(SIGTERM, sigterm);}}
+\DoxyCodeLine{80     \textcolor{comment}{// signal(SIGHUP, sigterm);}}
+\DoxyCodeLine{81     \textcolor{comment}{// signal(SIGINT, sigterm);}}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     \textcolor{comment}{//last\_tv.tv\_sec = 0;}}
+\DoxyCodeLine{84     \textcolor{comment}{//last\_tv.tv\_usec = 0;}}
+\DoxyCodeLine{85     \textcolor{comment}{//progname = basename(argv[0]);}}
+\DoxyCodeLine{86   \mbox{\hyperlink{class_can_dump_a6d60d04eef250ab7e785afef8f073601}{currmax}} = argc; \textcolor{comment}{/* find real number of CAN devices */}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88   \textcolor{keywordflow}{if} ( \mbox{\hyperlink{can__dump_8hpp_a49a1ae43ac49e587db92ab12c701721d}{MAXCN}} < argc )\{    }
+\DoxyCodeLine{89     fprintf(stdout, \textcolor{stringliteral}{"More than \%d CAN devices given on commandline! (\%d)\(\backslash\)n"}, \mbox{\hyperlink{can__dump_8hpp_a49a1ae43ac49e587db92ab12c701721d}{MAXCN}}, argc);   }
+\DoxyCodeLine{90       \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{91   \}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93   \textcolor{keywordflow}{for} ( \textcolor{keywordtype}{string} arg : argval )\{}
+\DoxyCodeLine{94     argv[idx++] = arg;}
+\DoxyCodeLine{95     \textcolor{comment}{//fprintf(stdout, "call open !!! , \%s\(\backslash\)n", arg);}}
+\DoxyCodeLine{96   \};}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98     \textcolor{comment}{// fprintf(stdout, "call open !!! , \%s\(\backslash\)n", (char*)argv[0].c\_str());}}
+\DoxyCodeLine{99     \textcolor{comment}{// fprintf(stdout, "call open !!! , \%s\(\backslash\)n", (char*)argv[1].c\_str()); }}
+\DoxyCodeLine{100   \textcolor{keyword}{struct }epoll\_event events\_pending[\mbox{\hyperlink{can__dump_8hpp_a8d992b2deae3aef6f9e6515897bb2110}{MAXSOCK}}];}
+\DoxyCodeLine{101   \textcolor{keyword}{struct }epoll\_event event\_setup = \{}
+\DoxyCodeLine{102         .events = EPOLLIN, \textcolor{comment}{/* prepare the common part */}}
+\DoxyCodeLine{103   \};}
+\DoxyCodeLine{104         }
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_can_dump_a6d60d04eef250ab7e785afef8f073601}{currmax}} > \mbox{\hyperlink{can__dump_8hpp_a8d992b2deae3aef6f9e6515897bb2110}{MAXSOCK}}) \{}
+\DoxyCodeLine{107         fprintf(stderr, \textcolor{stringliteral}{"More than \%d CAN devices given on commandline!\(\backslash\)n"}, \mbox{\hyperlink{can__dump_8hpp_a8d992b2deae3aef6f9e6515897bb2110}{MAXSOCK}});}
+\DoxyCodeLine{108         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{109   \}}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111   \textcolor{keywordflow}{while}(retry)\{}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113     \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{114       }
+\DoxyCodeLine{115       \mbox{\hyperlink{class_can_dump_aeb71fbbcb56b185b28a8b6036af2b638}{fd\_epoll}} = epoll\_create(1);}
+\DoxyCodeLine{116       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_can_dump_aeb71fbbcb56b185b28a8b6036af2b638}{fd\_epoll}} < 0) \{}
+\DoxyCodeLine{117         perror(\textcolor{stringliteral}{"epoll\_create"});}
+\DoxyCodeLine{118         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{119       \}}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121       \textcolor{keywordflow}{for} (sockCnt = 0; sockCnt < \mbox{\hyperlink{class_can_dump_a6d60d04eef250ab7e785afef8f073601}{currmax}}; sockCnt++) \{}
+\DoxyCodeLine{122         \textcolor{keyword}{struct }\mbox{\hyperlink{structif__info}{if\_info}}* obj = \&\mbox{\hyperlink{class_can_dump_ac268bdbd4663139712b6011832008fcc}{sock\_info}}[sockCnt];}
+\DoxyCodeLine{123         fprintf(stdout, \textcolor{stringliteral}{"5)call open !!!  \%s\(\backslash\)n"}, (\textcolor{keywordtype}{char}*)argv[sockCnt].c\_str());}
+\DoxyCodeLine{124         ptr = (\textcolor{keywordtype}{char}*)argv[sockCnt].c\_str();}
+\DoxyCodeLine{125         nptr = strchr(ptr, \textcolor{charliteral}{','});}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127        }
+\DoxyCodeLine{128         obj-\/>\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}} = socket(PF\_CAN, SOCK\_RAW, CAN\_RAW);}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130         \textcolor{keywordflow}{if} (obj-\/>\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}} < 0) \{}
+\DoxyCodeLine{131             perror(\textcolor{stringliteral}{"socket"});}
+\DoxyCodeLine{132             \textcolor{keywordflow}{throw} \mbox{\hyperlink{can__dump_8hpp_a85a0d4a64738610220dab7e7df576722}{DEVICE\_EXCEPTION}};}
+\DoxyCodeLine{133             \textcolor{comment}{//return 1;}}
+\DoxyCodeLine{134         \}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136         event\_setup.data.ptr = obj; \textcolor{comment}{/* remember the instance as private data */}}
+\DoxyCodeLine{137         \textcolor{keywordflow}{if} (epoll\_ctl(\mbox{\hyperlink{class_can_dump_aeb71fbbcb56b185b28a8b6036af2b638}{fd\_epoll}}, EPOLL\_CTL\_ADD, obj-\/>\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}}, \&event\_setup)) \{}
+\DoxyCodeLine{138             perror(\textcolor{stringliteral}{"failed to add socket to epoll"});}
+\DoxyCodeLine{139             \textcolor{keywordflow}{throw} \mbox{\hyperlink{can__dump_8hpp_a85a0d4a64738610220dab7e7df576722}{DEVICE\_EXCEPTION}};}
+\DoxyCodeLine{140             \textcolor{comment}{//return 1;}}
+\DoxyCodeLine{141         \}}
+\DoxyCodeLine{142         obj-\/>\mbox{\hyperlink{structif__info_aba9823e39b4fd5fe839eec6c192d48ab}{cmdlinename}} = ptr; \textcolor{comment}{/* save pointer to cmdline name of this socket */}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144         \textcolor{keywordflow}{if} (nptr)}
+\DoxyCodeLine{145             nbytes = nptr -\/ ptr;  \textcolor{comment}{/* interface name is up the first ',' */}}
+\DoxyCodeLine{146         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{147             nbytes = strlen(ptr); \textcolor{comment}{/* no ',' found => no filter definitions */}}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149         \textcolor{keywordflow}{if} (nbytes >= IFNAMSIZ) \{}
+\DoxyCodeLine{150             fprintf(stderr, \textcolor{stringliteral}{"name of CAN device '\%s' is too long!\(\backslash\)n"}, ptr);}
+\DoxyCodeLine{151             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{152         \}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154         \textcolor{keywordflow}{if} (nbytes > \mbox{\hyperlink{class_can_dump_aab33e0cef49a187c6f2359b6059d6ba2}{max\_devname\_len}})}
+\DoxyCodeLine{155             \mbox{\hyperlink{class_can_dump_aab33e0cef49a187c6f2359b6059d6ba2}{max\_devname\_len}} = nbytes; \textcolor{comment}{/* for nice printing */}}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157         addr.can\_family = AF\_CAN;}
+\DoxyCodeLine{158         memset(\&ifr.ifr\_name, 0, \textcolor{keyword}{sizeof}(ifr.ifr\_name));}
+\DoxyCodeLine{159         strncpy(ifr.ifr\_name, ptr, nbytes);}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161         fprintf(stdout,\textcolor{stringliteral}{"using interface name '\%s'.\(\backslash\)n"}, ifr.ifr\_name);}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163         \textcolor{keywordflow}{if} (strcmp(\mbox{\hyperlink{can__dump_8hpp_a55c98c395f13ec6728e92ec7aaf05f61}{ANYDEV}}, ifr.ifr\_name) != 0) \{}
+\DoxyCodeLine{164             \textcolor{keywordflow}{if} (ioctl(obj-\/>\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}}, SIOCGIFINDEX, \&ifr) < 0) \{}
+\DoxyCodeLine{165                 perror(\textcolor{stringliteral}{"SIOCGIFINDEX"});}
+\DoxyCodeLine{166                 \textcolor{keywordflow}{throw} \mbox{\hyperlink{can__dump_8hpp_a85a0d4a64738610220dab7e7df576722}{DEVICE\_EXCEPTION}};}
+\DoxyCodeLine{167                 \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{168             \}}
+\DoxyCodeLine{169             addr.can\_ifindex = ifr.ifr\_ifindex;}
+\DoxyCodeLine{170         \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{171             addr.can\_ifindex = 0; \textcolor{comment}{/* any can interface */}}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173         \textcolor{keywordflow}{if} (nptr) \{}
+\DoxyCodeLine{174             \textcolor{comment}{/* found a ',' after the interface name => check for filters */}}
+\DoxyCodeLine{175             \textcolor{comment}{/* determine number of filters to alloc the filter space */}}
+\DoxyCodeLine{176             numfilter = 0;}
+\DoxyCodeLine{177             ptr = nptr;}
+\DoxyCodeLine{178             \textcolor{keywordflow}{while} (ptr) \{}
+\DoxyCodeLine{179                 numfilter++;}
+\DoxyCodeLine{180                 ptr++; \textcolor{comment}{/* hop behind the ',' */}}
+\DoxyCodeLine{181                 ptr = strchr(ptr, \textcolor{charliteral}{','}); \textcolor{comment}{/* exit condition */}}
+\DoxyCodeLine{182                 \textcolor{comment}{//fprintf(stdout,"\%d ptr : '\%s' \(\backslash\)n", numfilter,ptr);}}
+\DoxyCodeLine{183             \}           }
+\DoxyCodeLine{184             }
+\DoxyCodeLine{185             rfilter = (\textcolor{keyword}{struct }can\_filter*)malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} can\_filter) * numfilter);}
+\DoxyCodeLine{186             \textcolor{keywordflow}{if} (!rfilter) \{}
+\DoxyCodeLine{187                 fprintf(stderr, \textcolor{stringliteral}{"Failed to create filter space!\(\backslash\)n"});}
+\DoxyCodeLine{188                 \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{189             \}}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191             numfilter = 0;}
+\DoxyCodeLine{192             err\_mask = 0;}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{194             \textcolor{keywordflow}{while} (nptr) \{}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196                 ptr = nptr + 1; \textcolor{comment}{/* hop behind the ',' */}}
+\DoxyCodeLine{197                 nptr = strchr(ptr, \textcolor{charliteral}{','}); \textcolor{comment}{/* update exit condition */}}
+\DoxyCodeLine{198                 \textcolor{keywordflow}{if} (sscanf(ptr, \textcolor{stringliteral}{"\%d:\%x"},}
+\DoxyCodeLine{199                        \&rfilter[numfilter].can\_id,}
+\DoxyCodeLine{200                        \&rfilter[numfilter].can\_mask) == 2) \{}
+\DoxyCodeLine{201                     rfilter[numfilter].can\_mask \&= \string~CAN\_ERR\_FLAG;}
+\DoxyCodeLine{202                 }
+\DoxyCodeLine{203                     \textcolor{keywordflow}{if} (*(ptr + 8) == \textcolor{charliteral}{':'})}
+\DoxyCodeLine{204                         rfilter[numfilter].can\_id |= CAN\_EFF\_FLAG;}
+\DoxyCodeLine{205                     fprintf(stdout, \textcolor{stringliteral}{"filter : '0x\%02x' , '0x\%02x' \(\backslash\)n"}, rfilter[numfilter].can\_id,rfilter[numfilter].can\_mask);}
+\DoxyCodeLine{206                     numfilter++;}
+\DoxyCodeLine{207                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sscanf(ptr, \textcolor{stringliteral}{"\#\%x"}, \&err\_mask) != 1) \{}
+\DoxyCodeLine{208                     fprintf(stderr, \textcolor{stringliteral}{"Error in filter option parsing: '\%s'\(\backslash\)n"}, ptr);}
+\DoxyCodeLine{209                     free(rfilter);}
+\DoxyCodeLine{210                     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{211                 \}}
+\DoxyCodeLine{212             \}}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214             \textcolor{keywordflow}{if} (err\_mask)}
+\DoxyCodeLine{215                 setsockopt(obj-\/>\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}}, SOL\_CAN\_RAW, CAN\_RAW\_ERR\_FILTER,}
+\DoxyCodeLine{216                        \&err\_mask, \textcolor{keyword}{sizeof}(err\_mask));}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218             \textcolor{keywordflow}{if} (numfilter)}
+\DoxyCodeLine{219                 setsockopt(obj-\/>\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}}, SOL\_CAN\_RAW, CAN\_RAW\_FILTER,}
+\DoxyCodeLine{220                        rfilter, numfilter * \textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} can\_filter));}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222             free(rfilter);}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224         \} \textcolor{comment}{/* if (nptr) */}}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226         \textcolor{comment}{/* try to switch the socket into CAN FD mode */}}
+\DoxyCodeLine{227         \textcolor{comment}{//setsockopt(obj-\/>s, SOL\_CAN\_RAW, CAN\_RAW\_FD\_FRAMES, \&canfd\_on, sizeof(canfd\_on));}}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229         \textcolor{keywordflow}{if} (rcvbuf\_size) \{}
+\DoxyCodeLine{230             \textcolor{keywordtype}{int} curr\_rcvbuf\_size;}
+\DoxyCodeLine{231             socklen\_t curr\_rcvbuf\_size\_len = \textcolor{keyword}{sizeof}(curr\_rcvbuf\_size);}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233             \textcolor{comment}{/* try SO\_RCVBUFFORCE first, if we run with CAP\_NET\_ADMIN */}}
+\DoxyCodeLine{234             \textcolor{keywordflow}{if} (setsockopt(obj-\/>\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}}, SOL\_SOCKET, SO\_RCVBUFFORCE,}
+\DoxyCodeLine{235                        \&rcvbuf\_size, \textcolor{keyword}{sizeof}(rcvbuf\_size)) < 0) \{}
+\DoxyCodeLine{236                 fprintf(stdout,\textcolor{stringliteral}{"SO\_RCVBUFFORCE failed so try SO\_RCVBUF ...\(\backslash\)n"});}
+\DoxyCodeLine{237                 \textcolor{keywordflow}{if} (setsockopt(obj-\/>\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}}, SOL\_SOCKET, SO\_RCVBUF,}
+\DoxyCodeLine{238                            \&rcvbuf\_size, \textcolor{keyword}{sizeof}(rcvbuf\_size)) < 0) \{}
+\DoxyCodeLine{239                     perror(\textcolor{stringliteral}{"setsockopt SO\_RCVBUF"});}
+\DoxyCodeLine{240                     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{241                 \}}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243                 \textcolor{keywordflow}{if} (getsockopt(obj-\/>\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}}, SOL\_SOCKET, SO\_RCVBUF,}
+\DoxyCodeLine{244                            \&curr\_rcvbuf\_size, \&curr\_rcvbuf\_size\_len) < 0) \{}
+\DoxyCodeLine{245                     perror(\textcolor{stringliteral}{"getsockopt SO\_RCVBUF"});}
+\DoxyCodeLine{246                     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{247                 \}}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{249                 \textcolor{comment}{/* Only print a warning the first time we detect the adjustment */}}
+\DoxyCodeLine{250                 \textcolor{comment}{/* n.b.: The wanted size is doubled in Linux in net/sore/sock.c */}}
+\DoxyCodeLine{251                 \textcolor{keywordflow}{if} (!sockCnt \&\& curr\_rcvbuf\_size < rcvbuf\_size * 2)}
+\DoxyCodeLine{252                     fprintf(stderr, \textcolor{stringliteral}{"The socket receive buffer size was "}}
+\DoxyCodeLine{253                         \textcolor{stringliteral}{"adjusted due to /proc/sys/net/core/rmem\_max.\(\backslash\)n"});}
+\DoxyCodeLine{254             \}}
+\DoxyCodeLine{255           \}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257           \textcolor{keywordflow}{if} (bind(obj-\/>\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}}, (\textcolor{keyword}{struct} sockaddr *)\&addr, \textcolor{keyword}{sizeof}(addr)) < 0) \{}
+\DoxyCodeLine{258             perror(\textcolor{stringliteral}{"bind"});}
+\DoxyCodeLine{259             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{260           \}     }
+\DoxyCodeLine{261       \}}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{263       \textcolor{comment}{/* these settings are static and can be held out of the hot path */}}
+\DoxyCodeLine{264       iov.iov\_base = \&frame;}
+\DoxyCodeLine{265       msg.msg\_name = \&addr;}
+\DoxyCodeLine{266       msg.msg\_iov = \&iov;}
+\DoxyCodeLine{267       msg.msg\_iovlen = 1;}
+\DoxyCodeLine{268       msg.msg\_control = \&ctrlmsg;}
+\DoxyCodeLine{269     }
+\DoxyCodeLine{270       \textcolor{keywordflow}{while} (\mbox{\hyperlink{can__dump_8cpp_af1f449cc09f8d36befcce07bc38c29c0}{running}}) \{}
+\DoxyCodeLine{271 }
+\DoxyCodeLine{272         num\_events = epoll\_wait(\mbox{\hyperlink{class_can_dump_aeb71fbbcb56b185b28a8b6036af2b638}{fd\_epoll}}, events\_pending, \mbox{\hyperlink{class_can_dump_a6d60d04eef250ab7e785afef8f073601}{currmax}}, timeout\_ms);}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{274         \textcolor{keywordflow}{if} (num\_events == -\/1) \{}
+\DoxyCodeLine{275           \textcolor{keywordflow}{if} (errno != EINTR)}
+\DoxyCodeLine{276             \mbox{\hyperlink{can__dump_8cpp_af1f449cc09f8d36befcce07bc38c29c0}{running}} = 0;}
+\DoxyCodeLine{277             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{278         \}}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{280         \textcolor{comment}{/* handle timeout */}}
+\DoxyCodeLine{281         \textcolor{keywordflow}{if} (!num\_events \&\& timeout\_ms >= 0) \{}
+\DoxyCodeLine{282             \mbox{\hyperlink{can__dump_8cpp_af1f449cc09f8d36befcce07bc38c29c0}{running}} = 0;}
+\DoxyCodeLine{283             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{284         \}}
+\DoxyCodeLine{285 }
+\DoxyCodeLine{286         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < num\_events; i++) \{  \textcolor{comment}{/* check waiting CAN RAW sockets */}}
+\DoxyCodeLine{287             \textcolor{keyword}{struct }\mbox{\hyperlink{structif__info}{if\_info}}* obj = (\textcolor{keyword}{struct }\mbox{\hyperlink{structif__info}{if\_info}}*)events\_pending[i].data.ptr;}
+\DoxyCodeLine{288             \textcolor{keywordtype}{int} idx;}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{290             \mbox{\hyperlink{_c_make_lists_8txt_addea44dde8a31700a77e5b107ddd2f38}{if}} (ioctl(obj-\/>\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}}, SIOCGIFNAME, \&ifr) < 0)\{}
+\DoxyCodeLine{291               perror(\textcolor{stringliteral}{"SIOCGIFNAME"});      }
+\DoxyCodeLine{292               \textcolor{keywordflow}{throw} \mbox{\hyperlink{can__dump_8hpp_a85a0d4a64738610220dab7e7df576722}{DEVICE\_EXCEPTION}};}
+\DoxyCodeLine{293             \}}
+\DoxyCodeLine{294             \textcolor{comment}{/* these settings may be modified by recvmsg() */}}
+\DoxyCodeLine{295             iov.iov\_len = \textcolor{keyword}{sizeof}(frame);}
+\DoxyCodeLine{296             msg.msg\_namelen = \textcolor{keyword}{sizeof}(addr);}
+\DoxyCodeLine{297             msg.msg\_controllen = \textcolor{keyword}{sizeof}(ctrlmsg);}
+\DoxyCodeLine{298             msg.msg\_flags = 0;}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{300             nbytes = recvmsg(obj-\/>\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}}, \&msg, 0);}
+\DoxyCodeLine{301 }
+\DoxyCodeLine{302             \textcolor{comment}{//idx = idx2dindex(addr.can\_ifindex, obj-\/>s);}}
+\DoxyCodeLine{303             \textcolor{comment}{// if (nbytes < 0) \{}}
+\DoxyCodeLine{304             \textcolor{comment}{//  if ((errno == ENETDOWN) \&\& !down\_causes\_exit) \{}}
+\DoxyCodeLine{305             \textcolor{comment}{//      fprintf(stderr, "\%s: interface down\(\backslash\)n", devname[idx]);}}
+\DoxyCodeLine{306             \textcolor{comment}{//      continue;}}
+\DoxyCodeLine{307             \textcolor{comment}{//  \}}}
+\DoxyCodeLine{308             \textcolor{comment}{//  perror("read");}}
+\DoxyCodeLine{309             \textcolor{comment}{//  return 1;}}
+\DoxyCodeLine{310             \textcolor{comment}{// \}}}
+\DoxyCodeLine{311 }
+\DoxyCodeLine{312 }
+\DoxyCodeLine{313             \textcolor{keywordflow}{if} ((\textcolor{keywordtype}{size\_t})nbytes == CAN\_MTU)}
+\DoxyCodeLine{314                 maxdlen = CAN\_MAX\_DLEN;}
+\DoxyCodeLine{315             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((\textcolor{keywordtype}{size\_t})nbytes == CANFD\_MTU)}
+\DoxyCodeLine{316                 maxdlen = CANFD\_MAX\_DLEN;}
+\DoxyCodeLine{317             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{318                 fprintf(stderr, \textcolor{stringliteral}{"read: incomplete CAN frame \%ld\(\backslash\)n"},(\textcolor{keywordtype}{size\_t})nbytes);}
+\DoxyCodeLine{319                 sleep(3);}
+\DoxyCodeLine{320                 num\_events = 0;}
+\DoxyCodeLine{321                 \textcolor{keywordflow}{throw} \mbox{\hyperlink{can__dump_8hpp_a85a0d4a64738610220dab7e7df576722}{DEVICE\_EXCEPTION}};}
+\DoxyCodeLine{322             \}}
+\DoxyCodeLine{323 }
+\DoxyCodeLine{324             \textcolor{comment}{/* once we detected a EFF frame indent SFF frames accordingly */}}
+\DoxyCodeLine{325             \textcolor{keywordflow}{if} (frame.can\_id \& CAN\_EFF\_FLAG)}
+\DoxyCodeLine{326                 view |= \mbox{\hyperlink{lib_8hpp_a8ca847bbf0eced9ecb7619b78d767ec5}{CANLIB\_VIEW\_INDENT\_SFF}};}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{328             \textcolor{comment}{//printf("\%*s", max\_devname\_len, devname[idx]);}}
+\DoxyCodeLine{329             \textcolor{comment}{//callback function}}
+\DoxyCodeLine{330             \textcolor{comment}{//pClassType-\/>receive(frame.data,frame.can\_id);}}
+\DoxyCodeLine{331             }
+\DoxyCodeLine{332             \mbox{\hyperlink{lib_8hpp_a439c6f846f7b4de16d848d3a2dc85c00}{fprint\_long\_canframe}}(stdout, \&frame, NULL, view, maxdlen);}
+\DoxyCodeLine{333             printf(\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{334 }
+\DoxyCodeLine{335             fflush(stdout);}
+\DoxyCodeLine{336             \textcolor{comment}{// 콜백 함수 등록}}
+\DoxyCodeLine{337             \textcolor{keyword}{function}<void(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*,\textcolor{keywordtype}{int})>  handler = move(bind(func, pClassType, placeholders::\_1,placeholders::\_2));}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339             handler(frame.data,frame.can\_id);}
+\DoxyCodeLine{340         \}}
+\DoxyCodeLine{341       \}}
+\DoxyCodeLine{342     \}\textcolor{keywordflow}{catch}(\textcolor{keywordtype}{int} e)\{}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{344         \textcolor{keywordflow}{if} (e == \mbox{\hyperlink{can__dump_8hpp_a85a0d4a64738610220dab7e7df576722}{DEVICE\_EXCEPTION}})\{}
+\DoxyCodeLine{345             \mbox{\hyperlink{class_can_dump_afe4112c3b9f0d94168dace3dee06d324}{SocketClose}}();}
+\DoxyCodeLine{346             sleep(\mbox{\hyperlink{can__define_8hpp_ac1c6bb1cc2b325bdd62f1eba10899b58}{CAN\_RECV\_RETRY\_TIME}});}
+\DoxyCodeLine{347             retry = \textcolor{keyword}{true};}
+\DoxyCodeLine{348             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{349         \}}
+\DoxyCodeLine{350     \}}
+\DoxyCodeLine{351   \} }
+\DoxyCodeLine{352 }
+\DoxyCodeLine{353   fprintf(stdout, \textcolor{stringliteral}{"end while in can\_dump\(\backslash\)n"});}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{355   \mbox{\hyperlink{class_can_dump_afe4112c3b9f0d94168dace3dee06d324}{SocketClose}}();}
+\DoxyCodeLine{356 }
+\DoxyCodeLine{357   fprintf(stdout, \textcolor{stringliteral}{"can receive end\(\backslash\)n"});}
+\DoxyCodeLine{358   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{359 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_dump_ab99f4835456cd4363cf6e3b44c025cbf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_dump_afe4112c3b9f0d94168dace3dee06d324}\label{class_can_dump_afe4112c3b9f0d94168dace3dee06d324}} 
+\index{CanDump@{CanDump}!SocketClose@{SocketClose}}
+\index{SocketClose@{SocketClose}!CanDump@{CanDump}}
+\doxysubsubsection{\texorpdfstring{SocketClose()}{SocketClose()}}
+{\footnotesize\ttfamily void Can\+Dump\+::\+Socket\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 361 of file can\+\_\+dump.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{361                          \{}
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{class_can_dump_a6d60d04eef250ab7e785afef8f073601}{currmax}}; i++)\{}
+\DoxyCodeLine{364         close(\mbox{\hyperlink{class_can_dump_ac268bdbd4663139712b6011832008fcc}{sock\_info}}[i].\mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}});}
+\DoxyCodeLine{365         memset(\&\mbox{\hyperlink{class_can_dump_ac268bdbd4663139712b6011832008fcc}{sock\_info}}[i],0x00,\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structif__info}{if\_info}} ));}
+\DoxyCodeLine{366     \}}
+\DoxyCodeLine{367     close(\mbox{\hyperlink{class_can_dump_aeb71fbbcb56b185b28a8b6036af2b638}{fd\_epoll}});}
+\DoxyCodeLine{368     fprintf(stdout, \textcolor{stringliteral}{"close socket\(\backslash\)n"});}
+\DoxyCodeLine{369 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_can_dump_a6d60d04eef250ab7e785afef8f073601}\label{class_can_dump_a6d60d04eef250ab7e785afef8f073601}} 
+\index{CanDump@{CanDump}!currmax@{currmax}}
+\index{currmax@{currmax}!CanDump@{CanDump}}
+\doxysubsubsection{\texorpdfstring{currmax}{currmax}}
+{\footnotesize\ttfamily int Can\+Dump\+::currmax\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 51 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{class_can_dump_a4df7b38684c0d562161936f37a32dde8}\label{class_can_dump_a4df7b38684c0d562161936f37a32dde8}} 
+\index{CanDump@{CanDump}!devname@{devname}}
+\index{devname@{devname}!CanDump@{CanDump}}
+\doxysubsubsection{\texorpdfstring{devname}{devname}}
+{\footnotesize\ttfamily char Can\+Dump\+::devname\mbox{[}\mbox{\hyperlink{can__dump_8hpp_ad84d35b07a20c51ed7e7359806da6f14}{M\+A\+X\+I\+F\+N\+A\+M\+ES}}\mbox{]}\mbox{[}I\+F\+N\+A\+M\+S\+IZ+1\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 54 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{class_can_dump_a35fd764c3435fa9daf49ac8bf1dbf2f9}\label{class_can_dump_a35fd764c3435fa9daf49ac8bf1dbf2f9}} 
+\index{CanDump@{CanDump}!dindex@{dindex}}
+\index{dindex@{dindex}!CanDump@{CanDump}}
+\doxysubsubsection{\texorpdfstring{dindex}{dindex}}
+{\footnotesize\ttfamily int Can\+Dump\+::dindex\mbox{[}\mbox{\hyperlink{can__dump_8hpp_ad84d35b07a20c51ed7e7359806da6f14}{M\+A\+X\+I\+F\+N\+A\+M\+ES}}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 55 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{class_can_dump_aeb71fbbcb56b185b28a8b6036af2b638}\label{class_can_dump_aeb71fbbcb56b185b28a8b6036af2b638}} 
+\index{CanDump@{CanDump}!fd\_epoll@{fd\_epoll}}
+\index{fd\_epoll@{fd\_epoll}!CanDump@{CanDump}}
+\doxysubsubsection{\texorpdfstring{fd\_epoll}{fd\_epoll}}
+{\footnotesize\ttfamily int Can\+Dump\+::fd\+\_\+epoll\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 50 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{class_can_dump_aab33e0cef49a187c6f2359b6059d6ba2}\label{class_can_dump_aab33e0cef49a187c6f2359b6059d6ba2}} 
+\index{CanDump@{CanDump}!max\_devname\_len@{max\_devname\_len}}
+\index{max\_devname\_len@{max\_devname\_len}!CanDump@{CanDump}}
+\doxysubsubsection{\texorpdfstring{max\_devname\_len}{max\_devname\_len}}
+{\footnotesize\ttfamily int Can\+Dump\+::max\+\_\+devname\+\_\+len\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 56 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{class_can_dump_ac6e40b22510e1a8f1f73a93a59b373a1}\label{class_can_dump_ac6e40b22510e1a8f1f73a93a59b373a1}} 
+\index{CanDump@{CanDump}!progname@{progname}}
+\index{progname@{progname}!CanDump@{CanDump}}
+\doxysubsubsection{\texorpdfstring{progname}{progname}}
+{\footnotesize\ttfamily char$\ast$ Can\+Dump\+::progname\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 53 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{class_can_dump_ac268bdbd4663139712b6011832008fcc}\label{class_can_dump_ac268bdbd4663139712b6011832008fcc}} 
+\index{CanDump@{CanDump}!sock\_info@{sock\_info}}
+\index{sock\_info@{sock\_info}!CanDump@{CanDump}}
+\doxysubsubsection{\texorpdfstring{sock\_info}{sock\_info}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structif__info}{if\+\_\+info}} Can\+Dump\+::sock\+\_\+info\mbox{[}\mbox{\hyperlink{can__dump_8hpp_a8d992b2deae3aef6f9e6515897bb2110}{M\+A\+X\+S\+O\+CK}}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 49 of file can\+\_\+dump.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/can/\mbox{\hyperlink{can__dump_8hpp}{can\+\_\+dump.\+hpp}}\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/src/can/\mbox{\hyperlink{can__dump_8cpp}{can\+\_\+dump.\+cpp}}\end{DoxyCompactItemize}

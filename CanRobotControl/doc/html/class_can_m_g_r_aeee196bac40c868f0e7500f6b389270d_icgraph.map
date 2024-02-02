@@ -1,0 +1,4 @@
+<map id="CanMGR::fn_send_value" name="CanMGR::fn_send_value">
+<area shape="rect" id="node1" title="Ability to send data from VCU to robot via Can communication to wm_motion_controller." alt="" coords="243,13,423,39"/>
+<area shape="rect" id="node2" href="$class_can_m_g_r.html#ab2486f520bc3c804d3e2357cdcda24a0" title="Function for controlling horn, head_light, right, left_light from robot to VCU via Can communication." alt="" coords="5,5,195,47"/>
+</map>

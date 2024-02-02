@@ -1,0 +1,127 @@
+\hypertarget{can__dump_8hpp}{}\doxysection{/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/can/can\+\_\+dump.hpp File Reference}
+\label{can__dump_8hpp}\index{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/include/can/can\_dump.hpp@{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/include/can/can\_dump.hpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for can\+\_\+dump.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{can__dump_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can__dump_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{structif__info}{if\+\_\+info}}
+\begin{DoxyCompactList}\small\item\em collection group information per open socket \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_can_dump}{Can\+Dump}}
+\begin{DoxyCompactList}\small\item\em Can network data listening class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{can__dump_8hpp_a3eff53c2ddf2c089fb0d6d746eb20efa}{T\+I\+M\+E\+S\+T\+A\+M\+P\+SZ}}~50 /$\ast$ string \textquotesingle{}absolute with date\textquotesingle{} requires max 49 bytes $\ast$/
+\item 
+\#define \mbox{\hyperlink{can__dump_8hpp_a49a1ae43ac49e587db92ab12c701721d}{M\+A\+X\+CN}}~2    /$\ast$ max. number of C\+AN channel $\ast$/
+\item 
+\#define \mbox{\hyperlink{can__dump_8hpp_a8d992b2deae3aef6f9e6515897bb2110}{M\+A\+X\+S\+O\+CK}}~16    /$\ast$ max. number of C\+AN interfaces given on the cmdline $\ast$/
+\item 
+\#define \mbox{\hyperlink{can__dump_8hpp_ad84d35b07a20c51ed7e7359806da6f14}{M\+A\+X\+I\+F\+N\+A\+M\+ES}}~30 /$\ast$ size of receive name index to omit ioctls $\ast$/
+\item 
+\#define \mbox{\hyperlink{can__dump_8hpp_a55c98c395f13ec6728e92ec7aaf05f61}{A\+N\+Y\+D\+EV}}~\char`\"{}any\char`\"{}  /$\ast$ name of interface to receive from any C\+AN interface $\ast$/
+\item 
+\#define \mbox{\hyperlink{can__dump_8hpp_ae286a9415ec0f12a39b4989844299ddf}{A\+NL}}~\char`\"{}\textbackslash{}r\textbackslash{}n\char`\"{}    /$\ast$ newline in A\+SC mode $\ast$/
+\item 
+\#define \mbox{\hyperlink{can__dump_8hpp_a56ea267c769be73cd45f15eeb90a3387}{M\+A\+X\+A\+NI}}~4
+\item 
+\#define \mbox{\hyperlink{can__dump_8hpp_a85a0d4a64738610220dab7e7df576722}{D\+E\+V\+I\+C\+E\+\_\+\+E\+X\+C\+E\+P\+T\+I\+ON}}~-\/1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{can__dump_8hpp_ae286a9415ec0f12a39b4989844299ddf}\label{can__dump_8hpp_ae286a9415ec0f12a39b4989844299ddf}} 
+\index{can\_dump.hpp@{can\_dump.hpp}!ANL@{ANL}}
+\index{ANL@{ANL}!can\_dump.hpp@{can\_dump.hpp}}
+\doxysubsubsection{\texorpdfstring{ANL}{ANL}}
+{\footnotesize\ttfamily \#define A\+NL~\char`\"{}\textbackslash{}r\textbackslash{}n\char`\"{}    /$\ast$ newline in A\+SC mode $\ast$/}
+
+
+
+Definition at line 14 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{can__dump_8hpp_a55c98c395f13ec6728e92ec7aaf05f61}\label{can__dump_8hpp_a55c98c395f13ec6728e92ec7aaf05f61}} 
+\index{can\_dump.hpp@{can\_dump.hpp}!ANYDEV@{ANYDEV}}
+\index{ANYDEV@{ANYDEV}!can\_dump.hpp@{can\_dump.hpp}}
+\doxysubsubsection{\texorpdfstring{ANYDEV}{ANYDEV}}
+{\footnotesize\ttfamily \#define A\+N\+Y\+D\+EV~\char`\"{}any\char`\"{}  /$\ast$ name of interface to receive from any C\+AN interface $\ast$/}
+
+
+
+Definition at line 13 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{can__dump_8hpp_a85a0d4a64738610220dab7e7df576722}\label{can__dump_8hpp_a85a0d4a64738610220dab7e7df576722}} 
+\index{can\_dump.hpp@{can\_dump.hpp}!DEVICE\_EXCEPTION@{DEVICE\_EXCEPTION}}
+\index{DEVICE\_EXCEPTION@{DEVICE\_EXCEPTION}!can\_dump.hpp@{can\_dump.hpp}}
+\doxysubsubsection{\texorpdfstring{DEVICE\_EXCEPTION}{DEVICE\_EXCEPTION}}
+{\footnotesize\ttfamily \#define D\+E\+V\+I\+C\+E\+\_\+\+E\+X\+C\+E\+P\+T\+I\+ON~-\/1}
+
+
+
+Definition at line 18 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{can__dump_8hpp_a56ea267c769be73cd45f15eeb90a3387}\label{can__dump_8hpp_a56ea267c769be73cd45f15eeb90a3387}} 
+\index{can\_dump.hpp@{can\_dump.hpp}!MAXANI@{MAXANI}}
+\index{MAXANI@{MAXANI}!can\_dump.hpp@{can\_dump.hpp}}
+\doxysubsubsection{\texorpdfstring{MAXANI}{MAXANI}}
+{\footnotesize\ttfamily \#define M\+A\+X\+A\+NI~4}
+
+
+
+Definition at line 16 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{can__dump_8hpp_a49a1ae43ac49e587db92ab12c701721d}\label{can__dump_8hpp_a49a1ae43ac49e587db92ab12c701721d}} 
+\index{can\_dump.hpp@{can\_dump.hpp}!MAXCN@{MAXCN}}
+\index{MAXCN@{MAXCN}!can\_dump.hpp@{can\_dump.hpp}}
+\doxysubsubsection{\texorpdfstring{MAXCN}{MAXCN}}
+{\footnotesize\ttfamily \#define M\+A\+X\+CN~2    /$\ast$ max. number of C\+AN channel $\ast$/}
+
+
+
+Definition at line 10 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{can__dump_8hpp_ad84d35b07a20c51ed7e7359806da6f14}\label{can__dump_8hpp_ad84d35b07a20c51ed7e7359806da6f14}} 
+\index{can\_dump.hpp@{can\_dump.hpp}!MAXIFNAMES@{MAXIFNAMES}}
+\index{MAXIFNAMES@{MAXIFNAMES}!can\_dump.hpp@{can\_dump.hpp}}
+\doxysubsubsection{\texorpdfstring{MAXIFNAMES}{MAXIFNAMES}}
+{\footnotesize\ttfamily \#define M\+A\+X\+I\+F\+N\+A\+M\+ES~30 /$\ast$ size of receive name index to omit ioctls $\ast$/}
+
+
+
+Definition at line 12 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{can__dump_8hpp_a8d992b2deae3aef6f9e6515897bb2110}\label{can__dump_8hpp_a8d992b2deae3aef6f9e6515897bb2110}} 
+\index{can\_dump.hpp@{can\_dump.hpp}!MAXSOCK@{MAXSOCK}}
+\index{MAXSOCK@{MAXSOCK}!can\_dump.hpp@{can\_dump.hpp}}
+\doxysubsubsection{\texorpdfstring{MAXSOCK}{MAXSOCK}}
+{\footnotesize\ttfamily \#define M\+A\+X\+S\+O\+CK~16    /$\ast$ max. number of C\+AN interfaces given on the cmdline $\ast$/}
+
+
+
+Definition at line 11 of file can\+\_\+dump.\+hpp.
+
+\mbox{\Hypertarget{can__dump_8hpp_a3eff53c2ddf2c089fb0d6d746eb20efa}\label{can__dump_8hpp_a3eff53c2ddf2c089fb0d6d746eb20efa}} 
+\index{can\_dump.hpp@{can\_dump.hpp}!TIMESTAMPSZ@{TIMESTAMPSZ}}
+\index{TIMESTAMPSZ@{TIMESTAMPSZ}!can\_dump.hpp@{can\_dump.hpp}}
+\doxysubsubsection{\texorpdfstring{TIMESTAMPSZ}{TIMESTAMPSZ}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+S\+T\+A\+M\+P\+SZ~50 /$\ast$ string \textquotesingle{}absolute with date\textquotesingle{} requires max 49 bytes $\ast$/}
+
+
+
+Definition at line 8 of file can\+\_\+dump.\+hpp.
+

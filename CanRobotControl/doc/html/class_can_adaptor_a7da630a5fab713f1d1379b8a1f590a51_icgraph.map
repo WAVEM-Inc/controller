@@ -1,0 +1,6 @@
+<map id="CanAdaptor::SetHandler" name="CanAdaptor::SetHandler">
+<area shape="rect" id="node1" title="Register a callback function.(VCU_EPS_Control_Request)" alt="" coords="585,5,764,32"/>
+<area shape="rect" id="node2" href="$class_data_relayer.html#a69859deb649fb5e182df1cb4aba837fe" title="run test" alt="" coords="401,5,537,32"/>
+<area shape="rect" id="node3" href="$class_can_m_g_r.html#a1449780d560c49e377b41093777d1847" title="Register callback function for can communication response." alt="" coords="196,5,353,32"/>
+<area shape="rect" id="node4" href="$class_can_m_g_r.html#a96304dd3b1c7e978f7c979d7cf7c7122" title="Construct a new Can M G R:: Can M G R object." alt="" coords="5,5,148,32"/>
+</map>

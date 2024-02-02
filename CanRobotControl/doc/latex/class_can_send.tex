@@ -1,0 +1,427 @@
+\hypertarget{class_can_send}{}\doxysection{Can\+Send Class Reference}
+\label{class_can_send}\index{CanSend@{CanSend}}
+
+
+{\ttfamily \#include $<$can\+\_\+send.\+hpp$>$}
+
+
+
+Collaboration diagram for Can\+Send\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{class_can_send__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_can_send_aa3b2e0661af46d4470e468f3bd852922}{Socket\+Close}} ()
+\begin{DoxyCompactList}\small\item\em close the socket \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_can_send_aca3bddc1226c340c73a9c61e30fdd470}{Send}} (std\+::vector$<$ unsigned char $>$ body, unsigned int msgid, char $\ast$device)
+\begin{DoxyCompactList}\small\item\em Send data to the C\+AN network. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_can_send_ae0a4d4d1a68c640e4614d8a90053802e}{Socket\+Open}} (std\+::vector$<$ std\+::string $>$ device)
+\begin{DoxyCompactList}\small\item\em open the socket \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_can_send_a4bc058e11c32f3b69f1f5ccc49c6d84b}{Is\+Connected}} (char $\ast$device)
+\begin{DoxyCompactList}\small\item\em Check can device connection status. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_can_send_ae580b876cff235830bca11d1e9605432}{Is\+Connect}} ()
+\begin{DoxyCompactList}\small\item\em Check can device connection status. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_can_send_a52cf032c2a2697179da2d216a073bb17}{Socket\+Open}} (char $\ast$device)
+\begin{DoxyCompactList}\small\item\em open the socket \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ std\+::string, int $>$ \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 8 of file can\+\_\+send.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_can_send_ae580b876cff235830bca11d1e9605432}\label{class_can_send_ae580b876cff235830bca11d1e9605432}} 
+\index{CanSend@{CanSend}!IsConnect@{IsConnect}}
+\index{IsConnect@{IsConnect}!CanSend@{CanSend}}
+\doxysubsubsection{\texorpdfstring{IsConnect()}{IsConnect()}}
+{\footnotesize\ttfamily bool Can\+Send\+::\+Is\+Connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check can device connection status. 
+
+Check the sockets of all channels stored in the this object 
+\begin{DoxyParams}{Parameters}
+{\em device} & channel name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if all were successful, false otherwise 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 227 of file can\+\_\+send.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{227                        \{}
+\DoxyCodeLine{228     }
+\DoxyCodeLine{229   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} iter = \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}.begin(); iter !=  \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}.end(); iter++)\{}
+\DoxyCodeLine{230     \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_send_a4bc058e11c32f3b69f1f5ccc49c6d84b}{IsConnected}}((\textcolor{keywordtype}{char}*)iter-\/>first.c\_str()) == \textcolor{keyword}{false} )\{}
+\DoxyCodeLine{231       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{232     \}}
+\DoxyCodeLine{233   \}}
+\DoxyCodeLine{234   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{235 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_send_a4bc058e11c32f3b69f1f5ccc49c6d84b}\label{class_can_send_a4bc058e11c32f3b69f1f5ccc49c6d84b}} 
+\index{CanSend@{CanSend}!IsConnected@{IsConnected}}
+\index{IsConnected@{IsConnected}!CanSend@{CanSend}}
+\doxysubsubsection{\texorpdfstring{IsConnected()}{IsConnected()}}
+{\footnotesize\ttfamily bool Can\+Send\+::\+Is\+Connected (\begin{DoxyParamCaption}\item[{char $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+Check can device connection status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & channel name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successful, false otherwise 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 187 of file can\+\_\+send.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{187                                      \{}
+\DoxyCodeLine{188     }
+\DoxyCodeLine{189   \textcolor{keyword}{auto} item = \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}.find(device);}
+\DoxyCodeLine{190   \textcolor{keywordflow}{if} (item == \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}.end()) \{}
+\DoxyCodeLine{191     printf(\textcolor{stringliteral}{"device does not exist! ( \%s )\(\backslash\)r\(\backslash\)n"}, device) ;}
+\DoxyCodeLine{192     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{193   \}     }
+\DoxyCodeLine{194   }
+\DoxyCodeLine{195   \textcolor{keywordtype}{int} \mbox{\hyperlink{structif__info_a41c9036badd1d071d3f5a04a3bc0403b}{s}} = item-\/>second;}
+\DoxyCodeLine{196  }
+\DoxyCodeLine{197   \textcolor{keyword}{struct }ifreq ifr;   }
+\DoxyCodeLine{198   memset(\&ifr.ifr\_name, 0, \textcolor{keyword}{sizeof}(ifr.ifr\_name));}
+\DoxyCodeLine{199   strcpy(ifr.ifr\_name,device);}
+\DoxyCodeLine{200   ifr.ifr\_ifindex = if\_nametoindex(ifr.ifr\_name);}
+\DoxyCodeLine{201   \textcolor{keywordflow}{if} (!ifr.ifr\_ifindex) \{}
+\DoxyCodeLine{202      perror(\textcolor{stringliteral}{"if\_nametoindex"});}
+\DoxyCodeLine{203      \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{204   \}}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206   \textcolor{keywordflow}{if} (ioctl(s, SIOCGIFINDEX, \&ifr) < 0) \{}
+\DoxyCodeLine{207     perror(\textcolor{stringliteral}{"SIOCGIFINDEX"});}
+\DoxyCodeLine{208     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{209   \}}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211   \textcolor{keywordflow}{if} (ioctl(s, SIOCGIFMTU, \&ifr) < 0)\{}
+\DoxyCodeLine{212     perror(\textcolor{stringliteral}{"SIOCGIFMTU"});}
+\DoxyCodeLine{213     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{214   \}}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{217 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_send_aca3bddc1226c340c73a9c61e30fdd470}\label{class_can_send_aca3bddc1226c340c73a9c61e30fdd470}} 
+\index{CanSend@{CanSend}!Send@{Send}}
+\index{Send@{Send}!CanSend@{CanSend}}
+\doxysubsubsection{\texorpdfstring{Send()}{Send()}}
+{\footnotesize\ttfamily int Can\+Send\+::\+Send (\begin{DoxyParamCaption}\item[{std\+::vector$<$ unsigned char $>$}]{data,  }\item[{unsigned int}]{msgid,  }\item[{char $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+Send data to the C\+AN network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & transmission body \\
+\hline
+{\em msgid} & can id \\
+\hline
+{\em device} & channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 27 of file can\+\_\+send.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{27                                                                                  \{}
+\DoxyCodeLine{28     }
+\DoxyCodeLine{29     \textcolor{keyword}{struct }ifreq ifr;}
+\DoxyCodeLine{30     \textcolor{comment}{//byte* body = makeframebody(temp,data);}}
+\DoxyCodeLine{31     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} body[CAN\_MAX\_DLEN];   }
+\DoxyCodeLine{32     \textcolor{keywordtype}{int} idx = 0;}
+\DoxyCodeLine{33     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} iter = data.begin(); iter !=  data.end(); iter++) \{}
+\DoxyCodeLine{34         body[idx++] = *iter;}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36     }
+\DoxyCodeLine{37     \textcolor{keyword}{auto} item = \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}.find(device);}
+\DoxyCodeLine{38     \textcolor{keywordflow}{if} (item == \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}.end()) \{}
+\DoxyCodeLine{39         printf(\textcolor{stringliteral}{"device does not exist! ( \%s )\(\backslash\)r\(\backslash\)n"}, device) ;}
+\DoxyCodeLine{40         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{41     \} }
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{keywordtype}{int} s = item-\/>second;}
+\DoxyCodeLine{44     \textcolor{keywordtype}{int} required\_mtu = CAN\_MTU; }
+\DoxyCodeLine{45     \textcolor{keyword}{struct }canfd\_frame frame;}
+\DoxyCodeLine{46     }
+\DoxyCodeLine{47     frame.can\_id = msgid;}
+\DoxyCodeLine{48     frame.len = CAN\_MAX\_DLEN;}
+\DoxyCodeLine{49     memcpy(frame.data,body,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{50     }
+\DoxyCodeLine{51     printf(\textcolor{stringliteral}{"  <channel> \%s, <can\_id> = 0x\%X, \%d <can\_dlc> = \%d\(\backslash\)r\(\backslash\)n"},device, frame.can\_id,frame.can\_id,frame.len);}
+\DoxyCodeLine{52     }
+\DoxyCodeLine{53     \textcolor{comment}{/* send frame */}}
+\DoxyCodeLine{54     \textcolor{keywordflow}{if} (write(s, \&frame, required\_mtu) != required\_mtu) \{}
+\DoxyCodeLine{55         perror(\textcolor{stringliteral}{"write"});}
+\DoxyCodeLine{56         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{57     \}}
+\DoxyCodeLine{58     }
+\DoxyCodeLine{59     \textcolor{comment}{//printf("  <data> = ");}}
+\DoxyCodeLine{60     \textcolor{keywordtype}{string} msg(\textcolor{stringliteral}{"  <data> = "});        }
+\DoxyCodeLine{61     \textcolor{keywordtype}{char} buf[10];}
+\DoxyCodeLine{62     memset(buf,0x00,10);}
+\DoxyCodeLine{63     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < CAN\_MAX\_DLEN; i++)\{}
+\DoxyCodeLine{64        sprintf(buf,\textcolor{stringliteral}{"0x\%02x "},frame.data[i]);}
+\DoxyCodeLine{65        msg.append(buf);}
+\DoxyCodeLine{66        msg.append(\textcolor{stringliteral}{" "});}
+\DoxyCodeLine{67     \}}
+\DoxyCodeLine{68     msg.append(\textcolor{stringliteral}{" <data transfer success>\(\backslash\)n"});}
+\DoxyCodeLine{69     printf(\textcolor{stringliteral}{"\%s"},msg.c\_str());}
+\DoxyCodeLine{70     }
+\DoxyCodeLine{71     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{72 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_send_aa3b2e0661af46d4470e468f3bd852922}\label{class_can_send_aa3b2e0661af46d4470e468f3bd852922}} 
+\index{CanSend@{CanSend}!SocketClose@{SocketClose}}
+\index{SocketClose@{SocketClose}!CanSend@{CanSend}}
+\doxysubsubsection{\texorpdfstring{SocketClose()}{SocketClose()}}
+{\footnotesize\ttfamily void Can\+Send\+::\+Socket\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+close the socket 
+
+close the socketof all channels stored in the this object 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 169 of file can\+\_\+send.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{169                          \{}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} iter = \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}.begin(); iter !=  \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}.end(); iter++)\{}
+\DoxyCodeLine{172      close(iter-\/>second);}
+\DoxyCodeLine{173      }
+\DoxyCodeLine{174      printf(\textcolor{stringliteral}{"socket close(\%s,\%d)\(\backslash\)n"},iter-\/>first.c\_str(),iter-\/>second);     }
+\DoxyCodeLine{175   \} }
+\DoxyCodeLine{176   \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}.clear();}
+\DoxyCodeLine{177 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_send_a52cf032c2a2697179da2d216a073bb17}\label{class_can_send_a52cf032c2a2697179da2d216a073bb17}} 
+\index{CanSend@{CanSend}!SocketOpen@{SocketOpen}}
+\index{SocketOpen@{SocketOpen}!CanSend@{CanSend}}
+\doxysubsubsection{\texorpdfstring{SocketOpen()}{SocketOpen()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int Can\+Send\+::\+Socket\+Open (\begin{DoxyParamCaption}\item[{char $\ast$}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+open the socket 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & channel name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 101 of file can\+\_\+send.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{102 \{    }
+\DoxyCodeLine{103     \textcolor{keywordtype}{int} ret;}
+\DoxyCodeLine{104     \textcolor{keywordtype}{int} s; \textcolor{comment}{/* can raw socket */} }
+\DoxyCodeLine{105     \textcolor{keywordtype}{int} required\_mtu = CAN\_MTU;}
+\DoxyCodeLine{106     \textcolor{keywordtype}{int} mtu;}
+\DoxyCodeLine{107     \textcolor{keywordtype}{int} enable\_canfd = 1;}
+\DoxyCodeLine{108     \textcolor{keyword}{struct }sockaddr\_can addr;}
+\DoxyCodeLine{109     \textcolor{keyword}{struct }canfd\_frame frame;   }
+\DoxyCodeLine{110     \textcolor{keyword}{struct }ifreq ifr;}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     \textcolor{keyword}{auto} item = \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}.find(device);}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114     \textcolor{keywordflow}{if} (item != \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}.end()) \{}
+\DoxyCodeLine{115         printf(\textcolor{stringliteral}{"device exists! -\/  \%s ; \%d"}, item-\/>first.c\_str(),item-\/>second) ;}
+\DoxyCodeLine{116         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{117     \} }
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119     \textcolor{comment}{/* open socket */}}
+\DoxyCodeLine{120     \textcolor{keywordflow}{if} ((s = socket(PF\_CAN, SOCK\_RAW, CAN\_RAW)) < 0) \{}
+\DoxyCodeLine{121         perror(\textcolor{stringliteral}{"socket"});}
+\DoxyCodeLine{122         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{123     \}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125     strcpy(ifr.ifr\_name, device);}
+\DoxyCodeLine{126     ret = ioctl(s, SIOCGIFINDEX, \&ifr);}
+\DoxyCodeLine{127     \textcolor{keywordflow}{if} (ret < 0) \{}
+\DoxyCodeLine{128       perror(\textcolor{stringliteral}{"ioctl interface index failed!"});}
+\DoxyCodeLine{129       \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{130     \}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132     ifr.ifr\_name[IFNAMSIZ -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{133     ifr.ifr\_ifindex = if\_nametoindex(ifr.ifr\_name);}
+\DoxyCodeLine{134     \textcolor{keywordflow}{if} (!ifr.ifr\_ifindex) \{}
+\DoxyCodeLine{135         perror(\textcolor{stringliteral}{"if\_nametoindex"});}
+\DoxyCodeLine{136         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{137     \}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139     memset(\&addr, 0, \textcolor{keyword}{sizeof}(addr));}
+\DoxyCodeLine{140     addr.can\_family = AF\_CAN;}
+\DoxyCodeLine{141     addr.can\_ifindex = ifr.ifr\_ifindex;}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143     \textcolor{comment}{/* disable default receive filter on this RAW socket */}}
+\DoxyCodeLine{144     \textcolor{comment}{/* This is obsolete as we do not read from the socket at all, but for */}}
+\DoxyCodeLine{145     \textcolor{comment}{/* this reason we can remove the receive list in the Kernel to save a */}}
+\DoxyCodeLine{146     \textcolor{comment}{/* little (really a very little!) CPU usage.                          */}}
+\DoxyCodeLine{147     setsockopt(s, SOL\_CAN\_RAW, CAN\_RAW\_FILTER, NULL, 0);}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149     \textcolor{keywordflow}{if} (bind(s, (\textcolor{keyword}{struct} sockaddr *)\&addr, \textcolor{keyword}{sizeof}(addr)) < 0) \{}
+\DoxyCodeLine{150         perror(\textcolor{stringliteral}{"bind"});}
+\DoxyCodeLine{151         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{152     \}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154     \mbox{\hyperlink{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}{sockmap}}.insert(make\_pair(device,s));}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156     printf(\textcolor{stringliteral}{"can device open ( \%s ) , sockfd : \%d\(\backslash\)n"},device,s );}
+\DoxyCodeLine{157     }
+\DoxyCodeLine{158     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{159 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_send_ae0a4d4d1a68c640e4614d8a90053802e}\label{class_can_send_ae0a4d4d1a68c640e4614d8a90053802e}} 
+\index{CanSend@{CanSend}!SocketOpen@{SocketOpen}}
+\index{SocketOpen@{SocketOpen}!CanSend@{CanSend}}
+\doxysubsubsection{\texorpdfstring{SocketOpen()}{SocketOpen()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int Can\+Send\+::\+Socket\+Open (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{device }\end{DoxyParamCaption})}
+
+
+
+open the socket 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & channel names \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 82 of file can\+\_\+send.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{82                                                   \{}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84   \textcolor{keywordflow}{for} (vector<string>::iterator iter = device.begin(); iter != device.end(); ++iter)\{}
+\DoxyCodeLine{85     \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_send_a52cf032c2a2697179da2d216a073bb17}{SocketOpen}}((\textcolor{keywordtype}{char}*)iter-\/>c\_str()) != 0 )\{}
+\DoxyCodeLine{86           perror(\textcolor{stringliteral}{"can device open fail"});        }
+\DoxyCodeLine{87           \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{88     \}   }
+\DoxyCodeLine{89   \}}
+\DoxyCodeLine{90   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{91 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}\label{class_can_send_a1e49ddf48af5a6ca7a893d1a281e721d}} 
+\index{CanSend@{CanSend}!sockmap@{sockmap}}
+\index{sockmap@{sockmap}!CanSend@{CanSend}}
+\doxysubsubsection{\texorpdfstring{sockmap}{sockmap}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, int$>$ Can\+Send\+::sockmap\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 11 of file can\+\_\+send.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/can/\mbox{\hyperlink{can__send_8hpp}{can\+\_\+send.\+hpp}}\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/src/can/\mbox{\hyperlink{can__send_8cpp}{can\+\_\+send.\+cpp}}\end{DoxyCompactItemize}

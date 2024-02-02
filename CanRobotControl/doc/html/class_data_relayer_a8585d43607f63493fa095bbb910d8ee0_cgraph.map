@@ -1,0 +1,6 @@
+<map id="DataRelayer::ControlHardware" name="DataRelayer::ControlHardware">
+<area shape="rect" id="node1" title="Send control commands.(ControlHardware)" alt="" coords="5,13,227,39"/>
+<area shape="rect" id="node2" href="$class_data_relayer.html#a4f4b5c3f651361ffcc9a2fb382cd1e79" title="send API(ControlHardware)" alt="" coords="275,5,476,47"/>
+<area shape="rect" id="node3" href="$class_can_adaptor.html#af85bd813da08af4bfa87e74c65b39d2b" title="Register a callback function." alt="" coords="524,13,741,39"/>
+<area shape="rect" id="node4" href="$class_can_adaptor.html#aa3c09d9af30e82bdb7b027ee71048310" title="iECU_Control_Hardware type is transmitted through the CAN network." alt="" coords="789,13,1028,39"/>
+</map>

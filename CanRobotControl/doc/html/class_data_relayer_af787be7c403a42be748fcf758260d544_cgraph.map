@@ -1,0 +1,5 @@
+<map id="DataRelayer::SendTest" name="DataRelayer::SendTest">
+<area shape="rect" id="node1" title="data send test" alt="" coords="5,5,175,32"/>
+<area shape="rect" id="node2" href="$class_can_adaptor.html#af85bd813da08af4bfa87e74c65b39d2b" title="Register a callback function." alt="" coords="223,5,440,32"/>
+<area shape="rect" id="node3" href="$class_can_adaptor.html#aa3c09d9af30e82bdb7b027ee71048310" title="iECU_Control_Hardware type is transmitted through the CAN network." alt="" coords="488,5,727,32"/>
+</map>

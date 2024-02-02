@@ -1,0 +1,6 @@
+<map id="DataRelayer::SendMessageControlAccelerate" name="DataRelayer::SendMessageControlAccelerate">
+<area shape="rect" id="node1" title="send API(ControlAccelerate)" alt="" coords="5,23,207,65"/>
+<area shape="rect" id="node2" href="$class_data_relayer.html#a7f9ab4030b59f3dd85826d337e8a5811" title="Use when you need a lower HeartBeat." alt="" coords="255,5,432,32"/>
+<area shape="rect" id="node3" href="$class_can_adaptor.html#af85bd813da08af4bfa87e74c65b39d2b" title="Register a callback function." alt="" coords="480,31,697,57"/>
+<area shape="rect" id="node4" href="$class_can_adaptor.html#aa3c09d9af30e82bdb7b027ee71048310" title="iECU_Control_Hardware type is transmitted through the CAN network." alt="" coords="745,31,984,57"/>
+</map>

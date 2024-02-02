@@ -1,0 +1,14 @@
+<map id="CanAdaptor::PostCanMessage" name="CanAdaptor::PostCanMessage">
+<area shape="rect" id="node1" title="Register a callback function." alt="" coords="1025,115,1243,141"/>
+<area shape="rect" id="node2" href="$class_data_relayer.html#a7f9ab4030b59f3dd85826d337e8a5811" title="Use when you need a lower HeartBeat." alt="" coords="788,5,965,32"/>
+<area shape="rect" id="node3" href="$class_data_relayer.html#a4cdd03e9d501460548d72112a0f904b2" title="send API(ControlAccelerate)" alt="" coords="517,23,718,65"/>
+<area shape="rect" id="node6" href="$class_data_relayer.html#a4f4b5c3f651361ffcc9a2fb382cd1e79" title="send API(ControlHardware)" alt="" coords="776,107,977,149"/>
+<area shape="rect" id="node9" href="$class_data_relayer.html#a741a5ed7df04ab346d31f4bae101b84e" title="send API(ControlSteering)" alt="" coords="776,173,977,214"/>
+<area shape="rect" id="node12" href="$class_data_relayer.html#af787be7c403a42be748fcf758260d544" title="data send test" alt="" coords="792,239,961,265"/>
+<area shape="rect" id="node4" href="$class_data_relayer.html#ab03906d443fb8a6945ee2efe97b4e54f" title="Send control commands.(ControlVel)" alt="" coords="275,31,453,57"/>
+<area shape="rect" id="node5" href="$class_can_m_g_r.html#adc81c4aaa7a907b2a4e248b092148191" title="Function for sending motor control values from robot to VCU via Can communication." alt="" coords="5,31,221,57"/>
+<area shape="rect" id="node7" href="$class_data_relayer.html#a8585d43607f63493fa095bbb910d8ee0" title="Send control commands.(ControlHardware)" alt="" coords="507,115,728,141"/>
+<area shape="rect" id="node8" href="$class_can_m_g_r.html#ab2486f520bc3c804d3e2357cdcda24a0" title="Function for controlling horn, head_light, right, left_light from robot to VCU via Can communication." alt="" coords="269,107,459,149"/>
+<area shape="rect" id="node10" href="$class_data_relayer.html#ae4d20fbc26da73335bf14ef9ae9f3c51" title="Send control commands.(ControlSteering)" alt="" coords="511,180,723,207"/>
+<area shape="rect" id="node11" href="$class_can_m_g_r.html#a4455e78c5751da6d908d41f734ce8dd7" title="Function for sending steering control values from robot to VCU via Can communication." alt="" coords="269,173,459,214"/>
+</map>

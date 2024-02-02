@@ -1,0 +1,365 @@
+\hypertarget{can__define_8hpp}{}\doxysection{/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/can/can\+\_\+define.hpp File Reference}
+\label{can__define_8hpp}\index{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/include/can/can\_define.hpp@{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/include/can/can\_define.hpp}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can__define_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{can__define_8hpp_a03d370f8f3153d5bbc4a8d186ea1629c}{C\+N\+V\+\_\+\+S\+P\+E\+E\+D\+\_\+\+F\+A\+C\+T\+OR}}~3.\+6
+\item 
+\#define \mbox{\hyperlink{can__define_8hpp_a3e8d9d1ec853cc5c07d85e50e77e73e4}{R\+E\+S\+O\+L\+U\+T\+I\+O\+N\+\_\+\+S\+P\+E\+E\+D\+\_\+\+C\+T\+RL}}~10
+\item 
+\#define \mbox{\hyperlink{can__define_8hpp_ace0b43b9b7aa6b14a5ec725c7073887d}{R\+E\+S\+O\+L\+U\+T\+I\+O\+N\+\_\+\+S\+T\+E\+E\+R\+I\+N\+G\+\_\+\+C\+T\+RL}}~10.\+0
+\item 
+\#define \mbox{\hyperlink{can__define_8hpp_a463cb702e5510c17330de9879152009e}{O\+F\+F\+S\+E\+T\+\_\+\+S\+T\+E\+E\+R\+I\+NG}}~30
+\item 
+\#define \mbox{\hyperlink{can__define_8hpp_a067512e2c854d3129704f9e1c180f3c3}{O\+F\+F\+S\+E\+T\+\_\+\+S\+T\+R\+A\+N\+G\+LE}}~3000
+\item 
+\#define \mbox{\hyperlink{can__define_8hpp_a5bba6a86c228fe6d44ac5a440b1d2570}{M\+A\+X\+\_\+\+S\+T\+E\+E\+R\+I\+NG}}~30
+\item 
+\#define \mbox{\hyperlink{can__define_8hpp_aabff0fc21be75b03b347427cc315dff2}{M\+I\+N\+\_\+\+S\+T\+E\+E\+R\+I\+NG}}~-\/30
+\item 
+\#define \mbox{\hyperlink{can__define_8hpp_a9c369ad7f55b8ec5fd3f912481cebcef}{C\+A\+N\+\_\+\+A\+L\+I\+V\+E\+\_\+\+C\+H\+E\+C\+K\+T\+I\+ME}}~2
+\item 
+\#define \mbox{\hyperlink{can__define_8hpp_ac1c6bb1cc2b325bdd62f1eba10899b58}{C\+A\+N\+\_\+\+R\+E\+C\+V\+\_\+\+R\+E\+T\+R\+Y\+\_\+\+T\+I\+ME}}~2
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990e}{M\+S\+G\+\_\+\+ID}} \{ \newline
+\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eaab05b7fa5c6b8bb4b45b1986464db9cd}{V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+R\+E\+Q\+U\+E\+ST}} = 0x169, 
+\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea03fef1223fc884946fc6d00f4c5aa4a7}{R\+E\+M\+O\+T\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+H\+A\+K\+E\+\_\+2}} = 0x10b, 
+\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea1e0e7c3bde9f23569cbd9dfcd69a1dba}{R\+E\+M\+O\+T\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+IO}} = 0x10a, 
+\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea00c287fe4650b8692230221f74a80417}{D\+B\+S\+\_\+\+S\+T\+A\+T\+US}} = 0x142, 
+\newline
+\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eae80d865ed86292d9a35421c10a088499}{V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+R\+E\+Q\+U\+E\+ST}} = 0x154, 
+\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea7d1bf84818cb2b8944c7d2dbf9a156e4}{I\+E\+C\+U\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+H\+A\+R\+D\+W\+A\+RE}} = 0X506, 
+\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eac734a1803fae2a5540cab5784d0fbf36}{I\+E\+C\+U\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+A\+C\+C\+E\+L\+E\+R\+A\+TE}} = 0X504, 
+\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eaeef97d353169eafe822525b6a44c04c7}{I\+E\+C\+U\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+R\+A\+KE}} = 0X503, 
+\newline
+\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea8f1469f7acc90b0bac45c8e2b7c767e3}{I\+E\+C\+U\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+T\+E\+E\+R\+I\+NG}} = 0X502, 
+\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea67938cfd5724b48754bbddee5595e760}{M\+O\+D\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+F\+L\+AG}} = 0X501, 
+\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ead8ccfb139a8f503b84b65f5e9615deb9}{T\+O\+R\+Q\+U\+E\+\_\+\+F\+E\+E\+D\+B\+A\+CK}} = 0x10
+ \}
+\item 
+enum \mbox{\hyperlink{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fb}{S\+V\+C\+\_\+\+ID}} \{ \mbox{\hyperlink{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fbafa515a845e881e9b5f7833f441906fb8}{C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+T\+E\+E\+R\+I\+NG}}, 
+\mbox{\hyperlink{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fbafc669eb2f9795deca39e3b9a752bf0ad}{C\+O\+N\+T\+R\+O\+L\+\_\+\+A\+C\+C\+E\+L\+E\+R\+A\+TE}}, 
+\mbox{\hyperlink{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fba9cc4e830508a58d24e3bba531bfc9934}{C\+O\+N\+T\+R\+O\+L\+\_\+\+H\+A\+R\+D\+W\+A\+RE}}, 
+\mbox{\hyperlink{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fba609ddf17c855d06a0d68da194fe4cd37}{R\+P\+M\+\_\+\+F\+E\+E\+D\+B\+A\+CK}}
+ \}
+\item 
+enum \mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138}{A\+C\+C\+\_\+\+G\+E\+AR}} \{ \mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138a8db0a86f11645af94e2d24ac302576a7}{P\+A\+R\+K\+I\+NG}}, 
+\mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138aa26736999186daf8146f809e863712a1}{F\+O\+R\+W\+A\+RD}}, 
+\mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138af46d14eb9d5d71afc9f6e747689fcb56}{N\+E\+U\+T\+R\+AL}}, 
+\mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138a906b7cc20b42994dda4da492767c1de9}{R\+E\+V\+E\+R\+SE}}
+ \}
+\item 
+enum \mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2}{C\+H\+A\+N\+N\+E\+L\+\_\+\+T\+Y\+PE}} \{ \mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2a2e064aeac52cb6df1f5e208ac6224992}{C\+A\+N0}}, 
+\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}{C\+A\+N1}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const char $\ast$ \mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\+\_\+type}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Test device type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{can__define_8hpp_a9c369ad7f55b8ec5fd3f912481cebcef}\label{can__define_8hpp_a9c369ad7f55b8ec5fd3f912481cebcef}} 
+\index{can\_define.hpp@{can\_define.hpp}!CAN\_ALIVE\_CHECKTIME@{CAN\_ALIVE\_CHECKTIME}}
+\index{CAN\_ALIVE\_CHECKTIME@{CAN\_ALIVE\_CHECKTIME}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{CAN\_ALIVE\_CHECKTIME}{CAN\_ALIVE\_CHECKTIME}}
+{\footnotesize\ttfamily \#define C\+A\+N\+\_\+\+A\+L\+I\+V\+E\+\_\+\+C\+H\+E\+C\+K\+T\+I\+ME~2}
+
+
+
+Definition at line 56 of file can\+\_\+define.\+hpp.
+
+\mbox{\Hypertarget{can__define_8hpp_ac1c6bb1cc2b325bdd62f1eba10899b58}\label{can__define_8hpp_ac1c6bb1cc2b325bdd62f1eba10899b58}} 
+\index{can\_define.hpp@{can\_define.hpp}!CAN\_RECV\_RETRY\_TIME@{CAN\_RECV\_RETRY\_TIME}}
+\index{CAN\_RECV\_RETRY\_TIME@{CAN\_RECV\_RETRY\_TIME}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{CAN\_RECV\_RETRY\_TIME}{CAN\_RECV\_RETRY\_TIME}}
+{\footnotesize\ttfamily \#define C\+A\+N\+\_\+\+R\+E\+C\+V\+\_\+\+R\+E\+T\+R\+Y\+\_\+\+T\+I\+ME~2}
+
+
+
+Definition at line 57 of file can\+\_\+define.\+hpp.
+
+\mbox{\Hypertarget{can__define_8hpp_a03d370f8f3153d5bbc4a8d186ea1629c}\label{can__define_8hpp_a03d370f8f3153d5bbc4a8d186ea1629c}} 
+\index{can\_define.hpp@{can\_define.hpp}!CNV\_SPEED\_FACTOR@{CNV\_SPEED\_FACTOR}}
+\index{CNV\_SPEED\_FACTOR@{CNV\_SPEED\_FACTOR}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{CNV\_SPEED\_FACTOR}{CNV\_SPEED\_FACTOR}}
+{\footnotesize\ttfamily \#define C\+N\+V\+\_\+\+S\+P\+E\+E\+D\+\_\+\+F\+A\+C\+T\+OR~3.\+6}
+
+
+
+Definition at line 5 of file can\+\_\+define.\+hpp.
+
+\mbox{\Hypertarget{can__define_8hpp_a5bba6a86c228fe6d44ac5a440b1d2570}\label{can__define_8hpp_a5bba6a86c228fe6d44ac5a440b1d2570}} 
+\index{can\_define.hpp@{can\_define.hpp}!MAX\_STEERING@{MAX\_STEERING}}
+\index{MAX\_STEERING@{MAX\_STEERING}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_STEERING}{MAX\_STEERING}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+S\+T\+E\+E\+R\+I\+NG~30}
+
+
+
+Definition at line 11 of file can\+\_\+define.\+hpp.
+
+\mbox{\Hypertarget{can__define_8hpp_aabff0fc21be75b03b347427cc315dff2}\label{can__define_8hpp_aabff0fc21be75b03b347427cc315dff2}} 
+\index{can\_define.hpp@{can\_define.hpp}!MIN\_STEERING@{MIN\_STEERING}}
+\index{MIN\_STEERING@{MIN\_STEERING}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{MIN\_STEERING}{MIN\_STEERING}}
+{\footnotesize\ttfamily \#define M\+I\+N\+\_\+\+S\+T\+E\+E\+R\+I\+NG~-\/30}
+
+
+
+Definition at line 12 of file can\+\_\+define.\+hpp.
+
+\mbox{\Hypertarget{can__define_8hpp_a463cb702e5510c17330de9879152009e}\label{can__define_8hpp_a463cb702e5510c17330de9879152009e}} 
+\index{can\_define.hpp@{can\_define.hpp}!OFFSET\_STEERING@{OFFSET\_STEERING}}
+\index{OFFSET\_STEERING@{OFFSET\_STEERING}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{OFFSET\_STEERING}{OFFSET\_STEERING}}
+{\footnotesize\ttfamily \#define O\+F\+F\+S\+E\+T\+\_\+\+S\+T\+E\+E\+R\+I\+NG~30}
+
+
+
+Definition at line 9 of file can\+\_\+define.\+hpp.
+
+\mbox{\Hypertarget{can__define_8hpp_a067512e2c854d3129704f9e1c180f3c3}\label{can__define_8hpp_a067512e2c854d3129704f9e1c180f3c3}} 
+\index{can\_define.hpp@{can\_define.hpp}!OFFSET\_STRANGLE@{OFFSET\_STRANGLE}}
+\index{OFFSET\_STRANGLE@{OFFSET\_STRANGLE}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{OFFSET\_STRANGLE}{OFFSET\_STRANGLE}}
+{\footnotesize\ttfamily \#define O\+F\+F\+S\+E\+T\+\_\+\+S\+T\+R\+A\+N\+G\+LE~3000}
+
+
+
+Definition at line 10 of file can\+\_\+define.\+hpp.
+
+\mbox{\Hypertarget{can__define_8hpp_a3e8d9d1ec853cc5c07d85e50e77e73e4}\label{can__define_8hpp_a3e8d9d1ec853cc5c07d85e50e77e73e4}} 
+\index{can\_define.hpp@{can\_define.hpp}!RESOLUTION\_SPEED\_CTRL@{RESOLUTION\_SPEED\_CTRL}}
+\index{RESOLUTION\_SPEED\_CTRL@{RESOLUTION\_SPEED\_CTRL}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{RESOLUTION\_SPEED\_CTRL}{RESOLUTION\_SPEED\_CTRL}}
+{\footnotesize\ttfamily \#define R\+E\+S\+O\+L\+U\+T\+I\+O\+N\+\_\+\+S\+P\+E\+E\+D\+\_\+\+C\+T\+RL~10}
+
+
+
+Definition at line 6 of file can\+\_\+define.\+hpp.
+
+\mbox{\Hypertarget{can__define_8hpp_ace0b43b9b7aa6b14a5ec725c7073887d}\label{can__define_8hpp_ace0b43b9b7aa6b14a5ec725c7073887d}} 
+\index{can\_define.hpp@{can\_define.hpp}!RESOLUTION\_STEERING\_CTRL@{RESOLUTION\_STEERING\_CTRL}}
+\index{RESOLUTION\_STEERING\_CTRL@{RESOLUTION\_STEERING\_CTRL}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{RESOLUTION\_STEERING\_CTRL}{RESOLUTION\_STEERING\_CTRL}}
+{\footnotesize\ttfamily \#define R\+E\+S\+O\+L\+U\+T\+I\+O\+N\+\_\+\+S\+T\+E\+E\+R\+I\+N\+G\+\_\+\+C\+T\+RL~10.\+0}
+
+
+
+Definition at line 7 of file can\+\_\+define.\+hpp.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138}\label{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138}} 
+\index{can\_define.hpp@{can\_define.hpp}!ACC\_GEAR@{ACC\_GEAR}}
+\index{ACC\_GEAR@{ACC\_GEAR}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{ACC\_GEAR}{ACC\_GEAR}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138}{A\+C\+C\+\_\+\+G\+E\+AR}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PARKING@{PARKING}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!PARKING@{PARKING}}}\mbox{\Hypertarget{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138a8db0a86f11645af94e2d24ac302576a7}\label{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138a8db0a86f11645af94e2d24ac302576a7}} 
+P\+A\+R\+K\+I\+NG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FORWARD@{FORWARD}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!FORWARD@{FORWARD}}}\mbox{\Hypertarget{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138aa26736999186daf8146f809e863712a1}\label{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138aa26736999186daf8146f809e863712a1}} 
+F\+O\+R\+W\+A\+RD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NEUTRAL@{NEUTRAL}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!NEUTRAL@{NEUTRAL}}}\mbox{\Hypertarget{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138af46d14eb9d5d71afc9f6e747689fcb56}\label{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138af46d14eb9d5d71afc9f6e747689fcb56}} 
+N\+E\+U\+T\+R\+AL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{REVERSE@{REVERSE}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!REVERSE@{REVERSE}}}\mbox{\Hypertarget{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138a906b7cc20b42994dda4da492767c1de9}\label{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138a906b7cc20b42994dda4da492767c1de9}} 
+R\+E\+V\+E\+R\+SE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 35 of file can\+\_\+define.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35               \{}
+\DoxyCodeLine{36    \mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138a8db0a86f11645af94e2d24ac302576a7}{PARKING}},}
+\DoxyCodeLine{37    \mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138aa26736999186daf8146f809e863712a1}{FORWARD}},}
+\DoxyCodeLine{38    \mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138af46d14eb9d5d71afc9f6e747689fcb56}{NEUTRAL}},}
+\DoxyCodeLine{39    \mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138a906b7cc20b42994dda4da492767c1de9}{REVERSE}}}
+\DoxyCodeLine{40 \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2}\label{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2}} 
+\index{can\_define.hpp@{can\_define.hpp}!CHANNEL\_TYPE@{CHANNEL\_TYPE}}
+\index{CHANNEL\_TYPE@{CHANNEL\_TYPE}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{CHANNEL\_TYPE}{CHANNEL\_TYPE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2}{C\+H\+A\+N\+N\+E\+L\+\_\+\+T\+Y\+PE}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN0@{CAN0}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!CAN0@{CAN0}}}\mbox{\Hypertarget{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2a2e064aeac52cb6df1f5e208ac6224992}\label{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2a2e064aeac52cb6df1f5e208ac6224992}} 
+C\+A\+N0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAN1@{CAN1}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!CAN1@{CAN1}}}\mbox{\Hypertarget{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}\label{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}} 
+C\+A\+N1&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 42 of file can\+\_\+define.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{42 \{ \mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2a2e064aeac52cb6df1f5e208ac6224992}{CAN0}},\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}{CAN1}} \} ;}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990e}\label{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990e}} 
+\index{can\_define.hpp@{can\_define.hpp}!MSG\_ID@{MSG\_ID}}
+\index{MSG\_ID@{MSG\_ID}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{MSG\_ID}{MSG\_ID}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990e}{M\+S\+G\+\_\+\+ID}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VCU\_EPS\_CONTROL\_REQUEST@{VCU\_EPS\_CONTROL\_REQUEST}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!VCU\_EPS\_CONTROL\_REQUEST@{VCU\_EPS\_CONTROL\_REQUEST}}}\mbox{\Hypertarget{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eaab05b7fa5c6b8bb4b45b1986464db9cd}\label{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eaab05b7fa5c6b8bb4b45b1986464db9cd}} 
+V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+R\+E\+Q\+U\+E\+ST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{REMOTE\_CONTROL\_SHAKE\_2@{REMOTE\_CONTROL\_SHAKE\_2}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!REMOTE\_CONTROL\_SHAKE\_2@{REMOTE\_CONTROL\_SHAKE\_2}}}\mbox{\Hypertarget{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea03fef1223fc884946fc6d00f4c5aa4a7}\label{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea03fef1223fc884946fc6d00f4c5aa4a7}} 
+R\+E\+M\+O\+T\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+H\+A\+K\+E\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{REMOTE\_CONTROL\_IO@{REMOTE\_CONTROL\_IO}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!REMOTE\_CONTROL\_IO@{REMOTE\_CONTROL\_IO}}}\mbox{\Hypertarget{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea1e0e7c3bde9f23569cbd9dfcd69a1dba}\label{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea1e0e7c3bde9f23569cbd9dfcd69a1dba}} 
+R\+E\+M\+O\+T\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+IO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DBS\_STATUS@{DBS\_STATUS}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!DBS\_STATUS@{DBS\_STATUS}}}\mbox{\Hypertarget{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea00c287fe4650b8692230221f74a80417}\label{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea00c287fe4650b8692230221f74a80417}} 
+D\+B\+S\+\_\+\+S\+T\+A\+T\+US&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VCU\_DBS\_REQUEST@{VCU\_DBS\_REQUEST}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!VCU\_DBS\_REQUEST@{VCU\_DBS\_REQUEST}}}\mbox{\Hypertarget{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eae80d865ed86292d9a35421c10a088499}\label{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eae80d865ed86292d9a35421c10a088499}} 
+V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+R\+E\+Q\+U\+E\+ST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IECU\_CONTROL\_HARDWARE@{IECU\_CONTROL\_HARDWARE}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!IECU\_CONTROL\_HARDWARE@{IECU\_CONTROL\_HARDWARE}}}\mbox{\Hypertarget{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea7d1bf84818cb2b8944c7d2dbf9a156e4}\label{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea7d1bf84818cb2b8944c7d2dbf9a156e4}} 
+I\+E\+C\+U\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+H\+A\+R\+D\+W\+A\+RE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IECU\_CONTROL\_ACCELERATE@{IECU\_CONTROL\_ACCELERATE}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!IECU\_CONTROL\_ACCELERATE@{IECU\_CONTROL\_ACCELERATE}}}\mbox{\Hypertarget{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eac734a1803fae2a5540cab5784d0fbf36}\label{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eac734a1803fae2a5540cab5784d0fbf36}} 
+I\+E\+C\+U\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+A\+C\+C\+E\+L\+E\+R\+A\+TE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IECU\_CONTROL\_BRAKE@{IECU\_CONTROL\_BRAKE}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!IECU\_CONTROL\_BRAKE@{IECU\_CONTROL\_BRAKE}}}\mbox{\Hypertarget{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eaeef97d353169eafe822525b6a44c04c7}\label{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eaeef97d353169eafe822525b6a44c04c7}} 
+I\+E\+C\+U\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+R\+A\+KE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IECU\_CONTROL\_STEERING@{IECU\_CONTROL\_STEERING}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!IECU\_CONTROL\_STEERING@{IECU\_CONTROL\_STEERING}}}\mbox{\Hypertarget{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea8f1469f7acc90b0bac45c8e2b7c767e3}\label{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea8f1469f7acc90b0bac45c8e2b7c767e3}} 
+I\+E\+C\+U\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+T\+E\+E\+R\+I\+NG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODE\_CONTROL\_FLAG@{MODE\_CONTROL\_FLAG}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!MODE\_CONTROL\_FLAG@{MODE\_CONTROL\_FLAG}}}\mbox{\Hypertarget{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea67938cfd5724b48754bbddee5595e760}\label{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea67938cfd5724b48754bbddee5595e760}} 
+M\+O\+D\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+F\+L\+AG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TORQUE\_FEEDBACK@{TORQUE\_FEEDBACK}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!TORQUE\_FEEDBACK@{TORQUE\_FEEDBACK}}}\mbox{\Hypertarget{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ead8ccfb139a8f503b84b65f5e9615deb9}\label{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ead8ccfb139a8f503b84b65f5e9615deb9}} 
+T\+O\+R\+Q\+U\+E\+\_\+\+F\+E\+E\+D\+B\+A\+CK&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 14 of file can\+\_\+define.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{14             \{}
+\DoxyCodeLine{15   \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eaab05b7fa5c6b8bb4b45b1986464db9cd}{VCU\_EPS\_CONTROL\_REQUEST}} = 0x169,}
+\DoxyCodeLine{16   \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea03fef1223fc884946fc6d00f4c5aa4a7}{REMOTE\_CONTROL\_SHAKE\_2}} = 0x10b,}
+\DoxyCodeLine{17   \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea1e0e7c3bde9f23569cbd9dfcd69a1dba}{REMOTE\_CONTROL\_IO}} = 0x10a,}
+\DoxyCodeLine{18   \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea00c287fe4650b8692230221f74a80417}{DBS\_STATUS}} = 0x142,}
+\DoxyCodeLine{19   \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eae80d865ed86292d9a35421c10a088499}{VCU\_DBS\_REQUEST}} = 0x154,}
+\DoxyCodeLine{20   \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea7d1bf84818cb2b8944c7d2dbf9a156e4}{IECU\_CONTROL\_HARDWARE}}    =   0X506,}
+\DoxyCodeLine{21   \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eac734a1803fae2a5540cab5784d0fbf36}{IECU\_CONTROL\_ACCELERATE}}    =   0X504,}
+\DoxyCodeLine{22   \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eaeef97d353169eafe822525b6a44c04c7}{IECU\_CONTROL\_BRAKE}}  =   0X503,}
+\DoxyCodeLine{23   \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea8f1469f7acc90b0bac45c8e2b7c767e3}{IECU\_CONTROL\_STEERING}}    =   0X502,}
+\DoxyCodeLine{24   \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea67938cfd5724b48754bbddee5595e760}{MODE\_CONTROL\_FLAG}}    =   0X501,}
+\DoxyCodeLine{25   \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ead8ccfb139a8f503b84b65f5e9615deb9}{TORQUE\_FEEDBACK}} = 0x10}
+\DoxyCodeLine{26 \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fb}\label{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fb}} 
+\index{can\_define.hpp@{can\_define.hpp}!SVC\_ID@{SVC\_ID}}
+\index{SVC\_ID@{SVC\_ID}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{SVC\_ID}{SVC\_ID}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fb}{S\+V\+C\+\_\+\+ID}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONTROL\_STEERING@{CONTROL\_STEERING}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!CONTROL\_STEERING@{CONTROL\_STEERING}}}\mbox{\Hypertarget{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fbafa515a845e881e9b5f7833f441906fb8}\label{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fbafa515a845e881e9b5f7833f441906fb8}} 
+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+T\+E\+E\+R\+I\+NG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONTROL\_ACCELERATE@{CONTROL\_ACCELERATE}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!CONTROL\_ACCELERATE@{CONTROL\_ACCELERATE}}}\mbox{\Hypertarget{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fbafc669eb2f9795deca39e3b9a752bf0ad}\label{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fbafc669eb2f9795deca39e3b9a752bf0ad}} 
+C\+O\+N\+T\+R\+O\+L\+\_\+\+A\+C\+C\+E\+L\+E\+R\+A\+TE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONTROL\_HARDWARE@{CONTROL\_HARDWARE}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!CONTROL\_HARDWARE@{CONTROL\_HARDWARE}}}\mbox{\Hypertarget{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fba9cc4e830508a58d24e3bba531bfc9934}\label{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fba9cc4e830508a58d24e3bba531bfc9934}} 
+C\+O\+N\+T\+R\+O\+L\+\_\+\+H\+A\+R\+D\+W\+A\+RE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RPM\_FEEDBACK@{RPM\_FEEDBACK}!can\_define.hpp@{can\_define.hpp}}\index{can\_define.hpp@{can\_define.hpp}!RPM\_FEEDBACK@{RPM\_FEEDBACK}}}\mbox{\Hypertarget{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fba609ddf17c855d06a0d68da194fe4cd37}\label{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fba609ddf17c855d06a0d68da194fe4cd37}} 
+R\+P\+M\+\_\+\+F\+E\+E\+D\+B\+A\+CK&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 28 of file can\+\_\+define.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28             \{}
+\DoxyCodeLine{29   \mbox{\hyperlink{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fbafa515a845e881e9b5f7833f441906fb8}{CONTROL\_STEERING}},}
+\DoxyCodeLine{30   \mbox{\hyperlink{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fbafc669eb2f9795deca39e3b9a752bf0ad}{CONTROL\_ACCELERATE}},}
+\DoxyCodeLine{31   \mbox{\hyperlink{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fba9cc4e830508a58d24e3bba531bfc9934}{CONTROL\_HARDWARE}},}
+\DoxyCodeLine{32   \mbox{\hyperlink{can__define_8hpp_a7ea912f9c47fd7352a58a8697666e1fba609ddf17c855d06a0d68da194fe4cd37}{RPM\_FEEDBACK}}}
+\DoxyCodeLine{33 \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}\label{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}} 
+\index{can\_define.hpp@{can\_define.hpp}!device\_type@{device\_type}}
+\index{device\_type@{device\_type}!can\_define.hpp@{can\_define.hpp}}
+\doxysubsubsection{\texorpdfstring{device\_type}{device\_type}}
+{\footnotesize\ttfamily const char$\ast$ device\+\_\+type\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{        \{ \textcolor{stringliteral}{"vcan0"}, \textcolor{stringliteral}{"vcan1"}\}}
+
+\end{DoxyCode}
+
+
+Test device type. 
+
+static const char $\ast$device\+\_\+type\mbox{[}\mbox{]} = \{ \char`\"{}can0\char`\"{}, \char`\"{}can1\char`\"{}\};
+
+Test device type 
+
+Definition at line 54 of file can\+\_\+define.\+hpp.
+

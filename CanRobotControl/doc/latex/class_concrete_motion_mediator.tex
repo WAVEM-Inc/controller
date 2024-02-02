@@ -1,0 +1,204 @@
+\hypertarget{class_concrete_motion_mediator}{}\doxysection{Concrete\+Motion\+Mediator Class Reference}
+\label{class_concrete_motion_mediator}\index{ConcreteMotionMediator@{ConcreteMotionMediator}}
+
+
+\mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} and \mbox{\hyperlink{class_wm_motion_controller}{Wm\+Motion\+Controller}} Mediator Implementation Class.  
+
+
+
+
+{\ttfamily \#include $<$concrete\+\_\+motion\+\_\+mediator.\+hpp$>$}
+
+
+
+Inheritance diagram for Concrete\+Motion\+Mediator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{class_concrete_motion_mediator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Concrete\+Motion\+Mediator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{class_concrete_motion_mediator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_concrete_motion_mediator_ae9ec0cf0879fcbd8f2b4035965bed61e}{fn\+\_\+set\+\_\+can\+\_\+mgr}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} $>$ can\+\_\+mgr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} Handed Over to Arbitrator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_concrete_motion_mediator_a322b6d0dcc8eea0685b01ccdd69f69c0}{fn\+\_\+set\+\_\+wm\+\_\+motion\+\_\+controller}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_wm_motion_controller}{Wm\+Motion\+Controller}} $>$ wm\+\_\+motion\+\_\+controller)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_wm_motion_controller}{Wm\+Motion\+Controller}} Handed Over to Arbitrator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_concrete_motion_mediator_ae13770cb9088d2e57e4a4fe62cd7d039}{fn\+\_\+send\+\_\+value}} (const int \&value, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_motion_colleague}{I\+Motion\+Colleague}} $>$ sender) override
+\begin{DoxyCompactList}\small\item\em Data exchange through arbitrator, lock to prevent other data from entering. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} $>$ \mbox{\hyperlink{class_concrete_motion_mediator_ad17fea1bb12579b25eb156c16ee9e1c9}{m\+\_\+can\+\_\+mgr}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_wm_motion_controller}{Wm\+Motion\+Controller}} $>$ \mbox{\hyperlink{class_concrete_motion_mediator_aef3993dcf2f2f85f85d09195fbe14fc3}{m\+\_\+wm\+\_\+motion\+\_\+controller}}
+\item 
+std\+::mutex \mbox{\hyperlink{class_concrete_motion_mediator_a00bf62a90c45552d27bec7394ff74640}{m\+\_\+mutex}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} and \mbox{\hyperlink{class_wm_motion_controller}{Wm\+Motion\+Controller}} Mediator Implementation Class. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+
+Definition at line 14 of file concrete\+\_\+motion\+\_\+mediator.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_concrete_motion_mediator_ae13770cb9088d2e57e4a4fe62cd7d039}\label{class_concrete_motion_mediator_ae13770cb9088d2e57e4a4fe62cd7d039}} 
+\index{ConcreteMotionMediator@{ConcreteMotionMediator}!fn\_send\_value@{fn\_send\_value}}
+\index{fn\_send\_value@{fn\_send\_value}!ConcreteMotionMediator@{ConcreteMotionMediator}}
+\doxysubsubsection{\texorpdfstring{fn\_send\_value()}{fn\_send\_value()}}
+{\footnotesize\ttfamily void Concrete\+Motion\+Mediator\+::fn\+\_\+send\+\_\+value (\begin{DoxyParamCaption}\item[{const int \&}]{value,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_motion_colleague}{I\+Motion\+Colleague}} $>$}]{sender }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Data exchange through arbitrator, lock to prevent other data from entering. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+{\em sender} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_motion_mediator_a6a6087ec36a0308a9431385ec90a6839}{I\+Motion\+Mediator}}.
+
+
+
+Definition at line 25 of file concrete\+\_\+motion\+\_\+mediator.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25                                                                                                  \{}
+\DoxyCodeLine{26     std::cout<<\textcolor{stringliteral}{"test1"}<<std::endl;}
+\DoxyCodeLine{27    \textcolor{keywordflow}{if}(sender == \mbox{\hyperlink{class_concrete_motion_mediator_ad17fea1bb12579b25eb156c16ee9e1c9}{m\_can\_mgr}})\{}
+\DoxyCodeLine{28         std::cout<<\textcolor{stringliteral}{"test2"}<<std::endl;}
+\DoxyCodeLine{29         std::lock\_guard<std::mutex> lock(\mbox{\hyperlink{class_concrete_motion_mediator_a00bf62a90c45552d27bec7394ff74640}{m\_mutex}}); \textcolor{comment}{// 뮤텍스 락}}
+\DoxyCodeLine{30         \mbox{\hyperlink{class_concrete_motion_mediator_aef3993dcf2f2f85f85d09195fbe14fc3}{m\_wm\_motion\_controller}}-\/>fn\_recv\_value(value);}
+\DoxyCodeLine{31    \}}
+\DoxyCodeLine{32    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(sender == \mbox{\hyperlink{class_concrete_motion_mediator_aef3993dcf2f2f85f85d09195fbe14fc3}{m\_wm\_motion\_controller}})\{}
+\DoxyCodeLine{33         std::cout<<\textcolor{stringliteral}{"test3"}<<std::endl;}
+\DoxyCodeLine{34         std::lock\_guard<std::mutex> lock(\mbox{\hyperlink{class_concrete_motion_mediator_a00bf62a90c45552d27bec7394ff74640}{m\_mutex}}); \textcolor{comment}{// 뮤텍스 락}}
+\DoxyCodeLine{35         \mbox{\hyperlink{class_concrete_motion_mediator_ad17fea1bb12579b25eb156c16ee9e1c9}{m\_can\_mgr}}-\/>fn\_recv\_value(value);}
+\DoxyCodeLine{36    \}}
+\DoxyCodeLine{37 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_concrete_motion_mediator_ae9ec0cf0879fcbd8f2b4035965bed61e}\label{class_concrete_motion_mediator_ae9ec0cf0879fcbd8f2b4035965bed61e}} 
+\index{ConcreteMotionMediator@{ConcreteMotionMediator}!fn\_set\_can\_mgr@{fn\_set\_can\_mgr}}
+\index{fn\_set\_can\_mgr@{fn\_set\_can\_mgr}!ConcreteMotionMediator@{ConcreteMotionMediator}}
+\doxysubsubsection{\texorpdfstring{fn\_set\_can\_mgr()}{fn\_set\_can\_mgr()}}
+{\footnotesize\ttfamily void Concrete\+Motion\+Mediator\+::fn\+\_\+set\+\_\+can\+\_\+mgr (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} $>$}]{can\+\_\+mgr }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}} Handed Over to Arbitrator. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em can\+\_\+mgr} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 16 of file concrete\+\_\+motion\+\_\+mediator.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16                                                                         \{}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_concrete_motion_mediator_ad17fea1bb12579b25eb156c16ee9e1c9}{m\_can\_mgr}} = can\_mgr;}
+\DoxyCodeLine{18 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_concrete_motion_mediator_a322b6d0dcc8eea0685b01ccdd69f69c0}\label{class_concrete_motion_mediator_a322b6d0dcc8eea0685b01ccdd69f69c0}} 
+\index{ConcreteMotionMediator@{ConcreteMotionMediator}!fn\_set\_wm\_motion\_controller@{fn\_set\_wm\_motion\_controller}}
+\index{fn\_set\_wm\_motion\_controller@{fn\_set\_wm\_motion\_controller}!ConcreteMotionMediator@{ConcreteMotionMediator}}
+\doxysubsubsection{\texorpdfstring{fn\_set\_wm\_motion\_controller()}{fn\_set\_wm\_motion\_controller()}}
+{\footnotesize\ttfamily void Concrete\+Motion\+Mediator\+::fn\+\_\+set\+\_\+wm\+\_\+motion\+\_\+controller (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_wm_motion_controller}{Wm\+Motion\+Controller}} $>$}]{wm\+\_\+motion\+\_\+controller }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_wm_motion_controller}{Wm\+Motion\+Controller}} Handed Over to Arbitrator. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em wm\+\_\+motion\+\_\+controller} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 7 of file concrete\+\_\+motion\+\_\+mediator.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7                                                                                                               \{}
+\DoxyCodeLine{8     \mbox{\hyperlink{class_concrete_motion_mediator_aef3993dcf2f2f85f85d09195fbe14fc3}{m\_wm\_motion\_controller}}=wm\_motion\_controller;}
+\DoxyCodeLine{9 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_concrete_motion_mediator_ad17fea1bb12579b25eb156c16ee9e1c9}\label{class_concrete_motion_mediator_ad17fea1bb12579b25eb156c16ee9e1c9}} 
+\index{ConcreteMotionMediator@{ConcreteMotionMediator}!m\_can\_mgr@{m\_can\_mgr}}
+\index{m\_can\_mgr@{m\_can\_mgr}!ConcreteMotionMediator@{ConcreteMotionMediator}}
+\doxysubsubsection{\texorpdfstring{m\_can\_mgr}{m\_can\_mgr}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}}$>$ Concrete\+Motion\+Mediator\+::m\+\_\+can\+\_\+mgr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file concrete\+\_\+motion\+\_\+mediator.\+hpp.
+
+\mbox{\Hypertarget{class_concrete_motion_mediator_a00bf62a90c45552d27bec7394ff74640}\label{class_concrete_motion_mediator_a00bf62a90c45552d27bec7394ff74640}} 
+\index{ConcreteMotionMediator@{ConcreteMotionMediator}!m\_mutex@{m\_mutex}}
+\index{m\_mutex@{m\_mutex}!ConcreteMotionMediator@{ConcreteMotionMediator}}
+\doxysubsubsection{\texorpdfstring{m\_mutex}{m\_mutex}}
+{\footnotesize\ttfamily std\+::mutex Concrete\+Motion\+Mediator\+::m\+\_\+mutex\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 22 of file concrete\+\_\+motion\+\_\+mediator.\+hpp.
+
+\mbox{\Hypertarget{class_concrete_motion_mediator_aef3993dcf2f2f85f85d09195fbe14fc3}\label{class_concrete_motion_mediator_aef3993dcf2f2f85f85d09195fbe14fc3}} 
+\index{ConcreteMotionMediator@{ConcreteMotionMediator}!m\_wm\_motion\_controller@{m\_wm\_motion\_controller}}
+\index{m\_wm\_motion\_controller@{m\_wm\_motion\_controller}!ConcreteMotionMediator@{ConcreteMotionMediator}}
+\doxysubsubsection{\texorpdfstring{m\_wm\_motion\_controller}{m\_wm\_motion\_controller}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_wm_motion_controller}{Wm\+Motion\+Controller}}$>$ Concrete\+Motion\+Mediator\+::m\+\_\+wm\+\_\+motion\+\_\+controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 21 of file concrete\+\_\+motion\+\_\+mediator.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/mediator/\mbox{\hyperlink{concrete__motion__mediator_8hpp}{concrete\+\_\+motion\+\_\+mediator.\+hpp}}\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/src/mediator/\mbox{\hyperlink{concrete__motion__mediator_8cpp}{concrete\+\_\+motion\+\_\+mediator.\+cpp}}\end{DoxyCompactItemize}

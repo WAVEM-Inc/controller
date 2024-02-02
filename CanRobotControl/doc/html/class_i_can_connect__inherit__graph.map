@@ -1,0 +1,4 @@
+<map id="ICanConnect" name="ICanConnect">
+<area shape="rect" id="node1" title="Interface for communication." alt="" coords="55,5,174,97"/>
+<area shape="rect" id="node2" href="$class_can_m_g_r.html" title="Class to control CAN communication." alt="" coords="5,145,224,399"/>
+</map>

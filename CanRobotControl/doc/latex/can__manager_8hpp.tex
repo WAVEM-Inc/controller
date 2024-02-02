@@ -1,0 +1,76 @@
+\hypertarget{can__manager_8hpp}{}\doxysection{/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/can/can\+\_\+manager.hpp File Reference}
+\label{can__manager_8hpp}\index{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/include/can/can\_manager.hpp@{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/include/can/can\_manager.hpp}}
+{\ttfamily \#include \char`\"{}can/data\+\_\+relayer.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}can/i\+\_\+can\+\_\+connect.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}mediator/i\+\_\+motion\+\_\+mediator.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}colleague/i\+\_\+motion\+\_\+colleague.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+Include dependency graph for can\+\_\+manager.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can__manager_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{can__manager_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_can_m_g_r}{Can\+M\+GR}}
+\begin{DoxyCompactList}\small\item\em Class to control C\+AN communication. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{can__manager_8hpp_abfb761aae3139f7d4f5271ded1e46885}{sigterm}} (int signo)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static volatile int \mbox{\hyperlink{can__manager_8hpp_a7722b3e958993a1a070becc413c17c2a}{state}} = 1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{can__manager_8hpp_abfb761aae3139f7d4f5271ded1e46885}\label{can__manager_8hpp_abfb761aae3139f7d4f5271ded1e46885}} 
+\index{can\_manager.hpp@{can\_manager.hpp}!sigterm@{sigterm}}
+\index{sigterm@{sigterm}!can\_manager.hpp@{can\_manager.hpp}}
+\doxysubsubsection{\texorpdfstring{sigterm()}{sigterm()}}
+{\footnotesize\ttfamily static void sigterm (\begin{DoxyParamCaption}\item[{int}]{signo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em signo} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 24 of file can\+\_\+manager.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26   fprintf(stdout, \textcolor{stringliteral}{"SIGNAL \%d  in main\(\backslash\)n"}, signo);}
+\DoxyCodeLine{27     \mbox{\hyperlink{can__manager_8hpp_a7722b3e958993a1a070becc413c17c2a}{state}} = 0;}
+\DoxyCodeLine{28 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{can__manager_8hpp_a7722b3e958993a1a070becc413c17c2a}\label{can__manager_8hpp_a7722b3e958993a1a070becc413c17c2a}} 
+\index{can\_manager.hpp@{can\_manager.hpp}!state@{state}}
+\index{state@{state}!can\_manager.hpp@{can\_manager.hpp}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily volatile int state = 1\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 19 of file can\+\_\+manager.\+hpp.
+

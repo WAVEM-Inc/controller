@@ -1,0 +1,5 @@
+<map id="CanAdaptor::PostMessageByType" name="CanAdaptor::PostMessageByType">
+<area shape="rect" id="node1" title="Each data type is transmitted repeatedly over the CAN network." alt="" coords="5,31,244,57"/>
+<area shape="rect" id="node2" href="$class_can_adaptor.html#ae3a6d62b3980b9a0e4bba2f709884e80" title="Send data to the CAN network." alt="" coords="333,5,472,32"/>
+<area shape="rect" id="node3" href="$class_can_adaptor.html#a9aa14f36f20a44042f9ec2c5898e125c" title="Stop messages that are sent repeatedly over the CAN network." alt="" coords="292,56,513,83"/>
+</map>

@@ -1,0 +1,854 @@
+\hypertarget{lib_8hpp}{}\doxysection{/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/can/lib.hpp File Reference}
+\label{lib_8hpp}\index{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/include/can/lib.hpp@{/home/ubuntu/ros2\_ws/src/CanRobotControl/wm\_motion\_controller/include/can/lib.hpp}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for lib.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{lib_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lib_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{lib_8hpp_aa5dc27b9885666a113c0b1e63253d519}{C\+L\+\_\+\+ID}}~(sizeof(\char`\"{}12345678\#\#1\char`\"{}))
+\item 
+\#define \mbox{\hyperlink{lib_8hpp_a0f39afca5bbf5ee5f8e955c5deaad13d}{C\+L\+\_\+\+D\+A\+TA}}~sizeof(\char`\"{}.AA\char`\"{})
+\item 
+\#define \mbox{\hyperlink{lib_8hpp_a72767faa4e150245b35f73a860117c28}{C\+L\+\_\+\+B\+I\+N\+D\+A\+TA}}~sizeof(\char`\"{}.\+10101010\char`\"{})
+\item 
+\#define \mbox{\hyperlink{lib_8hpp_a24ab287e14362b0a7547567cb9788bc8}{C\+L\+\_\+\+C\+F\+SZ}}~(2$\ast$\mbox{\hyperlink{lib_8hpp_aa5dc27b9885666a113c0b1e63253d519}{C\+L\+\_\+\+ID}} + 64$\ast$\mbox{\hyperlink{lib_8hpp_a0f39afca5bbf5ee5f8e955c5deaad13d}{C\+L\+\_\+\+D\+A\+TA}})
+\item 
+\#define \mbox{\hyperlink{lib_8hpp_af9e09d741a73a962f59bf255a3dde5ba}{C\+L\+\_\+\+L\+O\+N\+G\+C\+F\+SZ}}~(2$\ast$\mbox{\hyperlink{lib_8hpp_aa5dc27b9885666a113c0b1e63253d519}{C\+L\+\_\+\+ID}} + sizeof(\char`\"{}   \mbox{[}255\mbox{]}  \char`\"{}) + (64$\ast$\mbox{\hyperlink{lib_8hpp_a72767faa4e150245b35f73a860117c28}{C\+L\+\_\+\+B\+I\+N\+D\+A\+TA}}))
+\item 
+\#define \mbox{\hyperlink{lib_8hpp_a56e0d1563b1d5ef401229b1ae3a15ccc}{C\+A\+N\+L\+I\+B\+\_\+\+V\+I\+E\+W\+\_\+\+A\+S\+C\+II}}~0x1
+\item 
+\#define \mbox{\hyperlink{lib_8hpp_a0858a5187c410719400d35a3eed5f735}{C\+A\+N\+L\+I\+B\+\_\+\+V\+I\+E\+W\+\_\+\+B\+I\+N\+A\+RY}}~0x2
+\item 
+\#define \mbox{\hyperlink{lib_8hpp_a9a1b57149c7186b2a6c5f5a4c97121f3}{C\+A\+N\+L\+I\+B\+\_\+\+V\+I\+E\+W\+\_\+\+S\+W\+AP}}~0x4
+\item 
+\#define \mbox{\hyperlink{lib_8hpp_a773af1058396ff760914755a42479b1e}{C\+A\+N\+L\+I\+B\+\_\+\+V\+I\+E\+W\+\_\+\+E\+R\+R\+OR}}~0x8
+\item 
+\#define \mbox{\hyperlink{lib_8hpp_a8ca847bbf0eced9ecb7619b78d767ec5}{C\+A\+N\+L\+I\+B\+\_\+\+V\+I\+E\+W\+\_\+\+I\+N\+D\+E\+N\+T\+\_\+\+S\+FF}}~0x10
+\item 
+\#define \mbox{\hyperlink{lib_8hpp_aab8d46388198d8b749894d34f8132c01}{C\+A\+N\+L\+I\+B\+\_\+\+V\+I\+E\+W\+\_\+\+L\+E\+N8\+\_\+\+D\+LC}}~0x20
+\item 
+\#define \mbox{\hyperlink{lib_8hpp_a25f0c94164d62b6639ca4fc89e0c2a7f}{S\+W\+A\+P\+\_\+\+D\+E\+L\+I\+M\+I\+T\+ER}}~\textquotesingle{}\`{}\textquotesingle{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{lib_8hpp_a11fb5a0af2476f5c60e5ed8772bb1c5d}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((format(printf, 1, 2))) static inline int pr\+\_\+debug(const char $\ast$fmt
+\item 
+unsigned char \mbox{\hyperlink{lib_8hpp_a314d13c61c116f8a6561b6694961d92d}{can\+\_\+fd\+\_\+dlc2len}} (unsigned char dlc)
+\item 
+unsigned char \mbox{\hyperlink{lib_8hpp_a4b92de23d4bba256e7cc2b35546c7abf}{can\+\_\+fd\+\_\+len2dlc}} (unsigned char len)
+\item 
+unsigned char \mbox{\hyperlink{lib_8hpp_a2fb50a7150c7b071cdf019d8edf68865}{asc2nibble}} (char c)
+\item 
+int \mbox{\hyperlink{lib_8hpp_ae32157c29279bc7c3aec3779b029737f}{hexstring2data}} (char $\ast$arg, unsigned char $\ast$data, int maxdlen)
+\item 
+int \mbox{\hyperlink{lib_8hpp_a9dda95b2af6ba1b385094353207e304c}{parse\+\_\+canframe}} (char $\ast$cs, struct canfd\+\_\+frame $\ast$cf)
+\item 
+void \mbox{\hyperlink{lib_8hpp_a5868ecd4868405035e8e31bd17621b56}{fprint\+\_\+canframe}} (F\+I\+LE $\ast$stream, struct canfd\+\_\+frame $\ast$cf, char $\ast$eol, int sep, int maxdlen)
+\item 
+void \mbox{\hyperlink{lib_8hpp_a2054e20d675cba9680fb842b57171ca9}{sprint\+\_\+canframe}} (char $\ast$buf, struct canfd\+\_\+frame $\ast$cf, int sep, int maxdlen)
+\item 
+void \mbox{\hyperlink{lib_8hpp_a439c6f846f7b4de16d848d3a2dc85c00}{fprint\+\_\+long\+\_\+canframe}} (F\+I\+LE $\ast$stream, struct canfd\+\_\+frame $\ast$cf, char $\ast$eol, int view, int maxdlen)
+\item 
+void \mbox{\hyperlink{lib_8hpp_aa8524b833332ae4151e565c5b7f26995}{sprint\+\_\+long\+\_\+canframe}} (char $\ast$buf, struct canfd\+\_\+frame $\ast$cf, int view, int maxdlen)
+\item 
+void \mbox{\hyperlink{lib_8hpp_a3e61cd903c05cb99c7c6af06c958d6d6}{snprintf\+\_\+can\+\_\+error\+\_\+frame}} (char $\ast$buf, size\+\_\+t len, const struct canfd\+\_\+frame $\ast$cf, const char $\ast$sep)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{lib_8hpp_a56e0d1563b1d5ef401229b1ae3a15ccc}\label{lib_8hpp_a56e0d1563b1d5ef401229b1ae3a15ccc}} 
+\index{lib.hpp@{lib.hpp}!CANLIB\_VIEW\_ASCII@{CANLIB\_VIEW\_ASCII}}
+\index{CANLIB\_VIEW\_ASCII@{CANLIB\_VIEW\_ASCII}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{CANLIB\_VIEW\_ASCII}{CANLIB\_VIEW\_ASCII}}
+{\footnotesize\ttfamily \#define C\+A\+N\+L\+I\+B\+\_\+\+V\+I\+E\+W\+\_\+\+A\+S\+C\+II~0x1}
+
+
+
+Definition at line 188 of file lib.\+hpp.
+
+\mbox{\Hypertarget{lib_8hpp_a0858a5187c410719400d35a3eed5f735}\label{lib_8hpp_a0858a5187c410719400d35a3eed5f735}} 
+\index{lib.hpp@{lib.hpp}!CANLIB\_VIEW\_BINARY@{CANLIB\_VIEW\_BINARY}}
+\index{CANLIB\_VIEW\_BINARY@{CANLIB\_VIEW\_BINARY}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{CANLIB\_VIEW\_BINARY}{CANLIB\_VIEW\_BINARY}}
+{\footnotesize\ttfamily \#define C\+A\+N\+L\+I\+B\+\_\+\+V\+I\+E\+W\+\_\+\+B\+I\+N\+A\+RY~0x2}
+
+
+
+Definition at line 189 of file lib.\+hpp.
+
+\mbox{\Hypertarget{lib_8hpp_a773af1058396ff760914755a42479b1e}\label{lib_8hpp_a773af1058396ff760914755a42479b1e}} 
+\index{lib.hpp@{lib.hpp}!CANLIB\_VIEW\_ERROR@{CANLIB\_VIEW\_ERROR}}
+\index{CANLIB\_VIEW\_ERROR@{CANLIB\_VIEW\_ERROR}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{CANLIB\_VIEW\_ERROR}{CANLIB\_VIEW\_ERROR}}
+{\footnotesize\ttfamily \#define C\+A\+N\+L\+I\+B\+\_\+\+V\+I\+E\+W\+\_\+\+E\+R\+R\+OR~0x8}
+
+
+
+Definition at line 191 of file lib.\+hpp.
+
+\mbox{\Hypertarget{lib_8hpp_a8ca847bbf0eced9ecb7619b78d767ec5}\label{lib_8hpp_a8ca847bbf0eced9ecb7619b78d767ec5}} 
+\index{lib.hpp@{lib.hpp}!CANLIB\_VIEW\_INDENT\_SFF@{CANLIB\_VIEW\_INDENT\_SFF}}
+\index{CANLIB\_VIEW\_INDENT\_SFF@{CANLIB\_VIEW\_INDENT\_SFF}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{CANLIB\_VIEW\_INDENT\_SFF}{CANLIB\_VIEW\_INDENT\_SFF}}
+{\footnotesize\ttfamily \#define C\+A\+N\+L\+I\+B\+\_\+\+V\+I\+E\+W\+\_\+\+I\+N\+D\+E\+N\+T\+\_\+\+S\+FF~0x10}
+
+
+
+Definition at line 192 of file lib.\+hpp.
+
+\mbox{\Hypertarget{lib_8hpp_aab8d46388198d8b749894d34f8132c01}\label{lib_8hpp_aab8d46388198d8b749894d34f8132c01}} 
+\index{lib.hpp@{lib.hpp}!CANLIB\_VIEW\_LEN8\_DLC@{CANLIB\_VIEW\_LEN8\_DLC}}
+\index{CANLIB\_VIEW\_LEN8\_DLC@{CANLIB\_VIEW\_LEN8\_DLC}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{CANLIB\_VIEW\_LEN8\_DLC}{CANLIB\_VIEW\_LEN8\_DLC}}
+{\footnotesize\ttfamily \#define C\+A\+N\+L\+I\+B\+\_\+\+V\+I\+E\+W\+\_\+\+L\+E\+N8\+\_\+\+D\+LC~0x20}
+
+
+
+Definition at line 193 of file lib.\+hpp.
+
+\mbox{\Hypertarget{lib_8hpp_a9a1b57149c7186b2a6c5f5a4c97121f3}\label{lib_8hpp_a9a1b57149c7186b2a6c5f5a4c97121f3}} 
+\index{lib.hpp@{lib.hpp}!CANLIB\_VIEW\_SWAP@{CANLIB\_VIEW\_SWAP}}
+\index{CANLIB\_VIEW\_SWAP@{CANLIB\_VIEW\_SWAP}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{CANLIB\_VIEW\_SWAP}{CANLIB\_VIEW\_SWAP}}
+{\footnotesize\ttfamily \#define C\+A\+N\+L\+I\+B\+\_\+\+V\+I\+E\+W\+\_\+\+S\+W\+AP~0x4}
+
+
+
+Definition at line 190 of file lib.\+hpp.
+
+\mbox{\Hypertarget{lib_8hpp_a72767faa4e150245b35f73a860117c28}\label{lib_8hpp_a72767faa4e150245b35f73a860117c28}} 
+\index{lib.hpp@{lib.hpp}!CL\_BINDATA@{CL\_BINDATA}}
+\index{CL\_BINDATA@{CL\_BINDATA}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{CL\_BINDATA}{CL\_BINDATA}}
+{\footnotesize\ttfamily \#define C\+L\+\_\+\+B\+I\+N\+D\+A\+TA~sizeof(\char`\"{}.\+10101010\char`\"{})}
+
+
+
+Definition at line 61 of file lib.\+hpp.
+
+\mbox{\Hypertarget{lib_8hpp_a24ab287e14362b0a7547567cb9788bc8}\label{lib_8hpp_a24ab287e14362b0a7547567cb9788bc8}} 
+\index{lib.hpp@{lib.hpp}!CL\_CFSZ@{CL\_CFSZ}}
+\index{CL\_CFSZ@{CL\_CFSZ}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{CL\_CFSZ}{CL\_CFSZ}}
+{\footnotesize\ttfamily \#define C\+L\+\_\+\+C\+F\+SZ~(2$\ast$\mbox{\hyperlink{lib_8hpp_aa5dc27b9885666a113c0b1e63253d519}{C\+L\+\_\+\+ID}} + 64$\ast$\mbox{\hyperlink{lib_8hpp_a0f39afca5bbf5ee5f8e955c5deaad13d}{C\+L\+\_\+\+D\+A\+TA}})}
+
+
+
+Definition at line 64 of file lib.\+hpp.
+
+\mbox{\Hypertarget{lib_8hpp_a0f39afca5bbf5ee5f8e955c5deaad13d}\label{lib_8hpp_a0f39afca5bbf5ee5f8e955c5deaad13d}} 
+\index{lib.hpp@{lib.hpp}!CL\_DATA@{CL\_DATA}}
+\index{CL\_DATA@{CL\_DATA}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{CL\_DATA}{CL\_DATA}}
+{\footnotesize\ttfamily \#define C\+L\+\_\+\+D\+A\+TA~sizeof(\char`\"{}.AA\char`\"{})}
+
+
+
+Definition at line 60 of file lib.\+hpp.
+
+\mbox{\Hypertarget{lib_8hpp_aa5dc27b9885666a113c0b1e63253d519}\label{lib_8hpp_aa5dc27b9885666a113c0b1e63253d519}} 
+\index{lib.hpp@{lib.hpp}!CL\_ID@{CL\_ID}}
+\index{CL\_ID@{CL\_ID}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{CL\_ID}{CL\_ID}}
+{\footnotesize\ttfamily \#define C\+L\+\_\+\+ID~(sizeof(\char`\"{}12345678\#\#1\char`\"{}))}
+
+
+
+Definition at line 59 of file lib.\+hpp.
+
+\mbox{\Hypertarget{lib_8hpp_af9e09d741a73a962f59bf255a3dde5ba}\label{lib_8hpp_af9e09d741a73a962f59bf255a3dde5ba}} 
+\index{lib.hpp@{lib.hpp}!CL\_LONGCFSZ@{CL\_LONGCFSZ}}
+\index{CL\_LONGCFSZ@{CL\_LONGCFSZ}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{CL\_LONGCFSZ}{CL\_LONGCFSZ}}
+{\footnotesize\ttfamily \#define C\+L\+\_\+\+L\+O\+N\+G\+C\+F\+SZ~(2$\ast$\mbox{\hyperlink{lib_8hpp_aa5dc27b9885666a113c0b1e63253d519}{C\+L\+\_\+\+ID}} + sizeof(\char`\"{}   \mbox{[}255\mbox{]}  \char`\"{}) + (64$\ast$\mbox{\hyperlink{lib_8hpp_a72767faa4e150245b35f73a860117c28}{C\+L\+\_\+\+B\+I\+N\+D\+A\+TA}}))}
+
+
+
+Definition at line 67 of file lib.\+hpp.
+
+\mbox{\Hypertarget{lib_8hpp_a25f0c94164d62b6639ca4fc89e0c2a7f}\label{lib_8hpp_a25f0c94164d62b6639ca4fc89e0c2a7f}} 
+\index{lib.hpp@{lib.hpp}!SWAP\_DELIMITER@{SWAP\_DELIMITER}}
+\index{SWAP\_DELIMITER@{SWAP\_DELIMITER}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{SWAP\_DELIMITER}{SWAP\_DELIMITER}}
+{\footnotesize\ttfamily \#define S\+W\+A\+P\+\_\+\+D\+E\+L\+I\+M\+I\+T\+ER~\textquotesingle{}\`{}\textquotesingle{}}
+
+
+
+Definition at line 195 of file lib.\+hpp.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lib_8hpp_a11fb5a0af2476f5c60e5ed8772bb1c5d}\label{lib_8hpp_a11fb5a0af2476f5c60e5ed8772bb1c5d}} 
+\index{lib.hpp@{lib.hpp}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(format(printf, 1, 2))}]{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{lib_8hpp_a2fb50a7150c7b071cdf019d8edf68865}\label{lib_8hpp_a2fb50a7150c7b071cdf019d8edf68865}} 
+\index{lib.hpp@{lib.hpp}!asc2nibble@{asc2nibble}}
+\index{asc2nibble@{asc2nibble}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{asc2nibble()}{asc2nibble()}}
+{\footnotesize\ttfamily unsigned char asc2nibble (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Definition at line 113 of file lib.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{113                                  \{}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     \textcolor{keywordflow}{if} ((c >= \textcolor{charliteral}{'0'}) \&\& (c <= \textcolor{charliteral}{'9'}))}
+\DoxyCodeLine{116         \textcolor{keywordflow}{return} c -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     \textcolor{keywordflow}{if} ((c >= \textcolor{charliteral}{'A'}) \&\& (c <= \textcolor{charliteral}{'F'}))}
+\DoxyCodeLine{119         \textcolor{keywordflow}{return} c -\/ \textcolor{charliteral}{'A'} + 10;}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121     \textcolor{keywordflow}{if} ((c >= \textcolor{charliteral}{'a'}) \&\& (c <= \textcolor{charliteral}{'f'}))}
+\DoxyCodeLine{122         \textcolor{keywordflow}{return} c -\/ \textcolor{charliteral}{'a'} + 10;}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124     \textcolor{keywordflow}{return} 16; \textcolor{comment}{/* error */}}
+\DoxyCodeLine{125 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{lib_8hpp_a2fb50a7150c7b071cdf019d8edf68865_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lib_8hpp_a314d13c61c116f8a6561b6694961d92d}\label{lib_8hpp_a314d13c61c116f8a6561b6694961d92d}} 
+\index{lib.hpp@{lib.hpp}!can\_fd\_dlc2len@{can\_fd\_dlc2len}}
+\index{can\_fd\_dlc2len@{can\_fd\_dlc2len}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{can\_fd\_dlc2len()}{can\_fd\_dlc2len()}}
+{\footnotesize\ttfamily unsigned char can\+\_\+fd\+\_\+dlc2len (\begin{DoxyParamCaption}\item[{unsigned char}]{dlc }\end{DoxyParamCaption})}
+
+
+
+Definition at line 88 of file lib.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{89 \{}
+\DoxyCodeLine{90     \textcolor{keywordflow}{return} \mbox{\hyperlink{lib_8cpp_a7e3c4896fe3bff87ccb76b3e5ed4d44c}{dlc2len}}[dlc \& 0x0F];}
+\DoxyCodeLine{91 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{lib_8hpp_a4b92de23d4bba256e7cc2b35546c7abf}\label{lib_8hpp_a4b92de23d4bba256e7cc2b35546c7abf}} 
+\index{lib.hpp@{lib.hpp}!can\_fd\_len2dlc@{can\_fd\_len2dlc}}
+\index{can\_fd\_len2dlc@{can\_fd\_len2dlc}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{can\_fd\_len2dlc()}{can\_fd\_len2dlc()}}
+{\footnotesize\ttfamily unsigned char can\+\_\+fd\+\_\+len2dlc (\begin{DoxyParamCaption}\item[{unsigned char}]{len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 105 of file lib.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{106 \{}
+\DoxyCodeLine{107     \textcolor{keywordflow}{if} (len > 64)}
+\DoxyCodeLine{108         \textcolor{keywordflow}{return} 0xF;}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \textcolor{keywordflow}{return} \mbox{\hyperlink{lib_8cpp_a2adb4050e82d06e55182ae93e91a7ba3}{len2dlc}}[len];}
+\DoxyCodeLine{111 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{lib_8hpp_a5868ecd4868405035e8e31bd17621b56}\label{lib_8hpp_a5868ecd4868405035e8e31bd17621b56}} 
+\index{lib.hpp@{lib.hpp}!fprint\_canframe@{fprint\_canframe}}
+\index{fprint\_canframe@{fprint\_canframe}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{fprint\_canframe()}{fprint\_canframe()}}
+{\footnotesize\ttfamily void fprint\+\_\+canframe (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{stream,  }\item[{struct canfd\+\_\+frame $\ast$}]{cf,  }\item[{char $\ast$}]{eol,  }\item[{int}]{sep,  }\item[{int}]{maxdlen }\end{DoxyParamCaption})}
+
+
+
+Definition at line 260 of file lib.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{260                                                                                              \{}
+\DoxyCodeLine{261     \textcolor{comment}{/* documentation see lib.h */}}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{263     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{lib_8hpp_a24ab287e14362b0a7547567cb9788bc8}{CL\_CFSZ}}]; \textcolor{comment}{/* max length */}}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{265     \mbox{\hyperlink{lib_8cpp_a2054e20d675cba9680fb842b57171ca9}{sprint\_canframe}}(buf, cf, sep, maxdlen);}
+\DoxyCodeLine{266     fprintf(stream, \textcolor{stringliteral}{"\%s"}, buf);}
+\DoxyCodeLine{267     \textcolor{keywordflow}{if} (eol)}
+\DoxyCodeLine{268         fprintf(stream, \textcolor{stringliteral}{"\%s"}, eol);}
+\DoxyCodeLine{269 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lib_8hpp_a5868ecd4868405035e8e31bd17621b56_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lib_8hpp_a439c6f846f7b4de16d848d3a2dc85c00}\label{lib_8hpp_a439c6f846f7b4de16d848d3a2dc85c00}} 
+\index{lib.hpp@{lib.hpp}!fprint\_long\_canframe@{fprint\_long\_canframe}}
+\index{fprint\_long\_canframe@{fprint\_long\_canframe}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{fprint\_long\_canframe()}{fprint\_long\_canframe()}}
+{\footnotesize\ttfamily void fprint\+\_\+long\+\_\+canframe (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{stream,  }\item[{struct canfd\+\_\+frame $\ast$}]{cf,  }\item[{char $\ast$}]{eol,  }\item[{int}]{view,  }\item[{int}]{maxdlen }\end{DoxyParamCaption})}
+
+
+
+Definition at line 342 of file lib.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{342                                                                                                    \{}
+\DoxyCodeLine{343     \textcolor{comment}{/* documentation see lib.h */}}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{345     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{lib_8hpp_af9e09d741a73a962f59bf255a3dde5ba}{CL\_LONGCFSZ}}];}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{347     \mbox{\hyperlink{lib_8cpp_aa8524b833332ae4151e565c5b7f26995}{sprint\_long\_canframe}}(buf, cf, view, maxdlen);}
+\DoxyCodeLine{348     fprintf(stream, \textcolor{stringliteral}{"\%s"}, buf);}
+\DoxyCodeLine{349     \textcolor{keywordflow}{if} ((view \& \mbox{\hyperlink{lib_8hpp_a773af1058396ff760914755a42479b1e}{CANLIB\_VIEW\_ERROR}}) \&\& (cf-\/>can\_id \& CAN\_ERR\_FLAG)) \{}
+\DoxyCodeLine{350         \mbox{\hyperlink{lib_8cpp_a3e61cd903c05cb99c7c6af06c958d6d6}{snprintf\_can\_error\_frame}}(buf, \textcolor{keyword}{sizeof}(buf), cf, \textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t"});}
+\DoxyCodeLine{351         fprintf(stream, \textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\%s"}, buf);}
+\DoxyCodeLine{352     \}}
+\DoxyCodeLine{353     \textcolor{keywordflow}{if} (eol)}
+\DoxyCodeLine{354         fprintf(stream, \textcolor{stringliteral}{"\%s"}, eol);}
+\DoxyCodeLine{355 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lib_8hpp_a439c6f846f7b4de16d848d3a2dc85c00_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{lib_8hpp_a439c6f846f7b4de16d848d3a2dc85c00_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lib_8hpp_ae32157c29279bc7c3aec3779b029737f}\label{lib_8hpp_ae32157c29279bc7c3aec3779b029737f}} 
+\index{lib.hpp@{lib.hpp}!hexstring2data@{hexstring2data}}
+\index{hexstring2data@{hexstring2data}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{hexstring2data()}{hexstring2data()}}
+{\footnotesize\ttfamily int hexstring2data (\begin{DoxyParamCaption}\item[{char $\ast$}]{arg,  }\item[{unsigned char $\ast$}]{data,  }\item[{int}]{maxdlen }\end{DoxyParamCaption})}
+
+
+
+Definition at line 127 of file lib.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{127                                                                 \{}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129     \textcolor{keywordtype}{int} len = strlen(arg);}
+\DoxyCodeLine{130     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{131     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} tmp;}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133     \textcolor{keywordflow}{if} (!len || len\%2 || len > maxdlen*2)}
+\DoxyCodeLine{134         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136     memset(data, 0, maxdlen);}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138     \textcolor{keywordflow}{for} (i=0; i < len/2; i++) \{}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140         tmp = \mbox{\hyperlink{lib_8cpp_a2fb50a7150c7b071cdf019d8edf68865}{asc2nibble}}(*(arg+(2*i)));}
+\DoxyCodeLine{141         \textcolor{keywordflow}{if} (tmp > 0x0F)}
+\DoxyCodeLine{142             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144         data[i] = (tmp << 4);}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146         tmp = \mbox{\hyperlink{lib_8cpp_a2fb50a7150c7b071cdf019d8edf68865}{asc2nibble}}(*(arg+(2*i)+1));}
+\DoxyCodeLine{147         \textcolor{keywordflow}{if} (tmp > 0x0F)}
+\DoxyCodeLine{148             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150         data[i] |= tmp;}
+\DoxyCodeLine{151     \}}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{154 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=275pt]{lib_8hpp_ae32157c29279bc7c3aec3779b029737f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lib_8hpp_a9dda95b2af6ba1b385094353207e304c}\label{lib_8hpp_a9dda95b2af6ba1b385094353207e304c}} 
+\index{lib.hpp@{lib.hpp}!parse\_canframe@{parse\_canframe}}
+\index{parse\_canframe@{parse\_canframe}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{parse\_canframe()}{parse\_canframe()}}
+{\footnotesize\ttfamily int parse\+\_\+canframe (\begin{DoxyParamCaption}\item[{char $\ast$}]{cs,  }\item[{struct canfd\+\_\+frame $\ast$}]{cf }\end{DoxyParamCaption})}
+
+
+
+Definition at line 156 of file lib.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{156                                                      \{}
+\DoxyCodeLine{157     \textcolor{comment}{/* documentation see lib.h */}}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159     \textcolor{keywordtype}{int} i, idx, dlen, len;}
+\DoxyCodeLine{160     \textcolor{keywordtype}{int} maxdlen = CAN\_MAX\_DLEN;}
+\DoxyCodeLine{161     \textcolor{keywordtype}{int} ret = CAN\_MTU;}
+\DoxyCodeLine{162     canid\_t tmp;}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164     len = strlen(cs);}
+\DoxyCodeLine{165     \textcolor{comment}{//printf("'\%s' len \%d\(\backslash\)n", cs, len);}}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167     memset(cf, 0, \textcolor{keyword}{sizeof}(*cf)); \textcolor{comment}{/* init CAN FD frame, e.g. LEN = 0 */}}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169     \textcolor{keywordflow}{if} (len < 4)}
+\DoxyCodeLine{170         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172     \textcolor{keywordflow}{if} (cs[3] == \mbox{\hyperlink{lib_8cpp_a89ba5b7618edf8d7a76cf1d234d05b33}{CANID\_DELIM}}) \{ \textcolor{comment}{/* 3 digits */}}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174         idx = 4;}
+\DoxyCodeLine{175         \textcolor{keywordflow}{for} (i=0; i<3; i++)\{}
+\DoxyCodeLine{176             \textcolor{keywordflow}{if} ((tmp = \mbox{\hyperlink{lib_8cpp_a2fb50a7150c7b071cdf019d8edf68865}{asc2nibble}}(cs[i])) > 0x0F)}
+\DoxyCodeLine{177                 \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{178             cf-\/>can\_id |= (tmp << (2-\/i)*4);}
+\DoxyCodeLine{179         \}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cs[8] == \mbox{\hyperlink{lib_8cpp_a89ba5b7618edf8d7a76cf1d234d05b33}{CANID\_DELIM}}) \{ \textcolor{comment}{/* 8 digits */}}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183         idx = 9;}
+\DoxyCodeLine{184         \textcolor{keywordflow}{for} (i=0; i<8; i++)\{}
+\DoxyCodeLine{185             \textcolor{keywordflow}{if} ((tmp = \mbox{\hyperlink{lib_8cpp_a2fb50a7150c7b071cdf019d8edf68865}{asc2nibble}}(cs[i])) > 0x0F)}
+\DoxyCodeLine{186                 \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{187             cf-\/>can\_id |= (tmp << (7-\/i)*4);}
+\DoxyCodeLine{188         \}}
+\DoxyCodeLine{189         \textcolor{keywordflow}{if} (!(cf-\/>can\_id \& CAN\_ERR\_FLAG)) \textcolor{comment}{/* 8 digits but no errorframe?  */}}
+\DoxyCodeLine{190             cf-\/>can\_id |= CAN\_EFF\_FLAG;   \textcolor{comment}{/* then it is an extended frame */}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192     \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{193         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195     \textcolor{keywordflow}{if}((cs[idx] == \textcolor{charliteral}{'R'}) || (cs[idx] == \textcolor{charliteral}{'r'}))\{ \textcolor{comment}{/* RTR frame */}}
+\DoxyCodeLine{196         cf-\/>can\_id |= CAN\_RTR\_FLAG;}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{198         \textcolor{comment}{/* check for optional DLC value for CAN 2.0B frames */}}
+\DoxyCodeLine{199         \textcolor{keywordflow}{if}(cs[++idx] \&\& (tmp = \mbox{\hyperlink{lib_8cpp_a2fb50a7150c7b071cdf019d8edf68865}{asc2nibble}}(cs[idx++])) <= CAN\_MAX\_DLEN) \{}
+\DoxyCodeLine{200             cf-\/>len = tmp;}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202             \textcolor{comment}{/* check for optional raw DLC value for CAN 2.0B frames */}}
+\DoxyCodeLine{203             \textcolor{keywordflow}{if} ((tmp == CAN\_MAX\_DLEN) \&\& (cs[idx++] == \mbox{\hyperlink{lib_8cpp_ab45e69254e77c146ae602b97160cc5b8}{CC\_DLC\_DELIM}})) \{}
+\DoxyCodeLine{204                 tmp = \mbox{\hyperlink{lib_8cpp_a2fb50a7150c7b071cdf019d8edf68865}{asc2nibble}}(cs[idx]);}
+\DoxyCodeLine{205                 \textcolor{keywordflow}{if} ((tmp > CAN\_MAX\_DLEN) \&\& (tmp <= CAN\_MAX\_DLC)) \{}
+\DoxyCodeLine{206                     \textcolor{keyword}{struct }can\_frame *ccf = (\textcolor{keyword}{struct }can\_frame *)cf;}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208                     ccf-\/>can\_dlc = tmp;}
+\DoxyCodeLine{209                 \}}
+\DoxyCodeLine{210             \}}
+\DoxyCodeLine{211         \}}
+\DoxyCodeLine{212         \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{213     \}}
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215     \textcolor{keywordflow}{if} (cs[idx] == \mbox{\hyperlink{lib_8cpp_a89ba5b7618edf8d7a76cf1d234d05b33}{CANID\_DELIM}}) \{ \textcolor{comment}{/* CAN FD frame escape char '\#\#' */}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217         maxdlen = CANFD\_MAX\_DLEN;}
+\DoxyCodeLine{218         ret = CANFD\_MTU;}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220         \textcolor{comment}{/* CAN FD frame <canid>\#\#<flags><data>* */}}
+\DoxyCodeLine{221         \textcolor{keywordflow}{if} ((tmp = \mbox{\hyperlink{lib_8cpp_a2fb50a7150c7b071cdf019d8edf68865}{asc2nibble}}(cs[idx+1])) > 0x0F)}
+\DoxyCodeLine{222             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224         cf-\/>flags = tmp;}
+\DoxyCodeLine{225         idx += 2;}
+\DoxyCodeLine{226     \}}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228     \textcolor{keywordflow}{for} (i=0, dlen=0; i < maxdlen; i++)\{}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230         \textcolor{keywordflow}{if}(cs[idx] == \mbox{\hyperlink{lib_8cpp_ae5ff3736fadbe35062020032b42356fb}{DATA\_SEPERATOR}}) \textcolor{comment}{/* skip (optional) separator */}}
+\DoxyCodeLine{231             idx++;}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233         \textcolor{keywordflow}{if}(idx >= len) \textcolor{comment}{/* end of string => end of data */}}
+\DoxyCodeLine{234             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{236         \textcolor{keywordflow}{if} ((tmp = \mbox{\hyperlink{lib_8cpp_a2fb50a7150c7b071cdf019d8edf68865}{asc2nibble}}(cs[idx++])) > 0x0F)}
+\DoxyCodeLine{237             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{238         cf-\/>data[i] = (tmp << 4);}
+\DoxyCodeLine{239         \textcolor{keywordflow}{if} ((tmp = \mbox{\hyperlink{lib_8cpp_a2fb50a7150c7b071cdf019d8edf68865}{asc2nibble}}(cs[idx++])) > 0x0F)}
+\DoxyCodeLine{240             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{241         cf-\/>data[i] |= tmp;}
+\DoxyCodeLine{242         dlen++;}
+\DoxyCodeLine{243     \}}
+\DoxyCodeLine{244     cf-\/>len = dlen;}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{246     \textcolor{comment}{/* check for extra DLC when having a Classic CAN with 8 bytes payload */}}
+\DoxyCodeLine{247     \textcolor{keywordflow}{if} ((maxdlen == CAN\_MAX\_DLEN) \&\& (dlen == CAN\_MAX\_DLEN) \&\& (cs[idx++] == \mbox{\hyperlink{lib_8cpp_ab45e69254e77c146ae602b97160cc5b8}{CC\_DLC\_DELIM}})) \{}
+\DoxyCodeLine{248         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} dlc = \mbox{\hyperlink{lib_8cpp_a2fb50a7150c7b071cdf019d8edf68865}{asc2nibble}}(cs[idx]);}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250         \textcolor{keywordflow}{if} ((dlc > CAN\_MAX\_DLEN) \&\& (dlc <= CAN\_MAX\_DLC)) \{}
+\DoxyCodeLine{251             \textcolor{keyword}{struct }can\_frame *ccf = (\textcolor{keyword}{struct }can\_frame *)cf;}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253             ccf-\/>can\_dlc = dlc;}
+\DoxyCodeLine{254         \}}
+\DoxyCodeLine{255     \}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{258 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{lib_8hpp_a9dda95b2af6ba1b385094353207e304c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lib_8hpp_a3e61cd903c05cb99c7c6af06c958d6d6}\label{lib_8hpp_a3e61cd903c05cb99c7c6af06c958d6d6}} 
+\index{lib.hpp@{lib.hpp}!snprintf\_can\_error\_frame@{snprintf\_can\_error\_frame}}
+\index{snprintf\_can\_error\_frame@{snprintf\_can\_error\_frame}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{snprintf\_can\_error\_frame()}{snprintf\_can\_error\_frame()}}
+{\footnotesize\ttfamily void snprintf\+\_\+can\+\_\+error\+\_\+frame (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{size\+\_\+t}]{len,  }\item[{const struct canfd\+\_\+frame $\ast$}]{cf,  }\item[{const char $\ast$}]{sep }\end{DoxyParamCaption})}
+
+
+
+Definition at line 636 of file lib.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{638 \{}
+\DoxyCodeLine{639     canid\_t cls, mask;}
+\DoxyCodeLine{640     \textcolor{keywordtype}{int} i, n = 0, classes = 0;}
+\DoxyCodeLine{641     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *defsep = \textcolor{stringliteral}{","};}
+\DoxyCodeLine{642 }
+\DoxyCodeLine{643     \textcolor{keywordflow}{if} (!(cf-\/>can\_id \& CAN\_ERR\_FLAG))}
+\DoxyCodeLine{644         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{645 }
+\DoxyCodeLine{646     cls = cf-\/>can\_id \& CAN\_EFF\_MASK;}
+\DoxyCodeLine{647     \textcolor{keywordflow}{if} (cls > (1 << \mbox{\hyperlink{lib_8cpp_a3c7c6a69f690fc8d2abf0e385280a532}{ARRAY\_SIZE}}(\mbox{\hyperlink{lib_8cpp_a287f1cd02e83ad422711eaed4083b21a}{error\_classes}}))) \{}
+\DoxyCodeLine{648         fprintf(stderr, \textcolor{stringliteral}{"Error class \%\#x is invalid\(\backslash\)n"}, cls);}
+\DoxyCodeLine{649         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{650     \}}
+\DoxyCodeLine{651 }
+\DoxyCodeLine{652     \textcolor{keywordflow}{if} (!sep)}
+\DoxyCodeLine{653         sep = defsep;}
+\DoxyCodeLine{654 }
+\DoxyCodeLine{655     \textcolor{keywordflow}{for} (i = 0; i < (int)\mbox{\hyperlink{lib_8cpp_a3c7c6a69f690fc8d2abf0e385280a532}{ARRAY\_SIZE}}(\mbox{\hyperlink{lib_8cpp_a287f1cd02e83ad422711eaed4083b21a}{error\_classes}}); i++) \{}
+\DoxyCodeLine{656         mask = 1 << i;}
+\DoxyCodeLine{657         \textcolor{keywordflow}{if} (cls \& mask) \{}
+\DoxyCodeLine{658             \textcolor{keywordtype}{int} tmp\_n = 0;}
+\DoxyCodeLine{659             \textcolor{keywordflow}{if} (classes)\{}
+\DoxyCodeLine{660                 \textcolor{comment}{/* Fix for potential buffer overflow https://lgtm.com/rules/1505913226124/ */}}
+\DoxyCodeLine{661                 tmp\_n = snprintf(buf + n, len -\/ n, \textcolor{stringliteral}{"\%s"}, sep);}
+\DoxyCodeLine{662                 \textcolor{keywordflow}{if} (tmp\_n < 0 || (\textcolor{keywordtype}{size\_t})tmp\_n >= len -\/ n)\{}
+\DoxyCodeLine{663                     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{664                 \}}
+\DoxyCodeLine{665                 n += tmp\_n;}
+\DoxyCodeLine{666             \}}
+\DoxyCodeLine{667             tmp\_n = snprintf(buf + n, len -\/ n, \textcolor{stringliteral}{"\%s"}, \mbox{\hyperlink{lib_8cpp_a287f1cd02e83ad422711eaed4083b21a}{error\_classes}}[i]);}
+\DoxyCodeLine{668             \textcolor{keywordflow}{if} (tmp\_n < 0 || (\textcolor{keywordtype}{size\_t})tmp\_n >= len -\/ n)\{}
+\DoxyCodeLine{669                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{670             \}}
+\DoxyCodeLine{671             n += tmp\_n;}
+\DoxyCodeLine{672             \textcolor{keywordflow}{if} (mask == CAN\_ERR\_LOSTARB)}
+\DoxyCodeLine{673                 n += \mbox{\hyperlink{lib_8cpp_a57bea525c2a2db9591fd3488bb1fcae3}{snprintf\_error\_lostarb}}(buf + n, len -\/ n,}
+\DoxyCodeLine{674                                cf);}
+\DoxyCodeLine{675             \textcolor{keywordflow}{if} (mask == CAN\_ERR\_CRTL)}
+\DoxyCodeLine{676                 n += \mbox{\hyperlink{lib_8cpp_a57d85d8c305edab5895990b4938ca442}{snprintf\_error\_ctrl}}(buf + n, len -\/ n, cf);}
+\DoxyCodeLine{677             \textcolor{keywordflow}{if} (mask == CAN\_ERR\_PROT)}
+\DoxyCodeLine{678                 n += \mbox{\hyperlink{lib_8cpp_a4168fbd62f39d72b28632f2f42dba3d8}{snprintf\_error\_prot}}(buf + n, len -\/ n, cf);}
+\DoxyCodeLine{679             classes++;}
+\DoxyCodeLine{680         \}}
+\DoxyCodeLine{681     \}}
+\DoxyCodeLine{682 }
+\DoxyCodeLine{683     \textcolor{keywordflow}{if} (cf-\/>can\_id \& CAN\_ERR\_CRTL || cf-\/>data[6] || cf-\/>data[7]) \{}
+\DoxyCodeLine{684         n += snprintf(buf + n, len -\/ n, \textcolor{stringliteral}{"\%s"}, sep);}
+\DoxyCodeLine{685         n += snprintf(buf + n, len -\/ n, \textcolor{stringliteral}{"error-\/counter-\/tx-\/rx\{\{\%d\}\{\%d\}\}"},}
+\DoxyCodeLine{686                   cf-\/>data[6], cf-\/>data[7]);}
+\DoxyCodeLine{687     \}}
+\DoxyCodeLine{688 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lib_8hpp_a3e61cd903c05cb99c7c6af06c958d6d6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lib_8hpp_a3e61cd903c05cb99c7c6af06c958d6d6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lib_8hpp_a2054e20d675cba9680fb842b57171ca9}\label{lib_8hpp_a2054e20d675cba9680fb842b57171ca9}} 
+\index{lib.hpp@{lib.hpp}!sprint\_canframe@{sprint\_canframe}}
+\index{sprint\_canframe@{sprint\_canframe}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{sprint\_canframe()}{sprint\_canframe()}}
+{\footnotesize\ttfamily void sprint\+\_\+canframe (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{struct canfd\+\_\+frame $\ast$}]{cf,  }\item[{int}]{sep,  }\item[{int}]{maxdlen }\end{DoxyParamCaption})}
+
+
+
+Definition at line 271 of file lib.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{271                                                                                \{}
+\DoxyCodeLine{272     \textcolor{comment}{/* documentation see lib.h */}}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{274     \textcolor{keywordtype}{int} i,offset;}
+\DoxyCodeLine{275     \textcolor{keywordtype}{int} len = (cf-\/>len > maxdlen) ? maxdlen : cf-\/>len;}
+\DoxyCodeLine{276 }
+\DoxyCodeLine{277     \mbox{\hyperlink{_c_make_lists_8txt_addea44dde8a31700a77e5b107ddd2f38}{if}} (cf-\/>can\_id \& CAN\_ERR\_FLAG) \{}
+\DoxyCodeLine{278         \mbox{\hyperlink{lib_8cpp_a2a22284a0c82da1584b7f91c6d47d83e}{put\_eff\_id}}(buf, cf-\/>can\_id \& (CAN\_ERR\_MASK|CAN\_ERR\_FLAG));}
+\DoxyCodeLine{279         buf[8] = \textcolor{charliteral}{'\#'};}
+\DoxyCodeLine{280         offset = 9;}
+\DoxyCodeLine{281     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cf-\/>can\_id \& CAN\_EFF\_FLAG) \{}
+\DoxyCodeLine{282         \mbox{\hyperlink{lib_8cpp_a2a22284a0c82da1584b7f91c6d47d83e}{put\_eff\_id}}(buf, cf-\/>can\_id \& CAN\_EFF\_MASK);}
+\DoxyCodeLine{283         buf[8] = \textcolor{charliteral}{'\#'};}
+\DoxyCodeLine{284         offset = 9;}
+\DoxyCodeLine{285     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{286         \mbox{\hyperlink{lib_8cpp_a2fb5dda74ca9cc155b23c150092751d9}{put\_sff\_id}}(buf, cf-\/>can\_id \& CAN\_SFF\_MASK);}
+\DoxyCodeLine{287         buf[3] = \textcolor{charliteral}{'\#'};}
+\DoxyCodeLine{288         offset = 4;}
+\DoxyCodeLine{289     \}}
+\DoxyCodeLine{290 }
+\DoxyCodeLine{291     \textcolor{comment}{/* standard CAN frames may have RTR enabled. There are no ERR frames with RTR */}}
+\DoxyCodeLine{292     \textcolor{keywordflow}{if} (maxdlen == CAN\_MAX\_DLEN \&\& cf-\/>can\_id \& CAN\_RTR\_FLAG) \{}
+\DoxyCodeLine{293         buf[offset++] = \textcolor{charliteral}{'R'};}
+\DoxyCodeLine{294         \textcolor{comment}{/* print a given CAN 2.0B DLC if it's not zero */}}
+\DoxyCodeLine{295         \textcolor{keywordflow}{if} (cf-\/>len \&\& cf-\/>len <= CAN\_MAX\_DLEN) \{}
+\DoxyCodeLine{296             buf[offset++] = \mbox{\hyperlink{lib_8cpp_aaf3e0d09fef01b9b94bf4f17f6782273}{hex\_asc\_upper\_lo}}(cf-\/>len);}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{298             \textcolor{comment}{/* check for optional raw DLC value for CAN 2.0B frames */}}
+\DoxyCodeLine{299             \textcolor{keywordflow}{if} (cf-\/>len == CAN\_MAX\_DLEN) \{}
+\DoxyCodeLine{300                 \textcolor{keyword}{struct }can\_frame *ccf = (\textcolor{keyword}{struct }can\_frame *)cf;}
+\DoxyCodeLine{301 }
+\DoxyCodeLine{302                 \textcolor{keywordflow}{if} ((ccf-\/>can\_dlc > CAN\_MAX\_DLEN) \&\& (ccf-\/>can\_dlc <= CAN\_MAX\_DLC)) \{}
+\DoxyCodeLine{303                     buf[offset++] = \mbox{\hyperlink{lib_8cpp_ab45e69254e77c146ae602b97160cc5b8}{CC\_DLC\_DELIM}};}
+\DoxyCodeLine{304                     buf[offset++] = \mbox{\hyperlink{lib_8cpp_aaf3e0d09fef01b9b94bf4f17f6782273}{hex\_asc\_upper\_lo}}(ccf-\/>can\_dlc);}
+\DoxyCodeLine{305                 \}}
+\DoxyCodeLine{306             \}}
+\DoxyCodeLine{307         \}}
+\DoxyCodeLine{308 }
+\DoxyCodeLine{309         buf[offset] = 0;}
+\DoxyCodeLine{310         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{311     \}}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{313     \textcolor{keywordflow}{if} (maxdlen == CANFD\_MAX\_DLEN) \{}
+\DoxyCodeLine{314         \textcolor{comment}{/* add CAN FD specific escape char and flags */}}
+\DoxyCodeLine{315         buf[offset++] = \textcolor{charliteral}{'\#'};}
+\DoxyCodeLine{316         buf[offset++] = \mbox{\hyperlink{lib_8cpp_aaf3e0d09fef01b9b94bf4f17f6782273}{hex\_asc\_upper\_lo}}(cf-\/>flags);}
+\DoxyCodeLine{317         \textcolor{keywordflow}{if} (sep \&\& len)}
+\DoxyCodeLine{318             buf[offset++] = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{319     \}}
+\DoxyCodeLine{320 }
+\DoxyCodeLine{321     \textcolor{keywordflow}{for} (i = 0; i < len; i++) \{}
+\DoxyCodeLine{322         \mbox{\hyperlink{lib_8cpp_a0bf6f7c4e2cbab5afae4387ee6f5d67b}{put\_hex\_byte}}(buf + offset, cf-\/>data[i]);}
+\DoxyCodeLine{323         offset += 2;}
+\DoxyCodeLine{324         \textcolor{keywordflow}{if} (sep \&\& (i+1 < len))}
+\DoxyCodeLine{325             buf[offset++] = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{326     \}}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{328     \textcolor{comment}{/* check for extra DLC when having a Classic CAN with 8 bytes payload */}}
+\DoxyCodeLine{329     \textcolor{keywordflow}{if} ((maxdlen == CAN\_MAX\_DLEN) \&\& (len == CAN\_MAX\_DLEN)) \{}
+\DoxyCodeLine{330         \textcolor{keyword}{struct }can\_frame *ccf = (\textcolor{keyword}{struct }can\_frame *)cf;}
+\DoxyCodeLine{331         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} dlc = ccf-\/>can\_dlc;}
+\DoxyCodeLine{332 }
+\DoxyCodeLine{333         \textcolor{keywordflow}{if} ((dlc > CAN\_MAX\_DLEN) \&\& (dlc <= CAN\_MAX\_DLC)) \{}
+\DoxyCodeLine{334             buf[offset++] = \mbox{\hyperlink{lib_8cpp_ab45e69254e77c146ae602b97160cc5b8}{CC\_DLC\_DELIM}};}
+\DoxyCodeLine{335             buf[offset++] = \mbox{\hyperlink{lib_8cpp_aaf3e0d09fef01b9b94bf4f17f6782273}{hex\_asc\_upper\_lo}}(dlc);}
+\DoxyCodeLine{336         \}}
+\DoxyCodeLine{337     \}}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339     buf[offset] = 0;}
+\DoxyCodeLine{340 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{lib_8hpp_a2054e20d675cba9680fb842b57171ca9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{lib_8hpp_a2054e20d675cba9680fb842b57171ca9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lib_8hpp_aa8524b833332ae4151e565c5b7f26995}\label{lib_8hpp_aa8524b833332ae4151e565c5b7f26995}} 
+\index{lib.hpp@{lib.hpp}!sprint\_long\_canframe@{sprint\_long\_canframe}}
+\index{sprint\_long\_canframe@{sprint\_long\_canframe}!lib.hpp@{lib.hpp}}
+\doxysubsubsection{\texorpdfstring{sprint\_long\_canframe()}{sprint\_long\_canframe()}}
+{\footnotesize\ttfamily void sprint\+\_\+long\+\_\+canframe (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{struct canfd\+\_\+frame $\ast$}]{cf,  }\item[{int}]{view,  }\item[{int}]{maxdlen }\end{DoxyParamCaption})}
+
+
+
+Definition at line 357 of file lib.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{357                                                                                      \{}
+\DoxyCodeLine{358     \textcolor{comment}{/* documentation see lib.h */}}
+\DoxyCodeLine{359 }
+\DoxyCodeLine{360     \textcolor{keywordtype}{int} i, j, dlen, offset;}
+\DoxyCodeLine{361     \textcolor{keywordtype}{int} len = (cf-\/>len > maxdlen)? maxdlen : cf-\/>len;}
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363     \textcolor{comment}{/* initialize space for CAN-\/ID and length information */}}
+\DoxyCodeLine{364     memset(buf, \textcolor{charliteral}{' '}, 15);}
+\DoxyCodeLine{365 }
+\DoxyCodeLine{366     \textcolor{keywordflow}{if} (cf-\/>can\_id \& CAN\_ERR\_FLAG) \{}
+\DoxyCodeLine{367         \mbox{\hyperlink{lib_8cpp_a2a22284a0c82da1584b7f91c6d47d83e}{put\_eff\_id}}(buf, cf-\/>can\_id \& (CAN\_ERR\_MASK|CAN\_ERR\_FLAG));}
+\DoxyCodeLine{368         offset = 10;}
+\DoxyCodeLine{369     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cf-\/>can\_id \& CAN\_EFF\_FLAG) \{}
+\DoxyCodeLine{370         \mbox{\hyperlink{lib_8cpp_a2a22284a0c82da1584b7f91c6d47d83e}{put\_eff\_id}}(buf, cf-\/>can\_id \& CAN\_EFF\_MASK);}
+\DoxyCodeLine{371         offset = 10;}
+\DoxyCodeLine{372     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{373         \textcolor{keywordflow}{if} (view \& \mbox{\hyperlink{lib_8hpp_a8ca847bbf0eced9ecb7619b78d767ec5}{CANLIB\_VIEW\_INDENT\_SFF}}) \{}
+\DoxyCodeLine{374             \mbox{\hyperlink{lib_8cpp_a2fb5dda74ca9cc155b23c150092751d9}{put\_sff\_id}}(buf + 5, cf-\/>can\_id \& CAN\_SFF\_MASK);}
+\DoxyCodeLine{375             offset = 10;}
+\DoxyCodeLine{376         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{377             \mbox{\hyperlink{lib_8cpp_a2fb5dda74ca9cc155b23c150092751d9}{put\_sff\_id}}(buf, cf-\/>can\_id \& CAN\_SFF\_MASK);}
+\DoxyCodeLine{378             offset = 5;}
+\DoxyCodeLine{379         \}}
+\DoxyCodeLine{380     \}}
+\DoxyCodeLine{381 }
+\DoxyCodeLine{382     \textcolor{comment}{/* The len value is sanitized by maxdlen (see above) */}}
+\DoxyCodeLine{383     \textcolor{keywordflow}{if} (maxdlen == CAN\_MAX\_DLEN) \{}
+\DoxyCodeLine{384         \textcolor{keywordflow}{if} (view \& \mbox{\hyperlink{lib_8hpp_aab8d46388198d8b749894d34f8132c01}{CANLIB\_VIEW\_LEN8\_DLC}}) \{}
+\DoxyCodeLine{385             \textcolor{keyword}{struct }can\_frame *ccf = (\textcolor{keyword}{struct }can\_frame *)cf;}
+\DoxyCodeLine{386             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} dlc = ccf-\/>can\_dlc;}
+\DoxyCodeLine{387 }
+\DoxyCodeLine{388             \textcolor{comment}{/* fall back to len if we don't have a valid DLC > 8 */}}
+\DoxyCodeLine{389             \textcolor{keywordflow}{if} (!((len == CAN\_MAX\_DLEN) \&\& (dlc > CAN\_MAX\_DLEN) \&\&}
+\DoxyCodeLine{390                   (dlc <= CAN\_MAX\_DLC)))}
+\DoxyCodeLine{391                 dlc = len;}
+\DoxyCodeLine{392 }
+\DoxyCodeLine{393             buf[offset + 1] = \textcolor{charliteral}{'\{'};}
+\DoxyCodeLine{394             buf[offset + 2] = \mbox{\hyperlink{lib_8cpp_a1edd02db2ed4fa9ab6b80d89870bbe70}{hex\_asc\_upper}}[dlc];}
+\DoxyCodeLine{395             buf[offset + 3] = \textcolor{charliteral}{'\}'};}
+\DoxyCodeLine{396         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{397             buf[offset + 1] = \textcolor{charliteral}{'['};}
+\DoxyCodeLine{398             buf[offset + 2] = len + \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{399             buf[offset + 3] = \textcolor{charliteral}{']'};}
+\DoxyCodeLine{400         \}}
+\DoxyCodeLine{401 }
+\DoxyCodeLine{402         \textcolor{comment}{/* standard CAN frames may have RTR enabled */}}
+\DoxyCodeLine{403         \textcolor{keywordflow}{if} (cf-\/>can\_id \& CAN\_RTR\_FLAG) \{}
+\DoxyCodeLine{404             sprintf(buf+offset+5, \textcolor{stringliteral}{" remote request"});}
+\DoxyCodeLine{405             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{406         \}}
+\DoxyCodeLine{407     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{408         buf[offset] = \textcolor{charliteral}{'['};}
+\DoxyCodeLine{409         buf[offset + 1] = (len/10) + \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{410         buf[offset + 2] = (len\%10) + \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{411         buf[offset + 3] = \textcolor{charliteral}{']'};}
+\DoxyCodeLine{412     \}}
+\DoxyCodeLine{413     offset += 5;}
+\DoxyCodeLine{414 }
+\DoxyCodeLine{415     \textcolor{keywordflow}{if} (view \& \mbox{\hyperlink{lib_8hpp_a0858a5187c410719400d35a3eed5f735}{CANLIB\_VIEW\_BINARY}}) \{}
+\DoxyCodeLine{416         dlen = 9; \textcolor{comment}{/* \_10101010 */}}
+\DoxyCodeLine{417         \textcolor{keywordflow}{if} (view \& \mbox{\hyperlink{lib_8hpp_a9a1b57149c7186b2a6c5f5a4c97121f3}{CANLIB\_VIEW\_SWAP}}) \{}
+\DoxyCodeLine{418             \textcolor{keywordflow}{for} (i = len -\/ 1; i >= 0; i-\/-\/) \{}
+\DoxyCodeLine{419                 buf[offset++] = (i == len-\/1)?\textcolor{charliteral}{' '}:\mbox{\hyperlink{lib_8hpp_a25f0c94164d62b6639ca4fc89e0c2a7f}{SWAP\_DELIMITER}};}
+\DoxyCodeLine{420                 \textcolor{keywordflow}{for} (j = 7; j >= 0; j-\/-\/)}
+\DoxyCodeLine{421                     buf[offset++] = (1<<j \& cf-\/>data[i])?\textcolor{charliteral}{'1'}:\textcolor{charliteral}{'0'};}
+\DoxyCodeLine{422             \}}
+\DoxyCodeLine{423         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{424             \textcolor{keywordflow}{for} (i = 0; i < len; i++) \{}
+\DoxyCodeLine{425                 buf[offset++] = \textcolor{charliteral}{' '};}
+\DoxyCodeLine{426                 \textcolor{keywordflow}{for} (j = 7; j >= 0; j-\/-\/)}
+\DoxyCodeLine{427                     buf[offset++] = (1<<j \& cf-\/>data[i])?\textcolor{charliteral}{'1'}:\textcolor{charliteral}{'0'};}
+\DoxyCodeLine{428             \}}
+\DoxyCodeLine{429         \}}
+\DoxyCodeLine{430     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{431         dlen = 3; \textcolor{comment}{/* \_AA */}}
+\DoxyCodeLine{432         \textcolor{keywordflow}{if} (view \& \mbox{\hyperlink{lib_8hpp_a9a1b57149c7186b2a6c5f5a4c97121f3}{CANLIB\_VIEW\_SWAP}}) \{}
+\DoxyCodeLine{433             \textcolor{keywordflow}{for} (i = len -\/ 1; i >= 0; i-\/-\/) \{}
+\DoxyCodeLine{434                 \textcolor{keywordflow}{if} (i == len-\/1)}
+\DoxyCodeLine{435                     buf[offset++] = \textcolor{charliteral}{' '};}
+\DoxyCodeLine{436                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{437                     buf[offset++] = \mbox{\hyperlink{lib_8hpp_a25f0c94164d62b6639ca4fc89e0c2a7f}{SWAP\_DELIMITER}};}
+\DoxyCodeLine{438 }
+\DoxyCodeLine{439                 \mbox{\hyperlink{lib_8cpp_a0bf6f7c4e2cbab5afae4387ee6f5d67b}{put\_hex\_byte}}(buf + offset, cf-\/>data[i]);}
+\DoxyCodeLine{440                 offset += 2;}
+\DoxyCodeLine{441             \}}
+\DoxyCodeLine{442         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{443             \textcolor{keywordflow}{for} (i = 0; i < len; i++) \{}
+\DoxyCodeLine{444                 buf[offset++] = \textcolor{charliteral}{' '};}
+\DoxyCodeLine{445                 \mbox{\hyperlink{lib_8cpp_a0bf6f7c4e2cbab5afae4387ee6f5d67b}{put\_hex\_byte}}(buf + offset, cf-\/>data[i]);}
+\DoxyCodeLine{446                 offset += 2;}
+\DoxyCodeLine{447             \}}
+\DoxyCodeLine{448         \}}
+\DoxyCodeLine{449     \}}
+\DoxyCodeLine{450 }
+\DoxyCodeLine{451     buf[offset] = 0; \textcolor{comment}{/* terminate string */}}
+\DoxyCodeLine{452 }
+\DoxyCodeLine{453     \textcolor{comment}{/*}}
+\DoxyCodeLine{454 \textcolor{comment}{     * The ASCII \& ERRORFRAME output is put at a fixed len behind the data.}}
+\DoxyCodeLine{455 \textcolor{comment}{     * For now we support ASCII output only for payload length up to 8 bytes.}}
+\DoxyCodeLine{456 \textcolor{comment}{     * Does it make sense to write 64 ASCII byte behind 64 ASCII HEX data on the console?}}
+\DoxyCodeLine{457 \textcolor{comment}{     */}}
+\DoxyCodeLine{458     \textcolor{keywordflow}{if} (len > CAN\_MAX\_DLEN)}
+\DoxyCodeLine{459         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{460 }
+\DoxyCodeLine{461     \textcolor{keywordflow}{if} (cf-\/>can\_id \& CAN\_ERR\_FLAG)}
+\DoxyCodeLine{462         sprintf(buf+offset, \textcolor{stringliteral}{"\%*s"}, dlen*(8-\/len)+13, \textcolor{stringliteral}{"ERRORFRAME"});}
+\DoxyCodeLine{463     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (view \& \mbox{\hyperlink{lib_8hpp_a56e0d1563b1d5ef401229b1ae3a15ccc}{CANLIB\_VIEW\_ASCII}}) \{}
+\DoxyCodeLine{464         j = dlen*(8-\/len)+4;}
+\DoxyCodeLine{465         \textcolor{keywordflow}{if} (view \& \mbox{\hyperlink{lib_8hpp_a9a1b57149c7186b2a6c5f5a4c97121f3}{CANLIB\_VIEW\_SWAP}}) \{}
+\DoxyCodeLine{466             sprintf(buf+offset, \textcolor{stringliteral}{"\%*s"}, j, \textcolor{stringliteral}{"`"});}
+\DoxyCodeLine{467             offset += j;}
+\DoxyCodeLine{468             \textcolor{keywordflow}{for} (i = len -\/ 1; i >= 0; i-\/-\/)}
+\DoxyCodeLine{469                 \textcolor{keywordflow}{if} ((cf-\/>data[i] > 0x1F) \&\& (cf-\/>data[i] < 0x7F))}
+\DoxyCodeLine{470                     buf[offset++] = cf-\/>data[i];}
+\DoxyCodeLine{471                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{472                     buf[offset++] = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{473 }
+\DoxyCodeLine{474             sprintf(buf+offset, \textcolor{stringliteral}{"`"});}
+\DoxyCodeLine{475         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{476             sprintf(buf+offset, \textcolor{stringliteral}{"\%*s"}, j, \textcolor{stringliteral}{"'"});}
+\DoxyCodeLine{477             offset += j;}
+\DoxyCodeLine{478             \textcolor{keywordflow}{for} (i = 0; i < len; i++)}
+\DoxyCodeLine{479                 \textcolor{keywordflow}{if} ((cf-\/>data[i] > 0x1F) \&\& (cf-\/>data[i] < 0x7F))}
+\DoxyCodeLine{480                     buf[offset++] = cf-\/>data[i];}
+\DoxyCodeLine{481                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{482                     buf[offset++] = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{483 }
+\DoxyCodeLine{484             sprintf(buf+offset, \textcolor{stringliteral}{"'"});}
+\DoxyCodeLine{485         \}}
+\DoxyCodeLine{486     \}}
+\DoxyCodeLine{487 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{lib_8hpp_aa8524b833332ae4151e565c5b7f26995_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lib_8hpp_aa8524b833332ae4151e565c5b7f26995_icgraph}
+\end{center}
+\end{figure}

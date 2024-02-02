@@ -1,0 +1,4 @@
+<map id="DataRelayer::StopPostMessage" name="DataRelayer::StopPostMessage">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,232,32"/>
+<area shape="rect" id="node2" href="$class_can_adaptor.html#a9aa14f36f20a44042f9ec2c5898e125c" title="Stop messages that are sent repeatedly over the CAN network." alt="" coords="280,5,501,32"/>
+</map>

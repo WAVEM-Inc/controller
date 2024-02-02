@@ -1,0 +1,27 @@
+var annotated_dup =
+[
+    [ "CanAdaptor", "class_can_adaptor.html", "class_can_adaptor" ],
+    [ "CanCallbackFunc", "class_can_callback_func.html", "class_can_callback_func" ],
+    [ "CanDump", "class_can_dump.html", "class_can_dump" ],
+    [ "CanMGR", "class_can_m_g_r.html", "class_can_m_g_r" ],
+    [ "CanSend", "class_can_send.html", "class_can_send" ],
+    [ "ConcreteMotionMediator", "class_concrete_motion_mediator.html", "class_concrete_motion_mediator" ],
+    [ "DataRelayer", "class_data_relayer.html", "class_data_relayer" ],
+    [ "DBS_Status", "struct_d_b_s___status.html", "struct_d_b_s___status" ],
+    [ "ICanConnect", "class_i_can_connect.html", "class_i_can_connect" ],
+    [ "iECU_Control_Accelerate", "structi_e_c_u___control___accelerate.html", "structi_e_c_u___control___accelerate" ],
+    [ "iECU_Control_Brake", "structi_e_c_u___control___brake.html", "structi_e_c_u___control___brake" ],
+    [ "iECU_Control_Hardware", "structi_e_c_u___control___hardware.html", "structi_e_c_u___control___hardware" ],
+    [ "iECU_Control_Steering", "structi_e_c_u___control___steering.html", "structi_e_c_u___control___steering" ],
+    [ "if_info", "structif__info.html", "structif__info" ],
+    [ "IMotionColleague", "class_i_motion_colleague.html", "class_i_motion_colleague" ],
+    [ "IMotionMediator", "class_i_motion_mediator.html", "class_i_motion_mediator" ],
+    [ "MCU_Torque_Feedback", "struct_m_c_u___torque___feedback.html", "struct_m_c_u___torque___feedback" ],
+    [ "Mode_Control_Flag", "struct_mode___control___flag.html", "struct_mode___control___flag" ],
+    [ "Remote_Control_IO", "struct_remote___control___i_o.html", "struct_remote___control___i_o" ],
+    [ "Remote_Control_Shake", "struct_remote___control___shake.html", "struct_remote___control___shake" ],
+    [ "VCU_DBS_Request", "struct_v_c_u___d_b_s___request.html", "struct_v_c_u___d_b_s___request" ],
+    [ "VCU_EPS_Control_Request", "struct_v_c_u___e_p_s___control___request.html", "struct_v_c_u___e_p_s___control___request" ],
+    [ "VCU_MCU_Request", "struct_v_c_u___m_c_u___request.html", "struct_v_c_u___m_c_u___request" ],
+    [ "WmMotionController", "class_wm_motion_controller.html", "class_wm_motion_controller" ]
+];

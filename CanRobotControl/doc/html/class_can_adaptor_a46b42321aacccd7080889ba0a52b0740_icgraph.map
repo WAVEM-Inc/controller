@@ -1,0 +1,8 @@
+<map id="CanAdaptor::SOpen" name="CanAdaptor::SOpen">
+<area shape="rect" id="node1" title="Open a can channel for send." alt="" coords="864,31,1012,57"/>
+<area shape="rect" id="node2" href="$class_can_adaptor.html#ab64865d36529e292bcfa6616b9cf5cf9" title="Check whether the can channel is activated." alt="" coords="585,5,816,32"/>
+<area shape="rect" id="node6" href="$class_can_adaptor.html#a8e1ba351506c463f6fdff20d0e58530a" title="Open a can channel." alt="" coords="631,56,771,83"/>
+<area shape="rect" id="node3" href="$class_data_relayer.html#a69859deb649fb5e182df1cb4aba837fe" title="run test" alt="" coords="401,31,537,57"/>
+<area shape="rect" id="node4" href="$class_can_m_g_r.html#a1449780d560c49e377b41093777d1847" title="Register callback function for can communication response." alt="" coords="196,31,353,57"/>
+<area shape="rect" id="node5" href="$class_can_m_g_r.html#a96304dd3b1c7e978f7c979d7cf7c7122" title="Construct a new Can M G R:: Can M G R object." alt="" coords="5,31,148,57"/>
+</map>

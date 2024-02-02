@@ -1,0 +1,8 @@
+<map id="CanMGR::fn_send_control_hardware" name="CanMGR::fn_send_control_hardware">
+<area shape="rect" id="node1" title="Function for controlling horn, head_light, right, left_light from robot to VCU via Can communication." alt="" coords="5,31,195,72"/>
+<area shape="rect" id="node2" href="$class_data_relayer.html#a8585d43607f63493fa095bbb910d8ee0" title="Send control commands.(ControlHardware)" alt="" coords="243,13,464,39"/>
+<area shape="rect" id="node6" href="$class_can_m_g_r.html#aeee196bac40c868f0e7500f6b389270d" title="Ability to send data from VCU to robot via Can communication to wm_motion_controller." alt="" coords="263,63,443,90"/>
+<area shape="rect" id="node3" href="$class_data_relayer.html#a4f4b5c3f651361ffcc9a2fb382cd1e79" title="send API(ControlHardware)" alt="" coords="512,5,713,47"/>
+<area shape="rect" id="node4" href="$class_can_adaptor.html#af85bd813da08af4bfa87e74c65b39d2b" title="Register a callback function." alt="" coords="761,13,979,39"/>
+<area shape="rect" id="node5" href="$class_can_adaptor.html#aa3c09d9af30e82bdb7b027ee71048310" title="iECU_Control_Hardware type is transmitted through the CAN network." alt="" coords="1027,13,1265,39"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="DataRelayer::SendMessageControlHardware" name="DataRelayer::SendMessageControlHardware">
+<area shape="rect" id="node1" title="send API(ControlHardware)" alt="" coords="512,5,713,47"/>
+<area shape="rect" id="node2" href="$class_data_relayer.html#a8585d43607f63493fa095bbb910d8ee0" title="Send control commands.(ControlHardware)" alt="" coords="243,13,464,39"/>
+<area shape="rect" id="node3" href="$class_can_m_g_r.html#ab2486f520bc3c804d3e2357cdcda24a0" title="Function for controlling horn, head_light, right, left_light from robot to VCU via Can communication." alt="" coords="5,5,195,47"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="DataRelayer::RegistFaultCallback" name="DataRelayer::RegistFaultCallback">
+<area shape="rect" id="node1" title="Register a FAULT callback function." alt="" coords="401,5,585,47"/>
+<area shape="rect" id="node2" href="$class_can_m_g_r.html#a1449780d560c49e377b41093777d1847" title="Register callback function for can communication response." alt="" coords="196,13,353,39"/>
+<area shape="rect" id="node3" href="$class_can_m_g_r.html#a96304dd3b1c7e978f7c979d7cf7c7122" title="Construct a new Can M G R:: Can M G R object." alt="" coords="5,13,148,39"/>
+</map>

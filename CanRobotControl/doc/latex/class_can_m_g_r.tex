@@ -1,0 +1,562 @@
+\hypertarget{class_can_m_g_r}{}\doxysection{Can\+M\+GR Class Reference}
+\label{class_can_m_g_r}\index{CanMGR@{CanMGR}}
+
+
+Class to control C\+AN communication.  
+
+
+
+
+{\ttfamily \#include $<$can\+\_\+manager.\+hpp$>$}
+
+
+
+Inheritance diagram for Can\+M\+GR\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_m_g_r__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Can\+M\+GR\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_can_m_g_r__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_can_m_g_r_a41d884e26149d3b30c39116689ffddf8}{fn\+\_\+can\+\_\+run}} ()
+\begin{DoxyCompactList}\small\item\em can operation function \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_m_g_r_ab2486f520bc3c804d3e2357cdcda24a0}{fn\+\_\+send\+\_\+control\+\_\+hardware}} (bool horn, bool head\+\_\+light, bool right\+\_\+light, bool left\+\_\+light)
+\begin{DoxyCompactList}\small\item\em Function for controlling horn, head\+\_\+light, right, left\+\_\+light from robot to V\+CU via Can communication. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_m_g_r_a4455e78c5751da6d908d41f734ce8dd7}{fn\+\_\+send\+\_\+control\+\_\+steering}} (float angular)
+\begin{DoxyCompactList}\small\item\em Function for sending steering control values from robot to V\+CU via Can communication. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_m_g_r_adc81c4aaa7a907b2a4e248b092148191}{fn\+\_\+send\+\_\+control\+\_\+vel}} (float linear)
+\begin{DoxyCompactList}\small\item\em Function for sending motor control values from robot to V\+CU via Can communication. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_m_g_r_aeee196bac40c868f0e7500f6b389270d}{fn\+\_\+send\+\_\+value}} (const int \&value) override
+\begin{DoxyCompactList}\small\item\em Ability to send data from V\+CU to robot via Can communication to wm\+\_\+motion\+\_\+controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_m_g_r_ad26a10430318f6236504b27127ea9fec}{fn\+\_\+recv\+\_\+value}} (const int \&value) override
+\item 
+\mbox{\hyperlink{class_can_m_g_r_a96304dd3b1c7e978f7c979d7cf7c7122}{Can\+M\+GR}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_motion_mediator}{I\+Motion\+Mediator}} $>$ motion\+\_\+colleague)
+\begin{DoxyCompactList}\small\item\em Construct a new Can M G R\+:\+: Can M G R object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_can_m_g_r_ab69f9ba57cbdaef49c9f6e3bc642ead8}{$\sim$\+Can\+M\+GR}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_motion_mediator}{I\+Motion\+Mediator}} $>$ \mbox{\hyperlink{class_i_motion_colleague_acf64c62d52403d4de89e675ae3792211}{m\+\_\+i\+\_\+motion\+\_\+mediator}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_can_m_g_r_a1449780d560c49e377b41093777d1847}{fn\+\_\+can\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Register callback function for can communication response. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_m_g_r_ab4b2df15089369c156497edf57184464}{fault\+Callback}} (int can\+\_\+falut, int dbs\+\_\+fault)
+\item 
+void \mbox{\hyperlink{class_can_m_g_r_a14262244cf40caa0c850ff205c963755}{rpm\+Callback}} (int mcu\+\_\+shift, int mcu\+\_\+speed, int mcu\+\_\+torque)
+\begin{DoxyCompactList}\small\item\em Function to respond to rpm reception through can communication. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_data_relayer}{Data\+Relayer}} \mbox{\hyperlink{class_can_m_g_r_a6e8a07eba92a5aacd2eba31e1cc0673e}{obj\+\_\+}}
+\item 
+std\+::chrono\+::\+\_\+\+V2\+::system\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{class_can_m_g_r_a99d483c21b15b1b52a72e59ec20d8f44}{callback\+\_\+time\+\_\+}}
+\item 
+std\+::chrono\+::\+\_\+\+V2\+::system\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{class_can_m_g_r_a86132c3bfa9b54768f6bf3cef3790f32}{old\+\_\+time\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to control C\+AN communication. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+enable\+\_\+shared\+\_\+from\+\_\+this 
+
+\mbox{\hyperlink{class_i_can_connect}{I\+Can\+Connect}} 
+
+\mbox{\hyperlink{class_i_motion_colleague}{I\+Motion\+Colleague}} 
+\end{DoxySeeAlso}
+\begin{DoxyWarning}{Warning}
+Be careful of problems caused by Mutex 
+\end{DoxyWarning}
+
+
+Definition at line 37 of file can\+\_\+manager.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_can_m_g_r_a96304dd3b1c7e978f7c979d7cf7c7122}\label{class_can_m_g_r_a96304dd3b1c7e978f7c979d7cf7c7122}} 
+\index{CanMGR@{CanMGR}!CanMGR@{CanMGR}}
+\index{CanMGR@{CanMGR}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{CanMGR()}{CanMGR()}}
+{\footnotesize\ttfamily Can\+M\+G\+R\+::\+Can\+M\+GR (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_motion_mediator}{I\+Motion\+Mediator}} $>$}]{motion\+\_\+mediator }\end{DoxyParamCaption})}
+
+
+
+Construct a new Can M G R\+:\+: Can M G R object. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em motion\+\_\+mediator} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 7 of file can\+\_\+manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7                                                             :\mbox{\hyperlink{class_i_motion_colleague_abdc7a0fa800b5e817240a49dddf79bb8}{IMotionColleague}}(motion\_mediator)\{}
+\DoxyCodeLine{8     \mbox{\hyperlink{class_can_m_g_r_a1449780d560c49e377b41093777d1847}{fn\_can\_init}}();}
+\DoxyCodeLine{9 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_m_g_r_a96304dd3b1c7e978f7c979d7cf7c7122_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_m_g_r_ab69f9ba57cbdaef49c9f6e3bc642ead8}\label{class_can_m_g_r_ab69f9ba57cbdaef49c9f6e3bc642ead8}} 
+\index{CanMGR@{CanMGR}!````~CanMGR@{$\sim$CanMGR}}
+\index{````~CanMGR@{$\sim$CanMGR}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{$\sim$CanMGR()}{~CanMGR()}}
+{\footnotesize\ttfamily Can\+M\+G\+R\+::$\sim$\+Can\+M\+GR (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line 108 of file can\+\_\+manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{108                \{}
+\DoxyCodeLine{109     }
+\DoxyCodeLine{110 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_can_m_g_r_ab4b2df15089369c156497edf57184464}\label{class_can_m_g_r_ab4b2df15089369c156497edf57184464}} 
+\index{CanMGR@{CanMGR}!faultCallback@{faultCallback}}
+\index{faultCallback@{faultCallback}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{faultCallback()}{faultCallback()}}
+{\footnotesize\ttfamily void Can\+M\+G\+R\+::fault\+Callback (\begin{DoxyParamCaption}\item[{int}]{can\+\_\+falut,  }\item[{int}]{dbs\+\_\+fault }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em can\+\_\+falut} & 0x0\+: no fault 0X1\+: invalid connection \\
+\hline
+{\em dbs\+\_\+fault} & 0x0\+: no fault 0X1\+: oil pressure sensor failure 0X2\+: Insufficient system power supply 0X4\+: Controller temperature is too high 0X8\+: Motor failure 0X10\+: The controller itself is faulty 0X20\+: Oil pressure command message lost 0X40\+: C\+AN B\+US O\+FF \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23.\+04.\+07 
+\end{DoxyDate}
+
+
+Definition at line 51 of file can\+\_\+manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{51                                                      \{}
+\DoxyCodeLine{52       std::cout << \textcolor{stringliteral}{"[main] callback DBS\_Status : "} << (int)can\_falut<< \textcolor{stringliteral}{","} << (\textcolor{keywordtype}{int})dbs\_fault<< std::endl; }
+\DoxyCodeLine{53 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_m_g_r_ab4b2df15089369c156497edf57184464_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_m_g_r_a1449780d560c49e377b41093777d1847}\label{class_can_m_g_r_a1449780d560c49e377b41093777d1847}} 
+\index{CanMGR@{CanMGR}!fn\_can\_init@{fn\_can\_init}}
+\index{fn\_can\_init@{fn\_can\_init}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{fn\_can\_init()}{fn\_can\_init()}}
+{\footnotesize\ttfamily int Can\+M\+G\+R\+::fn\+\_\+can\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Register callback function for can communication response. 
+
+\begin{DoxyReturn}{Returns}
+int Verify function normal termination 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23.\+04.\+06 
+\end{DoxyDate}
+
+
+Implements \mbox{\hyperlink{class_i_can_connect_a2fae47d4c1c65a5ef7c142f29f3bd842}{I\+Can\+Connect}}.
+
+
+
+Definition at line 29 of file can\+\_\+manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29                        \{}
+\DoxyCodeLine{30     \mbox{\hyperlink{class_can_m_g_r_a6e8a07eba92a5aacd2eba31e1cc0673e}{obj\_}}.\mbox{\hyperlink{class_data_relayer_ac4178378e46c212e9e08ad4241007c1a}{RegistFaultCallback}}<\mbox{\hyperlink{class_can_m_g_r}{CanMGR}}>(\textcolor{keyword}{this}, \&\mbox{\hyperlink{class_can_m_g_r_ab4b2df15089369c156497edf57184464}{CanMGR::faultCallback}});}
+\DoxyCodeLine{31     \mbox{\hyperlink{class_can_m_g_r_a6e8a07eba92a5aacd2eba31e1cc0673e}{obj\_}}.\mbox{\hyperlink{class_data_relayer_a524a189194dd751832d7c210a8ad0a15}{RegistRpmCallback}}<\mbox{\hyperlink{class_can_m_g_r}{CanMGR}}>(\textcolor{keyword}{this}, \&\mbox{\hyperlink{class_can_m_g_r_a14262244cf40caa0c850ff205c963755}{CanMGR::rpmCallback}});}
+\DoxyCodeLine{32     \mbox{\hyperlink{class_can_m_g_r_a6e8a07eba92a5aacd2eba31e1cc0673e}{obj\_}}.\mbox{\hyperlink{class_data_relayer_a69859deb649fb5e182df1cb4aba837fe}{Run}}();}
+\DoxyCodeLine{33     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{34 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_m_g_r_a1449780d560c49e377b41093777d1847_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{class_can_m_g_r_a1449780d560c49e377b41093777d1847_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_m_g_r_a41d884e26149d3b30c39116689ffddf8}\label{class_can_m_g_r_a41d884e26149d3b30c39116689ffddf8}} 
+\index{CanMGR@{CanMGR}!fn\_can\_run@{fn\_can\_run}}
+\index{fn\_can\_run@{fn\_can\_run}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{fn\_can\_run()}{fn\_can\_run()}}
+{\footnotesize\ttfamily void Can\+M\+G\+R\+::fn\+\_\+can\+\_\+run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+can operation function 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+
+Implements \mbox{\hyperlink{class_i_can_connect_afc8ed1e9f8f1bde9677edb9ac908981b}{I\+Can\+Connect}}.
+
+
+
+Definition at line 15 of file can\+\_\+manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{15                        \{}
+\DoxyCodeLine{16     std::cout << \textcolor{stringliteral}{"***can run start!!!***"} << std::endl;}
+\DoxyCodeLine{17     \textcolor{keywordflow}{while}(\mbox{\hyperlink{can__manager_8hpp_a7722b3e958993a1a070becc413c17c2a}{state}})\{}
+\DoxyCodeLine{18         sleep(5);}
+\DoxyCodeLine{19     \}}
+\DoxyCodeLine{20     std::cout << \textcolor{stringliteral}{"***can end!!!***"} << std::endl;}
+\DoxyCodeLine{21 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_m_g_r_a41d884e26149d3b30c39116689ffddf8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_m_g_r_ad26a10430318f6236504b27127ea9fec}\label{class_can_m_g_r_ad26a10430318f6236504b27127ea9fec}} 
+\index{CanMGR@{CanMGR}!fn\_recv\_value@{fn\_recv\_value}}
+\index{fn\_recv\_value@{fn\_recv\_value}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{fn\_recv\_value()}{fn\_recv\_value()}}
+{\footnotesize\ttfamily void Can\+M\+G\+R\+::fn\+\_\+recv\+\_\+value (\begin{DoxyParamCaption}\item[{const int \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_motion_colleague_a4a8fbac50eb196dd0cd01382f3ac7103}{I\+Motion\+Colleague}}.
+
+
+
+Definition at line 125 of file can\+\_\+manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{125                                           \{}
+\DoxyCodeLine{126     std::cout<< \textcolor{stringliteral}{"override can\_mannager "}<<value<<std::endl;}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_m_g_r_ab2486f520bc3c804d3e2357cdcda24a0}\label{class_can_m_g_r_ab2486f520bc3c804d3e2357cdcda24a0}} 
+\index{CanMGR@{CanMGR}!fn\_send\_control\_hardware@{fn\_send\_control\_hardware}}
+\index{fn\_send\_control\_hardware@{fn\_send\_control\_hardware}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{fn\_send\_control\_hardware()}{fn\_send\_control\_hardware()}}
+{\footnotesize\ttfamily void Can\+M\+G\+R\+::fn\+\_\+send\+\_\+control\+\_\+hardware (\begin{DoxyParamCaption}\item[{bool}]{horn,  }\item[{bool}]{head\+\_\+light,  }\item[{bool}]{right\+\_\+light,  }\item[{bool}]{left\+\_\+light }\end{DoxyParamCaption})}
+
+
+
+Function for controlling horn, head\+\_\+light, right, left\+\_\+light from robot to V\+CU via Can communication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em horn} & \\
+\hline
+{\em head\+\_\+light} & \\
+\hline
+{\em right\+\_\+light} & \\
+\hline
+{\em left\+\_\+light} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+
+Definition at line 85 of file can\+\_\+manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{85                                                                                                \{}
+\DoxyCodeLine{86     \mbox{\hyperlink{class_can_m_g_r_a6e8a07eba92a5aacd2eba31e1cc0673e}{obj\_}}.\mbox{\hyperlink{class_data_relayer_a8585d43607f63493fa095bbb910d8ee0}{ControlHardware}}(horn,head\_light,right\_light,left\_light);}
+\DoxyCodeLine{87     \mbox{\hyperlink{class_can_m_g_r_aeee196bac40c868f0e7500f6b389270d}{fn\_send\_value}}(1);}
+\DoxyCodeLine{88 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_m_g_r_ab2486f520bc3c804d3e2357cdcda24a0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_m_g_r_a4455e78c5751da6d908d41f734ce8dd7}\label{class_can_m_g_r_a4455e78c5751da6d908d41f734ce8dd7}} 
+\index{CanMGR@{CanMGR}!fn\_send\_control\_steering@{fn\_send\_control\_steering}}
+\index{fn\_send\_control\_steering@{fn\_send\_control\_steering}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{fn\_send\_control\_steering()}{fn\_send\_control\_steering()}}
+{\footnotesize\ttfamily void Can\+M\+G\+R\+::fn\+\_\+send\+\_\+control\+\_\+steering (\begin{DoxyParamCaption}\item[{float}]{angular }\end{DoxyParamCaption})}
+
+
+
+Function for sending steering control values from robot to V\+CU via Can communication. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em angular} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 96 of file can\+\_\+manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{96                                                   \{}
+\DoxyCodeLine{97     \mbox{\hyperlink{class_can_m_g_r_a6e8a07eba92a5aacd2eba31e1cc0673e}{obj\_}}.\mbox{\hyperlink{class_data_relayer_ae4d20fbc26da73335bf14ef9ae9f3c51}{ControlSteering}}(angular);}
+\DoxyCodeLine{98 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_m_g_r_a4455e78c5751da6d908d41f734ce8dd7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_m_g_r_adc81c4aaa7a907b2a4e248b092148191}\label{class_can_m_g_r_adc81c4aaa7a907b2a4e248b092148191}} 
+\index{CanMGR@{CanMGR}!fn\_send\_control\_vel@{fn\_send\_control\_vel}}
+\index{fn\_send\_control\_vel@{fn\_send\_control\_vel}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{fn\_send\_control\_vel()}{fn\_send\_control\_vel()}}
+{\footnotesize\ttfamily void Can\+M\+G\+R\+::fn\+\_\+send\+\_\+control\+\_\+vel (\begin{DoxyParamCaption}\item[{float}]{linear }\end{DoxyParamCaption})}
+
+
+
+Function for sending motor control values from robot to V\+CU via Can communication. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em linear} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 104 of file can\+\_\+manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{104                                             \{}
+\DoxyCodeLine{105     \mbox{\hyperlink{class_can_m_g_r_a6e8a07eba92a5aacd2eba31e1cc0673e}{obj\_}}.\mbox{\hyperlink{class_data_relayer_ab03906d443fb8a6945ee2efe97b4e54f}{ControlVel}}(linear);}
+\DoxyCodeLine{106 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_m_g_r_adc81c4aaa7a907b2a4e248b092148191_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_m_g_r_aeee196bac40c868f0e7500f6b389270d}\label{class_can_m_g_r_aeee196bac40c868f0e7500f6b389270d}} 
+\index{CanMGR@{CanMGR}!fn\_send\_value@{fn\_send\_value}}
+\index{fn\_send\_value@{fn\_send\_value}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{fn\_send\_value()}{fn\_send\_value()}}
+{\footnotesize\ttfamily void Can\+M\+G\+R\+::fn\+\_\+send\+\_\+value (\begin{DoxyParamCaption}\item[{const int \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Ability to send data from V\+CU to robot via Can communication to wm\+\_\+motion\+\_\+controller. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_motion_colleague_a4ddb0780808558ec8affd766349e16cc}{I\+Motion\+Colleague}}.
+
+
+
+Definition at line 116 of file can\+\_\+manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{116                                           \{}
+\DoxyCodeLine{117     std::cout<< \textcolor{stringliteral}{"override can\_mannager"}<<std::endl;}
+\DoxyCodeLine{118     \mbox{\hyperlink{class_i_motion_colleague_acf64c62d52403d4de89e675ae3792211}{m\_i\_motion\_mediator}}-\/>fn\_send\_value(value,shared\_from\_this());}
+\DoxyCodeLine{119 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_m_g_r_aeee196bac40c868f0e7500f6b389270d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_m_g_r_a14262244cf40caa0c850ff205c963755}\label{class_can_m_g_r_a14262244cf40caa0c850ff205c963755}} 
+\index{CanMGR@{CanMGR}!rpmCallback@{rpmCallback}}
+\index{rpmCallback@{rpmCallback}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{rpmCallback()}{rpmCallback()}}
+{\footnotesize\ttfamily void Can\+M\+G\+R\+::rpm\+Callback (\begin{DoxyParamCaption}\item[{int}]{mcu\+\_\+shift,  }\item[{int}]{mcu\+\_\+speed,  }\item[{int}]{mcu\+\_\+torque }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Function to respond to rpm reception through can communication. 
+
+\mbox{\hyperlink{class_data_relayer_a01006987d1b92a0f36685088c56f5af6}{Data\+Relayer\+::\+Handler\+\_\+\+M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}} \begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em mcu\+\_\+shift} & \+: msg.\+mcu\+\_\+shift \\
+\hline
+{\em mcu\+\_\+speed} & \+: msg.\+mcu\+\_\+speed -- rpm \\
+\hline
+{\em mcu\+\_\+torque} & \+: msg.\+mcu\+\_\+torque // \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_data_relayer}{Data\+Relayer}} 
+\end{DoxySeeAlso}
+
+
+Definition at line 65 of file can\+\_\+manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{68                      \{}
+\DoxyCodeLine{69   \textcolor{comment}{//  callback\_time\_ = std::chrono::high\_resolution\_clock::now(); 0.1}}
+\DoxyCodeLine{70   std::cout << \textcolor{stringliteral}{"[can\_manager] callback RPM Status : "} << (int)mcu\_shift}
+\DoxyCodeLine{71   << \textcolor{stringliteral}{","} << (\textcolor{keywordtype}{int})mcu\_speed}
+\DoxyCodeLine{72   << \textcolor{stringliteral}{","} << (int)mcu\_torque}
+\DoxyCodeLine{73   << std::endl;}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_m_g_r_a14262244cf40caa0c850ff205c963755_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_can_m_g_r_a99d483c21b15b1b52a72e59ec20d8f44}\label{class_can_m_g_r_a99d483c21b15b1b52a72e59ec20d8f44}} 
+\index{CanMGR@{CanMGR}!callback\_time\_@{callback\_time\_}}
+\index{callback\_time\_@{callback\_time\_}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{callback\_time\_}{callback\_time\_}}
+{\footnotesize\ttfamily std\+::chrono\+::\+\_\+\+V2\+::system\+\_\+clock\+::time\+\_\+point Can\+M\+G\+R\+::callback\+\_\+time\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 40 of file can\+\_\+manager.\+hpp.
+
+\mbox{\Hypertarget{class_i_motion_colleague_acf64c62d52403d4de89e675ae3792211}\label{class_i_motion_colleague_acf64c62d52403d4de89e675ae3792211}} 
+\index{CanMGR@{CanMGR}!m\_i\_motion\_mediator@{m\_i\_motion\_mediator}}
+\index{m\_i\_motion\_mediator@{m\_i\_motion\_mediator}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{m\_i\_motion\_mediator}{m\_i\_motion\_mediator}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_i_motion_mediator}{I\+Motion\+Mediator}}$>$ I\+Motion\+Colleague\+::m\+\_\+i\+\_\+motion\+\_\+mediator\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 17 of file i\+\_\+motion\+\_\+colleague.\+hpp.
+
+\mbox{\Hypertarget{class_can_m_g_r_a6e8a07eba92a5aacd2eba31e1cc0673e}\label{class_can_m_g_r_a6e8a07eba92a5aacd2eba31e1cc0673e}} 
+\index{CanMGR@{CanMGR}!obj\_@{obj\_}}
+\index{obj\_@{obj\_}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{obj\_}{obj\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_data_relayer}{Data\+Relayer}} Can\+M\+G\+R\+::obj\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 39 of file can\+\_\+manager.\+hpp.
+
+\mbox{\Hypertarget{class_can_m_g_r_a86132c3bfa9b54768f6bf3cef3790f32}\label{class_can_m_g_r_a86132c3bfa9b54768f6bf3cef3790f32}} 
+\index{CanMGR@{CanMGR}!old\_time\_@{old\_time\_}}
+\index{old\_time\_@{old\_time\_}!CanMGR@{CanMGR}}
+\doxysubsubsection{\texorpdfstring{old\_time\_}{old\_time\_}}
+{\footnotesize\ttfamily std\+::chrono\+::\+\_\+\+V2\+::system\+\_\+clock\+::time\+\_\+point Can\+M\+G\+R\+::old\+\_\+time\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 41 of file can\+\_\+manager.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/can/\mbox{\hyperlink{can__manager_8hpp}{can\+\_\+manager.\+hpp}}\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/src/can/\mbox{\hyperlink{can__manager_8cpp}{can\+\_\+manager.\+cpp}}\end{DoxyCompactItemize}

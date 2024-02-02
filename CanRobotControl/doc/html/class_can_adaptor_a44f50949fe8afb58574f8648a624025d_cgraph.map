@@ -1,0 +1,4 @@
+<map id="CanAdaptor::PostMessageByType" name="CanAdaptor::PostMessageByType">
+<area shape="rect" id="node1" title="iECU_Control_Accelerate type is transmitted through the CAN network." alt="" coords="5,5,244,32"/>
+<area shape="rect" id="node2" href="$class_can_adaptor.html#aa3c09d9af30e82bdb7b027ee71048310" title="iECU_Control_Hardware type is transmitted through the CAN network." alt="" coords="292,5,531,32"/>
+</map>

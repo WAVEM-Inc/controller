@@ -1,0 +1,6 @@
+<map id="CanAdaptor::CheckSocketStatus" name="CanAdaptor::CheckSocketStatus">
+<area shape="rect" id="node1" title="Check whether the can channel is activated." alt="" coords="5,56,236,83"/>
+<area shape="rect" id="node2" href="$class_can_adaptor.html#a04dcde64d86743b7916e802c1a6830ff" title="Check can device connection status." alt="" coords="284,5,471,32"/>
+<area shape="rect" id="node3" href="$class_can_adaptor.html#a1e96d40f496d6b6e743b8d93b36685eb" title="release task" alt="" coords="298,56,457,83"/>
+<area shape="rect" id="node4" href="$class_can_adaptor.html#a46b42321aacccd7080889ba0a52b0740" title="Open a can channel for send." alt="" coords="303,107,451,133"/>
+</map>

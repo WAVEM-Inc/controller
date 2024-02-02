@@ -1,0 +1,2137 @@
+\hypertarget{class_can_adaptor}{}\doxysection{Can\+Adaptor Class Reference}
+\label{class_can_adaptor}\index{CanAdaptor@{CanAdaptor}}
+
+
+C\+AN network relaying class.  
+
+
+
+
+{\ttfamily \#include $<$can\+\_\+adaptor.\+hpp$>$}
+
+
+
+Collaboration diagram for Can\+Adaptor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{class_can_adaptor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_can_adaptor_a418175969e56bcda6ab537b281cd3305}{Can\+Adaptor}} ()
+\item 
+virtual \mbox{\hyperlink{class_can_adaptor_ac483091d6c58e6d0af8e6e2cba3f5885}{$\sim$\+Can\+Adaptor}} ()
+\item 
+int \mbox{\hyperlink{class_can_adaptor_ad163eb33ce2ed8f2a4a31af7be86ee03}{Initialize}} (bool endian)
+\begin{DoxyCompactList}\small\item\em initialization task \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adaptor_a1e96d40f496d6b6e743b8d93b36685eb}{Release}} ()
+\begin{DoxyCompactList}\small\item\em release task \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_can_adaptor_a8e1ba351506c463f6fdff20d0e58530a}{Open}} (vector$<$ string $>$ device)
+\begin{DoxyCompactList}\small\item\em Open a can channel. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_can_adaptor_afc5f3ce8f22c04db95c3b46e4bda42c4}{Run\+Control\+Flag}} (int flag, string device)
+\begin{DoxyCompactList}\small\item\em i\+E\+CU mode, need to remote control \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_can_adaptor_a04dcde64d86743b7916e802c1a6830ff}{Is\+Connected}} (string device)
+\begin{DoxyCompactList}\small\item\em Check can device connection status. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adaptor_ab64865d36529e292bcfa6616b9cf5cf9}{Check\+Socket\+Status}} (vector$<$ string $>$ device, std\+::function$<$ void(int, int)$>$ func)
+\begin{DoxyCompactList}\small\item\em Check whether the can channel is activated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adaptor_a9aa14f36f20a44042f9ec2c5898e125c}{Stop\+Post\+Message}} (unsigned int canid)
+\begin{DoxyCompactList}\small\item\em Stop messages that are sent repeatedly over the C\+AN network. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51}{Set\+Handler}} (T $\ast$p\+Class\+Type, void(T\+::$\ast$pfunc)(\mbox{\hyperlink{struct_v_c_u___e_p_s___control___request}{V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}}), int canid, string device)
+\begin{DoxyCompactList}\small\item\em Register a callback function.(\mbox{\hyperlink{struct_v_c_u___e_p_s___control___request}{V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}}) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_can_adaptor_a2a12c69cb0efa4e6e304be1637894ca6}{Set\+Handler}} (T $\ast$p\+Class\+Type, void(T\+::$\ast$pfunc)(\mbox{\hyperlink{struct_remote___control___i_o}{Remote\+\_\+\+Control\+\_\+\+IO}}), int canid, string device)
+\begin{DoxyCompactList}\small\item\em Register a callback function.(\mbox{\hyperlink{struct_remote___control___i_o}{Remote\+\_\+\+Control\+\_\+\+IO}}) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_can_adaptor_a96b7ffcfce652297da81af132beea43e}{Set\+Handler}} (T $\ast$p\+Class\+Type, void(T\+::$\ast$pfunc)(\mbox{\hyperlink{struct_remote___control___shake}{Remote\+\_\+\+Control\+\_\+\+Shake}}), int canid, string device)
+\begin{DoxyCompactList}\small\item\em Register a callback function.(Remote\+\_\+\+Control\+\_\+\+Shake\+\_\+2) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_can_adaptor_ae05123714e98c4985905f61b26109f70}{Set\+Handler}} (T $\ast$p\+Class\+Type, void(T\+::$\ast$pfunc)(\mbox{\hyperlink{struct_d_b_s___status}{D\+B\+S\+\_\+\+Status}}), int canid, string device)
+\begin{DoxyCompactList}\small\item\em Register a callback function.(\mbox{\hyperlink{struct_d_b_s___status}{D\+B\+S\+\_\+\+Status}}) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_can_adaptor_ad099a4fcfe8a9e168a1e7bbd5df76a67}{Set\+Handler}} (T $\ast$p\+Class\+Type, void(T\+::$\ast$pfunc)(\mbox{\hyperlink{struct_v_c_u___d_b_s___request}{V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}}), int canid, string device)
+\begin{DoxyCompactList}\small\item\em Register a callback function.(\mbox{\hyperlink{struct_v_c_u___d_b_s___request}{V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}}) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_can_adaptor_a0273f104657a2a914531b610b5a561e5}{Set\+Handler}} (T $\ast$p\+Class\+Type, void(T\+::$\ast$pfunc)(\mbox{\hyperlink{struct_m_c_u___torque___feedback}{M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}}), int canid, string device)
+\begin{DoxyCompactList}\small\item\em Register a callback function.(\mbox{\hyperlink{struct_m_c_u___torque___feedback}{M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}}) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_can_adaptor_af85bd813da08af4bfa87e74c65b39d2b}{Post\+Can\+Message}} (T struct\+Type\+Data, int msgid, string device)
+\begin{DoxyCompactList}\small\item\em Register a callback function. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_can_adaptor_a89df4e0cb2bf84d52fa142f72ecb8fbb}{Post\+Can\+Message}} (T struct\+Type\+Data, int msgid, string device, int duration)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}} $\ast$ \mbox{\hyperlink{class_can_adaptor_affa02055d8a2b7aaec6a928c7e9c3363}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Returns a singleton object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::function$<$ void(\mbox{\hyperlink{struct_v_c_u___e_p_s___control___request}{V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}})$>$ \mbox{\hyperlink{class_can_adaptor_ac4246a9001a5d48e659ee05d80ac9272}{func\+\_\+\+V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}}
+\item 
+typedef std\+::function$<$ void(\mbox{\hyperlink{struct_remote___control___shake}{Remote\+\_\+\+Control\+\_\+\+Shake}})$>$ \mbox{\hyperlink{class_can_adaptor_a27bd664ef783c891f9d1d8ac81874770}{func\+\_\+\+Remote\+\_\+\+Control\+\_\+\+Shake}}
+\item 
+typedef std\+::function$<$ void(\mbox{\hyperlink{struct_remote___control___i_o}{Remote\+\_\+\+Control\+\_\+\+IO}})$>$ \mbox{\hyperlink{class_can_adaptor_ac8fdc594fc88d72b1176f0618d2d7fea}{func\+\_\+\+Remote\+\_\+\+Control\+\_\+\+IO}}
+\item 
+typedef std\+::function$<$ void(\mbox{\hyperlink{struct_d_b_s___status}{D\+B\+S\+\_\+\+Status}})$>$ \mbox{\hyperlink{class_can_adaptor_aac384706d6a049adac434dfcd85010bb}{func\+\_\+\+D\+B\+S\+\_\+\+Status}}
+\item 
+typedef std\+::function$<$ void(\mbox{\hyperlink{struct_v_c_u___d_b_s___request}{V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}})$>$ \mbox{\hyperlink{class_can_adaptor_a77ba2e3277d74f8fafe0e6edfa8087b6}{func\+\_\+\+V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}}
+\item 
+typedef std\+::function$<$ void(\mbox{\hyperlink{struct_m_c_u___torque___feedback}{M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}})$>$ \mbox{\hyperlink{class_can_adaptor_a54105099be6cec5a1645b74ba9da391b}{func\+\_\+\+M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}}
+\item 
+typedef std\+::map$<$ unsigned int, pthread\+\_\+t $>$ \mbox{\hyperlink{class_can_adaptor_a42a597d12cadc5b30e2055a59bdfca41}{Thread\+Map}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_can_adaptor_ae3a6d62b3980b9a0e4bba2f709884e80}{Send}} (vector$<$ \mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} $>$ body, unsigned int msgid, string device)
+\begin{DoxyCompactList}\small\item\em Send data to the C\+AN network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adaptor_af85789530a136f168b97c592dfbf2b78}{Receive}} (\mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} $\ast$data, int canid)
+\begin{DoxyCompactList}\small\item\em Receive data from can network. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_can_adaptor_aac14f5162a9af703c6293a6a05feb98d}{Can\+Open}} (int arc, vector$<$ string $>$ argv, \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}} $\ast$, void(Can\+Adaptor\+::$\ast$func)(unsigned char $\ast$data, int canid))
+\begin{DoxyCompactList}\small\item\em Function to open can channel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adaptor_ad15a0c09d94192e67e6c5b133e07ed2f}{Print\+Map\+State}} (string name)
+\begin{DoxyCompactList}\small\item\em Map State Print. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} $\ast$ \mbox{\hyperlink{class_can_adaptor_ab10cf93b008c898a40c1a865fd32c786}{Make\+Framebody}} (\mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} $\ast$body, \mbox{\hyperlink{structi_e_c_u___control___hardware}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Hardware}} data)
+\begin{DoxyCompactList}\small\item\em Convert structure data to 8-\/byte byte array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adaptor_aa3c09d9af30e82bdb7b027ee71048310}{Post\+Message\+By\+Type}} (\mbox{\hyperlink{structi_e_c_u___control___hardware}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Hardware}} body, int msgid, string device)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structi_e_c_u___control___hardware}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Hardware}} type is transmitted through the C\+AN network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adaptor_a44f50949fe8afb58574f8648a624025d}{Post\+Message\+By\+Type}} (\mbox{\hyperlink{structi_e_c_u___control___accelerate}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Accelerate}} body, int msgid, string device)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structi_e_c_u___control___accelerate}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Accelerate}} type is transmitted through the C\+AN network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adaptor_a91db39e02ce45598bf2340c10579b0c3}{Post\+Message\+By\+Type}} (\mbox{\hyperlink{structi_e_c_u___control___brake}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Brake}} body, int msgid, string device)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structi_e_c_u___control___brake}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Brake}} type is transmitted through the C\+AN network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adaptor_aa0995cc2de2dd11d503b9dea9de6864b}{Post\+Message\+By\+Type}} (\mbox{\hyperlink{structi_e_c_u___control___steering}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Steering}} body, int msgid, string device)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structi_e_c_u___control___steering}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Steering}} type is transmitted through the C\+AN network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adaptor_a422c8e7cda7a74cd3a052fcfe2e63370}{Post\+Message\+By\+Type}} (\mbox{\hyperlink{struct_mode___control___flag}{Mode\+\_\+\+Control\+\_\+\+Flag}} body, int msgid, string device)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{struct_mode___control___flag}{Mode\+\_\+\+Control\+\_\+\+Flag}} type is transmitted through the C\+AN network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adaptor_aecd13e37e943601319ff2eaa40be68dc}{Post\+Message\+By\+Type}} (\mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} $\ast$body, unsigned int canid, string device)
+\begin{DoxyCompactList}\small\item\em Each data type is transmitted through the C\+AN network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adaptor_a4c7b907c75b89e31c6abeb30291830c4}{Post\+Message\+By\+Type}} (\mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} $\ast$data, unsigned int canid, string device, int duration)
+\begin{DoxyCompactList}\small\item\em Each data type is transmitted repeatedly over the C\+AN network. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_can_adaptor_a46b42321aacccd7080889ba0a52b0740}{S\+Open}} (vector$<$ string $>$ device)
+\begin{DoxyCompactList}\small\item\em Open a can channel for send. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_can_adaptor_a0ac054e51c147f3f22636a60b978e06f}{R\+Open}} (vector$<$ string $>$ device)
+\begin{DoxyCompactList}\small\item\em Open a can channel for reception. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+map$<$ int, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_can_callback_func}{Can\+Callback\+Func}} $>$ $>$ \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\+\_\+}}
+\item 
+\mbox{\hyperlink{class_can_adaptor_ac4246a9001a5d48e659ee05d80ac9272}{func\+\_\+\+V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}} \mbox{\hyperlink{class_can_adaptor_a469af510ed289b28ead5c142f9d8d450}{handler\+\_\+vcr}}
+\item 
+\mbox{\hyperlink{class_can_adaptor_a27bd664ef783c891f9d1d8ac81874770}{func\+\_\+\+Remote\+\_\+\+Control\+\_\+\+Shake}} \mbox{\hyperlink{class_can_adaptor_a75bbc9fb4383ec81d5cc38ffc574c6e6}{handler\+\_\+rcs}}
+\item 
+\mbox{\hyperlink{class_can_adaptor_ac8fdc594fc88d72b1176f0618d2d7fea}{func\+\_\+\+Remote\+\_\+\+Control\+\_\+\+IO}} \mbox{\hyperlink{class_can_adaptor_ab14cc10ed629066d0fafa58307968f9c}{handler\+\_\+rci}}
+\item 
+\mbox{\hyperlink{class_can_adaptor_aac384706d6a049adac434dfcd85010bb}{func\+\_\+\+D\+B\+S\+\_\+\+Status}} \mbox{\hyperlink{class_can_adaptor_a3b4e625f6656ca5bbe9c4d5c779390c1}{handler\+\_\+ds}}
+\item 
+\mbox{\hyperlink{class_can_adaptor_a77ba2e3277d74f8fafe0e6edfa8087b6}{func\+\_\+\+V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}} \mbox{\hyperlink{class_can_adaptor_a08f1018e0f38a86a3e54fb8c77965217}{handler\+\_\+vdr}}
+\item 
+\mbox{\hyperlink{class_can_adaptor_a54105099be6cec5a1645b74ba9da391b}{func\+\_\+\+M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}} \mbox{\hyperlink{class_can_adaptor_a6745b3f946f3253b7adbd901d9dee5a8}{handler\+\_\+mtf}}
+\item 
+bool \mbox{\hyperlink{class_can_adaptor_a0258a3bef8366d85e00b590c43769e59}{is\+Big\+Endian\+\_\+}} = 0
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_can_dump}{Can\+Dump}} $>$ \mbox{\hyperlink{class_can_adaptor_ad7963ba7726a31d4dcbc3ad313512111}{ptr\+\_\+can\+\_\+dump\+\_\+}} = N\+U\+LL
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_can_send}{Can\+Send}} $>$ \mbox{\hyperlink{class_can_adaptor_a352c44d890b854dd3376acfa5173c9a2}{ptr\+\_\+can\+\_\+send\+\_\+}} = N\+U\+LL
+\item 
+\mbox{\hyperlink{class_can_adaptor_a42a597d12cadc5b30e2055a59bdfca41}{Thread\+Map}} \mbox{\hyperlink{class_can_adaptor_ad5e6b898b40956b206aa9ff212166e6c}{psotmsg\+\_\+tm\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}} $\ast$ \mbox{\hyperlink{class_can_adaptor_a251e6f47e8a46f31d2cb1ad14d2e11f6}{instance}} = N\+U\+LL
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+C\+AN network relaying class. 
+
+\begin{DoxyDate}{Date}
+2023-\/02-\/14 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+ys.\+kwon(\href{mailto:ys.kwon@wavem.net}{\texttt{ ys.\+kwon@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+
+Definition at line 40 of file can\+\_\+adaptor.\+hpp.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{class_can_adaptor_aac384706d6a049adac434dfcd85010bb}\label{class_can_adaptor_aac384706d6a049adac434dfcd85010bb}} 
+\index{CanAdaptor@{CanAdaptor}!func\_DBS\_Status@{func\_DBS\_Status}}
+\index{func\_DBS\_Status@{func\_DBS\_Status}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{func\_DBS\_Status}{func\_DBS\_Status}}
+{\footnotesize\ttfamily typedef std\+::function$<$void(\mbox{\hyperlink{struct_d_b_s___status}{D\+B\+S\+\_\+\+Status}})$>$ \mbox{\hyperlink{class_can_adaptor_aac384706d6a049adac434dfcd85010bb}{Can\+Adaptor\+::func\+\_\+\+D\+B\+S\+\_\+\+Status}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 57 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_a54105099be6cec5a1645b74ba9da391b}\label{class_can_adaptor_a54105099be6cec5a1645b74ba9da391b}} 
+\index{CanAdaptor@{CanAdaptor}!func\_MCU\_Torque\_Feedback@{func\_MCU\_Torque\_Feedback}}
+\index{func\_MCU\_Torque\_Feedback@{func\_MCU\_Torque\_Feedback}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{func\_MCU\_Torque\_Feedback}{func\_MCU\_Torque\_Feedback}}
+{\footnotesize\ttfamily typedef std\+::function$<$void(\mbox{\hyperlink{struct_m_c_u___torque___feedback}{M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}})$>$ \mbox{\hyperlink{class_can_adaptor_a54105099be6cec5a1645b74ba9da391b}{Can\+Adaptor\+::func\+\_\+\+M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 59 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_ac8fdc594fc88d72b1176f0618d2d7fea}\label{class_can_adaptor_ac8fdc594fc88d72b1176f0618d2d7fea}} 
+\index{CanAdaptor@{CanAdaptor}!func\_Remote\_Control\_IO@{func\_Remote\_Control\_IO}}
+\index{func\_Remote\_Control\_IO@{func\_Remote\_Control\_IO}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{func\_Remote\_Control\_IO}{func\_Remote\_Control\_IO}}
+{\footnotesize\ttfamily typedef std\+::function$<$void(\mbox{\hyperlink{struct_remote___control___i_o}{Remote\+\_\+\+Control\+\_\+\+IO}})$>$ \mbox{\hyperlink{class_can_adaptor_ac8fdc594fc88d72b1176f0618d2d7fea}{Can\+Adaptor\+::func\+\_\+\+Remote\+\_\+\+Control\+\_\+\+IO}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 56 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_a27bd664ef783c891f9d1d8ac81874770}\label{class_can_adaptor_a27bd664ef783c891f9d1d8ac81874770}} 
+\index{CanAdaptor@{CanAdaptor}!func\_Remote\_Control\_Shake@{func\_Remote\_Control\_Shake}}
+\index{func\_Remote\_Control\_Shake@{func\_Remote\_Control\_Shake}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{func\_Remote\_Control\_Shake}{func\_Remote\_Control\_Shake}}
+{\footnotesize\ttfamily typedef std\+::function$<$void(\mbox{\hyperlink{struct_remote___control___shake}{Remote\+\_\+\+Control\+\_\+\+Shake}})$>$ \mbox{\hyperlink{class_can_adaptor_a27bd664ef783c891f9d1d8ac81874770}{Can\+Adaptor\+::func\+\_\+\+Remote\+\_\+\+Control\+\_\+\+Shake}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 55 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_a77ba2e3277d74f8fafe0e6edfa8087b6}\label{class_can_adaptor_a77ba2e3277d74f8fafe0e6edfa8087b6}} 
+\index{CanAdaptor@{CanAdaptor}!func\_VCU\_DBS\_Request@{func\_VCU\_DBS\_Request}}
+\index{func\_VCU\_DBS\_Request@{func\_VCU\_DBS\_Request}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{func\_VCU\_DBS\_Request}{func\_VCU\_DBS\_Request}}
+{\footnotesize\ttfamily typedef std\+::function$<$void(\mbox{\hyperlink{struct_v_c_u___d_b_s___request}{V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}})$>$ \mbox{\hyperlink{class_can_adaptor_a77ba2e3277d74f8fafe0e6edfa8087b6}{Can\+Adaptor\+::func\+\_\+\+V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 58 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_ac4246a9001a5d48e659ee05d80ac9272}\label{class_can_adaptor_ac4246a9001a5d48e659ee05d80ac9272}} 
+\index{CanAdaptor@{CanAdaptor}!func\_VCU\_EPS\_Control\_Request@{func\_VCU\_EPS\_Control\_Request}}
+\index{func\_VCU\_EPS\_Control\_Request@{func\_VCU\_EPS\_Control\_Request}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{func\_VCU\_EPS\_Control\_Request}{func\_VCU\_EPS\_Control\_Request}}
+{\footnotesize\ttfamily typedef std\+::function$<$void(\mbox{\hyperlink{struct_v_c_u___e_p_s___control___request}{V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}})$>$ \mbox{\hyperlink{class_can_adaptor_ac4246a9001a5d48e659ee05d80ac9272}{Can\+Adaptor\+::func\+\_\+\+V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 54 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_a42a597d12cadc5b30e2055a59bdfca41}\label{class_can_adaptor_a42a597d12cadc5b30e2055a59bdfca41}} 
+\index{CanAdaptor@{CanAdaptor}!ThreadMap@{ThreadMap}}
+\index{ThreadMap@{ThreadMap}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{ThreadMap}{ThreadMap}}
+{\footnotesize\ttfamily typedef std\+::map$<$unsigned int, pthread\+\_\+t$>$ \mbox{\hyperlink{class_can_adaptor_a42a597d12cadc5b30e2055a59bdfca41}{Can\+Adaptor\+::\+Thread\+Map}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 73 of file can\+\_\+adaptor.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_can_adaptor_a418175969e56bcda6ab537b281cd3305}\label{class_can_adaptor_a418175969e56bcda6ab537b281cd3305}} 
+\index{CanAdaptor@{CanAdaptor}!CanAdaptor@{CanAdaptor}}
+\index{CanAdaptor@{CanAdaptor}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{CanAdaptor()}{CanAdaptor()}}
+{\footnotesize\ttfamily Can\+Adaptor\+::\+Can\+Adaptor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 44 of file can\+\_\+adaptor.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44                 \{}
+\DoxyCodeLine{45        \mbox{\hyperlink{class_can_adaptor_a251e6f47e8a46f31d2cb1ad14d2e11f6}{instance}} = NULL;}
+\DoxyCodeLine{46     \} }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_adaptor_ac483091d6c58e6d0af8e6e2cba3f5885}\label{class_can_adaptor_ac483091d6c58e6d0af8e6e2cba3f5885}} 
+\index{CanAdaptor@{CanAdaptor}!````~CanAdaptor@{$\sim$CanAdaptor}}
+\index{````~CanAdaptor@{$\sim$CanAdaptor}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{$\sim$CanAdaptor()}{~CanAdaptor()}}
+{\footnotesize\ttfamily virtual Can\+Adaptor\+::$\sim$\+Can\+Adaptor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 47 of file can\+\_\+adaptor.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{47 \{this-\/>\mbox{\hyperlink{class_can_adaptor_a1e96d40f496d6b6e743b8d93b36685eb}{Release}}();\};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_ac483091d6c58e6d0af8e6e2cba3f5885_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_can_adaptor_aac14f5162a9af703c6293a6a05feb98d}\label{class_can_adaptor_aac14f5162a9af703c6293a6a05feb98d}} 
+\index{CanAdaptor@{CanAdaptor}!CanOpen@{CanOpen}}
+\index{CanOpen@{CanOpen}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{CanOpen()}{CanOpen()}}
+{\footnotesize\ttfamily int Can\+Adaptor\+::\+Can\+Open (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{vector$<$ string $>$}]{arg,  }\item[{\mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}} $\ast$}]{p\+Class\+Type,  }\item[{void(Can\+Adaptor\+::$\ast$)(unsigned char $\ast$data, int canid)}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Function to open can channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 164 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{164                                                                                                                                \{}
+\DoxyCodeLine{165   \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_ad7963ba7726a31d4dcbc3ad313512111}{ptr\_can\_dump\_}} == NULL )\{}
+\DoxyCodeLine{166     \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{167   \}}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169   \mbox{\hyperlink{class_can_adaptor_ad7963ba7726a31d4dcbc3ad313512111}{ptr\_can\_dump\_}}-\/>Open(argc, arg, \textcolor{keyword}{this}, func);}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{172 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_aac14f5162a9af703c6293a6a05feb98d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_ab64865d36529e292bcfa6616b9cf5cf9}\label{class_can_adaptor_ab64865d36529e292bcfa6616b9cf5cf9}} 
+\index{CanAdaptor@{CanAdaptor}!CheckSocketStatus@{CheckSocketStatus}}
+\index{CheckSocketStatus@{CheckSocketStatus}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{CheckSocketStatus()}{CheckSocketStatus()}}
+{\footnotesize\ttfamily void Can\+Adaptor\+::\+Check\+Socket\+Status (\begin{DoxyParamCaption}\item[{vector$<$ string $>$}]{device,  }\item[{std\+::function$<$ void(int, int)$>$}]{callbackfunc }\end{DoxyParamCaption})}
+
+
+
+Check whether the can channel is activated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Channel name to check \\
+\hline
+{\em callbackfunc} & Function pointer to be called when a fault occurs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+~\newline
+ 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 183 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{183                                                                                                \{}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185   int (\mbox{\hyperlink{class_can_adaptor}{CanAdaptor}}::*pFunc1)(vector<string>) = \&\mbox{\hyperlink{class_can_adaptor_a46b42321aacccd7080889ba0a52b0740}{CanAdaptor::SOpen}};}
+\DoxyCodeLine{186   \textcolor{keyword}{function}<int(vector<string>)> openfunc = move(bind(pFunc1, \textcolor{keyword}{this}, placeholders::\_1));}
+\DoxyCodeLine{187   \textcolor{comment}{//cout << "thread check socket OK!!! : " << endl;        }}
+\DoxyCodeLine{188   std::thread ([\&](vector<string> dev,std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{int},\textcolor{keywordtype}{int})> func) \{}
+\DoxyCodeLine{189           }
+\DoxyCodeLine{190     \textcolor{keywordflow}{while} (\textcolor{keyword}{true})\{}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192       sleep(\mbox{\hyperlink{can__define_8hpp_a9c369ad7f55b8ec5fd3f912481cebcef}{CAN\_ALIVE\_CHECKTIME}});}
+\DoxyCodeLine{193           }
+\DoxyCodeLine{194       \textcolor{keywordtype}{bool} isConn = \textcolor{keyword}{true};  }
+\DoxyCodeLine{195       \textcolor{keywordflow}{for} (vector<string>::iterator iter = dev.begin(); iter != dev.end(); ++iter)\{}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197         \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_a04dcde64d86743b7916e802c1a6830ff}{IsConnected}}((\textcolor{keywordtype}{char}*)iter-\/>c\_str()) == \textcolor{keyword}{false} )\{}
+\DoxyCodeLine{198           cerr << \textcolor{stringliteral}{"[ERR]Socket check result :  invalid can device -\/ "} << iter-\/>c\_str() << endl;        }
+\DoxyCodeLine{199           \textcolor{comment}{// call function (can device fault) }}
+\DoxyCodeLine{200           func(\mbox{\hyperlink{can__adaptor_8hpp_a267af6b5c581a541140e95e4385eade7}{CAN\_DEVICE\_FAULT}},0x00);}
+\DoxyCodeLine{201           \mbox{\hyperlink{class_can_adaptor_a1e96d40f496d6b6e743b8d93b36685eb}{Release}}();             }
+\DoxyCodeLine{202           isConn = \textcolor{keyword}{false}; }
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204           cout << \textcolor{stringliteral}{"try reopen socket : "} << endl;        }
+\DoxyCodeLine{205           \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_a46b42321aacccd7080889ba0a52b0740}{SOpen}}(dev) == 0 )\{}
+\DoxyCodeLine{206             \textcolor{comment}{// call function (can device normal)}}
+\DoxyCodeLine{207             func(\mbox{\hyperlink{can__adaptor_8hpp_a19fadc61d5f98584341976b3c2af10c2}{CAN\_NO\_FAULT}},0x00);                }
+\DoxyCodeLine{208           \}                         }
+\DoxyCodeLine{209           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{210         \}              }
+\DoxyCodeLine{211       \}           }
+\DoxyCodeLine{212           \textcolor{comment}{// if ( isConn )\{}}
+\DoxyCodeLine{213           \textcolor{comment}{//   cout << "send socket OK!!! : " << endl;        }}
+\DoxyCodeLine{214           \textcolor{comment}{// \}}}
+\DoxyCodeLine{215     \};}
+\DoxyCodeLine{216   \},device,callbackfunc).detach();}
+\DoxyCodeLine{217 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_ab64865d36529e292bcfa6616b9cf5cf9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_ab64865d36529e292bcfa6616b9cf5cf9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_affa02055d8a2b7aaec6a928c7e9c3363}\label{class_can_adaptor_affa02055d8a2b7aaec6a928c7e9c3363}} 
+\index{CanAdaptor@{CanAdaptor}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}$\ast$ Can\+Adaptor\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns a singleton object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 114 of file can\+\_\+adaptor.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{114                                     \{}
+\DoxyCodeLine{115       \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_a251e6f47e8a46f31d2cb1ad14d2e11f6}{instance}} == NULL )\{}
+\DoxyCodeLine{116          std::shared\_ptr<CanAdaptor> \textcolor{keywordtype}{object} = std::make\_shared<CanAdaptor>();}
+\DoxyCodeLine{117          \mbox{\hyperlink{class_can_adaptor_a251e6f47e8a46f31d2cb1ad14d2e11f6}{instance}}=\textcolor{keywordtype}{object}.get();        }
+\DoxyCodeLine{118       \}    }
+\DoxyCodeLine{119       \textcolor{keywordflow}{return} \mbox{\hyperlink{class_can_adaptor_a251e6f47e8a46f31d2cb1ad14d2e11f6}{instance}};}
+\DoxyCodeLine{120     \};}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_affa02055d8a2b7aaec6a928c7e9c3363_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_ad163eb33ce2ed8f2a4a31af7be86ee03}\label{class_can_adaptor_ad163eb33ce2ed8f2a4a31af7be86ee03}} 
+\index{CanAdaptor@{CanAdaptor}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily int Can\+Adaptor\+::\+Initialize (\begin{DoxyParamCaption}\item[{bool}]{endian }\end{DoxyParamCaption})}
+
+
+
+initialization task 
+
+
+\begin{DoxyParams}{Parameters}
+{\em endian} & system\textquotesingle{}s endian type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result of processing, 0 if successful 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 21 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21                                      \{}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_can_adaptor_a0258a3bef8366d85e00b590c43769e59}{isBigEndian\_}} = endian;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \mbox{\hyperlink{class_can_adaptor_ad7963ba7726a31d4dcbc3ad313512111}{ptr\_can\_dump\_}} = std::make\_shared<CanDump>();}
+\DoxyCodeLine{25     \mbox{\hyperlink{class_can_adaptor_a352c44d890b854dd3376acfa5173c9a2}{ptr\_can\_send\_}} = std::make\_shared<CanSend>();}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     cout <<  \textcolor{stringliteral}{"1) initialize"}<< endl;}
+\DoxyCodeLine{28     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{29 \};}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_ad163eb33ce2ed8f2a4a31af7be86ee03_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_a04dcde64d86743b7916e802c1a6830ff}\label{class_can_adaptor_a04dcde64d86743b7916e802c1a6830ff}} 
+\index{CanAdaptor@{CanAdaptor}!IsConnected@{IsConnected}}
+\index{IsConnected@{IsConnected}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{IsConnected()}{IsConnected()}}
+{\footnotesize\ttfamily bool Can\+Adaptor\+::\+Is\+Connected (\begin{DoxyParamCaption}\item[{string}]{device }\end{DoxyParamCaption})}
+
+
+
+Check can device connection status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successful, false otherwise 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 524 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{524                                          \{}
+\DoxyCodeLine{525 }
+\DoxyCodeLine{526   \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_a352c44d890b854dd3376acfa5173c9a2}{ptr\_can\_send\_}} == NULL )\{}
+\DoxyCodeLine{527     cerr << \textcolor{stringliteral}{"[ERR]invalid can send object"} << endl;}
+\DoxyCodeLine{528     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{529   \}}
+\DoxyCodeLine{530 }
+\DoxyCodeLine{531   \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_a352c44d890b854dd3376acfa5173c9a2}{ptr\_can\_send\_}}-\/>IsConnected((\textcolor{keywordtype}{char}*)device.c\_str()) == \textcolor{keyword}{false})\{}
+\DoxyCodeLine{532     cerr << \textcolor{stringliteral}{"[ERR]Not currently connected to CAN network"} << endl;        }
+\DoxyCodeLine{533     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{534   \} }
+\DoxyCodeLine{535 }
+\DoxyCodeLine{536   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{537 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a04dcde64d86743b7916e802c1a6830ff_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_ab10cf93b008c898a40c1a865fd32c786}\label{class_can_adaptor_ab10cf93b008c898a40c1a865fd32c786}} 
+\index{CanAdaptor@{CanAdaptor}!MakeFramebody@{MakeFramebody}}
+\index{MakeFramebody@{MakeFramebody}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{MakeFramebody()}{MakeFramebody()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} $\ast$ Can\+Adaptor\+::\+Make\+Framebody (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} $\ast$}]{body,  }\item[{\mbox{\hyperlink{structi_e_c_u___control___hardware}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Hardware}}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Convert structure data to 8-\/byte byte array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & transmission body \\
+\hline
+{\em data} & command data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned char$\ast$ byte array 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 489 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{489                                                                      \{}
+\DoxyCodeLine{490 }
+\DoxyCodeLine{491   memcpy(body,(\textcolor{keywordtype}{void}*)\&data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{492   \textcolor{comment}{// data를 body로 변환}}
+\DoxyCodeLine{493   \textcolor{keywordflow}{return} body;}
+\DoxyCodeLine{494 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_adaptor_a8e1ba351506c463f6fdff20d0e58530a}\label{class_can_adaptor_a8e1ba351506c463f6fdff20d0e58530a}} 
+\index{CanAdaptor@{CanAdaptor}!Open@{Open}}
+\index{Open@{Open}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{Open()}{Open()}}
+{\footnotesize\ttfamily int Can\+Adaptor\+::\+Open (\begin{DoxyParamCaption}\item[{vector$<$ string $>$}]{device }\end{DoxyParamCaption})}
+
+
+
+Open a can channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 53 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{53                                          \{}
+\DoxyCodeLine{54     \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_a46b42321aacccd7080889ba0a52b0740}{SOpen}}(device) == 0 \&\&  \mbox{\hyperlink{class_can_adaptor_a0ac054e51c147f3f22636a60b978e06f}{ROpen}}(device) == 0 )\{}
+\DoxyCodeLine{55         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{56     \}}
+\DoxyCodeLine{57     \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{58 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a8e1ba351506c463f6fdff20d0e58530a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a8e1ba351506c463f6fdff20d0e58530a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_af85bd813da08af4bfa87e74c65b39d2b}\label{class_can_adaptor_af85bd813da08af4bfa87e74c65b39d2b}} 
+\index{CanAdaptor@{CanAdaptor}!PostCanMessage@{PostCanMessage}}
+\index{PostCanMessage@{PostCanMessage}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{PostCanMessage()}{PostCanMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Can\+Adaptor\+::\+Post\+Can\+Message (\begin{DoxyParamCaption}\item[{T}]{struct\+Type\+Data,  }\item[{int}]{msgid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Register a callback function. 
+
+Register a callback function that receives \mbox{\hyperlink{struct_remote___control___i_o}{Remote\+\_\+\+Control\+\_\+\+IO}} as a parameter. 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$p\+Class\+Type} & an channel to open \\
+\hline
+{\em T\+::$\ast$pfunc} & callback function \\
+\hline
+{\em msgid} & M\+SG ID (same value as can id) \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+struct\+Type parameter must be assigned a value after initialization. 
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 340 of file can\+\_\+adaptor.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{340                                                                  \{ }
+\DoxyCodeLine{341       \textcolor{comment}{//cout <<  "post msg "<< endl;}}
+\DoxyCodeLine{342       \textcolor{keywordtype}{string} msg(\textcolor{stringliteral}{"[send]<"});}
+\DoxyCodeLine{343       msg.append(std::to\_string(msgid)).append(\textcolor{stringliteral}{"> "}).append(\textcolor{keyword}{typeid}(structTypeData).name()).append(\textcolor{stringliteral}{" : "}).append(device);}
+\DoxyCodeLine{344       cout << msg << endl;}
+\DoxyCodeLine{345       \textcolor{comment}{//byte* body = makeframebody(temp,data);}}
+\DoxyCodeLine{346       \textcolor{comment}{//1) 타입별로 별고 처리가 필요하지 않은 경우 아래 사용}}
+\DoxyCodeLine{347       \textcolor{keywordtype}{byte} body[CAN\_MAX\_DLEN];           }
+\DoxyCodeLine{348         memcpy(body,(\textcolor{keywordtype}{void}*)\&structTypeData,CAN\_MAX\_DLEN);                }
+\DoxyCodeLine{349       \mbox{\hyperlink{class_can_adaptor_aa3c09d9af30e82bdb7b027ee71048310}{PostMessageByType}}(body,msgid,device);      }
+\DoxyCodeLine{350       \textcolor{comment}{//2) 중간에 타입별로 처리가 필요한 경우 아래 사용}}
+\DoxyCodeLine{351       \textcolor{comment}{//PostMessageByType(structType,msgid,device);      }}
+\DoxyCodeLine{352    \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_af85bd813da08af4bfa87e74c65b39d2b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_af85bd813da08af4bfa87e74c65b39d2b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_a89df4e0cb2bf84d52fa142f72ecb8fbb}\label{class_can_adaptor_a89df4e0cb2bf84d52fa142f72ecb8fbb}} 
+\index{CanAdaptor@{CanAdaptor}!PostCanMessage@{PostCanMessage}}
+\index{PostCanMessage@{PostCanMessage}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{PostCanMessage()}{PostCanMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Can\+Adaptor\+::\+Post\+Can\+Message (\begin{DoxyParamCaption}\item[{T}]{struct\+Type\+Data,  }\item[{int}]{msgid,  }\item[{string}]{device,  }\item[{int}]{duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 355 of file can\+\_\+adaptor.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{355                                                                              \{ }
+\DoxyCodeLine{356       \textcolor{comment}{//cout <<  "post msg "<< endl;}}
+\DoxyCodeLine{357       \textcolor{keywordtype}{string} msg(\textcolor{stringliteral}{"[send]<"});}
+\DoxyCodeLine{358       msg.append(std::to\_string(msgid)).append(\textcolor{stringliteral}{"> "}).append(\textcolor{keyword}{typeid}(structTypeData).name());}
+\DoxyCodeLine{359       cout << msg << endl;}
+\DoxyCodeLine{360       \textcolor{comment}{//byte* body = makeframebody(temp,data);}}
+\DoxyCodeLine{361       \textcolor{comment}{//1) 타입별로 별고 처리가 필요하지 않은 경우 아래 사용}}
+\DoxyCodeLine{362       \textcolor{keywordtype}{byte} body[CAN\_MAX\_DLEN];           }
+\DoxyCodeLine{363       memcpy(body,(\textcolor{keywordtype}{void}*)\&structTypeData,CAN\_MAX\_DLEN);                }
+\DoxyCodeLine{364       \mbox{\hyperlink{class_can_adaptor_aa3c09d9af30e82bdb7b027ee71048310}{PostMessageByType}}(body,msgid,device,duration);      }
+\DoxyCodeLine{365 }
+\DoxyCodeLine{366       \textcolor{comment}{//2) 중간에 타입별로 처리가 필요한 경우 아래 사용}}
+\DoxyCodeLine{367       \textcolor{comment}{//PostMessageByType(structType,msgid,device);      }}
+\DoxyCodeLine{368    \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a89df4e0cb2bf84d52fa142f72ecb8fbb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_aecd13e37e943601319ff2eaa40be68dc}\label{class_can_adaptor_aecd13e37e943601319ff2eaa40be68dc}} 
+\index{CanAdaptor@{CanAdaptor}!PostMessageByType@{PostMessageByType}}
+\index{PostMessageByType@{PostMessageByType}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{PostMessageByType()}{PostMessageByType()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily void Can\+Adaptor\+::\+Post\+Message\+By\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} $\ast$}]{data,  }\item[{unsigned int}]{canid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Each data type is transmitted through the C\+AN network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & transmission body \\
+\hline
+{\em canid} & can id \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 283 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{283                                                                                 \{}
+\DoxyCodeLine{284 \textcolor{comment}{//printf("PostMessageByType device ( \%s )\(\backslash\)r\(\backslash\)n", device.c\_str()) ;}}
+\DoxyCodeLine{285   \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_a04dcde64d86743b7916e802c1a6830ff}{IsConnected}}(device) == \textcolor{keyword}{false} )\{}
+\DoxyCodeLine{286     cerr << \textcolor{stringliteral}{"[ERR]The socket is invalid and does not transmit."} << endl;}
+\DoxyCodeLine{287     \textcolor{keywordflow}{return};     }
+\DoxyCodeLine{288   \}}
+\DoxyCodeLine{289   }
+\DoxyCodeLine{290   \textcolor{keywordtype}{byte} temp[CAN\_MAX\_DLEN];}
+\DoxyCodeLine{291   \textcolor{comment}{//byte* body = makeframebody(temp,data);}}
+\DoxyCodeLine{292   memcpy(temp,(\textcolor{keywordtype}{void}*)data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{293   vector<byte> body;}
+\DoxyCodeLine{294   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{byte} value : temp)\{}
+\DoxyCodeLine{295     body.emplace\_back(value);}
+\DoxyCodeLine{296   \}}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{298   int (\mbox{\hyperlink{class_can_adaptor}{CanAdaptor}}::*pFunc)(vector<byte>, \textcolor{keywordtype}{unsigned} int, string) = \&\mbox{\hyperlink{class_can_adaptor_ae3a6d62b3980b9a0e4bba2f709884e80}{CanAdaptor::Send}};}
+\DoxyCodeLine{299   \textcolor{keyword}{function}<void(vector<byte>, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}, \textcolor{keywordtype}{string})> postMessagefunc = move(bind(pFunc, \textcolor{keyword}{this}, placeholders::\_1, placeholders::\_2, placeholders::\_3));}
+\DoxyCodeLine{300 }
+\DoxyCodeLine{301   \textcolor{comment}{// auto result = std::async(std::launch::async, postMessagefunc,body, canid, (char*)device.c\_str());}}
+\DoxyCodeLine{302   \textcolor{comment}{// thread sendthread(postMessagefunc, body, canid, device);}}
+\DoxyCodeLine{303   \textcolor{comment}{// sendthread.detach();    }}
+\DoxyCodeLine{304   }
+\DoxyCodeLine{305   std::thread([\&](\textcolor{keyword}{function}<\textcolor{keywordtype}{void}(vector<byte>, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}, \textcolor{keywordtype}{string})> func, vector<byte> data, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \textcolor{keywordtype}{id}, \textcolor{keywordtype}{string} dev) \{}
+\DoxyCodeLine{306       func(data, \textcolor{keywordtype}{id}, (\textcolor{keywordtype}{char}*)dev.c\_str());}
+\DoxyCodeLine{307   \},postMessagefunc, body, canid, device).detach();}
+\DoxyCodeLine{308 }
+\DoxyCodeLine{309 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_aecd13e37e943601319ff2eaa40be68dc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_a4c7b907c75b89e31c6abeb30291830c4}\label{class_can_adaptor_a4c7b907c75b89e31c6abeb30291830c4}} 
+\index{CanAdaptor@{CanAdaptor}!PostMessageByType@{PostMessageByType}}
+\index{PostMessageByType@{PostMessageByType}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{PostMessageByType()}{PostMessageByType()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily void Can\+Adaptor\+::\+Post\+Message\+By\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} $\ast$}]{data,  }\item[{unsigned int}]{canid,  }\item[{string}]{device,  }\item[{int}]{duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Each data type is transmitted repeatedly over the C\+AN network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & transmission body \\
+\hline
+{\em canid} & can id \\
+\hline
+{\em device} & can channel \\
+\hline
+{\em duration} & transmission frequency (milliseconds) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+currently not used 
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 322 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{322                                                                                             \{}
+\DoxyCodeLine{323 }
+\DoxyCodeLine{324   \textcolor{keywordtype}{byte} temp[CAN\_MAX\_DLEN];}
+\DoxyCodeLine{325   \textcolor{comment}{//byte* body = makeframebody(temp,data);}}
+\DoxyCodeLine{326   memcpy(temp,(\textcolor{keywordtype}{void}*)data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{327   vector<byte> body;}
+\DoxyCodeLine{328   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{byte} value : temp)\{}
+\DoxyCodeLine{329     body.emplace\_back(value);}
+\DoxyCodeLine{330   \}}
+\DoxyCodeLine{331 }
+\DoxyCodeLine{332   int (\mbox{\hyperlink{class_can_adaptor}{CanAdaptor}}::*pFunc)(vector<byte>, \textcolor{keywordtype}{unsigned} int, string) = \&\mbox{\hyperlink{class_can_adaptor_ae3a6d62b3980b9a0e4bba2f709884e80}{CanAdaptor::Send}};}
+\DoxyCodeLine{333   \textcolor{keyword}{function}<void(vector<byte>, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}, \textcolor{keywordtype}{string})> postMessagefunc = move(bind(pFunc, \textcolor{keyword}{this}, placeholders::\_1, placeholders::\_2, placeholders::\_3));}
+\DoxyCodeLine{334 }
+\DoxyCodeLine{335   \textcolor{comment}{//중복 메세지 ID는 처리 하지 않는다.기존 것은 중지 한다.}}
+\DoxyCodeLine{336   \mbox{\hyperlink{class_can_adaptor_a9aa14f36f20a44042f9ec2c5898e125c}{StopPostMessage}}(canid);   }
+\DoxyCodeLine{337 }
+\DoxyCodeLine{338   thread sendthread(([\&](\textcolor{keyword}{function}<\textcolor{keywordtype}{void}(vector<byte>, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}, \textcolor{keywordtype}{string})> func, vector<byte> data, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \textcolor{keywordtype}{id}, \textcolor{keywordtype}{string} dev,\textcolor{keywordtype}{int} dur) \{}
+\DoxyCodeLine{339     \textcolor{keywordflow}{while} (\textcolor{keyword}{true})\{}
+\DoxyCodeLine{340       \textcolor{comment}{//auto start = std::chrono::high\_resolution\_clock::now();}}
+\DoxyCodeLine{341       \textcolor{keyword}{auto} ms = std::chrono::steady\_clock::now() + std::chrono::milliseconds(dur);}
+\DoxyCodeLine{342       func(data, \textcolor{keywordtype}{id}, (\textcolor{keywordtype}{char}*)dev.c\_str());}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{344       \textcolor{keywordflow}{if} ( dur <= 0 )\{}
+\DoxyCodeLine{345         \textcolor{keywordflow}{return}; \textcolor{comment}{// 반복 없음}}
+\DoxyCodeLine{346       \}}
+\DoxyCodeLine{347       std::this\_thread::sleep\_until(ms);      }
+\DoxyCodeLine{348     \}}
+\DoxyCodeLine{349   \}),postMessagefunc, body, canid, device,duration);}
+\DoxyCodeLine{350  }
+\DoxyCodeLine{351   \mbox{\hyperlink{class_can_adaptor_ad5e6b898b40956b206aa9ff212166e6c}{psotmsg\_tm\_}}[canid] = sendthread.native\_handle();  }
+\DoxyCodeLine{352   sendthread.detach();      }
+\DoxyCodeLine{353 }
+\DoxyCodeLine{354   \textcolor{comment}{// std::thread([postMessagefunc, duration,body, canid, device]() \{}}
+\DoxyCodeLine{355   \textcolor{comment}{//   while (true)\{}}
+\DoxyCodeLine{356   \textcolor{comment}{//     //auto start = std::chrono::high\_resolution\_clock::now();}}
+\DoxyCodeLine{357   \textcolor{comment}{//     auto ms = std::chrono::steady\_clock::now() + std::chrono::milliseconds(duration);}}
+\DoxyCodeLine{358   \textcolor{comment}{//     postMessagefunc(body, canid, (char*)device.c\_str());}}
+\DoxyCodeLine{359 }
+\DoxyCodeLine{360   \textcolor{comment}{//     if ( duration <= 0 )\{}}
+\DoxyCodeLine{361   \textcolor{comment}{//       return; // 반복 없음}}
+\DoxyCodeLine{362   \textcolor{comment}{//     \}}}
+\DoxyCodeLine{363   \textcolor{comment}{//     std::this\_thread::sleep\_until(ms);}}
+\DoxyCodeLine{364   \textcolor{comment}{//     //std::this\_thread::sleep\_for(std::chrono::milliseconds(duration));}}
+\DoxyCodeLine{365   \textcolor{comment}{//     // auto finish = std::chrono::high\_resolution\_clock::now();}}
+\DoxyCodeLine{366   \textcolor{comment}{//     // auto int\_s = std::chrono::duration\_cast<std::chrono::milliseconds>(finish -\/ start);}}
+\DoxyCodeLine{367   \textcolor{comment}{//     // std::cout << "elapsed time is " << int\_s.count() << " ms )" << std::endl;}}
+\DoxyCodeLine{368   \textcolor{comment}{//   \}}}
+\DoxyCodeLine{369   \textcolor{comment}{// \}).detach();}}
+\DoxyCodeLine{370 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a4c7b907c75b89e31c6abeb30291830c4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_a44f50949fe8afb58574f8648a624025d}\label{class_can_adaptor_a44f50949fe8afb58574f8648a624025d}} 
+\index{CanAdaptor@{CanAdaptor}!PostMessageByType@{PostMessageByType}}
+\index{PostMessageByType@{PostMessageByType}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{PostMessageByType()}{PostMessageByType()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily void Can\+Adaptor\+::\+Post\+Message\+By\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi_e_c_u___control___accelerate}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Accelerate}}}]{data,  }\item[{int}]{msgid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{structi_e_c_u___control___accelerate}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Accelerate}} type is transmitted through the C\+AN network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & \mbox{\hyperlink{structi_e_c_u___control___hardware}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Hardware}} data \\
+\hline
+{\em canid} & can id \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 418 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{418                                                                                       \{}
+\DoxyCodeLine{419   cout <<  \textcolor{stringliteral}{"send iECU\_Control\_Accelerate msg "}<< endl;}
+\DoxyCodeLine{420   \textcolor{keywordtype}{byte} body[CAN\_MAX\_DLEN];}
+\DoxyCodeLine{421   \textcolor{comment}{//byte* body = makeframebody(temp,data);}}
+\DoxyCodeLine{422   memcpy(body,(\textcolor{keywordtype}{void}*)\&data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{423   \mbox{\hyperlink{class_can_adaptor_aa3c09d9af30e82bdb7b027ee71048310}{PostMessageByType}}(body, msgid, device );}
+\DoxyCodeLine{424 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a44f50949fe8afb58574f8648a624025d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_a91db39e02ce45598bf2340c10579b0c3}\label{class_can_adaptor_a91db39e02ce45598bf2340c10579b0c3}} 
+\index{CanAdaptor@{CanAdaptor}!PostMessageByType@{PostMessageByType}}
+\index{PostMessageByType@{PostMessageByType}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{PostMessageByType()}{PostMessageByType()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily void Can\+Adaptor\+::\+Post\+Message\+By\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi_e_c_u___control___brake}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Brake}}}]{data,  }\item[{int}]{msgid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{structi_e_c_u___control___brake}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Brake}} type is transmitted through the C\+AN network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & \mbox{\hyperlink{structi_e_c_u___control___hardware}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Hardware}} data \\
+\hline
+{\em canid} & can id \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 436 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{436                                                                                  \{}
+\DoxyCodeLine{437   cout <<  \textcolor{stringliteral}{"send iECU\_Control\_Brake msg "}<< endl;}
+\DoxyCodeLine{438   \textcolor{keywordtype}{byte} body[CAN\_MAX\_DLEN];}
+\DoxyCodeLine{439   \textcolor{comment}{//byte* body = makeframebody(temp,data);}}
+\DoxyCodeLine{440   memcpy(body,(\textcolor{keywordtype}{void}*)\&data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{441   \mbox{\hyperlink{class_can_adaptor_aa3c09d9af30e82bdb7b027ee71048310}{PostMessageByType}}(body, msgid, device );}
+\DoxyCodeLine{442 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a91db39e02ce45598bf2340c10579b0c3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_aa3c09d9af30e82bdb7b027ee71048310}\label{class_can_adaptor_aa3c09d9af30e82bdb7b027ee71048310}} 
+\index{CanAdaptor@{CanAdaptor}!PostMessageByType@{PostMessageByType}}
+\index{PostMessageByType@{PostMessageByType}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{PostMessageByType()}{PostMessageByType()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily void Can\+Adaptor\+::\+Post\+Message\+By\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi_e_c_u___control___hardware}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Hardware}}}]{data,  }\item[{int}]{msgid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{structi_e_c_u___control___hardware}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Hardware}} type is transmitted through the C\+AN network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & \mbox{\hyperlink{structi_e_c_u___control___hardware}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Hardware}} data \\
+\hline
+{\em canid} & can id \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 399 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{399                                                                                     \{}
+\DoxyCodeLine{400   cout <<  \textcolor{stringliteral}{"send iECU\_Control\_Hardware msg "}<< endl;}
+\DoxyCodeLine{401   \textcolor{keywordtype}{byte} body[CAN\_MAX\_DLEN];}
+\DoxyCodeLine{402   \textcolor{comment}{//byte* body = makeframebody(temp,data);}}
+\DoxyCodeLine{403   memcpy(body,(\textcolor{keywordtype}{void}*)\&data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{404   \mbox{\hyperlink{class_can_adaptor_aa3c09d9af30e82bdb7b027ee71048310}{PostMessageByType}}(body, msgid, device );}
+\DoxyCodeLine{405   \textcolor{comment}{//send( body, canid, (char*)device.c\_str());}}
+\DoxyCodeLine{406 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_aa3c09d9af30e82bdb7b027ee71048310_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_aa0995cc2de2dd11d503b9dea9de6864b}\label{class_can_adaptor_aa0995cc2de2dd11d503b9dea9de6864b}} 
+\index{CanAdaptor@{CanAdaptor}!PostMessageByType@{PostMessageByType}}
+\index{PostMessageByType@{PostMessageByType}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{PostMessageByType()}{PostMessageByType()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily void Can\+Adaptor\+::\+Post\+Message\+By\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi_e_c_u___control___steering}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Steering}}}]{data,  }\item[{int}]{msgid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{structi_e_c_u___control___steering}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Steering}} type is transmitted through the C\+AN network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & \mbox{\hyperlink{structi_e_c_u___control___hardware}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Hardware}} data \\
+\hline
+{\em canid} & can id \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 454 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{454                                                                                     \{}
+\DoxyCodeLine{455   cout <<  \textcolor{stringliteral}{"send iECU\_Control\_Steering msg "}<< endl;}
+\DoxyCodeLine{456   \textcolor{keywordtype}{byte} body[CAN\_MAX\_DLEN];}
+\DoxyCodeLine{457   \textcolor{comment}{//byte* body = makeframebody(temp,data);}}
+\DoxyCodeLine{458   memcpy(body,(\textcolor{keywordtype}{void}*)\&data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{459   \mbox{\hyperlink{class_can_adaptor_aa3c09d9af30e82bdb7b027ee71048310}{PostMessageByType}}(body, msgid, device );}
+\DoxyCodeLine{460 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_aa0995cc2de2dd11d503b9dea9de6864b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_a422c8e7cda7a74cd3a052fcfe2e63370}\label{class_can_adaptor_a422c8e7cda7a74cd3a052fcfe2e63370}} 
+\index{CanAdaptor@{CanAdaptor}!PostMessageByType@{PostMessageByType}}
+\index{PostMessageByType@{PostMessageByType}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{PostMessageByType()}{PostMessageByType()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily void Can\+Adaptor\+::\+Post\+Message\+By\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_mode___control___flag}{Mode\+\_\+\+Control\+\_\+\+Flag}}}]{data,  }\item[{int}]{msgid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{struct_mode___control___flag}{Mode\+\_\+\+Control\+\_\+\+Flag}} type is transmitted through the C\+AN network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & \mbox{\hyperlink{structi_e_c_u___control___hardware}{i\+E\+C\+U\+\_\+\+Control\+\_\+\+Hardware}} data \\
+\hline
+{\em canid} & can id \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 472 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{472                                                                                 \{}
+\DoxyCodeLine{473   cout <<  \textcolor{stringliteral}{"send Mode\_Control\_Flag msg : "}<< device << endl;}
+\DoxyCodeLine{474   \textcolor{keywordtype}{byte} body[CAN\_MAX\_DLEN];}
+\DoxyCodeLine{475   \textcolor{comment}{//byte* body = makeframebody(temp,data);}}
+\DoxyCodeLine{476   memcpy(body,(\textcolor{keywordtype}{void}*)\&data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{477   \mbox{\hyperlink{class_can_adaptor_aa3c09d9af30e82bdb7b027ee71048310}{PostMessageByType}}(body, msgid, device );}
+\DoxyCodeLine{478 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a422c8e7cda7a74cd3a052fcfe2e63370_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_ad15a0c09d94192e67e6c5b133e07ed2f}\label{class_can_adaptor_ad15a0c09d94192e67e6c5b133e07ed2f}} 
+\index{CanAdaptor@{CanAdaptor}!PrintMapState@{PrintMapState}}
+\index{PrintMapState@{PrintMapState}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{PrintMapState()}{PrintMapState()}}
+{\footnotesize\ttfamily void Can\+Adaptor\+::\+Print\+Map\+State (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map State Print. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 543 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{543                                          \{}
+\DoxyCodeLine{544 }
+\DoxyCodeLine{545   \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.size() <= 0 )\{}
+\DoxyCodeLine{546     cout << \textcolor{stringliteral}{"("}<< name << \textcolor{stringliteral}{")funcsmap.size() is  "}<< \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.size() << endl;}
+\DoxyCodeLine{547     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{548   \}}
+\DoxyCodeLine{549 }
+\DoxyCodeLine{550   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} iter = \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.begin(); iter !=  \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.end(); iter++)   \{}
+\DoxyCodeLine{551     cout << \textcolor{stringliteral}{"("}<< name << \textcolor{stringliteral}{")iter-\/>first : "} <<  iter-\/>first<< endl;}
+\DoxyCodeLine{552     cout << \textcolor{stringliteral}{"("}<< name << \textcolor{stringliteral}{")iter-\/>second : "}<< iter-\/>second << endl;}
+\DoxyCodeLine{553     \textcolor{comment}{//iter-\/>first;}}
+\DoxyCodeLine{554     \mbox{\hyperlink{class_can_callback_func}{CanCallbackFunc}}* obj = (\mbox{\hyperlink{class_can_callback_func}{CanCallbackFunc}}*)iter-\/>second.get();}
+\DoxyCodeLine{555     cout << \textcolor{stringliteral}{"("}<< name << \textcolor{stringliteral}{")iter-\/>second channel : "}<<obj-\/>\mbox{\hyperlink{class_can_callback_func_ac2c5122460f222f9c542fd488a1ee9e5}{getChannel}}() << \textcolor{stringliteral}{", canid : "}<< obj-\/>\mbox{\hyperlink{class_can_callback_func_ae23d0b2de0aa3588c988ff38970fd157}{getCanid}}() << endl;}
+\DoxyCodeLine{556   \}}
+\DoxyCodeLine{557 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_ad15a0c09d94192e67e6c5b133e07ed2f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_af85789530a136f168b97c592dfbf2b78}\label{class_can_adaptor_af85789530a136f168b97c592dfbf2b78}} 
+\index{CanAdaptor@{CanAdaptor}!Receive@{Receive}}
+\index{Receive@{Receive}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{Receive()}{Receive()}}
+{\footnotesize\ttfamily void Can\+Adaptor\+::\+Receive (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} $\ast$}]{data,  }\item[{int}]{canid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Receive data from can network. 
+
+Search and call a function mapped with canid in the function map. 
+\begin{DoxyParams}{Parameters}
+{\em data} & received data body \\
+\hline
+{\em canid} & received data can id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 227 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{227                                              \{}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229   \textcolor{comment}{//function map에서 canid에 해당하는 callback을 조회하여 호출한다.}}
+\DoxyCodeLine{230   \textcolor{keyword}{auto} value = \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.find(canid);}
+\DoxyCodeLine{231   \textcolor{comment}{//cout << " map key  : "<< value-\/>first << endl;}}
+\DoxyCodeLine{232   std::shared\_ptr<CanCallbackFunc> \textcolor{keywordtype}{object} = value-\/>second;}
+\DoxyCodeLine{233   \textcolor{comment}{//cout << " count  : "<< object.use\_count() << "," << object << endl;}}
+\DoxyCodeLine{234   \mbox{\hyperlink{class_can_callback_func}{CanCallbackFunc}}* lpCls = (\mbox{\hyperlink{class_can_callback_func}{CanCallbackFunc}}*)value-\/>second.get();}
+\DoxyCodeLine{235   cout << \textcolor{stringliteral}{"[recv] canid :"}<< lpCls-\/>\mbox{\hyperlink{class_can_callback_func_ae23d0b2de0aa3588c988ff38970fd157}{getCanid}}() << \textcolor{stringliteral}{", channel :"} << lpCls-\/>\mbox{\hyperlink{class_can_callback_func_ac2c5122460f222f9c542fd488a1ee9e5}{getChannel}}() << endl;}
+\DoxyCodeLine{236   std::function<void(\textcolor{keywordtype}{byte}*)> func = lpCls-\/>\mbox{\hyperlink{class_can_callback_func_a18afd0d8869f35e11bb91ea5ee2a381e}{getHandler}}();}
+\DoxyCodeLine{237   \textcolor{comment}{//data 파싱 및 등록된 callback 함수를 호출한다.}}
+\DoxyCodeLine{238   \textcolor{comment}{//std::future<void> ret = std::async(std::launch::async, func,data);}}
+\DoxyCodeLine{239   func(data);}
+\DoxyCodeLine{240 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_af85789530a136f168b97c592dfbf2b78_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_af85789530a136f168b97c592dfbf2b78_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_a1e96d40f496d6b6e743b8d93b36685eb}\label{class_can_adaptor_a1e96d40f496d6b6e743b8d93b36685eb}} 
+\index{CanAdaptor@{CanAdaptor}!Release@{Release}}
+\index{Release@{Release}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{Release()}{Release()}}
+{\footnotesize\ttfamily void Can\+Adaptor\+::\+Release (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+release task 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 38 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{38                         \{}
+\DoxyCodeLine{39     \textcolor{comment}{//socketclose();}}
+\DoxyCodeLine{40     \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_a352c44d890b854dd3376acfa5173c9a2}{ptr\_can\_send\_}} != NULL )\{}
+\DoxyCodeLine{41       \mbox{\hyperlink{class_can_adaptor_a352c44d890b854dd3376acfa5173c9a2}{ptr\_can\_send\_}}-\/>SocketClose();}
+\DoxyCodeLine{42     \}}
+\DoxyCodeLine{43 \};}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a1e96d40f496d6b6e743b8d93b36685eb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_a0ac054e51c147f3f22636a60b978e06f}\label{class_can_adaptor_a0ac054e51c147f3f22636a60b978e06f}} 
+\index{CanAdaptor@{CanAdaptor}!ROpen@{ROpen}}
+\index{ROpen@{ROpen}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{ROpen()}{ROpen()}}
+{\footnotesize\ttfamily int Can\+Adaptor\+::\+R\+Open (\begin{DoxyParamCaption}\item[{vector$<$ string $>$}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Open a can channel for reception. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Channel name to open \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of processing, 0 if successful 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+After registering all callback functions, call them. 
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 89 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{89                                           \{}
+\DoxyCodeLine{90    }
+\DoxyCodeLine{91   \textcolor{keywordtype}{int} count = 0;}
+\DoxyCodeLine{92   map<string,string> parametermap;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94   cout << \textcolor{stringliteral}{"3) receive chnnel open"} << endl;}
+\DoxyCodeLine{95   cout << \textcolor{stringliteral}{"Number of messages waiting to be received : "} << \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.size() << endl;}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97   \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.size() <0 )\{}
+\DoxyCodeLine{98     cerr << \textcolor{stringliteral}{"not found messages waiting to be received"}<< endl;}
+\DoxyCodeLine{99     \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{100   \}}
+\DoxyCodeLine{101   \textcolor{comment}{//map에서 channel,msgid,func을 조회-\/>2번째 파라메터에 넣는다.}}
+\DoxyCodeLine{102   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} iter = \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.begin(); iter !=  \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.end(); iter++)\{}
+\DoxyCodeLine{103     \textcolor{comment}{//cout << "iter-\/>first : " <<  iter-\/>first<< endl;}}
+\DoxyCodeLine{104     \mbox{\hyperlink{class_can_callback_func}{CanCallbackFunc}}* obj = (\mbox{\hyperlink{class_can_callback_func}{CanCallbackFunc}}*)iter-\/>second.get();}
+\DoxyCodeLine{105     \textcolor{keywordtype}{string} ch = obj-\/>\mbox{\hyperlink{class_can_callback_func_ac2c5122460f222f9c542fd488a1ee9e5}{getChannel}}();}
+\DoxyCodeLine{106     cout << \textcolor{stringliteral}{"<registered message>  channel ("}<<obj-\/>\mbox{\hyperlink{class_can_callback_func_ac2c5122460f222f9c542fd488a1ee9e5}{getChannel}}() << \textcolor{stringliteral}{"), canid ("}<< obj-\/>\mbox{\hyperlink{class_can_callback_func_ae23d0b2de0aa3588c988ff38970fd157}{getCanid}}() << \textcolor{stringliteral}{")"} << endl;}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     \textcolor{keywordflow}{if} (parametermap.count(ch))\{}
+\DoxyCodeLine{109       \textcolor{keyword}{auto} val = parametermap.find(ch);}
+\DoxyCodeLine{110       \textcolor{keywordtype}{string} param = val-\/>second; \textcolor{comment}{// chnnel open 파라메터}}
+\DoxyCodeLine{111       param.append(\textcolor{stringliteral}{","}).append(std::to\_string(obj-\/>\mbox{\hyperlink{class_can_callback_func_ae23d0b2de0aa3588c988ff38970fd157}{getCanid}}())).append(\textcolor{stringliteral}{":"}).append(\mbox{\hyperlink{can__adaptor_8hpp_aecb95f243bd240e41d4757e69a070937}{ONLY\_SFF}});}
+\DoxyCodeLine{112       \textcolor{comment}{//cout << "param2 : " << param << endl;}}
+\DoxyCodeLine{113       val-\/>second=param;}
+\DoxyCodeLine{114       \textcolor{comment}{//auto  ret = parametermap.insert(make\_pair(ch,param));}}
+\DoxyCodeLine{115     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{116       \textcolor{keywordtype}{string} param;}
+\DoxyCodeLine{117       param.append(ch).append(\textcolor{stringliteral}{","}).append(std::to\_string(obj-\/>\mbox{\hyperlink{class_can_callback_func_ae23d0b2de0aa3588c988ff38970fd157}{getCanid}}())).append(\textcolor{stringliteral}{":"}).append(\mbox{\hyperlink{can__adaptor_8hpp_aecb95f243bd240e41d4757e69a070937}{ONLY\_SFF}});}
+\DoxyCodeLine{118       \textcolor{comment}{//cout << "param1 : " << param << endl;}}
+\DoxyCodeLine{119       parametermap.insert(make\_pair(ch,param));}
+\DoxyCodeLine{120     \}}
+\DoxyCodeLine{121   \}}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123   vector<string> argval;}
+\DoxyCodeLine{124   \textcolor{keywordtype}{int} idx = 0;}
+\DoxyCodeLine{125   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} iter = parametermap.begin(); iter !=  parametermap.end(); iter++)\{}
+\DoxyCodeLine{126      \textcolor{comment}{//cout << idx << " : "<< "iter-\/>second.c\_str() : " << iter-\/>second.c\_str() << ", map size : "<< parametermap.size() << endl;}}
+\DoxyCodeLine{127     argval.push\_back(iter-\/>second);}
+\DoxyCodeLine{128     idx++;}
+\DoxyCodeLine{129    \}}
+\DoxyCodeLine{130    \textcolor{comment}{// thread 없이 호출}}
+\DoxyCodeLine{131    \textcolor{comment}{// can\_dump-\/>open(parametermap.size(), arg,this,\&CanAdaptor::receive);}}
+\DoxyCodeLine{132    \textcolor{comment}{// thread 방법}}
+\DoxyCodeLine{133   \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{134     thread recvthread([\&](\textcolor{keywordtype}{int} argc, vector<string> argv,\mbox{\hyperlink{class_can_adaptor}{CanAdaptor}}* pClassType,\textcolor{keywordtype}{void}(\mbox{\hyperlink{class_can_adaptor}{CanAdaptor}}::*func)(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* data,\textcolor{keywordtype}{int} canid)) \{}
+\DoxyCodeLine{135                                this-\/>\mbox{\hyperlink{class_can_adaptor_aac14f5162a9af703c6293a6a05feb98d}{CanOpen}}(argc,argv,pClassType,func);}
+\DoxyCodeLine{136                          \}, parametermap.size(),argval,\textcolor{keyword}{this},\&\mbox{\hyperlink{class_can_adaptor_af85789530a136f168b97c592dfbf2b78}{CanAdaptor::Receive}});}
+\DoxyCodeLine{137     recvthread.detach();}
+\DoxyCodeLine{138     \textcolor{comment}{//recvthread.join();}}
+\DoxyCodeLine{139     \} \textcolor{keywordflow}{catch} (std::exception\& e) \{}
+\DoxyCodeLine{140        cerr << \textcolor{stringliteral}{"Exception : "} << e.what();}
+\DoxyCodeLine{141     \} \textcolor{keywordflow}{catch} (...) \{}
+\DoxyCodeLine{142        cerr << \textcolor{stringliteral}{"default Exception : "} << endl;}
+\DoxyCodeLine{143     \}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145     \textcolor{comment}{// async 방법}}
+\DoxyCodeLine{146     \textcolor{comment}{// int (CanAdaptor::*pFunc)(int, char **,CanAdaptor*,void(CanAdaptor::*func)(unsigned char* data,int canid)) = \&CanAdaptor::canopen;}}
+\DoxyCodeLine{147     \textcolor{comment}{// function<int(int, char **,CanAdaptor*,void(CanAdaptor::*func)(unsigned char* data,int canid))> func\_canopen}}
+\DoxyCodeLine{148     \textcolor{comment}{//        = move(bind(pFunc, this, placeholders::\_1,placeholders::\_2,placeholders::\_3,placeholders::\_4));}}
+\DoxyCodeLine{149     \textcolor{comment}{//  auto ret = std::async(std::launch::async, func\_canopen,parametermap.size(), arg,this,\&CanAdaptor::receive);}}
+\DoxyCodeLine{150     \textcolor{comment}{//int n = ret.get();}}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152     cout << \textcolor{stringliteral}{"<Start detecting receive data>\(\backslash\)n"} << endl;}
+\DoxyCodeLine{153     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{154 \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a0ac054e51c147f3f22636a60b978e06f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a0ac054e51c147f3f22636a60b978e06f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_afc5f3ce8f22c04db95c3b46e4bda42c4}\label{class_can_adaptor_afc5f3ce8f22c04db95c3b46e4bda42c4}} 
+\index{CanAdaptor@{CanAdaptor}!RunControlFlag@{RunControlFlag}}
+\index{RunControlFlag@{RunControlFlag}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{RunControlFlag()}{RunControlFlag()}}
+{\footnotesize\ttfamily int Can\+Adaptor\+::\+Run\+Control\+Flag (\begin{DoxyParamCaption}\item[{int}]{flag,  }\item[{string}]{device }\end{DoxyParamCaption})}
+
+
+
+i\+E\+CU mode, need to remote control 
+
+see can dbc file , In case of success, the next command is valid and processed synchronously. 
+\begin{DoxyParams}{Parameters}
+{\em flag} & Mode\+\_\+\+Control\+\_\+\+Request\+\_\+\+Flag ( 0, 1, 2) \\
+\hline
+{\em device} & Channel name to command \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of processing, 0 if successful, -\/1 otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 250 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{250                                                       \{}
+\DoxyCodeLine{251     }
+\DoxyCodeLine{252   \mbox{\hyperlink{struct_mode___control___flag}{Mode\_Control\_Flag}} data;}
+\DoxyCodeLine{253   memset(\&data,0x00,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{254   data.\mbox{\hyperlink{struct_mode___control___flag_a25ed16fe172b49f71c5eef74d5ae06a5}{mode\_control\_request\_flag}} = (\textcolor{keywordtype}{unsigned} char)flag;}
+\DoxyCodeLine{255     \textcolor{comment}{//postCanMessage<Mode\_Control\_Flag>(data,MODE\_CONTROL\_FLAG,device\_type[CAN1]);}}
+\DoxyCodeLine{256     \textcolor{comment}{//for synchronously}}
+\DoxyCodeLine{257   \textcolor{keywordtype}{byte} temp[CAN\_MAX\_DLEN];}
+\DoxyCodeLine{258     \textcolor{comment}{//byte* body = makeframebody(temp,data);}}
+\DoxyCodeLine{259   memcpy(temp,(\textcolor{keywordtype}{void}*)\&data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{260   vector<byte> body;}
+\DoxyCodeLine{261   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{byte} value : temp)\{}
+\DoxyCodeLine{262     body.emplace\_back(value);}
+\DoxyCodeLine{263   \}}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{265   int (\mbox{\hyperlink{class_can_adaptor}{CanAdaptor}}::*pFunc)(vector<byte>, \textcolor{keywordtype}{unsigned} int, string) = \&\mbox{\hyperlink{class_can_adaptor_ae3a6d62b3980b9a0e4bba2f709884e80}{CanAdaptor::Send}};}
+\DoxyCodeLine{266   \textcolor{keyword}{function}<void(vector<byte>, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}, \textcolor{keywordtype}{string})> postMessagefunc = move(bind(pFunc, \textcolor{keyword}{this}, placeholders::\_1, placeholders::\_2, placeholders::\_3));}
+\DoxyCodeLine{267 }
+\DoxyCodeLine{268   \textcolor{keywordtype}{int} ret = \mbox{\hyperlink{class_can_adaptor_ae3a6d62b3980b9a0e4bba2f709884e80}{Send}}(body, \mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea67938cfd5724b48754bbddee5595e760}{MODE\_CONTROL\_FLAG}}, (\textcolor{keywordtype}{char}*)device.c\_str());   }
+\DoxyCodeLine{269 }
+\DoxyCodeLine{270   \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{271 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_afc5f3ce8f22c04db95c3b46e4bda42c4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_afc5f3ce8f22c04db95c3b46e4bda42c4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_ae3a6d62b3980b9a0e4bba2f709884e80}\label{class_can_adaptor_ae3a6d62b3980b9a0e4bba2f709884e80}} 
+\index{CanAdaptor@{CanAdaptor}!Send@{Send}}
+\index{Send@{Send}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{Send()}{Send()}}
+{\footnotesize\ttfamily int Can\+Adaptor\+::\+Send (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{can__adaptor_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} $>$}]{data,  }\item[{unsigned int}]{msgid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Send data to the C\+AN network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & transmission body \\
+\hline
+{\em msgid} & can id \\
+\hline
+{\em device} & channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 507 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{507                                                                          \{}
+\DoxyCodeLine{508   \textcolor{comment}{//cout <<  "send device : "<< device << endl;}}
+\DoxyCodeLine{509 }
+\DoxyCodeLine{510   \textcolor{keywordflow}{if}( \mbox{\hyperlink{class_can_adaptor_a352c44d890b854dd3376acfa5173c9a2}{ptr\_can\_send\_}}-\/>Send(data,msgid,(\textcolor{keywordtype}{char}*)device.c\_str()) != 0 )\{}
+\DoxyCodeLine{511     \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{512   \}}
+\DoxyCodeLine{513   \textcolor{keywordflow}{return} 0;    }
+\DoxyCodeLine{514 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_ae3a6d62b3980b9a0e4bba2f709884e80_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_ae05123714e98c4985905f61b26109f70}\label{class_can_adaptor_ae05123714e98c4985905f61b26109f70}} 
+\index{CanAdaptor@{CanAdaptor}!SetHandler@{SetHandler}}
+\index{SetHandler@{SetHandler}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{SetHandler()}{SetHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Can\+Adaptor\+::\+Set\+Handler (\begin{DoxyParamCaption}\item[{T $\ast$}]{p\+Class\+Type,  }\item[{void(T\+::$\ast$)(\mbox{\hyperlink{struct_d_b_s___status}{D\+B\+S\+\_\+\+Status}})}]{pfunc,  }\item[{int}]{canid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Register a callback function.(\mbox{\hyperlink{struct_d_b_s___status}{D\+B\+S\+\_\+\+Status}}) 
+
+Register a callback function that receives \mbox{\hyperlink{struct_d_b_s___status}{D\+B\+S\+\_\+\+Status}} as a parameter. 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$p\+Class\+Type} & an channel to open \\
+\hline
+{\em T\+::$\ast$pfunc} & callback function \\
+\hline
+{\em msgid} & M\+SG ID (same value as can id) \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 236 of file can\+\_\+adaptor.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{236                                                                                     \{        }
+\DoxyCodeLine{237       \mbox{\hyperlink{class_can_adaptor_a3b4e625f6656ca5bbe9c4d5c779390c1}{handler\_ds}} = move(bind(pfunc, pClassType, placeholders::\_1));}
+\DoxyCodeLine{238       \textcolor{comment}{//int canid = string2hex(msgid);}}
+\DoxyCodeLine{239       }
+\DoxyCodeLine{240       std::shared\_ptr<CanCallbackFunc> \textcolor{keywordtype}{object} = std::make\_shared<CanCallbackFunc>(}
+\DoxyCodeLine{241                  canid}
+\DoxyCodeLine{242                 ,device}
+\DoxyCodeLine{243                 ,[\&](\textcolor{keywordtype}{byte}* data) \{ }
+\DoxyCodeLine{244                   \textcolor{comment}{// data를 DBS\_Status 맞춰서 넣는다.}}
+\DoxyCodeLine{245                   \mbox{\hyperlink{struct_d_b_s___status}{DBS\_Status}} r;}
+\DoxyCodeLine{246                   memcpy((\textcolor{keywordtype}{void}*)\&r,data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{247                   \textcolor{comment}{//this-\/>handler\_h(r);}}
+\DoxyCodeLine{248                   \textcolor{comment}{//cout<< "call DBS\_Status" << endl;}}
+\DoxyCodeLine{249                   \mbox{\hyperlink{class_can_adaptor_a3b4e625f6656ca5bbe9c4d5c779390c1}{handler\_ds}}((\mbox{\hyperlink{struct_d_b_s___status}{DBS\_Status}})r);}
+\DoxyCodeLine{250                  \textcolor{comment}{// cout<< "end DBS\_Status" << endl;}}
+\DoxyCodeLine{251                 \}}
+\DoxyCodeLine{252                 );}
+\DoxyCodeLine{253       }
+\DoxyCodeLine{254        cout << \textcolor{stringliteral}{"setHandler(DBS\_Status) : "} + device << \textcolor{stringliteral}{", canid : "}<< canid << endl;          }
+\DoxyCodeLine{255        \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.insert(make\_pair(canid,\textcolor{keywordtype}{object}));           }
+\DoxyCodeLine{256 \textcolor{comment}{//    print\_map\_state("DBS\_Status");}}
+\DoxyCodeLine{257    \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_adaptor_a0273f104657a2a914531b610b5a561e5}\label{class_can_adaptor_a0273f104657a2a914531b610b5a561e5}} 
+\index{CanAdaptor@{CanAdaptor}!SetHandler@{SetHandler}}
+\index{SetHandler@{SetHandler}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{SetHandler()}{SetHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Can\+Adaptor\+::\+Set\+Handler (\begin{DoxyParamCaption}\item[{T $\ast$}]{p\+Class\+Type,  }\item[{void(T\+::$\ast$)(\mbox{\hyperlink{struct_m_c_u___torque___feedback}{M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}})}]{pfunc,  }\item[{int}]{canid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Register a callback function.(\mbox{\hyperlink{struct_m_c_u___torque___feedback}{M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}}) 
+
+Register a callback function that receives \mbox{\hyperlink{struct_m_c_u___torque___feedback}{M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}} as a parameter. 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$p\+Class\+Type} & an channel to open \\
+\hline
+{\em T\+::$\ast$pfunc} & callback function \\
+\hline
+{\em msgid} & M\+SG ID (same value as can id) \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 305 of file can\+\_\+adaptor.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{305                                                                                              \{        }
+\DoxyCodeLine{306       \mbox{\hyperlink{class_can_adaptor_a6745b3f946f3253b7adbd901d9dee5a8}{handler\_mtf}} = move(bind(pfunc, pClassType, placeholders::\_1));}
+\DoxyCodeLine{307      \textcolor{comment}{// int canid = string2hex(msgid);}}
+\DoxyCodeLine{308       }
+\DoxyCodeLine{309       std::shared\_ptr<CanCallbackFunc> \textcolor{keywordtype}{object} = std::make\_shared<CanCallbackFunc>(}
+\DoxyCodeLine{310                  canid}
+\DoxyCodeLine{311                 ,device}
+\DoxyCodeLine{312                 ,[\&](\textcolor{keywordtype}{byte}* data) \{ }
+\DoxyCodeLine{313                   \textcolor{comment}{// data를 MCU\_Torque\_Feedback 맞춰서 넣는다.}}
+\DoxyCodeLine{314                   \mbox{\hyperlink{struct_m_c_u___torque___feedback}{MCU\_Torque\_Feedback}} r;}
+\DoxyCodeLine{315                   memcpy((\textcolor{keywordtype}{void}*)\&r,data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{316                   \textcolor{comment}{//this-\/>handler\_h(r);}}
+\DoxyCodeLine{317                   \textcolor{comment}{//cout<< "call MCU\_Torque\_Feedback" << endl;}}
+\DoxyCodeLine{318                   \mbox{\hyperlink{class_can_adaptor_a6745b3f946f3253b7adbd901d9dee5a8}{handler\_mtf}}((\mbox{\hyperlink{struct_m_c_u___torque___feedback}{MCU\_Torque\_Feedback}})r);}
+\DoxyCodeLine{319                   \textcolor{comment}{//cout<< "end handler\_mtf" << endl;}}
+\DoxyCodeLine{320                 \}}
+\DoxyCodeLine{321                 );}
+\DoxyCodeLine{322       }
+\DoxyCodeLine{323        cout << \textcolor{stringliteral}{"setHandler(MCU\_Torque\_Feedback) : "} + device << \textcolor{stringliteral}{", canid : "}<< canid << endl;          }
+\DoxyCodeLine{324        \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.insert(make\_pair(canid,\textcolor{keywordtype}{object}));           }
+\DoxyCodeLine{325 \textcolor{comment}{//      print\_map\_state("MCU\_Torque\_Feedback");}}
+\DoxyCodeLine{326    \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_adaptor_a2a12c69cb0efa4e6e304be1637894ca6}\label{class_can_adaptor_a2a12c69cb0efa4e6e304be1637894ca6}} 
+\index{CanAdaptor@{CanAdaptor}!SetHandler@{SetHandler}}
+\index{SetHandler@{SetHandler}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{SetHandler()}{SetHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Can\+Adaptor\+::\+Set\+Handler (\begin{DoxyParamCaption}\item[{T $\ast$}]{p\+Class\+Type,  }\item[{void(T\+::$\ast$)(\mbox{\hyperlink{struct_remote___control___i_o}{Remote\+\_\+\+Control\+\_\+\+IO}})}]{pfunc,  }\item[{int}]{canid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Register a callback function.(\mbox{\hyperlink{struct_remote___control___i_o}{Remote\+\_\+\+Control\+\_\+\+IO}}) 
+
+Register a callback function that receives \mbox{\hyperlink{struct_remote___control___i_o}{Remote\+\_\+\+Control\+\_\+\+IO}} as a parameter. 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$p\+Class\+Type} & an channel to open \\
+\hline
+{\em T\+::$\ast$pfunc} & callback function \\
+\hline
+{\em msgid} & M\+SG ID (same value as can id) \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 168 of file can\+\_\+adaptor.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{168                                                                                            \{        }
+\DoxyCodeLine{169       \mbox{\hyperlink{class_can_adaptor_ab14cc10ed629066d0fafa58307968f9c}{handler\_rci}} = move(bind(pfunc, pClassType, placeholders::\_1));}
+\DoxyCodeLine{170       \textcolor{comment}{//int canid = string2hex(msgid);}}
+\DoxyCodeLine{171       }
+\DoxyCodeLine{172       std::shared\_ptr<CanCallbackFunc> \textcolor{keywordtype}{object} = std::make\_shared<CanCallbackFunc>(}
+\DoxyCodeLine{173                  canid}
+\DoxyCodeLine{174                 ,device}
+\DoxyCodeLine{175                 ,[\&](\textcolor{keywordtype}{byte}* data) \{ }
+\DoxyCodeLine{176                   \textcolor{comment}{// data를 Remote\_Control\_IO 맞춰서 넣는다.}}
+\DoxyCodeLine{177                   \mbox{\hyperlink{struct_remote___control___i_o}{Remote\_Control\_IO}} r;}
+\DoxyCodeLine{178                   memcpy((\textcolor{keywordtype}{void}*)\&r,data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{179                   \textcolor{comment}{//this-\/>handler\_h(r);}}
+\DoxyCodeLine{180                   \textcolor{comment}{//cout<< "call Remote\_Control\_IO" << endl;}}
+\DoxyCodeLine{181                   \mbox{\hyperlink{class_can_adaptor_ab14cc10ed629066d0fafa58307968f9c}{handler\_rci}}((\mbox{\hyperlink{struct_remote___control___i_o}{Remote\_Control\_IO}})r);}
+\DoxyCodeLine{182                   \textcolor{comment}{//cout<< "end handler\_rci" << endl;}}
+\DoxyCodeLine{183                 \}}
+\DoxyCodeLine{184                 );}
+\DoxyCodeLine{185       }
+\DoxyCodeLine{186        cout << \textcolor{stringliteral}{"setHandler(Remote\_Control\_IO) : "} + device << \textcolor{stringliteral}{", canid : "}<< canid << endl;          }
+\DoxyCodeLine{187        \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.insert(make\_pair(canid,\textcolor{keywordtype}{object}));           }
+\DoxyCodeLine{188   \textcolor{comment}{//    print\_map\_state("Remote\_Control\_IO");}}
+\DoxyCodeLine{189    \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_adaptor_a96b7ffcfce652297da81af132beea43e}\label{class_can_adaptor_a96b7ffcfce652297da81af132beea43e}} 
+\index{CanAdaptor@{CanAdaptor}!SetHandler@{SetHandler}}
+\index{SetHandler@{SetHandler}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{SetHandler()}{SetHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Can\+Adaptor\+::\+Set\+Handler (\begin{DoxyParamCaption}\item[{T $\ast$}]{p\+Class\+Type,  }\item[{void(T\+::$\ast$)(\mbox{\hyperlink{struct_remote___control___shake}{Remote\+\_\+\+Control\+\_\+\+Shake}})}]{pfunc,  }\item[{int}]{canid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Register a callback function.(Remote\+\_\+\+Control\+\_\+\+Shake\+\_\+2) 
+
+Register a callback function that receives Remote\+\_\+\+Control\+\_\+\+Shake\+\_\+2 as a parameter. 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$p\+Class\+Type} & an channel to open \\
+\hline
+{\em T\+::$\ast$pfunc} & callback function \\
+\hline
+{\em msgid} & M\+SG ID (same value as can id) \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 202 of file can\+\_\+adaptor.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{202                                                                                               \{        }
+\DoxyCodeLine{203       \mbox{\hyperlink{class_can_adaptor_a75bbc9fb4383ec81d5cc38ffc574c6e6}{handler\_rcs}} = move(bind(pfunc, pClassType, placeholders::\_1));}
+\DoxyCodeLine{204       \textcolor{comment}{//int canid = string2hex(msgid);}}
+\DoxyCodeLine{205       }
+\DoxyCodeLine{206       std::shared\_ptr<CanCallbackFunc> \textcolor{keywordtype}{object} = std::make\_shared<CanCallbackFunc>(}
+\DoxyCodeLine{207                  canid}
+\DoxyCodeLine{208                 ,device}
+\DoxyCodeLine{209                 ,[\&](\textcolor{keywordtype}{byte}* data) \{ }
+\DoxyCodeLine{210                   \textcolor{comment}{// data를 Remote\_Control\_Shake\_2 맞춰서 넣는다.}}
+\DoxyCodeLine{211                   \mbox{\hyperlink{struct_remote___control___shake}{Remote\_Control\_Shake}} r;}
+\DoxyCodeLine{212                   memcpy((\textcolor{keywordtype}{void}*)\&r,data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{213                   \textcolor{comment}{//this-\/>handler\_h(r);}}
+\DoxyCodeLine{214                   \textcolor{comment}{//cout<< "call Remote\_Control\_Shake\_2" << endl;}}
+\DoxyCodeLine{215                   \mbox{\hyperlink{class_can_adaptor_a75bbc9fb4383ec81d5cc38ffc574c6e6}{handler\_rcs}}((\mbox{\hyperlink{struct_remote___control___shake}{Remote\_Control\_Shake}})r);}
+\DoxyCodeLine{216                   \textcolor{comment}{//cout<< "end handler\_rcs" << endl;}}
+\DoxyCodeLine{217                 \}}
+\DoxyCodeLine{218                 );}
+\DoxyCodeLine{219       }
+\DoxyCodeLine{220       cout << \textcolor{stringliteral}{"setHandler(Remote\_Control\_Shake\_2) : "} + device << \textcolor{stringliteral}{", canid : "}<< canid << endl;          }
+\DoxyCodeLine{221       \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.insert(make\_pair(canid,\textcolor{keywordtype}{object}));           }
+\DoxyCodeLine{222 \textcolor{comment}{//      print\_map\_state("Remote\_Control\_Shake\_2");}}
+\DoxyCodeLine{223    \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_adaptor_ad099a4fcfe8a9e168a1e7bbd5df76a67}\label{class_can_adaptor_ad099a4fcfe8a9e168a1e7bbd5df76a67}} 
+\index{CanAdaptor@{CanAdaptor}!SetHandler@{SetHandler}}
+\index{SetHandler@{SetHandler}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{SetHandler()}{SetHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Can\+Adaptor\+::\+Set\+Handler (\begin{DoxyParamCaption}\item[{T $\ast$}]{p\+Class\+Type,  }\item[{void(T\+::$\ast$)(\mbox{\hyperlink{struct_v_c_u___d_b_s___request}{V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}})}]{pfunc,  }\item[{int}]{canid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Register a callback function.(\mbox{\hyperlink{struct_v_c_u___d_b_s___request}{V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}}) 
+
+Register a callback function that receives \mbox{\hyperlink{struct_v_c_u___d_b_s___request}{V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}} as a parameter. 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$p\+Class\+Type} & an channel to open \\
+\hline
+{\em T\+::$\ast$pfunc} & callback function \\
+\hline
+{\em msgid} & M\+SG ID (same value as can id) \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 270 of file can\+\_\+adaptor.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{270                                                                                          \{        }
+\DoxyCodeLine{271       \mbox{\hyperlink{class_can_adaptor_a08f1018e0f38a86a3e54fb8c77965217}{handler\_vdr}} = move(bind(pfunc, pClassType, placeholders::\_1));}
+\DoxyCodeLine{272       \textcolor{comment}{//int canid = string2hex(msgid);}}
+\DoxyCodeLine{273       }
+\DoxyCodeLine{274       std::shared\_ptr<CanCallbackFunc> \textcolor{keywordtype}{object} = std::make\_shared<CanCallbackFunc>(}
+\DoxyCodeLine{275                  canid}
+\DoxyCodeLine{276                 ,device}
+\DoxyCodeLine{277                 ,[\&](\textcolor{keywordtype}{byte}* data) \{ }
+\DoxyCodeLine{278                   \textcolor{comment}{// data를 VCU\_DBS\_Request 맞춰서 넣는다.}}
+\DoxyCodeLine{279                   \mbox{\hyperlink{struct_v_c_u___d_b_s___request}{VCU\_DBS\_Request}} r;}
+\DoxyCodeLine{280                   memcpy((\textcolor{keywordtype}{void}*)\&r,data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{281                   \textcolor{comment}{//this-\/>handler\_h(r);}}
+\DoxyCodeLine{282                   \textcolor{comment}{//cout<< "call VCU\_DBS\_Request" << endl;}}
+\DoxyCodeLine{283                   \mbox{\hyperlink{class_can_adaptor_a08f1018e0f38a86a3e54fb8c77965217}{handler\_vdr}}((\mbox{\hyperlink{struct_v_c_u___d_b_s___request}{VCU\_DBS\_Request}})r);}
+\DoxyCodeLine{284                   \textcolor{comment}{//cout<< "end handler\_vdr" << endl;}}
+\DoxyCodeLine{285                 \}}
+\DoxyCodeLine{286                 );}
+\DoxyCodeLine{287       }
+\DoxyCodeLine{288       cout << \textcolor{stringliteral}{"setHandler(VCU\_DBS\_Request) : "} + device << \textcolor{stringliteral}{", canid : "}<< canid << endl;          }
+\DoxyCodeLine{289       \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.insert(make\_pair(canid,\textcolor{keywordtype}{object}));           }
+\DoxyCodeLine{290 \textcolor{comment}{//      print\_map\_state("VCU\_DBS\_Request");}}
+\DoxyCodeLine{291    \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51}\label{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51}} 
+\index{CanAdaptor@{CanAdaptor}!SetHandler@{SetHandler}}
+\index{SetHandler@{SetHandler}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{SetHandler()}{SetHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Can\+Adaptor\+::\+Set\+Handler (\begin{DoxyParamCaption}\item[{T $\ast$}]{p\+Class\+Type,  }\item[{void(T\+::$\ast$)(\mbox{\hyperlink{struct_v_c_u___e_p_s___control___request}{V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}})}]{pfunc,  }\item[{int}]{canid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Register a callback function.(\mbox{\hyperlink{struct_v_c_u___e_p_s___control___request}{V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}}) 
+
+Register a callback function that receives \mbox{\hyperlink{struct_v_c_u___e_p_s___control___request}{V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}} as a parameter. 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$p\+Class\+Type} & an channel to open \\
+\hline
+{\em T\+::$\ast$pfunc} & callback function \\
+\hline
+{\em msgid} & M\+SG ID (same value as can id) \\
+\hline
+{\em device} & can channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 134 of file can\+\_\+adaptor.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{134                                                                                                  \{}
+\DoxyCodeLine{135       \textcolor{comment}{//void CanAdaptor::setHandler(T *pClassType,void(T::*pfunc)(VCU\_EPS\_Control\_Request,std::string msgid,CHANNEL\_TYPE type))\{  }}
+\DoxyCodeLine{136       \textcolor{comment}{//setHandler(bind(pfunc, pClassType, placeholders::\_1));    }}
+\DoxyCodeLine{137       \mbox{\hyperlink{class_can_adaptor_a469af510ed289b28ead5c142f9d8d450}{handler\_vcr}} = move(bind(pfunc, pClassType, placeholders::\_1));}
+\DoxyCodeLine{138       \textcolor{comment}{//int canid = string2hex(msgid);}}
+\DoxyCodeLine{139       }
+\DoxyCodeLine{140       std::shared\_ptr<CanCallbackFunc> \textcolor{keywordtype}{object} = std::make\_shared<CanCallbackFunc>(}
+\DoxyCodeLine{141                  canid}
+\DoxyCodeLine{142                 ,device}
+\DoxyCodeLine{143                 ,[\&](\textcolor{keywordtype}{byte}* data) \{ }
+\DoxyCodeLine{144                     \textcolor{comment}{// data를 VCU\_EPS\_Control\_Request에 맞춰서 넣는다.}}
+\DoxyCodeLine{145                     \mbox{\hyperlink{struct_v_c_u___e_p_s___control___request}{VCU\_EPS\_Control\_Request}} r;                                        }
+\DoxyCodeLine{146                     memcpy((\textcolor{keywordtype}{void}*)\&r,data,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{147                     \textcolor{comment}{//cout<< "call VCU\_EPS\_Control\_Request" << endl;}}
+\DoxyCodeLine{148                     \mbox{\hyperlink{class_can_adaptor_a469af510ed289b28ead5c142f9d8d450}{handler\_vcr}}((\mbox{\hyperlink{struct_v_c_u___e_p_s___control___request}{VCU\_EPS\_Control\_Request}})r);}
+\DoxyCodeLine{149                     \textcolor{comment}{//cout<< "end handler\_vcr" << endl;}}
+\DoxyCodeLine{150                 \}}
+\DoxyCodeLine{151                 );                }
+\DoxyCodeLine{152      cout << \textcolor{stringliteral}{"setHandler(VCU\_EPS\_Control\_Request) : "} + device << \textcolor{stringliteral}{", canid : "}<< canid << endl;          }
+\DoxyCodeLine{153      \mbox{\hyperlink{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}{funcsmap\_}}.insert(make\_pair(canid,\textcolor{keywordtype}{object}));     }
+\DoxyCodeLine{154 \textcolor{comment}{//     print\_map\_state("VCU\_EPS\_Control\_Request");}}
+\DoxyCodeLine{155    \};}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_a46b42321aacccd7080889ba0a52b0740}\label{class_can_adaptor_a46b42321aacccd7080889ba0a52b0740}} 
+\index{CanAdaptor@{CanAdaptor}!SOpen@{SOpen}}
+\index{SOpen@{SOpen}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{SOpen()}{SOpen()}}
+{\footnotesize\ttfamily int Can\+Adaptor\+::\+S\+Open (\begin{DoxyParamCaption}\item[{vector$<$ string $>$}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Open a can channel for send. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Channel name to open \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of processing, 0 if successful 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+After registering all callback functions, call them. 
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 68 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{68                                           \{}
+\DoxyCodeLine{69    }
+\DoxyCodeLine{70    cout << \textcolor{stringliteral}{"2) send socket open"} << endl;}
+\DoxyCodeLine{71    \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_a352c44d890b854dd3376acfa5173c9a2}{ptr\_can\_send\_}} == NULL )\{}
+\DoxyCodeLine{72         cerr << \textcolor{stringliteral}{"invalid can send object"} << endl;}
+\DoxyCodeLine{73         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{74    \}}
+\DoxyCodeLine{75    \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_can_adaptor_a352c44d890b854dd3376acfa5173c9a2}{ptr\_can\_send\_}}-\/>SocketOpen(device) < 0 )\{}
+\DoxyCodeLine{76         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{77    \}}
+\DoxyCodeLine{78    \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{79 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a46b42321aacccd7080889ba0a52b0740_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_can_adaptor_a9aa14f36f20a44042f9ec2c5898e125c}\label{class_can_adaptor_a9aa14f36f20a44042f9ec2c5898e125c}} 
+\index{CanAdaptor@{CanAdaptor}!StopPostMessage@{StopPostMessage}}
+\index{StopPostMessage@{StopPostMessage}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{StopPostMessage()}{StopPostMessage()}}
+{\footnotesize\ttfamily void Can\+Adaptor\+::\+Stop\+Post\+Message (\begin{DoxyParamCaption}\item[{unsigned int}]{canid }\end{DoxyParamCaption})}
+
+
+
+Stop messages that are sent repeatedly over the C\+AN network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em canid} & can id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+currently not used 
+\end{DoxyWarning}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 380 of file can\+\_\+adaptor.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{380                                                   \{}
+\DoxyCodeLine{381   ThreadMap::const\_iterator it = \mbox{\hyperlink{class_can_adaptor_ad5e6b898b40956b206aa9ff212166e6c}{psotmsg\_tm\_}}.find(canid);}
+\DoxyCodeLine{382   \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_can_adaptor_ad5e6b898b40956b206aa9ff212166e6c}{psotmsg\_tm\_}}.end()) \{}
+\DoxyCodeLine{383     pthread\_cancel(it-\/>second);}
+\DoxyCodeLine{384     \mbox{\hyperlink{class_can_adaptor_ad5e6b898b40956b206aa9ff212166e6c}{psotmsg\_tm\_}}.erase(canid);}
+\DoxyCodeLine{385     std::cout << \textcolor{stringliteral}{"post message 0x"} << std::hex << canid << \textcolor{stringliteral}{" killed:"} << std::endl;}
+\DoxyCodeLine{386   \}}
+\DoxyCodeLine{387 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_can_adaptor_a9aa14f36f20a44042f9ec2c5898e125c_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}\label{class_can_adaptor_ad18b965aae27558482fcd10370c2d106}} 
+\index{CanAdaptor@{CanAdaptor}!funcsmap\_@{funcsmap\_}}
+\index{funcsmap\_@{funcsmap\_}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{funcsmap\_}{funcsmap\_}}
+{\footnotesize\ttfamily map$<$int, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_can_callback_func}{Can\+Callback\+Func}}$>$ $>$ Can\+Adaptor\+::funcsmap\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 47 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_a3b4e625f6656ca5bbe9c4d5c779390c1}\label{class_can_adaptor_a3b4e625f6656ca5bbe9c4d5c779390c1}} 
+\index{CanAdaptor@{CanAdaptor}!handler\_ds@{handler\_ds}}
+\index{handler\_ds@{handler\_ds}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{handler\_ds}{handler\_ds}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_can_adaptor_aac384706d6a049adac434dfcd85010bb}{func\+\_\+\+D\+B\+S\+\_\+\+Status}} Can\+Adaptor\+::handler\+\_\+ds\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 64 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_a6745b3f946f3253b7adbd901d9dee5a8}\label{class_can_adaptor_a6745b3f946f3253b7adbd901d9dee5a8}} 
+\index{CanAdaptor@{CanAdaptor}!handler\_mtf@{handler\_mtf}}
+\index{handler\_mtf@{handler\_mtf}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{handler\_mtf}{handler\_mtf}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_can_adaptor_a54105099be6cec5a1645b74ba9da391b}{func\+\_\+\+M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}} Can\+Adaptor\+::handler\+\_\+mtf\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 66 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_ab14cc10ed629066d0fafa58307968f9c}\label{class_can_adaptor_ab14cc10ed629066d0fafa58307968f9c}} 
+\index{CanAdaptor@{CanAdaptor}!handler\_rci@{handler\_rci}}
+\index{handler\_rci@{handler\_rci}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{handler\_rci}{handler\_rci}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_can_adaptor_ac8fdc594fc88d72b1176f0618d2d7fea}{func\+\_\+\+Remote\+\_\+\+Control\+\_\+\+IO}} Can\+Adaptor\+::handler\+\_\+rci\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 63 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_a75bbc9fb4383ec81d5cc38ffc574c6e6}\label{class_can_adaptor_a75bbc9fb4383ec81d5cc38ffc574c6e6}} 
+\index{CanAdaptor@{CanAdaptor}!handler\_rcs@{handler\_rcs}}
+\index{handler\_rcs@{handler\_rcs}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{handler\_rcs}{handler\_rcs}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_can_adaptor_a27bd664ef783c891f9d1d8ac81874770}{func\+\_\+\+Remote\+\_\+\+Control\+\_\+\+Shake}} Can\+Adaptor\+::handler\+\_\+rcs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 62 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_a469af510ed289b28ead5c142f9d8d450}\label{class_can_adaptor_a469af510ed289b28ead5c142f9d8d450}} 
+\index{CanAdaptor@{CanAdaptor}!handler\_vcr@{handler\_vcr}}
+\index{handler\_vcr@{handler\_vcr}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{handler\_vcr}{handler\_vcr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_can_adaptor_ac4246a9001a5d48e659ee05d80ac9272}{func\+\_\+\+V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}} Can\+Adaptor\+::handler\+\_\+vcr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 61 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_a08f1018e0f38a86a3e54fb8c77965217}\label{class_can_adaptor_a08f1018e0f38a86a3e54fb8c77965217}} 
+\index{CanAdaptor@{CanAdaptor}!handler\_vdr@{handler\_vdr}}
+\index{handler\_vdr@{handler\_vdr}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{handler\_vdr}{handler\_vdr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_can_adaptor_a77ba2e3277d74f8fafe0e6edfa8087b6}{func\+\_\+\+V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}} Can\+Adaptor\+::handler\+\_\+vdr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 65 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_a251e6f47e8a46f31d2cb1ad14d2e11f6}\label{class_can_adaptor_a251e6f47e8a46f31d2cb1ad14d2e11f6}} 
+\index{CanAdaptor@{CanAdaptor}!instance@{instance}}
+\index{instance@{instance}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{instance}{instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}} $\ast$ Can\+Adaptor\+::instance = N\+U\+LL\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 52 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_a0258a3bef8366d85e00b590c43769e59}\label{class_can_adaptor_a0258a3bef8366d85e00b590c43769e59}} 
+\index{CanAdaptor@{CanAdaptor}!isBigEndian\_@{isBigEndian\_}}
+\index{isBigEndian\_@{isBigEndian\_}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{isBigEndian\_}{isBigEndian\_}}
+{\footnotesize\ttfamily bool Can\+Adaptor\+::is\+Big\+Endian\+\_\+ = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 68 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_ad5e6b898b40956b206aa9ff212166e6c}\label{class_can_adaptor_ad5e6b898b40956b206aa9ff212166e6c}} 
+\index{CanAdaptor@{CanAdaptor}!psotmsg\_tm\_@{psotmsg\_tm\_}}
+\index{psotmsg\_tm\_@{psotmsg\_tm\_}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{psotmsg\_tm\_}{psotmsg\_tm\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_can_adaptor_a42a597d12cadc5b30e2055a59bdfca41}{Thread\+Map}} Can\+Adaptor\+::psotmsg\+\_\+tm\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 74 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_ad7963ba7726a31d4dcbc3ad313512111}\label{class_can_adaptor_ad7963ba7726a31d4dcbc3ad313512111}} 
+\index{CanAdaptor@{CanAdaptor}!ptr\_can\_dump\_@{ptr\_can\_dump\_}}
+\index{ptr\_can\_dump\_@{ptr\_can\_dump\_}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{ptr\_can\_dump\_}{ptr\_can\_dump\_}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_can_dump}{Can\+Dump}}$>$ Can\+Adaptor\+::ptr\+\_\+can\+\_\+dump\+\_\+ = N\+U\+LL\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 70 of file can\+\_\+adaptor.\+hpp.
+
+\mbox{\Hypertarget{class_can_adaptor_a352c44d890b854dd3376acfa5173c9a2}\label{class_can_adaptor_a352c44d890b854dd3376acfa5173c9a2}} 
+\index{CanAdaptor@{CanAdaptor}!ptr\_can\_send\_@{ptr\_can\_send\_}}
+\index{ptr\_can\_send\_@{ptr\_can\_send\_}!CanAdaptor@{CanAdaptor}}
+\doxysubsubsection{\texorpdfstring{ptr\_can\_send\_}{ptr\_can\_send\_}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_can_send}{Can\+Send}}$>$ Can\+Adaptor\+::ptr\+\_\+can\+\_\+send\+\_\+ = N\+U\+LL\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 71 of file can\+\_\+adaptor.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/can/\mbox{\hyperlink{can__adaptor_8hpp}{can\+\_\+adaptor.\+hpp}}\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/src/can/\mbox{\hyperlink{can__adaptor_8cpp}{can\+\_\+adaptor.\+cpp}}\end{DoxyCompactItemize}

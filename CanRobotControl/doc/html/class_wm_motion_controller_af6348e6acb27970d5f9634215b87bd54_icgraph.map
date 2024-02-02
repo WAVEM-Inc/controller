@@ -1,0 +1,4 @@
+<map id="WmMotionController::fn_can_chw_callback" name="WmMotionController::fn_can_chw_callback">
+<area shape="rect" id="node1" title="Callback function for controlling horn, light, when can_msgs:msgControlHardWare message is received." alt="" coords="219,5,385,47"/>
+<area shape="rect" id="node2" href="$class_wm_motion_controller.html#a17a0c7f1bab634c650f6e1f1e00ddb41" title="Construct a new Wm Motion Controller:: Wm Motion Controller object." alt="" coords="5,5,171,47"/>
+</map>

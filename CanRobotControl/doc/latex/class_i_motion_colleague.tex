@@ -1,0 +1,114 @@
+\hypertarget{class_i_motion_colleague}{}\doxysection{I\+Motion\+Colleague Class Reference}
+\label{class_i_motion_colleague}\index{IMotionColleague@{IMotionColleague}}
+
+
+Collegue interface for using mediator patterns.  
+
+
+
+
+{\ttfamily \#include $<$i\+\_\+motion\+\_\+colleague.\+hpp$>$}
+
+
+
+Inheritance diagram for I\+Motion\+Colleague\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_i_motion_colleague__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for I\+Motion\+Colleague\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{class_i_motion_colleague__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_i_motion_colleague_abdc7a0fa800b5e817240a49dddf79bb8}{I\+Motion\+Colleague}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_motion_mediator}{I\+Motion\+Mediator}} $>$ motion\+\_\+mediator)
+\item 
+virtual void \mbox{\hyperlink{class_i_motion_colleague_a4a8fbac50eb196dd0cd01382f3ac7103}{fn\+\_\+recv\+\_\+value}} (const int \&value)=0
+\item 
+virtual void \mbox{\hyperlink{class_i_motion_colleague_a4ddb0780808558ec8affd766349e16cc}{fn\+\_\+send\+\_\+value}} (const int \&value)=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_motion_mediator}{I\+Motion\+Mediator}} $>$ \mbox{\hyperlink{class_i_motion_colleague_acf64c62d52403d4de89e675ae3792211}{m\+\_\+i\+\_\+motion\+\_\+mediator}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Collegue interface for using mediator patterns. 
+
+\begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+
+Definition at line 11 of file i\+\_\+motion\+\_\+colleague.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_i_motion_colleague_abdc7a0fa800b5e817240a49dddf79bb8}\label{class_i_motion_colleague_abdc7a0fa800b5e817240a49dddf79bb8}} 
+\index{IMotionColleague@{IMotionColleague}!IMotionColleague@{IMotionColleague}}
+\index{IMotionColleague@{IMotionColleague}!IMotionColleague@{IMotionColleague}}
+\doxysubsubsection{\texorpdfstring{IMotionColleague()}{IMotionColleague()}}
+{\footnotesize\ttfamily I\+Motion\+Colleague\+::\+I\+Motion\+Colleague (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_motion_mediator}{I\+Motion\+Mediator}} $>$}]{motion\+\_\+mediator }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 13 of file i\+\_\+motion\+\_\+colleague.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13 :\mbox{\hyperlink{class_i_motion_colleague_acf64c62d52403d4de89e675ae3792211}{m\_i\_motion\_mediator}}(motion\_mediator)\{\};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_i_motion_colleague_a4a8fbac50eb196dd0cd01382f3ac7103}\label{class_i_motion_colleague_a4a8fbac50eb196dd0cd01382f3ac7103}} 
+\index{IMotionColleague@{IMotionColleague}!fn\_recv\_value@{fn\_recv\_value}}
+\index{fn\_recv\_value@{fn\_recv\_value}!IMotionColleague@{IMotionColleague}}
+\doxysubsubsection{\texorpdfstring{fn\_recv\_value()}{fn\_recv\_value()}}
+{\footnotesize\ttfamily virtual void I\+Motion\+Colleague\+::fn\+\_\+recv\+\_\+value (\begin{DoxyParamCaption}\item[{const int \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_wm_motion_controller_a91664b143502f39dbf41352f2303f22f}{Wm\+Motion\+Controller}}, and \mbox{\hyperlink{class_can_m_g_r_ad26a10430318f6236504b27127ea9fec}{Can\+M\+GR}}.
+
+\mbox{\Hypertarget{class_i_motion_colleague_a4ddb0780808558ec8affd766349e16cc}\label{class_i_motion_colleague_a4ddb0780808558ec8affd766349e16cc}} 
+\index{IMotionColleague@{IMotionColleague}!fn\_send\_value@{fn\_send\_value}}
+\index{fn\_send\_value@{fn\_send\_value}!IMotionColleague@{IMotionColleague}}
+\doxysubsubsection{\texorpdfstring{fn\_send\_value()}{fn\_send\_value()}}
+{\footnotesize\ttfamily virtual void I\+Motion\+Colleague\+::fn\+\_\+send\+\_\+value (\begin{DoxyParamCaption}\item[{const int \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_wm_motion_controller_ae37a240d300187323cef35057380f3f6}{Wm\+Motion\+Controller}}, and \mbox{\hyperlink{class_can_m_g_r_aeee196bac40c868f0e7500f6b389270d}{Can\+M\+GR}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_i_motion_colleague_acf64c62d52403d4de89e675ae3792211}\label{class_i_motion_colleague_acf64c62d52403d4de89e675ae3792211}} 
+\index{IMotionColleague@{IMotionColleague}!m\_i\_motion\_mediator@{m\_i\_motion\_mediator}}
+\index{m\_i\_motion\_mediator@{m\_i\_motion\_mediator}!IMotionColleague@{IMotionColleague}}
+\doxysubsubsection{\texorpdfstring{m\_i\_motion\_mediator}{m\_i\_motion\_mediator}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_i_motion_mediator}{I\+Motion\+Mediator}}$>$ I\+Motion\+Colleague\+::m\+\_\+i\+\_\+motion\+\_\+mediator\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 17 of file i\+\_\+motion\+\_\+colleague.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/colleague/\mbox{\hyperlink{i__motion__colleague_8hpp}{i\+\_\+motion\+\_\+colleague.\+hpp}}\end{DoxyCompactItemize}

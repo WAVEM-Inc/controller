@@ -1,0 +1,1303 @@
+\hypertarget{class_data_relayer}{}\doxysection{Data\+Relayer Class Reference}
+\label{class_data_relayer}\index{DataRelayer@{DataRelayer}}
+
+
+Wrapping classes for C\+AN data conversion and relaying.  
+
+
+
+
+{\ttfamily \#include $<$data\+\_\+relayer.\+hpp$>$}
+
+
+
+Collaboration diagram for Data\+Relayer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_data_relayer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_data_relayer_a6b704ae09d3e21af8deffe85a8f59b9b}{Data\+Relayer}} ()
+\item 
+virtual \mbox{\hyperlink{class_data_relayer_a197bc7f13ea7eb44cde09975d3ed2a5c}{$\sim$\+Data\+Relayer}} ()
+\item 
+void \mbox{\hyperlink{class_data_relayer_ae4d20fbc26da73335bf14ef9ae9f3c51}{Control\+Steering}} (float angle)
+\begin{DoxyCompactList}\small\item\em Send control commands.(Control\+Steering) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_ab03906d443fb8a6945ee2efe97b4e54f}{Control\+Vel}} (float vel)
+\begin{DoxyCompactList}\small\item\em Send control commands.(Control\+Vel) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_a8585d43607f63493fa095bbb910d8ee0}{Control\+Hardware}} (bool horn, bool head\+\_\+light, bool right\+\_\+light, bool left\+\_\+light)
+\begin{DoxyCompactList}\small\item\em Send control commands.(Control\+Hardware) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_a2f1337345535dadeeb5da26d1f7fd595}{Stop\+Post\+Message}} (unsigned int id)
+\item 
+void \mbox{\hyperlink{class_data_relayer_a7f9ab4030b59f3dd85826d337e8a5811}{Heart\+Beat}} ()
+\begin{DoxyCompactList}\small\item\em Use when you need a lower Heart\+Beat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_a524a189194dd751832d7c210a8ad0a15}{Regist\+Rpm\+Callback}} (void($\ast$pfunc)(int, int, int))
+\begin{DoxyCompactList}\small\item\em Register a R\+PM callback function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_ac4178378e46c212e9e08ad4241007c1a}{Regist\+Fault\+Callback}} (void($\ast$pfunc)(int, int))
+\begin{DoxyCompactList}\small\item\em Register a F\+A\+U\+LT callback function. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_data_relayer_af0e95af4eabdb5e2ae8bbea349bb22a5}{Regist\+Rpm\+Callback}} (T $\ast$p\+Class\+Type, void(T\+::$\ast$pfunc)(int, int, int))
+\begin{DoxyCompactList}\small\item\em Register a R\+PM callback function. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_data_relayer_a3ca60de62e9b8e5ae26b1c6d318c2bb5}{Regist\+Fault\+Callback}} (T $\ast$p\+Class\+Type, void(T\+::$\ast$pfunc)(int, int))
+\begin{DoxyCompactList}\small\item\em Register a F\+A\+U\+LT callback function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_a69859deb649fb5e182df1cb4aba837fe}{Run}} ()
+\begin{DoxyCompactList}\small\item\em run test \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_af787be7c403a42be748fcf758260d544}{Send\+Test}} ()
+\begin{DoxyCompactList}\small\item\em data send test \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::function$<$ void(int, int)$>$ \mbox{\hyperlink{class_data_relayer_a6bb331244601a9ac9ebffa985de3ab73}{func\+\_\+fault\+\_\+callback}}
+\item 
+typedef std\+::function$<$ void(int, int, int)$>$ \mbox{\hyperlink{class_data_relayer_a4a01424cdc6149f5a1d388149de03c2e}{func\+\_\+rpm\+\_\+callback}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_data_relayer_a38d10bbd94c5cc75c97542a1c2063550}{Setmsg\+Map}} (int svcid, int msgid, string device)
+\begin{DoxyCompactList}\small\item\em service $<$-\/$>$ message id / channel mapping \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_a741a5ed7df04ab346d31f4bae101b84e}{Send\+Message\+Control\+Steering}} (float steering\+\_\+angle\+\_\+cmd)
+\begin{DoxyCompactList}\small\item\em send A\+P\+I(\+Control\+Steering) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_a4cdd03e9d501460548d72112a0f904b2}{Send\+Message\+Control\+Accelerate}} (float vel)
+\begin{DoxyCompactList}\small\item\em send A\+P\+I(\+Control\+Accelerate) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_a4f4b5c3f651361ffcc9a2fb382cd1e79}{Send\+Message\+Control\+Hardware}} (bool Horn, bool Head\+Light, bool Right\+\_\+\+Turn\+\_\+\+Light, bool Left\+\_\+\+Turn\+\_\+\+Light)
+\begin{DoxyCompactList}\small\item\em send A\+P\+I(\+Control\+Hardware) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_aff7e17fd7c11e994a08792ed1a7167a8}{Handler\+\_\+\+V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}} (\mbox{\hyperlink{struct_v_c_u___e_p_s___control___request}{V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}} msg)
+\begin{DoxyCompactList}\small\item\em Callback function to register with \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}\+:\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_a5bff1fc513e6cad86b4cbd727214c977}{Handler\+\_\+\+Remote\+\_\+\+Control\+\_\+\+Shake}} (\mbox{\hyperlink{struct_remote___control___shake}{Remote\+\_\+\+Control\+\_\+\+Shake}} msg)
+\begin{DoxyCompactList}\small\item\em Callback function to register with \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}\+:\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_ae340685fd3dc528aa32f5dde91e6853a}{Handler\+\_\+\+Remote\+\_\+\+Control\+\_\+\+IO}} (\mbox{\hyperlink{struct_remote___control___i_o}{Remote\+\_\+\+Control\+\_\+\+IO}} msg)
+\begin{DoxyCompactList}\small\item\em Callback function to register with \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}\+:\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_a1e444933be3500431c9655c2bdccde74}{Handler\+\_\+\+D\+B\+S\+\_\+\+Status}} (\mbox{\hyperlink{struct_d_b_s___status}{D\+B\+S\+\_\+\+Status}} msg)
+\begin{DoxyCompactList}\small\item\em Callback function to register with \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}\+:\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_a7b92c7d55088f85d8c6ea9a70b9e8ab3}{Handler\+\_\+\+V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}} (\mbox{\hyperlink{struct_v_c_u___d_b_s___request}{V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}} msg)
+\begin{DoxyCompactList}\small\item\em Callback function to register with \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}\+:\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_relayer_a01006987d1b92a0f36685088c56f5af6}{Handler\+\_\+\+M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}} (\mbox{\hyperlink{struct_m_c_u___torque___feedback}{M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}} msg)
+\begin{DoxyCompactList}\small\item\em Callback function to register with \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}\+:\+: \end{DoxyCompactList}\item 
+unsigned short \mbox{\hyperlink{class_data_relayer_a9f18be83e971ef679a2ec29552fa4344}{Convert\+Speed\+Units}} (float vel)
+\item 
+bool \mbox{\hyperlink{class_data_relayer_a6b381c1bf596972bedea00a5682b64dd}{is\+\_\+big\+\_\+endian}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_data_relayer_a6bb331244601a9ac9ebffa985de3ab73}{func\+\_\+fault\+\_\+callback}} \mbox{\hyperlink{class_data_relayer_a1c35505d9efebb74cadeb6d9e9693c1e}{fault\+Callback}}
+\item 
+\mbox{\hyperlink{class_data_relayer_a4a01424cdc6149f5a1d388149de03c2e}{func\+\_\+rpm\+\_\+callback}} \mbox{\hyperlink{class_data_relayer_acbe3f006d6bc1d3a57b670a0e309689d}{rpm\+Callback}}
+\item 
+bool \mbox{\hyperlink{class_data_relayer_a2a1d0695d83aeb4ea8941bc3b2b0c9b8}{system\+\_\+endian\+\_\+}} = 0
+\item 
+\mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}} $\ast$ \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\+\_\+}} = N\+U\+LL
+\item 
+map$<$ int, int $>$ \mbox{\hyperlink{class_data_relayer_a0241afb199e4bac08721a681f607b804}{mag\+Map\+\_\+}}
+\item 
+map$<$ int, string $>$ \mbox{\hyperlink{class_data_relayer_a647158389daa5c6fd65d6e65789ea864}{channel\+Map\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Wrapping classes for C\+AN data conversion and relaying. 
+
+\begin{DoxyDate}{Date}
+2023-\/02-\/14 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+ys.\+kwon(\href{mailto:ys.kwon@wavem.net}{\texttt{ ys.\+kwon@wavem.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyWarning}{Warning}
+
+\end{DoxyWarning}
+
+
+Definition at line 24 of file data\+\_\+relayer.\+hpp.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{class_data_relayer_a6bb331244601a9ac9ebffa985de3ab73}\label{class_data_relayer_a6bb331244601a9ac9ebffa985de3ab73}} 
+\index{DataRelayer@{DataRelayer}!func\_fault\_callback@{func\_fault\_callback}}
+\index{func\_fault\_callback@{func\_fault\_callback}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{func\_fault\_callback}{func\_fault\_callback}}
+{\footnotesize\ttfamily typedef std\+::function$<$void(int,int)$>$ \mbox{\hyperlink{class_data_relayer_a6bb331244601a9ac9ebffa985de3ab73}{Data\+Relayer\+::func\+\_\+fault\+\_\+callback}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 28 of file data\+\_\+relayer.\+hpp.
+
+\mbox{\Hypertarget{class_data_relayer_a4a01424cdc6149f5a1d388149de03c2e}\label{class_data_relayer_a4a01424cdc6149f5a1d388149de03c2e}} 
+\index{DataRelayer@{DataRelayer}!func\_rpm\_callback@{func\_rpm\_callback}}
+\index{func\_rpm\_callback@{func\_rpm\_callback}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{func\_rpm\_callback}{func\_rpm\_callback}}
+{\footnotesize\ttfamily typedef std\+::function$<$void(int,int,int)$>$ \mbox{\hyperlink{class_data_relayer_a4a01424cdc6149f5a1d388149de03c2e}{Data\+Relayer\+::func\+\_\+rpm\+\_\+callback}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 29 of file data\+\_\+relayer.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_data_relayer_a6b704ae09d3e21af8deffe85a8f59b9b}\label{class_data_relayer_a6b704ae09d3e21af8deffe85a8f59b9b}} 
+\index{DataRelayer@{DataRelayer}!DataRelayer@{DataRelayer}}
+\index{DataRelayer@{DataRelayer}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{DataRelayer()}{DataRelayer()}}
+{\footnotesize\ttfamily Data\+Relayer\+::\+Data\+Relayer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 9 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{9                          \{}
+\DoxyCodeLine{10   \mbox{\hyperlink{class_data_relayer_a2a1d0695d83aeb4ea8941bc3b2b0c9b8}{system\_endian\_}} = \mbox{\hyperlink{class_data_relayer_a6b381c1bf596972bedea00a5682b64dd}{is\_big\_endian}}();}
+\DoxyCodeLine{11 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a6b704ae09d3e21af8deffe85a8f59b9b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_a197bc7f13ea7eb44cde09975d3ed2a5c}\label{class_data_relayer_a197bc7f13ea7eb44cde09975d3ed2a5c}} 
+\index{DataRelayer@{DataRelayer}!````~DataRelayer@{$\sim$DataRelayer}}
+\index{````~DataRelayer@{$\sim$DataRelayer}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{$\sim$DataRelayer()}{~DataRelayer()}}
+{\footnotesize\ttfamily Data\+Relayer\+::$\sim$\+Data\+Relayer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line 13 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13                           \{}
+\DoxyCodeLine{14   \textcolor{keywordflow}{if}( \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}} != NULL )\{}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_a1e96d40f496d6b6e743b8d93b36685eb}{Release}}();}
+\DoxyCodeLine{16   \}}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a197bc7f13ea7eb44cde09975d3ed2a5c_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_data_relayer_a8585d43607f63493fa095bbb910d8ee0}\label{class_data_relayer_a8585d43607f63493fa095bbb910d8ee0}} 
+\index{DataRelayer@{DataRelayer}!ControlHardware@{ControlHardware}}
+\index{ControlHardware@{ControlHardware}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{ControlHardware()}{ControlHardware()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Control\+Hardware (\begin{DoxyParamCaption}\item[{bool}]{horn,  }\item[{bool}]{head\+\_\+light,  }\item[{bool}]{right\+\_\+light,  }\item[{bool}]{left\+\_\+light }\end{DoxyParamCaption})}
+
+
+
+Send control commands.(Control\+Hardware) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Horn} & true \+: on, false \+: 0ff \\
+\hline
+{\em Head\+Light} & true \+: on, false \+: 0ff \\
+\hline
+{\em Right\+\_\+\+Turn\+\_\+\+Light} & true \+: on, false \+: 0ff \\
+\hline
+{\em Left\+\_\+\+Turn\+\_\+\+Light} & true \+: on, false \+: 0ff \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 51 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{51                                                                                               \{}
+\DoxyCodeLine{52   \mbox{\hyperlink{class_data_relayer_a4f4b5c3f651361ffcc9a2fb382cd1e79}{SendMessageControlHardware}}( horn,  head\_light,  right\_light,  left\_light);}
+\DoxyCodeLine{53 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a8585d43607f63493fa095bbb910d8ee0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a8585d43607f63493fa095bbb910d8ee0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_ae4d20fbc26da73335bf14ef9ae9f3c51}\label{class_data_relayer_ae4d20fbc26da73335bf14ef9ae9f3c51}} 
+\index{DataRelayer@{DataRelayer}!ControlSteering@{ControlSteering}}
+\index{ControlSteering@{ControlSteering}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{ControlSteering()}{ControlSteering()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Control\+Steering (\begin{DoxyParamCaption}\item[{float}]{angle }\end{DoxyParamCaption})}
+
+
+
+Send control commands.(Control\+Steering) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em steering\+\_\+angle\+\_\+cmd} & Steering angle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 26 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{26                                             \{}
+\DoxyCodeLine{27   \mbox{\hyperlink{class_data_relayer_a741a5ed7df04ab346d31f4bae101b84e}{SendMessageControlSteering}}(angle);}
+\DoxyCodeLine{28 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_ae4d20fbc26da73335bf14ef9ae9f3c51_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_ae4d20fbc26da73335bf14ef9ae9f3c51_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_ab03906d443fb8a6945ee2efe97b4e54f}\label{class_data_relayer_ab03906d443fb8a6945ee2efe97b4e54f}} 
+\index{DataRelayer@{DataRelayer}!ControlVel@{ControlVel}}
+\index{ControlVel@{ControlVel}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{ControlVel()}{ControlVel()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Control\+Vel (\begin{DoxyParamCaption}\item[{float}]{vel }\end{DoxyParamCaption})}
+
+
+
+Send control commands.(Control\+Vel) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vel} & Accelerate speeed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 37 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37                                      \{\textcolor{comment}{//iECU\_Control\_Accelerate, iECU\_Control\_Brake둘다 사용)}}
+\DoxyCodeLine{38   \mbox{\hyperlink{class_data_relayer_a4cdd03e9d501460548d72112a0f904b2}{SendMessageControlAccelerate}}(vel);}
+\DoxyCodeLine{39 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_ab03906d443fb8a6945ee2efe97b4e54f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_ab03906d443fb8a6945ee2efe97b4e54f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_a9f18be83e971ef679a2ec29552fa4344}\label{class_data_relayer_a9f18be83e971ef679a2ec29552fa4344}} 
+\index{DataRelayer@{DataRelayer}!ConvertSpeedUnits@{ConvertSpeedUnits}}
+\index{ConvertSpeedUnits@{ConvertSpeedUnits}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{ConvertSpeedUnits()}{ConvertSpeedUnits()}}
+{\footnotesize\ttfamily unsigned short Data\+Relayer\+::\+Convert\+Speed\+Units (\begin{DoxyParamCaption}\item[{float}]{vel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_data_relayer_a1e444933be3500431c9655c2bdccde74}\label{class_data_relayer_a1e444933be3500431c9655c2bdccde74}} 
+\index{DataRelayer@{DataRelayer}!Handler\_DBS\_Status@{Handler\_DBS\_Status}}
+\index{Handler\_DBS\_Status@{Handler\_DBS\_Status}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{Handler\_DBS\_Status()}{Handler\_DBS\_Status()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Handler\+\_\+\+D\+B\+S\+\_\+\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_b_s___status}{D\+B\+S\+\_\+\+Status}}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Callback function to register with \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}\+:\+: 
+
+Register a callback function using \mbox{\hyperlink{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51}{Can\+Adaptor\+::\+Set\+Handler}}. 
+\begin{DoxyParams}{Parameters}
+{\em msg} & receive data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 229 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{229                                                    \{}
+\DoxyCodeLine{230   cout << \textcolor{stringliteral}{"[recv] DBS\_Status : "} << (int)msg.\mbox{\hyperlink{struct_d_b_s___status_ae267e06eba06b0cb15529ff60a062339}{dbs\_fault\_code}} <<\textcolor{stringliteral}{","}<<(\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_d_b_s___status_abcb16ff150bda6dcfde84f3b1c362236}{dbs\_hp\_pressure}} <<\textcolor{stringliteral}{","}<<(int)msg.\mbox{\hyperlink{struct_d_b_s___status_a9431b690f2f511abeaa0ce06e56b8fc3}{dbs\_system\_status}} << endl;}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{232   \mbox{\hyperlink{class_data_relayer_a1c35505d9efebb74cadeb6d9e9693c1e}{faultCallback}}(\mbox{\hyperlink{can__adaptor_8hpp_a19fadc61d5f98584341976b3c2af10c2}{CAN\_NO\_FAULT}},msg.\mbox{\hyperlink{struct_d_b_s___status_ae267e06eba06b0cb15529ff60a062339}{dbs\_fault\_code}});}
+\DoxyCodeLine{233 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a1e444933be3500431c9655c2bdccde74_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_a01006987d1b92a0f36685088c56f5af6}\label{class_data_relayer_a01006987d1b92a0f36685088c56f5af6}} 
+\index{DataRelayer@{DataRelayer}!Handler\_MCU\_Torque\_Feedback@{Handler\_MCU\_Torque\_Feedback}}
+\index{Handler\_MCU\_Torque\_Feedback@{Handler\_MCU\_Torque\_Feedback}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{Handler\_MCU\_Torque\_Feedback()}{Handler\_MCU\_Torque\_Feedback()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Handler\+\_\+\+M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_c_u___torque___feedback}{M\+C\+U\+\_\+\+Torque\+\_\+\+Feedback}}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Callback function to register with \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}\+:\+: 
+
+Register a callback function using \mbox{\hyperlink{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51}{Can\+Adaptor\+::\+Set\+Handler}}. 
+\begin{DoxyParams}{Parameters}
+{\em msg} & receive data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 253 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{253                                                                      \{}
+\DoxyCodeLine{254   cout << \textcolor{stringliteral}{"[recv] MCU\_Torque\_Feedback : "} << (int)msg.\mbox{\hyperlink{struct_m_c_u___torque___feedback_a71fe424dac6a44b100adf3741de7f657}{mcu\_current}}}
+\DoxyCodeLine{255     <<\textcolor{stringliteral}{","}<<(\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_m_c_u___torque___feedback_a9988e8a084403db6efdee860a6bd2227}{mcu\_errorcode}}}
+\DoxyCodeLine{256     <<\textcolor{stringliteral}{","}<<(int)msg.\mbox{\hyperlink{struct_m_c_u___torque___feedback_ac9ef685e7eff95134c84966853cf05bb}{mcu\_motortemp}}}
+\DoxyCodeLine{257     <<\textcolor{stringliteral}{","}<<(\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_m_c_u___torque___feedback_a69c0d8b4188efc48df53b1f884a437b3}{mcu\_shift}}}
+\DoxyCodeLine{258     <<\textcolor{stringliteral}{","}<<(int)msg.\mbox{\hyperlink{struct_m_c_u___torque___feedback_a237f5e94a583d900964d07e718141ff1}{mcu\_speed}}}
+\DoxyCodeLine{259     <<\textcolor{stringliteral}{","}<<(\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_m_c_u___torque___feedback_a4760fd465e92db860c61c262126944b5}{mcu\_torque}} << endl;}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261   \mbox{\hyperlink{class_data_relayer_acbe3f006d6bc1d3a57b670a0e309689d}{rpmCallback}}((\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_m_c_u___torque___feedback_a69c0d8b4188efc48df53b1f884a437b3}{mcu\_shift}}}
+\DoxyCodeLine{262                     ,(\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_m_c_u___torque___feedback_a237f5e94a583d900964d07e718141ff1}{mcu\_speed}}}
+\DoxyCodeLine{263                     ,(\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_m_c_u___torque___feedback_a4760fd465e92db860c61c262126944b5}{mcu\_torque}});}
+\DoxyCodeLine{264 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a01006987d1b92a0f36685088c56f5af6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_ae340685fd3dc528aa32f5dde91e6853a}\label{class_data_relayer_ae340685fd3dc528aa32f5dde91e6853a}} 
+\index{DataRelayer@{DataRelayer}!Handler\_Remote\_Control\_IO@{Handler\_Remote\_Control\_IO}}
+\index{Handler\_Remote\_Control\_IO@{Handler\_Remote\_Control\_IO}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{Handler\_Remote\_Control\_IO()}{Handler\_Remote\_Control\_IO()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Handler\+\_\+\+Remote\+\_\+\+Control\+\_\+\+IO (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_remote___control___i_o}{Remote\+\_\+\+Control\+\_\+\+IO}}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Callback function to register with \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}\+:\+: 
+
+Register a callback function using \mbox{\hyperlink{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51}{Can\+Adaptor\+::\+Set\+Handler}}. 
+\begin{DoxyParams}{Parameters}
+{\em msg} & receive data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 213 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{213                                                                  \{}
+\DoxyCodeLine{214   cout << \textcolor{stringliteral}{"[recv] Remote\_Control\_IO : "} << (int)msg.\mbox{\hyperlink{struct_remote___control___i_o_aab92646a96220ec2c9db88bb243a5662}{remote\_f\_horn}}}
+\DoxyCodeLine{215     << \textcolor{stringliteral}{","} << (\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_remote___control___i_o_a6d61f8d81bffe284ab9d34c10ddc59bc}{remote\_d\_headlight}}}
+\DoxyCodeLine{216     << \textcolor{stringliteral}{","} << (int)msg.\mbox{\hyperlink{struct_remote___control___i_o_a38425023e5de0eedcb0adb344b309502}{remote\_b\_motor\_holding\_brake}}}
+\DoxyCodeLine{217     << \textcolor{stringliteral}{","} << (\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_remote___control___i_o_adcb3855893314c47a5110363762fa83f}{remote\_a\_mode\_switch}}}
+\DoxyCodeLine{218     << \textcolor{stringliteral}{","} << (int)msg.\mbox{\hyperlink{struct_remote___control___i_o_a8c87991158bef4a8342692b21b029444}{remote\_c\_speed\_torque}}}
+\DoxyCodeLine{219     << \textcolor{stringliteral}{","} << (\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_remote___control___i_o_a6bae91564597f685a5443f7e58f5990b}{remote\_e\_gear}} << endl;}
+\DoxyCodeLine{220 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_data_relayer_a5bff1fc513e6cad86b4cbd727214c977}\label{class_data_relayer_a5bff1fc513e6cad86b4cbd727214c977}} 
+\index{DataRelayer@{DataRelayer}!Handler\_Remote\_Control\_Shake@{Handler\_Remote\_Control\_Shake}}
+\index{Handler\_Remote\_Control\_Shake@{Handler\_Remote\_Control\_Shake}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{Handler\_Remote\_Control\_Shake()}{Handler\_Remote\_Control\_Shake()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Handler\+\_\+\+Remote\+\_\+\+Control\+\_\+\+Shake (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_remote___control___shake}{Remote\+\_\+\+Control\+\_\+\+Shake}}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Callback function to register with \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}\+:\+: 
+
+Register a callback function using \mbox{\hyperlink{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51}{Can\+Adaptor\+::\+Set\+Handler}}. 
+\begin{DoxyParams}{Parameters}
+{\em msg} & receive data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 202 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{202                                                                        \{}
+\DoxyCodeLine{203   cout << \textcolor{stringliteral}{"[recv] Remote\_Control\_Shake : "} << (int)msg.\mbox{\hyperlink{struct_remote___control___shake_a33bd342a64384b224375575df3f3347d}{remote\_y1\_longitudinal\_control}} <<\textcolor{stringliteral}{","}<<(\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_remote___control___shake_a5cdddd9ca375317ac57619ab30b76f23}{remote\_x2\_lateral\_control}} << endl;}
+\DoxyCodeLine{204 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_data_relayer_a7b92c7d55088f85d8c6ea9a70b9e8ab3}\label{class_data_relayer_a7b92c7d55088f85d8c6ea9a70b9e8ab3}} 
+\index{DataRelayer@{DataRelayer}!Handler\_VCU\_DBS\_Request@{Handler\_VCU\_DBS\_Request}}
+\index{Handler\_VCU\_DBS\_Request@{Handler\_VCU\_DBS\_Request}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{Handler\_VCU\_DBS\_Request()}{Handler\_VCU\_DBS\_Request()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Handler\+\_\+\+V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_v_c_u___d_b_s___request}{V\+C\+U\+\_\+\+D\+B\+S\+\_\+\+Request}}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Callback function to register with \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}\+:\+: 
+
+Register a callback function using \mbox{\hyperlink{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51}{Can\+Adaptor\+::\+Set\+Handler}}. 
+\begin{DoxyParams}{Parameters}
+{\em msg} & receive data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 242 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{242                                                              \{}
+\DoxyCodeLine{243   cout << \textcolor{stringliteral}{"[recv] VCU\_DBS\_Request : "} << (int)msg.\mbox{\hyperlink{struct_v_c_u___d_b_s___request_acb8bb90adfd7c5d44b59ef8a0062e060}{vcu\_dbs\_pressure\_request}} <<\textcolor{stringliteral}{","}<<(\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_v_c_u___d_b_s___request_a920aa6619c937b94adfbb057ea6a2bfc}{vcu\_dbs\_request\_flag}} << endl;}
+\DoxyCodeLine{244 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_data_relayer_aff7e17fd7c11e994a08792ed1a7167a8}\label{class_data_relayer_aff7e17fd7c11e994a08792ed1a7167a8}} 
+\index{DataRelayer@{DataRelayer}!Handler\_VCU\_EPS\_Control\_Request@{Handler\_VCU\_EPS\_Control\_Request}}
+\index{Handler\_VCU\_EPS\_Control\_Request@{Handler\_VCU\_EPS\_Control\_Request}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{Handler\_VCU\_EPS\_Control\_Request()}{Handler\_VCU\_EPS\_Control\_Request()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Handler\+\_\+\+V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_v_c_u___e_p_s___control___request}{V\+C\+U\+\_\+\+E\+P\+S\+\_\+\+Control\+\_\+\+Request}}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Callback function to register with \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}\+:\+: 
+
+Register a callback function using \mbox{\hyperlink{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51}{Can\+Adaptor\+::\+Set\+Handler}}. 
+\begin{DoxyParams}{Parameters}
+{\em msg} & receive data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 179 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{179                                                                              \{}
+\DoxyCodeLine{180   \textcolor{comment}{//   unsigned char  bydata[8];}}
+\DoxyCodeLine{181   \textcolor{comment}{//   memcpy(bydata,\&msg,8);}}
+\DoxyCodeLine{182   \textcolor{comment}{//   for(unsigned char d : bydata)\{}}
+\DoxyCodeLine{183   \textcolor{comment}{//     fprintf(stdout,"0x\%02x ",d);}}
+\DoxyCodeLine{184   \textcolor{comment}{//  \}}}
+\DoxyCodeLine{185   \textcolor{comment}{//  cout << endl;}}
+\DoxyCodeLine{186    \textcolor{comment}{// Motorola  LSB}}
+\DoxyCodeLine{187   \textcolor{keywordtype}{short} vcu\_eps\_strangle = htons(msg.\mbox{\hyperlink{struct_v_c_u___e_p_s___control___request_ab0cfd9d5d0f1ab8c9b366a1caa8c7e9a}{vcu\_eps\_strangle}});}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189   \textcolor{keywordtype}{double} strangle\_value = (vcu\_eps\_strangle / \mbox{\hyperlink{can__define_8hpp_ace0b43b9b7aa6b14a5ec725c7073887d}{RESOLUTION\_STEERING\_CTRL}} ) -\/ \mbox{\hyperlink{can__define_8hpp_a067512e2c854d3129704f9e1c180f3c3}{OFFSET\_STRANGLE}} ;}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191   cout << \textcolor{stringliteral}{"[recv] VCU\_EPS\_Control\_Request : "} << vcu\_eps\_strangle <<\textcolor{stringliteral}{"("}<<strangle\_value<<\textcolor{stringliteral}{"),"}<< (int)msg.\mbox{\hyperlink{struct_v_c_u___e_p_s___control___request_a0eff3afe3ab42697c06aa8b2dc98a093}{vcu\_eps\_ctrlenable}} <<\textcolor{stringliteral}{","}<< (\textcolor{keywordtype}{int})msg.\mbox{\hyperlink{struct_v_c_u___e_p_s___control___request_a913ec51128d4579ad9d1e29c920599bd}{vcu\_eps\_ctrlmode}} << endl;}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_aff7e17fd7c11e994a08792ed1a7167a8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_a7f9ab4030b59f3dd85826d337e8a5811}\label{class_data_relayer_a7f9ab4030b59f3dd85826d337e8a5811}} 
+\index{DataRelayer@{DataRelayer}!HeartBeat@{HeartBeat}}
+\index{HeartBeat@{HeartBeat}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{HeartBeat()}{HeartBeat()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Heart\+Beat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Use when you need a lower Heart\+Beat. 
+
+Must be passed together when controlling the robot \begin{DoxyAuthor}{Author}
+changun\+An(\href{mailto:changun516@wavem.net}{\texttt{ changun516@wavem.\+net}}) 
+\end{DoxyAuthor}
+
+
+Definition at line 321 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{321                            \{}
+\DoxyCodeLine{322   \mbox{\hyperlink{struct_mode___control___flag}{Mode\_Control\_Flag}} dat\_5;}
+\DoxyCodeLine{323   memset(\&dat\_5,0x00,8);}
+\DoxyCodeLine{324   dat\_5.\mbox{\hyperlink{struct_mode___control___flag_a25ed16fe172b49f71c5eef74d5ae06a5}{mode\_control\_request\_flag}} = 1;}
+\DoxyCodeLine{325     \textcolor{comment}{//while(true)\{}}
+\DoxyCodeLine{326     std::cout << \textcolor{stringliteral}{"***can run heartbeat!!!***"} << std::endl;}
+\DoxyCodeLine{327     \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_af85bd813da08af4bfa87e74c65b39d2b}{PostCanMessage}}<\mbox{\hyperlink{struct_mode___control___flag}{Mode\_Control\_Flag}}>(dat\_5,\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea67938cfd5724b48754bbddee5595e760}{MODE\_CONTROL\_FLAG}},\mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\_type}}[\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}{CAN1}}]);}
+\DoxyCodeLine{328     \textcolor{comment}{//  sleep(1);}}
+\DoxyCodeLine{329     \textcolor{comment}{//\}}}
+\DoxyCodeLine{330 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a7f9ab4030b59f3dd85826d337e8a5811_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a7f9ab4030b59f3dd85826d337e8a5811_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_a6b381c1bf596972bedea00a5682b64dd}\label{class_data_relayer_a6b381c1bf596972bedea00a5682b64dd}} 
+\index{DataRelayer@{DataRelayer}!is\_big\_endian@{is\_big\_endian}}
+\index{is\_big\_endian@{is\_big\_endian}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{is\_big\_endian()}{is\_big\_endian()}}
+{\footnotesize\ttfamily bool Data\+Relayer\+::is\+\_\+big\+\_\+endian (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 105 of file data\+\_\+relayer.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{105                         \{}
+\DoxyCodeLine{106       \textcolor{keywordtype}{char} buf[2] = \{0,1\};}
+\DoxyCodeLine{107       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} *val = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short}*\textcolor{keyword}{>}(buf);}
+\DoxyCodeLine{108       \textcolor{keywordflow}{return} *val == 1;}
+\DoxyCodeLine{109     \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a6b381c1bf596972bedea00a5682b64dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_a3ca60de62e9b8e5ae26b1c6d318c2bb5}\label{class_data_relayer_a3ca60de62e9b8e5ae26b1c6d318c2bb5}} 
+\index{DataRelayer@{DataRelayer}!RegistFaultCallback@{RegistFaultCallback}}
+\index{RegistFaultCallback@{RegistFaultCallback}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{RegistFaultCallback()}{RegistFaultCallback()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Data\+Relayer\+::\+Regist\+Fault\+Callback (\begin{DoxyParamCaption}\item[{T $\ast$}]{p\+Class\+Type,  }\item[{void(T\+::$\ast$)(int, int)}]{pfunc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Register a F\+A\+U\+LT callback function. 
+
+Registering class member function callbacks (std\+:funcion) 
+\begin{DoxyParams}{Parameters}
+{\em pfunc} & function point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 80 of file data\+\_\+relayer.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{80                                                                   \{}
+\DoxyCodeLine{81       \mbox{\hyperlink{class_data_relayer_a1c35505d9efebb74cadeb6d9e9693c1e}{faultCallback}} = move(bind(pfunc, pClassType}
+\DoxyCodeLine{82         , placeholders::\_1}
+\DoxyCodeLine{83         , placeholders::\_2}
+\DoxyCodeLine{84         ));}
+\DoxyCodeLine{85     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_data_relayer_ac4178378e46c212e9e08ad4241007c1a}\label{class_data_relayer_ac4178378e46c212e9e08ad4241007c1a}} 
+\index{DataRelayer@{DataRelayer}!RegistFaultCallback@{RegistFaultCallback}}
+\index{RegistFaultCallback@{RegistFaultCallback}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{RegistFaultCallback()}{RegistFaultCallback()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Regist\+Fault\+Callback (\begin{DoxyParamCaption}\item[{void($\ast$)(int, int)}]{pfunc }\end{DoxyParamCaption})}
+
+
+
+Register a F\+A\+U\+LT callback function. 
+
+Register a callback function (static funcion) 
+\begin{DoxyParams}{Parameters}
+{\em pfunc} & function point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 74 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{74                                                           \{}
+\DoxyCodeLine{75   \mbox{\hyperlink{class_data_relayer_a1c35505d9efebb74cadeb6d9e9693c1e}{faultCallback}} = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}(*)(\textcolor{keywordtype}{int},\textcolor{keywordtype}{int})\textcolor{keyword}{>}(pfunc);}
+\DoxyCodeLine{76 \};}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_ac4178378e46c212e9e08ad4241007c1a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_af0e95af4eabdb5e2ae8bbea349bb22a5}\label{class_data_relayer_af0e95af4eabdb5e2ae8bbea349bb22a5}} 
+\index{DataRelayer@{DataRelayer}!RegistRpmCallback@{RegistRpmCallback}}
+\index{RegistRpmCallback@{RegistRpmCallback}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{RegistRpmCallback()}{RegistRpmCallback()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Data\+Relayer\+::\+Regist\+Rpm\+Callback (\begin{DoxyParamCaption}\item[{T $\ast$}]{p\+Class\+Type,  }\item[{void(T\+::$\ast$)(int, int, int)}]{pfunc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Register a R\+PM callback function. 
+
+Registering class member function callbacks (std\+:funcion) 
+\begin{DoxyParams}{Parameters}
+{\em pfunc} & function point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 64 of file data\+\_\+relayer.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{64                                                                     \{}
+\DoxyCodeLine{65       \mbox{\hyperlink{class_data_relayer_acbe3f006d6bc1d3a57b670a0e309689d}{rpmCallback}} = move(bind(pfunc, pClassType}
+\DoxyCodeLine{66         , placeholders::\_1}
+\DoxyCodeLine{67         , placeholders::\_2}
+\DoxyCodeLine{68         , placeholders::\_3}
+\DoxyCodeLine{69         ));}
+\DoxyCodeLine{70     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_data_relayer_a524a189194dd751832d7c210a8ad0a15}\label{class_data_relayer_a524a189194dd751832d7c210a8ad0a15}} 
+\index{DataRelayer@{DataRelayer}!RegistRpmCallback@{RegistRpmCallback}}
+\index{RegistRpmCallback@{RegistRpmCallback}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{RegistRpmCallback()}{RegistRpmCallback()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Regist\+Rpm\+Callback (\begin{DoxyParamCaption}\item[{void($\ast$)(int, int, int)}]{pfunc }\end{DoxyParamCaption})}
+
+
+
+Register a R\+PM callback function. 
+
+Register a callback function (static funcion) 
+\begin{DoxyParams}{Parameters}
+{\em pfunc} & function point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 63 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{63                                                             \{}
+\DoxyCodeLine{64   \mbox{\hyperlink{class_data_relayer_acbe3f006d6bc1d3a57b670a0e309689d}{rpmCallback}} = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}(*)(\textcolor{keywordtype}{int},\textcolor{keywordtype}{int},\textcolor{keywordtype}{int})\textcolor{keyword}{>}(pfunc);}
+\DoxyCodeLine{65 \};}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a524a189194dd751832d7c210a8ad0a15_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_a69859deb649fb5e182df1cb4aba837fe}\label{class_data_relayer_a69859deb649fb5e182df1cb4aba837fe}} 
+\index{DataRelayer@{DataRelayer}!Run@{Run}}
+\index{Run@{Run}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+run test 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 273 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{273                      \{}
+\DoxyCodeLine{274 }
+\DoxyCodeLine{275   \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}} = \mbox{\hyperlink{class_can_adaptor_affa02055d8a2b7aaec6a928c7e9c3363}{CanAdaptor::getInstance}}();}
+\DoxyCodeLine{276   \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_ad163eb33ce2ed8f2a4a31af7be86ee03}{Initialize}}(\mbox{\hyperlink{class_data_relayer_a2a1d0695d83aeb4ea8941bc3b2b0c9b8}{system\_endian\_}});}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{278   \textcolor{comment}{// 수신 핸들러 등록}}
+\DoxyCodeLine{279   \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51}{SetHandler}}<\mbox{\hyperlink{class_data_relayer}{DataRelayer}}>(\textcolor{keyword}{this},\&\mbox{\hyperlink{class_data_relayer_aff7e17fd7c11e994a08792ed1a7167a8}{DataRelayer::Handler\_VCU\_EPS\_Control\_Request}},\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eaab05b7fa5c6b8bb4b45b1986464db9cd}{VCU\_EPS\_CONTROL\_REQUEST}},\mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\_type}}[\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}{CAN1}}]);}
+\DoxyCodeLine{280   \textcolor{comment}{// canlib\_-\/>SetHandler<DataRelayer>(this,\&DataRelayer::Handler\_Remote\_Control\_Shake,REMOTE\_CONTROL\_SHAKE\_2,device\_type[CAN1]);}}
+\DoxyCodeLine{281   \textcolor{comment}{// canlib\_-\/>SetHandler<DataRelayer>(this,\&DataRelayer::Handler\_Remote\_Control\_IO,REMOTE\_CONTROL\_IO,device\_type[CAN1]);}}
+\DoxyCodeLine{282   std::cout << \textcolor{stringliteral}{"test1"}<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{283   \textcolor{comment}{//changun 1-\/>0 230427}}
+\DoxyCodeLine{284   \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51}{SetHandler}}<\mbox{\hyperlink{class_data_relayer}{DataRelayer}}>(\textcolor{keyword}{this},\&\mbox{\hyperlink{class_data_relayer_a1e444933be3500431c9655c2bdccde74}{DataRelayer::Handler\_DBS\_Status}},\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea00c287fe4650b8692230221f74a80417}{DBS\_STATUS}},\mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\_type}}[\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}{CAN1}}]); \textcolor{comment}{// changun }}
+\DoxyCodeLine{285     std::cout << \textcolor{stringliteral}{"test2"}<< \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{286   \textcolor{comment}{// canlib\_-\/>SetHandler<DataRelayer>(this,\&DataRelayer::Handler\_VCU\_DBS\_Request,VCU\_DBS\_REQUEST,device\_type[CAN1]);1}}
+\DoxyCodeLine{287   \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_a7da630a5fab713f1d1379b8a1f590a51}{SetHandler}}<\mbox{\hyperlink{class_data_relayer}{DataRelayer}}>(\textcolor{keyword}{this},\&\mbox{\hyperlink{class_data_relayer_a01006987d1b92a0f36685088c56f5af6}{DataRelayer::Handler\_MCU\_Torque\_Feedback}},\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ead8ccfb139a8f503b84b65f5e9615deb9}{TORQUE\_FEEDBACK}},\mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\_type}}[\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2a2e064aeac52cb6df1f5e208ac6224992}{CAN0}}]);}
+\DoxyCodeLine{288   std::cout << \textcolor{stringliteral}{"test3"}<< \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{289   \textcolor{comment}{// 수신 리스너 오픈}}
+\DoxyCodeLine{290   vector<string> device;}
+\DoxyCodeLine{291   device.push\_back(\mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\_type}}[\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2a2e064aeac52cb6df1f5e208ac6224992}{CAN0}}]);}
+\DoxyCodeLine{292   \textcolor{comment}{//changun 0-\/>1 230427}}
+\DoxyCodeLine{293   device.push\_back(\mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\_type}}[\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}{CAN1}}]);}
+\DoxyCodeLine{294 }
+\DoxyCodeLine{295   \textcolor{keywordtype}{int} ret = 0;}
+\DoxyCodeLine{296    }
+\DoxyCodeLine{297 }
+\DoxyCodeLine{298   \textcolor{keywordflow}{while}(\mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_a8e1ba351506c463f6fdff20d0e58530a}{Open}}(device) != 0 )\{}
+\DoxyCodeLine{299     cout << \textcolor{stringliteral}{"open fail"} << endl;}
+\DoxyCodeLine{300     sleep(\mbox{\hyperlink{can__define_8hpp_a9c369ad7f55b8ec5fd3f912481cebcef}{CAN\_ALIVE\_CHECKTIME}});      }
+\DoxyCodeLine{301   \}}
+\DoxyCodeLine{302     \textcolor{comment}{//changun 1-\/>0 230427}}
+\DoxyCodeLine{303   \textcolor{keywordflow}{while}(\mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_afc5f3ce8f22c04db95c3b46e4bda42c4}{RunControlFlag}}(1,\mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\_type}}[\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}{CAN1}}]) != 0 )\{}
+\DoxyCodeLine{304     cout << \textcolor{stringliteral}{"run config flag fail"} << endl;}
+\DoxyCodeLine{305     sleep(\mbox{\hyperlink{can__define_8hpp_a9c369ad7f55b8ec5fd3f912481cebcef}{CAN\_ALIVE\_CHECKTIME}});}
+\DoxyCodeLine{306   \}}
+\DoxyCodeLine{307   \textcolor{comment}{//포트 오픈 체크 스레드}}
+\DoxyCodeLine{308   cout << \textcolor{stringliteral}{"Start checking for can channel fault"} << endl;}
+\DoxyCodeLine{309   \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_ab64865d36529e292bcfa6616b9cf5cf9}{CheckSocketStatus}}(device,\mbox{\hyperlink{class_data_relayer_a1c35505d9efebb74cadeb6d9e9693c1e}{faultCallback}});    }
+\DoxyCodeLine{310 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a69859deb649fb5e182df1cb4aba837fe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a69859deb649fb5e182df1cb4aba837fe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_a4cdd03e9d501460548d72112a0f904b2}\label{class_data_relayer_a4cdd03e9d501460548d72112a0f904b2}} 
+\index{DataRelayer@{DataRelayer}!SendMessageControlAccelerate@{SendMessageControlAccelerate}}
+\index{SendMessageControlAccelerate@{SendMessageControlAccelerate}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{SendMessageControlAccelerate()}{SendMessageControlAccelerate()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Send\+Message\+Control\+Accelerate (\begin{DoxyParamCaption}\item[{float}]{vel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+send A\+P\+I(\+Control\+Accelerate) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vel} & Accelerate speeed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 122 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{122                                                        \{}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} gear;}
+\DoxyCodeLine{125   \textcolor{keywordflow}{if} ( vel > 0 ) \{}
+\DoxyCodeLine{126     gear = \mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138aa26736999186daf8146f809e863712a1}{FORWARD}};}
+\DoxyCodeLine{127   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( vel < 0 ) \{}
+\DoxyCodeLine{128     gear = \mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138a906b7cc20b42994dda4da492767c1de9}{REVERSE}};}
+\DoxyCodeLine{129   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{130     gear = \mbox{\hyperlink{can__define_8hpp_ad83666bd2afa31fd8075bd245c086138af46d14eb9d5d71afc9f6e747689fcb56}{NEUTRAL}};}
+\DoxyCodeLine{131   \}}
+\DoxyCodeLine{132   \mbox{\hyperlink{class_data_relayer_a7f9ab4030b59f3dd85826d337e8a5811}{HeartBeat}}(); }
+\DoxyCodeLine{133   \mbox{\hyperlink{structi_e_c_u___control___accelerate}{iECU\_Control\_Accelerate}} dat\_1;}
+\DoxyCodeLine{134   memset(\&dat\_1,0x00,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{135   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___accelerate_abf15a4427505920bb9d784bb8d1e6359}{iecu\_accelerate\_gear}} = gear; \textcolor{comment}{// (vel >0) = 1, (vel = 0) = 2, (vel < 0) = 3}}
+\DoxyCodeLine{136   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___accelerate_a8e2203de4076f278fe065a68a00558f6}{iecu\_accelerate\_valid}} = 1;}
+\DoxyCodeLine{137   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___accelerate_a3d372598a0cd4e2c5d5f7b99056f9bcc}{iecu\_accelerate\_work\_mode}} = 1;}
+\DoxyCodeLine{138   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___accelerate_ace2663ca06c5c29d58c3a066fc7bf659}{iecu\_speed\_control}} = [](\textcolor{keywordtype}{float} v)\{\textcolor{keywordflow}{return} v * \mbox{\hyperlink{can__define_8hpp_a03d370f8f3153d5bbc4a8d186ea1629c}{CNV\_SPEED\_FACTOR}} * \mbox{\hyperlink{can__define_8hpp_a3e8d9d1ec853cc5c07d85e50e77e73e4}{RESOLUTION\_SPEED\_CTRL}};\}(vel) ;}
+\DoxyCodeLine{139   std::cout<<\textcolor{stringliteral}{"@@@@@@@ : "}<<gear<<\textcolor{charliteral}{' '}<<dat\_1.\mbox{\hyperlink{structi_e_c_u___control___accelerate_ace2663ca06c5c29d58c3a066fc7bf659}{iecu\_speed\_control}}<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{140   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___accelerate_a41868f34882104b7f2c39aeed168f681}{iecu\_torque\_control}} = 0;}
+\DoxyCodeLine{141   \textcolor{comment}{//changun 0-\/>1 230427}}
+\DoxyCodeLine{142   \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_af85bd813da08af4bfa87e74c65b39d2b}{PostCanMessage}}<\mbox{\hyperlink{structi_e_c_u___control___accelerate}{iECU\_Control\_Accelerate}}>(dat\_1,\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eac734a1803fae2a5540cab5784d0fbf36}{IECU\_CONTROL\_ACCELERATE}},\mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\_type}}[\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}{CAN1}}]);}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144   \mbox{\hyperlink{structi_e_c_u___control___brake}{iECU\_Control\_Brake}} dat\_2;}
+\DoxyCodeLine{145   memset(\&dat\_2,0x00,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{146   dat\_2.iecu\_brakepressure\_cmd = 100; \textcolor{comment}{//origin 100}}
+\DoxyCodeLine{147   dat\_2.iecu\_dbs\_valid = 1;}
+\DoxyCodeLine{148   \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_af85bd813da08af4bfa87e74c65b39d2b}{PostCanMessage}}<\mbox{\hyperlink{structi_e_c_u___control___brake}{iECU\_Control\_Brake}}>(dat\_2,\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990eaeef97d353169eafe822525b6a44c04c7}{IECU\_CONTROL\_BRAKE}},\mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\_type}}[\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}{CAN1}}]);}
+\DoxyCodeLine{149 \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a4cdd03e9d501460548d72112a0f904b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a4cdd03e9d501460548d72112a0f904b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_a4f4b5c3f651361ffcc9a2fb382cd1e79}\label{class_data_relayer_a4f4b5c3f651361ffcc9a2fb382cd1e79}} 
+\index{DataRelayer@{DataRelayer}!SendMessageControlHardware@{SendMessageControlHardware}}
+\index{SendMessageControlHardware@{SendMessageControlHardware}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{SendMessageControlHardware()}{SendMessageControlHardware()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Send\+Message\+Control\+Hardware (\begin{DoxyParamCaption}\item[{bool}]{Horn,  }\item[{bool}]{Head\+Light,  }\item[{bool}]{Right\+\_\+\+Turn\+\_\+\+Light,  }\item[{bool}]{Left\+\_\+\+Turn\+\_\+\+Light }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+send A\+P\+I(\+Control\+Hardware) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Horn} & true \+: on, false \+: 0ff \\
+\hline
+{\em Head\+Light} & true \+: on, false \+: 0ff \\
+\hline
+{\em Right\+\_\+\+Turn\+\_\+\+Light} & true \+: on, false \+: 0ff \\
+\hline
+{\em Left\+\_\+\+Turn\+\_\+\+Light} & true \+: on, false \+: 0ff \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 161 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{161                                                                                                                 \{}
+\DoxyCodeLine{162   \mbox{\hyperlink{structi_e_c_u___control___hardware}{iECU\_Control\_Hardware}} dat\_1;}
+\DoxyCodeLine{163   memset(\&dat\_1,0x00,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{164   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___hardware_aa5331c114d9b359e6454516cd4607805}{iecu\_headlight}} = HeadLight?1:0;}
+\DoxyCodeLine{165   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___hardware_a27f4a063e43a2bbff6437a1d00d6f8d0}{iecu\_horn\_control}} = Horn?1:0;}
+\DoxyCodeLine{166   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___hardware_aec36acf072c40855e7d3709c6207f393}{iecu\_left\_turn\_light}} = Left\_Turn\_Light?1:0;}
+\DoxyCodeLine{167   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___hardware_abcd3b9d395c465cd218bba28550b5b4a}{iecu\_right\_turn\_light}} = Right\_Turn\_Light?1:0;}
+\DoxyCodeLine{168   \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_af85bd813da08af4bfa87e74c65b39d2b}{PostCanMessage}}<\mbox{\hyperlink{structi_e_c_u___control___hardware}{iECU\_Control\_Hardware}}>(dat\_1,\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea7d1bf84818cb2b8944c7d2dbf9a156e4}{IECU\_CONTROL\_HARDWARE}},\mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\_type}}[\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}{CAN1}}]);}
+\DoxyCodeLine{169 \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a4f4b5c3f651361ffcc9a2fb382cd1e79_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a4f4b5c3f651361ffcc9a2fb382cd1e79_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_a741a5ed7df04ab346d31f4bae101b84e}\label{class_data_relayer_a741a5ed7df04ab346d31f4bae101b84e}} 
+\index{DataRelayer@{DataRelayer}!SendMessageControlSteering@{SendMessageControlSteering}}
+\index{SendMessageControlSteering@{SendMessageControlSteering}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{SendMessageControlSteering()}{SendMessageControlSteering()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Send\+Message\+Control\+Steering (\begin{DoxyParamCaption}\item[{float}]{steering\+\_\+angle\+\_\+cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+send A\+P\+I(\+Control\+Steering) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em steering\+\_\+angle\+\_\+cmd} & steering angle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 99 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{99                                                                     \{}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101   \textcolor{keywordflow}{if} ( steering\_angle\_cmd > \mbox{\hyperlink{can__define_8hpp_a5bba6a86c228fe6d44ac5a440b1d2570}{MAX\_STEERING}} || steering\_angle\_cmd < \mbox{\hyperlink{can__define_8hpp_aabff0fc21be75b03b347427cc315dff2}{MIN\_STEERING}} )\{}
+\DoxyCodeLine{102     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{103   \}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105   \mbox{\hyperlink{structi_e_c_u___control___steering}{iECU\_Control\_Steering}} dat\_1;}
+\DoxyCodeLine{106   memset(\&dat\_1,0x00,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___steering_a2aa79b670634046bf978db487a98e490}{iecu\_steering\_angle\_cmd}} = (steering\_angle\_cmd + \mbox{\hyperlink{can__define_8hpp_a463cb702e5510c17330de9879152009e}{OFFSET\_STEERING}}) * \mbox{\hyperlink{can__define_8hpp_ace0b43b9b7aa6b14a5ec725c7073887d}{RESOLUTION\_STEERING\_CTRL}};}
+\DoxyCodeLine{109   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___steering_aaf3e5e385274b40a3fe5fbff1f092fb7}{iecu\_steering\_valid}} = 1;}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111   \textcolor{comment}{//changun CAN 1-\/>0 230427}}
+\DoxyCodeLine{112   \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_af85bd813da08af4bfa87e74c65b39d2b}{PostCanMessage}}<\mbox{\hyperlink{structi_e_c_u___control___steering}{iECU\_Control\_Steering}}>(dat\_1,\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea8f1469f7acc90b0bac45c8e2b7c767e3}{IECU\_CONTROL\_STEERING}},\mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\_type}}[\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}{CAN1}}]);}
+\DoxyCodeLine{113 \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a741a5ed7df04ab346d31f4bae101b84e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a741a5ed7df04ab346d31f4bae101b84e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_af787be7c403a42be748fcf758260d544}\label{class_data_relayer_af787be7c403a42be748fcf758260d544}} 
+\index{DataRelayer@{DataRelayer}!SendTest@{SendTest}}
+\index{SendTest@{SendTest}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{SendTest()}{SendTest()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Send\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+data send test 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 339 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{339                           \{}
+\DoxyCodeLine{340 }
+\DoxyCodeLine{341     \textcolor{comment}{// Mode\_Control\_Flag dat\_5;}}
+\DoxyCodeLine{342     \textcolor{comment}{// memset(\&dat\_5,0x00,8);}}
+\DoxyCodeLine{343     \textcolor{comment}{// dat\_5.mode\_control\_request\_flag = 1;}}
+\DoxyCodeLine{344     \textcolor{comment}{// canlib-\/>PostCanMessage<Mode\_Control\_Flag>(dat\_5,MODE\_CONTROL\_FLAG,device\_type[CAN1]);}}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{346   \textcolor{comment}{// 전송 테스트}}
+\DoxyCodeLine{347   \mbox{\hyperlink{structi_e_c_u___control___hardware}{iECU\_Control\_Hardware}} dat\_1;}
+\DoxyCodeLine{348   memset(\&dat\_1,0x00,CAN\_MAX\_DLEN);}
+\DoxyCodeLine{349   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___hardware_aa5331c114d9b359e6454516cd4607805}{iecu\_headlight}} = 1;}
+\DoxyCodeLine{350   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___hardware_a27f4a063e43a2bbff6437a1d00d6f8d0}{iecu\_horn\_control}} = 0;}
+\DoxyCodeLine{351   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___hardware_aec36acf072c40855e7d3709c6207f393}{iecu\_left\_turn\_light}} = 1;}
+\DoxyCodeLine{352   dat\_1.\mbox{\hyperlink{structi_e_c_u___control___hardware_abcd3b9d395c465cd218bba28550b5b4a}{iecu\_right\_turn\_light}} = 1;}
+\DoxyCodeLine{353   \textcolor{comment}{//}}
+\DoxyCodeLine{354   \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_af85bd813da08af4bfa87e74c65b39d2b}{PostCanMessage}}<\mbox{\hyperlink{structi_e_c_u___control___hardware}{iECU\_Control\_Hardware}}>(dat\_1,\mbox{\hyperlink{can__define_8hpp_aa802de6a28bad2fae81d1d3d1134990ea7d1bf84818cb2b8944c7d2dbf9a156e4}{IECU\_CONTROL\_HARDWARE}},\mbox{\hyperlink{can__define_8hpp_a2abe970d993e171b4fdd172402c948e0}{device\_type}}[\mbox{\hyperlink{can__define_8hpp_a0488090c0f65f34ecc920db8f9fb04f2ad864ccd8347a3f6e35bef295d7cf9de1}{CAN1}}]);}
+\DoxyCodeLine{355 }
+\DoxyCodeLine{356     \textcolor{comment}{// iECU\_Control\_Accelerate dat\_2;}}
+\DoxyCodeLine{357     \textcolor{comment}{// memset(\&dat\_2,0x00,8);}}
+\DoxyCodeLine{358     \textcolor{comment}{// dat\_2.iecu\_accelerate\_gear = 1;}}
+\DoxyCodeLine{359     \textcolor{comment}{// dat\_2.iecu\_accelerate\_valid = 1;}}
+\DoxyCodeLine{360     \textcolor{comment}{// dat\_2.iecu\_accelerate\_work\_mode = 1;}}
+\DoxyCodeLine{361     \textcolor{comment}{// dat\_2.iecu\_speed\_control = 1;}}
+\DoxyCodeLine{362     \textcolor{comment}{// dat\_2.iecu\_torque\_control = 1;}}
+\DoxyCodeLine{363     \textcolor{comment}{// canlib-\/>PostCanMessage<iECU\_Control\_Accelerate>(dat\_2,IECU\_CONTROL\_ACCELERATE,device\_type[CAN1]);}}
+\DoxyCodeLine{364 }
+\DoxyCodeLine{365     \textcolor{comment}{// iECU\_Control\_Brake dat\_3;}}
+\DoxyCodeLine{366     \textcolor{comment}{// memset(\&dat\_3,0x00,8);}}
+\DoxyCodeLine{367     \textcolor{comment}{// dat\_3.iecu\_brakepressure\_cmd = 1;}}
+\DoxyCodeLine{368     \textcolor{comment}{// dat\_3.iecu\_dbs\_valid = 1;}}
+\DoxyCodeLine{369     \textcolor{comment}{// canlib-\/>PostCanMessage<iECU\_Control\_Brake>(dat\_3,IECU\_CONTROL\_BRAKE,device\_type[CAN1]);}}
+\DoxyCodeLine{370 }
+\DoxyCodeLine{371     \textcolor{comment}{// iECU\_Control\_Steering dat\_4;}}
+\DoxyCodeLine{372     \textcolor{comment}{// memset(\&dat\_4,0x00,8);}}
+\DoxyCodeLine{373     \textcolor{comment}{// dat\_4.iecu\_steering\_angle\_cmd = 1;}}
+\DoxyCodeLine{374     \textcolor{comment}{// dat\_4.iecu\_steering\_valid = 1;}}
+\DoxyCodeLine{375     \textcolor{comment}{// canlib-\/>PostCanMessage<iECU\_Control\_Steering>(dat\_4,IECU\_CONTROL\_STEERING,device\_type[CAN1]);}}
+\DoxyCodeLine{376 }
+\DoxyCodeLine{377 }
+\DoxyCodeLine{378    \textcolor{comment}{/*}}
+\DoxyCodeLine{379 \textcolor{comment}{    //canlib-\/>print\_map\_state("data\_relayer");}}
+\DoxyCodeLine{380 \textcolor{comment}{    // memcpy(bydata,\&dat\_2,8);}}
+\DoxyCodeLine{381 \textcolor{comment}{    // for(unsigned char d : bydata)\{}}
+\DoxyCodeLine{382 \textcolor{comment}{    //   fprintf(stdout,"0x\%02x ",d);}}
+\DoxyCodeLine{383 \textcolor{comment}{    // \}}}
+\DoxyCodeLine{384 \textcolor{comment}{    // cout << endl;}}
+\DoxyCodeLine{385 \textcolor{comment}{  */}}
+\DoxyCodeLine{386 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_af787be7c403a42be748fcf758260d544_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_data_relayer_a38d10bbd94c5cc75c97542a1c2063550}\label{class_data_relayer_a38d10bbd94c5cc75c97542a1c2063550}} 
+\index{DataRelayer@{DataRelayer}!SetmsgMap@{SetmsgMap}}
+\index{SetmsgMap@{SetmsgMap}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{SetmsgMap()}{SetmsgMap()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Setmsg\+Map (\begin{DoxyParamCaption}\item[{int}]{svcid,  }\item[{int}]{msgid,  }\item[{string}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+service $<$-\/$>$ message id / channel mapping 
+
+Mapping so that can channel and can id can be changed according to environment variables later 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 87 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{87                                                             \{}
+\DoxyCodeLine{88   \mbox{\hyperlink{class_data_relayer_a0241afb199e4bac08721a681f607b804}{magMap\_}}.insert(make\_pair(svcid,msgid));}
+\DoxyCodeLine{89   \mbox{\hyperlink{class_data_relayer_a647158389daa5c6fd65d6e65789ea864}{channelMap\_}}.insert(make\_pair(svcid,device));}
+\DoxyCodeLine{90 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_data_relayer_a2f1337345535dadeeb5da26d1f7fd595}\label{class_data_relayer_a2f1337345535dadeeb5da26d1f7fd595}} 
+\index{DataRelayer@{DataRelayer}!StopPostMessage@{StopPostMessage}}
+\index{StopPostMessage@{StopPostMessage}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{StopPostMessage()}{StopPostMessage()}}
+{\footnotesize\ttfamily void Data\+Relayer\+::\+Stop\+Post\+Message (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 312 of file data\+\_\+relayer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{312                                                 \{}
+\DoxyCodeLine{313   \mbox{\hyperlink{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}{canlib\_}}-\/>\mbox{\hyperlink{class_can_adaptor_a9aa14f36f20a44042f9ec2c5898e125c}{StopPostMessage}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{314 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_data_relayer_a2f1337345535dadeeb5da26d1f7fd595_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}\label{class_data_relayer_a78d85b9e84f8277b6a813509efb02849}} 
+\index{DataRelayer@{DataRelayer}!canlib\_@{canlib\_}}
+\index{canlib\_@{canlib\_}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{canlib\_}{canlib\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_can_adaptor}{Can\+Adaptor}}$\ast$ Data\+Relayer\+::canlib\+\_\+ = N\+U\+LL\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 37 of file data\+\_\+relayer.\+hpp.
+
+\mbox{\Hypertarget{class_data_relayer_a647158389daa5c6fd65d6e65789ea864}\label{class_data_relayer_a647158389daa5c6fd65d6e65789ea864}} 
+\index{DataRelayer@{DataRelayer}!channelMap\_@{channelMap\_}}
+\index{channelMap\_@{channelMap\_}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{channelMap\_}{channelMap\_}}
+{\footnotesize\ttfamily map$<$int,string$>$ Data\+Relayer\+::channel\+Map\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 40 of file data\+\_\+relayer.\+hpp.
+
+\mbox{\Hypertarget{class_data_relayer_a1c35505d9efebb74cadeb6d9e9693c1e}\label{class_data_relayer_a1c35505d9efebb74cadeb6d9e9693c1e}} 
+\index{DataRelayer@{DataRelayer}!faultCallback@{faultCallback}}
+\index{faultCallback@{faultCallback}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{faultCallback}{faultCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_data_relayer_a6bb331244601a9ac9ebffa985de3ab73}{func\+\_\+fault\+\_\+callback}} Data\+Relayer\+::fault\+Callback\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 32 of file data\+\_\+relayer.\+hpp.
+
+\mbox{\Hypertarget{class_data_relayer_a0241afb199e4bac08721a681f607b804}\label{class_data_relayer_a0241afb199e4bac08721a681f607b804}} 
+\index{DataRelayer@{DataRelayer}!magMap\_@{magMap\_}}
+\index{magMap\_@{magMap\_}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{magMap\_}{magMap\_}}
+{\footnotesize\ttfamily map$<$int,int$>$ Data\+Relayer\+::mag\+Map\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 39 of file data\+\_\+relayer.\+hpp.
+
+\mbox{\Hypertarget{class_data_relayer_acbe3f006d6bc1d3a57b670a0e309689d}\label{class_data_relayer_acbe3f006d6bc1d3a57b670a0e309689d}} 
+\index{DataRelayer@{DataRelayer}!rpmCallback@{rpmCallback}}
+\index{rpmCallback@{rpmCallback}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{rpmCallback}{rpmCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_data_relayer_a4a01424cdc6149f5a1d388149de03c2e}{func\+\_\+rpm\+\_\+callback}} Data\+Relayer\+::rpm\+Callback\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 33 of file data\+\_\+relayer.\+hpp.
+
+\mbox{\Hypertarget{class_data_relayer_a2a1d0695d83aeb4ea8941bc3b2b0c9b8}\label{class_data_relayer_a2a1d0695d83aeb4ea8941bc3b2b0c9b8}} 
+\index{DataRelayer@{DataRelayer}!system\_endian\_@{system\_endian\_}}
+\index{system\_endian\_@{system\_endian\_}!DataRelayer@{DataRelayer}}
+\doxysubsubsection{\texorpdfstring{system\_endian\_}{system\_endian\_}}
+{\footnotesize\ttfamily bool Data\+Relayer\+::system\+\_\+endian\+\_\+ = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 36 of file data\+\_\+relayer.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/include/can/\mbox{\hyperlink{data__relayer_8hpp}{data\+\_\+relayer.\+hpp}}\item 
+/home/ubuntu/ros2\+\_\+ws/src/\+Can\+Robot\+Control/wm\+\_\+motion\+\_\+controller/src/can/\mbox{\hyperlink{data__relayer_8cpp}{data\+\_\+relayer.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,6 @@
+<map id="WmMotionController::WmMotionController" name="WmMotionController::WmMotionController">
+<area shape="rect" id="node1" title="Construct a new Wm Motion Controller:: Wm Motion Controller object." alt="" coords="5,64,171,105"/>
+<area shape="rect" id="node2" href="$class_wm_motion_controller.html#af6348e6acb27970d5f9634215b87bd54" title="Callback function for controlling horn, light, when can_msgs:msgControlHardWare message is received." alt="" coords="219,5,385,47"/>
+<area shape="rect" id="node3" href="$class_can_m_g_r.html#a41d884e26149d3b30c39116689ffddf8" title="can operation function" alt="" coords="223,71,381,98"/>
+<area shape="rect" id="node4" href="$class_wm_motion_controller.html#aeb742da6eaf54dba11bdbfdb55410a76" title="cmd_vel receive function for robot control" alt="" coords="223,123,381,164"/>
+</map>

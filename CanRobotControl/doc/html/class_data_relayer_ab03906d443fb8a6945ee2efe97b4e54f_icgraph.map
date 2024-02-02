@@ -1,0 +1,4 @@
+<map id="DataRelayer::ControlVel" name="DataRelayer::ControlVel">
+<area shape="rect" id="node1" title="Send control commands.(ControlVel)" alt="" coords="269,5,448,32"/>
+<area shape="rect" id="node2" href="$class_can_m_g_r.html#adc81c4aaa7a907b2a4e248b092148191" title="Function for sending motor control values from robot to VCU via Can communication." alt="" coords="5,5,221,32"/>
+</map>

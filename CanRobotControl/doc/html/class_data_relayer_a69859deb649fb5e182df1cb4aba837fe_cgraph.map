@@ -1,0 +1,22 @@
+<map id="DataRelayer::Run" name="DataRelayer::Run">
+<area shape="rect" id="node1" title="run test" alt="" coords="5,271,141,297"/>
+<area shape="rect" id="node2" href="$class_can_adaptor.html#ab64865d36529e292bcfa6616b9cf5cf9" title="Check whether the can channel is activated." alt="" coords="189,31,420,57"/>
+<area shape="rect" id="node6" href="$class_can_adaptor.html#affa02055d8a2b7aaec6a928c7e9c3363" title="Returns a singleton object." alt="" coords="213,81,396,108"/>
+<area shape="rect" id="node7" href="$class_data_relayer.html#a1e444933be3500431c9655c2bdccde74" title="Callback function to register with CanAdaptor::" alt="" coords="223,133,386,174"/>
+<area shape="rect" id="node8" href="$class_data_relayer.html#a01006987d1b92a0f36685088c56f5af6" title="Callback function to register with CanAdaptor::" alt="" coords="215,198,394,239"/>
+<area shape="rect" id="node9" href="$class_data_relayer.html#aff7e17fd7c11e994a08792ed1a7167a8" title="Callback function to register with CanAdaptor::" alt="" coords="203,263,406,305"/>
+<area shape="rect" id="node10" href="$class_can_adaptor.html#ad163eb33ce2ed8f2a4a31af7be86ee03" title="initialization task" alt="" coords="223,329,386,356"/>
+<area shape="rect" id="node11" href="$class_can_adaptor.html#a8e1ba351506c463f6fdff20d0e58530a" title="Open a can channel." alt="" coords="235,380,375,407"/>
+<area shape="rect" id="node18" href="$class_can_adaptor.html#afc5f3ce8f22c04db95c3b46e4bda42c4" title="iECU mode, need to remote control" alt="" coords="201,431,408,457"/>
+<area shape="rect" id="node20" href="$class_can_adaptor.html#a7da630a5fab713f1d1379b8a1f590a51" title="Register a callback function.(VCU_EPS_Control_Request)" alt="" coords="215,481,394,508"/>
+<area shape="rect" id="node3" href="$class_can_adaptor.html#a04dcde64d86743b7916e802c1a6830ff" title="Check can device connection status." alt="" coords="468,56,655,83"/>
+<area shape="rect" id="node4" href="$class_can_adaptor.html#a1e96d40f496d6b6e743b8d93b36685eb" title="release task" alt="" coords="482,5,641,32"/>
+<area shape="rect" id="node5" href="$class_can_adaptor.html#a46b42321aacccd7080889ba0a52b0740" title="Open a can channel for send." alt="" coords="487,205,635,232"/>
+<area shape="rect" id="node12" href="$class_can_adaptor.html#a0ac054e51c147f3f22636a60b978e06f" title="Open a can channel for reception." alt="" coords="487,380,636,407"/>
+<area shape="rect" id="node13" href="$class_can_adaptor.html#aac14f5162a9af703c6293a6a05feb98d" title="Function to open can channel." alt="" coords="703,304,868,331"/>
+<area shape="rect" id="node14" href="$class_can_callback_func.html#ae23d0b2de0aa3588c988ff38970fd157" title=" " alt="" coords="924,355,1123,381"/>
+<area shape="rect" id="node15" href="$class_can_callback_func.html#ac2c5122460f222f9c542fd488a1ee9e5" title=" " alt="" coords="916,456,1131,483"/>
+<area shape="rect" id="node16" href="$class_can_adaptor.html#af85789530a136f168b97c592dfbf2b78" title="Receive data from can network." alt="" coords="706,405,865,432"/>
+<area shape="rect" id="node17" href="$class_can_callback_func.html#a18afd0d8869f35e11bb91ea5ee2a381e" title=" " alt="" coords="917,405,1130,432"/>
+<area shape="rect" id="node19" href="$class_can_adaptor.html#ae3a6d62b3980b9a0e4bba2f709884e80" title="Send data to the CAN network." alt="" coords="492,431,631,457"/>
+</map>
