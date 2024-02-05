@@ -1,0 +1,148 @@
+[0.000000] (-) TimerEvent: {}
+[0.000416] (fake_controller) JobQueued: {'identifier': 'fake_controller', 'dependencies': OrderedDict()}
+[0.000491] (fake_controller) JobStarted: {'identifier': 'fake_controller'}
+[0.022110] (fake_controller) JobProgress: {'identifier': 'fake_controller', 'progress': 'cmake'}
+[0.022532] (fake_controller) Command: {'cmd': ['/usr/bin/cmake', '/ws/controller/FakeController/fake_controller', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/ws/controller/FakeController/fake_controller/install/fake_controller'], 'cwd': '/ws/controller/FakeController/fake_controller/build/fake_controller', 'env': OrderedDict([('ROS_SECURITY_STRATEGY', 'EnForce'), ('HOSTNAME', 'msi341-GS43VR-6RE'), ('ROS_SECURITY_KEYSTORE', '/ws/keystore'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/ws/lidar/velodyne/install/velodyne_pointcloud/lib:/ws/lidar/velodyne/install/velodyne_driver/lib:/ws/lidar/velodyne/install/velodyne_msgs/lib:/ws/lidar/velodyne/install/velodyne_laserscan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/ws/controller/FakeController'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ws/lidar/velodyne/install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ws/lidar/velodyne/install/velodyne:/ws/lidar/velodyne/install/velodyne_pointcloud:/ws/lidar/velodyne/install/velodyne_driver:/ws/lidar/velodyne/install/velodyne_msgs:/ws/lidar/velodyne/install/velodyne_laserscan:/opt/ros/foxy'), ('ROS_SECURITY_ENABLE', 'true'), ('PWD', '/ws/controller/FakeController/fake_controller/build/fake_controller'), ('RMW_IMPLMENTATION', 'rwm_fastrtps_cpp'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ws/lidar/velodyne/install/velodyne_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ws/lidar/velodyne/install/velodyne:/ws/lidar/velodyne/install/velodyne_pointcloud:/ws/lidar/velodyne/install/velodyne_driver:/ws/lidar/velodyne/install/velodyne_msgs:/ws/lidar/velodyne/install/velodyne_laserscan:/opt/ros/foxy')]), 'shell': False}
+[0.098658] (fake_controller) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.099028] (-) TimerEvent: {}
+[0.164862] (fake_controller) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.170149] (fake_controller) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.199153] (-) TimerEvent: {}
+[0.263571] (fake_controller) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.264665] (fake_controller) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.299305] (-) TimerEvent: {}
+[0.358531] (fake_controller) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.371160] (fake_controller) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.371641] (fake_controller) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.374475] (fake_controller) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.399439] (-) TimerEvent: {}
+[0.479754] (fake_controller) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.481059] (fake_controller) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.499571] (-) TimerEvent: {}
+[0.586736] (fake_controller) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.599193] (fake_controller) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.599637] (-) TimerEvent: {}
+[0.599876] (fake_controller) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.604801] (fake_controller) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.635211] (fake_controller) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[0.635649] (fake_controller) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.699770] (-) TimerEvent: {}
+[0.800163] (-) TimerEvent: {}
+[0.818026] (fake_controller) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.862948] (fake_controller) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.900286] (-) TimerEvent: {}
+[0.929829] (fake_controller) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.941412] (fake_controller) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.000438] (-) TimerEvent: {}
+[1.074056] (fake_controller) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[1.100537] (-) TimerEvent: {}
+[1.118080] (fake_controller) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[1.200673] (-) TimerEvent: {}
+[1.230516] (fake_controller) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.300793] (-) TimerEvent: {}
+[1.303572] (fake_controller) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[1.305829] (fake_controller) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.307039] (fake_controller) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.400927] (-) TimerEvent: {}
+[1.405517] (fake_controller) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.405957] (fake_controller) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.501076] (-) TimerEvent: {}
+[1.506707] (fake_controller) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[1.507031] (fake_controller) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[1.588703] (fake_controller) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[1.588999] (fake_controller) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[1.601201] (-) TimerEvent: {}
+[1.684212] (fake_controller) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[1.685529] (fake_controller) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.701305] (-) TimerEvent: {}
+[1.801587] (-) TimerEvent: {}
+[1.867148] (fake_controller) StdoutLine: {'line': b'-- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)\n'}
+[1.901704] (-) TimerEvent: {}
+[1.908360] (fake_controller) StdoutLine: {'line': b'-- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)\n'}
+[1.993894] (fake_controller) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[2.001803] (-) TimerEvent: {}
+[2.077971] (fake_controller) StdoutLine: {'line': b'-- Found tf2_ros: 0.13.14 (/opt/ros/foxy/share/tf2_ros/cmake)\n'}
+[2.101946] (-) TimerEvent: {}
+[2.202230] (-) TimerEvent: {}
+[2.302548] (-) TimerEvent: {}
+[2.402840] (-) TimerEvent: {}
+[2.503171] (-) TimerEvent: {}
+[2.557257] (fake_controller) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.572499] (fake_controller) StdoutLine: {'line': b'-- Generating done\n'}
+[2.574661] (fake_controller) StdoutLine: {'line': b'-- Build files have been written to: /ws/controller/FakeController/fake_controller/build/fake_controller\n'}
+[2.583796] (fake_controller) CommandEnded: {'returncode': 0}
+[2.584763] (fake_controller) JobProgress: {'identifier': 'fake_controller', 'progress': 'build'}
+[2.587498] (fake_controller) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ws/controller/FakeController/fake_controller/build/fake_controller', '--', '-j8', '-l8'], 'cwd': '/ws/controller/FakeController/fake_controller/build/fake_controller', 'env': OrderedDict([('ROS_SECURITY_STRATEGY', 'EnForce'), ('HOSTNAME', 'msi341-GS43VR-6RE'), ('ROS_SECURITY_KEYSTORE', '/ws/keystore'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/ws/lidar/velodyne/install/velodyne_pointcloud/lib:/ws/lidar/velodyne/install/velodyne_driver/lib:/ws/lidar/velodyne/install/velodyne_msgs/lib:/ws/lidar/velodyne/install/velodyne_laserscan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/ws/controller/FakeController'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ws/lidar/velodyne/install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ws/lidar/velodyne/install/velodyne:/ws/lidar/velodyne/install/velodyne_pointcloud:/ws/lidar/velodyne/install/velodyne_driver:/ws/lidar/velodyne/install/velodyne_msgs:/ws/lidar/velodyne/install/velodyne_laserscan:/opt/ros/foxy'), ('ROS_SECURITY_ENABLE', 'true'), ('PWD', '/ws/controller/FakeController/fake_controller/build/fake_controller'), ('RMW_IMPLMENTATION', 'rwm_fastrtps_cpp'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ws/lidar/velodyne/install/velodyne_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ws/lidar/velodyne/install/velodyne:/ws/lidar/velodyne/install/velodyne_pointcloud:/ws/lidar/velodyne/install/velodyne_driver:/ws/lidar/velodyne/install/velodyne_msgs:/ws/lidar/velodyne/install/velodyne_laserscan:/opt/ros/foxy')]), 'shell': False}
+[2.603305] (-) TimerEvent: {}
+[2.648816] (fake_controller) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target fake_controller_node\x1b[0m\n'}
+[2.703422] (-) TimerEvent: {}
+[2.716153] (fake_controller) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/fake_controller_node.dir/src/main.cpp.o\x1b[0m\n'}
+[2.716616] (fake_controller) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/fake_controller_node.dir/src/FakeController.cpp.o\x1b[0m\n'}
+[2.716870] (fake_controller) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/fake_controller_node.dir/src/constants.cpp.o\x1b[0m\n'}
+[2.803538] (-) TimerEvent: {}
+[2.903959] (-) TimerEvent: {}
+[3.004267] (-) TimerEvent: {}
+[3.104627] (-) TimerEvent: {}
+[3.204949] (-) TimerEvent: {}
+[3.305284] (-) TimerEvent: {}
+[3.405598] (-) TimerEvent: {}
+[3.505925] (-) TimerEvent: {}
+[3.606248] (-) TimerEvent: {}
+[3.706585] (-) TimerEvent: {}
+[3.806916] (-) TimerEvent: {}
+[3.907249] (-) TimerEvent: {}
+[4.007578] (-) TimerEvent: {}
+[4.107935] (-) TimerEvent: {}
+[4.208258] (-) TimerEvent: {}
+[4.308575] (-) TimerEvent: {}
+[4.408897] (-) TimerEvent: {}
+[4.509211] (-) TimerEvent: {}
+[4.609586] (-) TimerEvent: {}
+[4.709921] (-) TimerEvent: {}
+[4.810248] (-) TimerEvent: {}
+[4.910560] (-) TimerEvent: {}
+[5.010839] (-) TimerEvent: {}
+[5.111214] (-) TimerEvent: {}
+[5.211550] (-) TimerEvent: {}
+[5.311873] (-) TimerEvent: {}
+[5.412176] (-) TimerEvent: {}
+[5.512481] (-) TimerEvent: {}
+[5.612782] (-) TimerEvent: {}
+[5.713108] (-) TimerEvent: {}
+[5.813426] (-) TimerEvent: {}
+[5.913728] (-) TimerEvent: {}
+[6.014048] (-) TimerEvent: {}
+[6.114353] (-) TimerEvent: {}
+[6.214717] (-) TimerEvent: {}
+[6.241859] (fake_controller) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable fake_controller_node\x1b[0m\n'}
+[6.314835] (-) TimerEvent: {}
+[6.415196] (-) TimerEvent: {}
+[6.498434] (fake_controller) StdoutLine: {'line': b'[100%] Built target fake_controller_node\n'}
+[6.514419] (fake_controller) CommandEnded: {'returncode': 0}
+[6.516833] (-) TimerEvent: {}
+[6.559779] (fake_controller) JobProgress: {'identifier': 'fake_controller', 'progress': 'install'}
+[6.577019] (fake_controller) Command: {'cmd': ['/usr/bin/cmake', '--install', '/ws/controller/FakeController/fake_controller/build/fake_controller'], 'cwd': '/ws/controller/FakeController/fake_controller/build/fake_controller', 'env': OrderedDict([('ROS_SECURITY_STRATEGY', 'EnForce'), ('HOSTNAME', 'msi341-GS43VR-6RE'), ('ROS_SECURITY_KEYSTORE', '/ws/keystore'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/ws/lidar/velodyne/install/velodyne_pointcloud/lib:/ws/lidar/velodyne/install/velodyne_driver/lib:/ws/lidar/velodyne/install/velodyne_msgs/lib:/ws/lidar/velodyne/install/velodyne_laserscan/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/ws/controller/FakeController'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ws/lidar/velodyne/install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ws/lidar/velodyne/install/velodyne:/ws/lidar/velodyne/install/velodyne_pointcloud:/ws/lidar/velodyne/install/velodyne_driver:/ws/lidar/velodyne/install/velodyne_msgs:/ws/lidar/velodyne/install/velodyne_laserscan:/opt/ros/foxy'), ('ROS_SECURITY_ENABLE', 'true'), ('PWD', '/ws/controller/FakeController/fake_controller/build/fake_controller'), ('RMW_IMPLMENTATION', 'rwm_fastrtps_cpp'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ws/lidar/velodyne/install/velodyne_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ws/lidar/velodyne/install/velodyne:/ws/lidar/velodyne/install/velodyne_pointcloud:/ws/lidar/velodyne/install/velodyne_driver:/ws/lidar/velodyne/install/velodyne_msgs:/ws/lidar/velodyne/install/velodyne_laserscan:/opt/ros/foxy')]), 'shell': False}
+[6.589327] (fake_controller) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[6.589891] (fake_controller) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[6.590615] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/lib/fake_controller/fake_controller_node\n'}
+[6.604628] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/ament_index/resource_index/package_run_dependencies/fake_controller\n'}
+[6.616886] (-) TimerEvent: {}
+[6.618789] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/ament_index/resource_index/parent_prefix_path/fake_controller\n'}
+[6.632472] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/environment/ament_prefix_path.sh\n'}
+[6.646247] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/environment/ament_prefix_path.dsv\n'}
+[6.659913] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/environment/path.sh\n'}
+[6.673430] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/environment/path.dsv\n'}
+[6.686911] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/local_setup.bash\n'}
+[6.700485] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/local_setup.sh\n'}
+[6.714024] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/local_setup.zsh\n'}
+[6.716975] (-) TimerEvent: {}
+[6.727971] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/local_setup.dsv\n'}
+[6.741484] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/package.dsv\n'}
+[6.755361] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/ament_index/resource_index/packages/fake_controller\n'}
+[6.768987] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/cmake/fake_controllerConfig.cmake\n'}
+[6.782547] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/cmake/fake_controllerConfig-version.cmake\n'}
+[6.795792] (fake_controller) StdoutLine: {'line': b'-- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/package.xml\n'}
+[6.812201] (fake_controller) CommandEnded: {'returncode': 0}
+[6.817379] (-) TimerEvent: {}
+[6.901273] (fake_controller) JobEnded: {'identifier': 'fake_controller', 'rc': 0}
+[6.902080] (-) EventReactorShutdown: {}

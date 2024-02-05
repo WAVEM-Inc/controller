@@ -1,0 +1,1 @@
+/ws/lidar/velodyne/install/velodyne:/ws/lidar/velodyne/install/velodyne_pointcloud:/ws/lidar/velodyne/install/velodyne_driver:/ws/lidar/velodyne/install/velodyne_msgs:/ws/lidar/velodyne/install/velodyne_laserscan:/opt/ros/foxy

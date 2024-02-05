@@ -1,0 +1,72 @@
+[0.023s] Invoking command in '/ws/controller/FakeController/fake_controller/build/fake_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /ws/controller/FakeController/fake_controller -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ws/controller/FakeController/fake_controller/install/fake_controller
+[0.098s] -- The C compiler identification is GNU 9.4.0
+[0.164s] -- The CXX compiler identification is GNU 9.4.0
+[0.170s] -- Check for working C compiler: /usr/bin/cc
+[0.263s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.264s] -- Detecting C compiler ABI info
+[0.358s] -- Detecting C compiler ABI info - done
+[0.371s] -- Detecting C compile features
+[0.371s] -- Detecting C compile features - done
+[0.374s] -- Check for working CXX compiler: /usr/bin/c++
+[0.479s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.480s] -- Detecting CXX compiler ABI info
+[0.586s] -- Detecting CXX compiler ABI info - done
+[0.599s] -- Detecting CXX compile features
+[0.599s] -- Detecting CXX compile features - done
+[0.604s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.635s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.635s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.818s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.862s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.929s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.941s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.074s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.118s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.230s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.303s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.305s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.306s] -- Looking for pthread.h
+[1.405s] -- Looking for pthread.h - found
+[1.405s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.506s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.506s] -- Looking for pthread_create in pthreads
+[1.588s] -- Looking for pthread_create in pthreads - not found
+[1.588s] -- Looking for pthread_create in pthread
+[1.684s] -- Looking for pthread_create in pthread - found
+[1.685s] -- Found Threads: TRUE  
+[1.867s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[1.908s] -- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)
+[1.993s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[2.077s] -- Found tf2_ros: 0.13.14 (/opt/ros/foxy/share/tf2_ros/cmake)
+[2.557s] -- Configuring done
+[2.572s] -- Generating done
+[2.574s] -- Build files have been written to: /ws/controller/FakeController/fake_controller/build/fake_controller
+[2.583s] Invoked command in '/ws/controller/FakeController/fake_controller/build/fake_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /ws/controller/FakeController/fake_controller -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ws/controller/FakeController/fake_controller/install/fake_controller
+[2.588s] Invoking command in '/ws/controller/FakeController/fake_controller/build/fake_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /ws/controller/FakeController/fake_controller/build/fake_controller -- -j8 -l8
+[2.648s] [35m[1mScanning dependencies of target fake_controller_node[0m
+[2.716s] [ 25%] [32mBuilding CXX object CMakeFiles/fake_controller_node.dir/src/main.cpp.o[0m
+[2.716s] [ 75%] [32mBuilding CXX object CMakeFiles/fake_controller_node.dir/src/FakeController.cpp.o[0m
+[2.716s] [ 75%] [32mBuilding CXX object CMakeFiles/fake_controller_node.dir/src/constants.cpp.o[0m
+[6.241s] [100%] [32m[1mLinking CXX executable fake_controller_node[0m
+[6.498s] [100%] Built target fake_controller_node
+[6.514s] Invoked command in '/ws/controller/FakeController/fake_controller/build/fake_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /ws/controller/FakeController/fake_controller/build/fake_controller -- -j8 -l8
+[6.577s] Invoking command in '/ws/controller/FakeController/fake_controller/build/fake_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /ws/controller/FakeController/fake_controller/build/fake_controller
+[6.589s] -- Install configuration: ""
+[6.589s] -- Execute custom install script
+[6.590s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/lib/fake_controller/fake_controller_node
+[6.604s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/ament_index/resource_index/package_run_dependencies/fake_controller
+[6.618s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/ament_index/resource_index/parent_prefix_path/fake_controller
+[6.632s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/environment/ament_prefix_path.sh
+[6.646s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/environment/ament_prefix_path.dsv
+[6.659s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/environment/path.sh
+[6.673s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/environment/path.dsv
+[6.686s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/local_setup.bash
+[6.700s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/local_setup.sh
+[6.714s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/local_setup.zsh
+[6.727s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/local_setup.dsv
+[6.741s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/package.dsv
+[6.755s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/ament_index/resource_index/packages/fake_controller
+[6.768s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/cmake/fake_controllerConfig.cmake
+[6.782s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/cmake/fake_controllerConfig-version.cmake
+[6.795s] -- Symlinking: /ws/controller/FakeController/fake_controller/install/fake_controller/share/fake_controller/package.xml
+[6.812s] Invoked command in '/ws/controller/FakeController/fake_controller/build/fake_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /ws/controller/FakeController/fake_controller/build/fake_controller
