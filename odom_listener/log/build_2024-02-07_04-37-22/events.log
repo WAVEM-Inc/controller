@@ -1,0 +1,144 @@
+[0.000000] (-) TimerEvent: {}
+[0.000701] (odom_listener) JobQueued: {'identifier': 'odom_listener', 'dependencies': OrderedDict()}
+[0.000828] (odom_listener) JobStarted: {'identifier': 'odom_listener'}
+[0.022811] (odom_listener) JobProgress: {'identifier': 'odom_listener', 'progress': 'cmake'}
+[0.023196] (odom_listener) Command: {'cmd': ['/usr/bin/cmake', '/ws/controller/odom_listener', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/ws/controller/odom_listener/install/odom_listener'], 'cwd': '/ws/controller/odom_listener/build/odom_listener', 'env': OrderedDict([('HOSTNAME', 'msi341-GS43VR-6RE'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/ws/controller'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ws/controller/FakeController/fake_controller/install:/ws/controller/odom-listener/install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ws/controller/FakeController/fake_controller/install/fake_controller:/ws/controller/odom-listener/install/odom-listener:/opt/ros/foxy'), ('PWD', '/ws/controller/odom_listener/build/odom_listener'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ws/controller/FakeController/fake_controller/install/fake_controller:/ws/controller/odom-listener/install/odom-listener:/opt/ros/foxy')]), 'shell': False}
+[0.093835] (odom_listener) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.099277] (-) TimerEvent: {}
+[0.160213] (odom_listener) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.165408] (odom_listener) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.199493] (-) TimerEvent: {}
+[0.250727] (odom_listener) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.251961] (odom_listener) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.299595] (-) TimerEvent: {}
+[0.335885] (odom_listener) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.347856] (odom_listener) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.348311] (odom_listener) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.350932] (odom_listener) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.399703] (-) TimerEvent: {}
+[0.445410] (odom_listener) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.446629] (odom_listener) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.499836] (-) TimerEvent: {}
+[0.542177] (odom_listener) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.554393] (odom_listener) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.555069] (odom_listener) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.558063] (odom_listener) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.584954] (odom_listener) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[0.585296] (odom_listener) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.599945] (-) TimerEvent: {}
+[0.700241] (-) TimerEvent: {}
+[0.759456] (odom_listener) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.793722] (odom_listener) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.800342] (-) TimerEvent: {}
+[0.849774] (odom_listener) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.858799] (odom_listener) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.900481] (-) TimerEvent: {}
+[0.973887] (odom_listener) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[1.000598] (-) TimerEvent: {}
+[1.013575] (odom_listener) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[1.100736] (-) TimerEvent: {}
+[1.116142] (odom_listener) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.180789] (odom_listener) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[1.182475] (odom_listener) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.183663] (odom_listener) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.200868] (-) TimerEvent: {}
+[1.271449] (odom_listener) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.271874] (odom_listener) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.301002] (-) TimerEvent: {}
+[1.361721] (odom_listener) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[1.362042] (odom_listener) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[1.401136] (-) TimerEvent: {}
+[1.435286] (odom_listener) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[1.435662] (odom_listener) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[1.501244] (-) TimerEvent: {}
+[1.520298] (odom_listener) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[1.521631] (odom_listener) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.601366] (-) TimerEvent: {}
+[1.690110] (odom_listener) StdoutLine: {'line': b'-- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)\n'}
+[1.701461] (-) TimerEvent: {}
+[1.801724] (-) TimerEvent: {}
+[1.883461] (odom_listener) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.892546] (odom_listener) StdoutLine: {'line': b'-- Generating done\n'}
+[1.894302] (odom_listener) StdoutLine: {'line': b'-- Build files have been written to: /ws/controller/odom_listener/build/odom_listener\n'}
+[1.901397] (odom_listener) CommandEnded: {'returncode': 0}
+[1.901972] (-) TimerEvent: {}
+[1.902712] (odom_listener) JobProgress: {'identifier': 'odom_listener', 'progress': 'build'}
+[1.905184] (odom_listener) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ws/controller/odom_listener/build/odom_listener', '--', '-j8', '-l8'], 'cwd': '/ws/controller/odom_listener/build/odom_listener', 'env': OrderedDict([('HOSTNAME', 'msi341-GS43VR-6RE'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/ws/controller'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ws/controller/FakeController/fake_controller/install:/ws/controller/odom-listener/install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ws/controller/FakeController/fake_controller/install/fake_controller:/ws/controller/odom-listener/install/odom-listener:/opt/ros/foxy'), ('PWD', '/ws/controller/odom_listener/build/odom_listener'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ws/controller/FakeController/fake_controller/install/fake_controller:/ws/controller/odom-listener/install/odom-listener:/opt/ros/foxy')]), 'shell': False}
+[1.956073] (odom_listener) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target odom_listener_node\x1b[0m\n'}
+[2.002121] (-) TimerEvent: {}
+[2.005746] (odom_listener) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/odom_listener_node.dir/src/main.cpp.o\x1b[0m\n'}
+[2.102257] (-) TimerEvent: {}
+[2.202565] (-) TimerEvent: {}
+[2.302897] (-) TimerEvent: {}
+[2.403229] (-) TimerEvent: {}
+[2.503554] (-) TimerEvent: {}
+[2.603865] (-) TimerEvent: {}
+[2.704180] (-) TimerEvent: {}
+[2.804501] (-) TimerEvent: {}
+[2.904862] (-) TimerEvent: {}
+[3.005199] (-) TimerEvent: {}
+[3.105565] (-) TimerEvent: {}
+[3.205905] (-) TimerEvent: {}
+[3.306253] (-) TimerEvent: {}
+[3.406583] (-) TimerEvent: {}
+[3.506932] (-) TimerEvent: {}
+[3.607266] (-) TimerEvent: {}
+[3.707610] (-) TimerEvent: {}
+[3.807943] (-) TimerEvent: {}
+[3.908271] (-) TimerEvent: {}
+[4.008600] (-) TimerEvent: {}
+[4.108936] (-) TimerEvent: {}
+[4.209238] (-) TimerEvent: {}
+[4.309591] (-) TimerEvent: {}
+[4.409943] (-) TimerEvent: {}
+[4.510295] (-) TimerEvent: {}
+[4.610662] (-) TimerEvent: {}
+[4.710984] (-) TimerEvent: {}
+[4.811309] (-) TimerEvent: {}
+[4.911625] (-) TimerEvent: {}
+[5.011933] (-) TimerEvent: {}
+[5.112222] (-) TimerEvent: {}
+[5.212569] (-) TimerEvent: {}
+[5.312904] (-) TimerEvent: {}
+[5.413210] (-) TimerEvent: {}
+[5.513514] (-) TimerEvent: {}
+[5.613809] (-) TimerEvent: {}
+[5.714125] (-) TimerEvent: {}
+[5.814421] (-) TimerEvent: {}
+[5.914727] (-) TimerEvent: {}
+[6.015053] (-) TimerEvent: {}
+[6.115434] (-) TimerEvent: {}
+[6.215777] (-) TimerEvent: {}
+[6.316129] (-) TimerEvent: {}
+[6.377182] (odom_listener) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable odom_listener_node\x1b[0m\n'}
+[6.416251] (-) TimerEvent: {}
+[6.516627] (-) TimerEvent: {}
+[6.617030] (-) TimerEvent: {}
+[6.655473] (odom_listener) StdoutLine: {'line': b'[100%] Built target odom_listener_node\n'}
+[6.670004] (odom_listener) CommandEnded: {'returncode': 0}
+[6.701551] (odom_listener) JobProgress: {'identifier': 'odom_listener', 'progress': 'install'}
+[6.714936] (odom_listener) Command: {'cmd': ['/usr/bin/cmake', '--install', '/ws/controller/odom_listener/build/odom_listener'], 'cwd': '/ws/controller/odom_listener/build/odom_listener', 'env': OrderedDict([('HOSTNAME', 'msi341-GS43VR-6RE'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/ws/controller'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ws/controller/FakeController/fake_controller/install:/ws/controller/odom-listener/install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ws/controller/FakeController/fake_controller/install/fake_controller:/ws/controller/odom-listener/install/odom-listener:/opt/ros/foxy'), ('PWD', '/ws/controller/odom_listener/build/odom_listener'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ws/controller/FakeController/fake_controller/install/fake_controller:/ws/controller/odom-listener/install/odom-listener:/opt/ros/foxy')]), 'shell': False}
+[6.717724] (-) TimerEvent: {}
+[6.727704] (odom_listener) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[6.728260] (odom_listener) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[6.728915] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/lib/odom_listener/odom_listener_node\n'}
+[6.740809] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/ament_index/resource_index/package_run_dependencies/odom_listener\n'}
+[6.753141] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/ament_index/resource_index/parent_prefix_path/odom_listener\n'}
+[6.765052] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/environment/ament_prefix_path.sh\n'}
+[6.776723] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/environment/ament_prefix_path.dsv\n'}
+[6.788957] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/environment/path.sh\n'}
+[6.800509] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/environment/path.dsv\n'}
+[6.812261] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/local_setup.bash\n'}
+[6.817822] (-) TimerEvent: {}
+[6.824437] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/local_setup.sh\n'}
+[6.836168] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/local_setup.zsh\n'}
+[6.847844] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/local_setup.dsv\n'}
+[6.859566] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/package.dsv\n'}
+[6.871805] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/ament_index/resource_index/packages/odom_listener\n'}
+[6.883608] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/cmake/odom_listenerConfig.cmake\n'}
+[6.895213] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/cmake/odom_listenerConfig-version.cmake\n'}
+[6.907055] (odom_listener) StdoutLine: {'line': b'-- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/package.xml\n'}
+[6.917943] (-) TimerEvent: {}
+[6.923329] (odom_listener) CommandEnded: {'returncode': 0}
+[6.990531] (odom_listener) JobEnded: {'identifier': 'odom_listener', 'rc': 0}
+[6.991892] (-) EventReactorShutdown: {}

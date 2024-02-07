@@ -1,0 +1,67 @@
+[0.023s] Invoking command in '/ws/controller/odom_listener/build/odom_listener': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /ws/controller/odom_listener -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ws/controller/odom_listener/install/odom_listener
+[0.092s] -- The C compiler identification is GNU 9.4.0
+[0.158s] -- The CXX compiler identification is GNU 9.4.0
+[0.164s] -- Check for working C compiler: /usr/bin/cc
+[0.249s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.250s] -- Detecting C compiler ABI info
+[0.334s] -- Detecting C compiler ABI info - done
+[0.346s] -- Detecting C compile features
+[0.346s] -- Detecting C compile features - done
+[0.349s] -- Check for working CXX compiler: /usr/bin/c++
+[0.444s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.445s] -- Detecting CXX compiler ABI info
+[0.540s] -- Detecting CXX compiler ABI info - done
+[0.553s] -- Detecting CXX compile features
+[0.553s] -- Detecting CXX compile features - done
+[0.556s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.583s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.583s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.758s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.792s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.848s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.857s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.972s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.012s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.114s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.179s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.181s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.182s] -- Looking for pthread.h
+[1.270s] -- Looking for pthread.h - found
+[1.270s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.360s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.360s] -- Looking for pthread_create in pthreads
+[1.434s] -- Looking for pthread_create in pthreads - not found
+[1.434s] -- Looking for pthread_create in pthread
+[1.518s] -- Looking for pthread_create in pthread - found
+[1.520s] -- Found Threads: TRUE  
+[1.688s] -- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)
+[1.882s] -- Configuring done
+[1.891s] -- Generating done
+[1.892s] -- Build files have been written to: /ws/controller/odom_listener/build/odom_listener
+[1.900s] Invoked command in '/ws/controller/odom_listener/build/odom_listener' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /ws/controller/odom_listener -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ws/controller/odom_listener/install/odom_listener
+[1.904s] Invoking command in '/ws/controller/odom_listener/build/odom_listener': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /ws/controller/odom_listener/build/odom_listener -- -j8 -l8
+[1.954s] [35m[1mScanning dependencies of target odom_listener_node[0m
+[2.004s] [ 50%] [32mBuilding CXX object CMakeFiles/odom_listener_node.dir/src/main.cpp.o[0m
+[6.375s] [100%] [32m[1mLinking CXX executable odom_listener_node[0m
+[6.654s] [100%] Built target odom_listener_node
+[6.670s] Invoked command in '/ws/controller/odom_listener/build/odom_listener' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /ws/controller/odom_listener/build/odom_listener -- -j8 -l8
+[6.715s] Invoking command in '/ws/controller/odom_listener/build/odom_listener': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /ws/controller/odom_listener/build/odom_listener
+[6.726s] -- Install configuration: ""
+[6.726s] -- Execute custom install script
+[6.727s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/lib/odom_listener/odom_listener_node
+[6.739s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/ament_index/resource_index/package_run_dependencies/odom_listener
+[6.751s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/ament_index/resource_index/parent_prefix_path/odom_listener
+[6.763s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/environment/ament_prefix_path.sh
+[6.775s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/environment/ament_prefix_path.dsv
+[6.787s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/environment/path.sh
+[6.799s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/environment/path.dsv
+[6.810s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/local_setup.bash
+[6.823s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/local_setup.sh
+[6.834s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/local_setup.zsh
+[6.846s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/local_setup.dsv
+[6.858s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/package.dsv
+[6.870s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/ament_index/resource_index/packages/odom_listener
+[6.882s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/cmake/odom_listenerConfig.cmake
+[6.893s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/cmake/odom_listenerConfig-version.cmake
+[6.905s] -- Symlinking: /ws/controller/odom_listener/install/odom_listener/share/odom_listener/package.xml
+[6.922s] Invoked command in '/ws/controller/odom_listener/build/odom_listener' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /ws/controller/odom_listener/build/odom_listener
