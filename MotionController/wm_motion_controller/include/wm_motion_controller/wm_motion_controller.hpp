@@ -23,28 +23,30 @@
 #include "wm_motion_controller/wm_motion_controller_constants.hpp"
 
 // can header file
-#include "can/can_manager.hpp"
+#include "manager/manager.hpp"
 
 // mediator header file
+/*
 #include "colleague/i_motion_colleague.hpp"
 #include "mediator/i_motion_mediator.hpp"
 #include "mediator/concrete_motion_mediator.hpp"
+*/
 
 #include "entity/ugv.hpp"
 #include "quaternion/quaternion.hpp"
-
+class Manager;
 using std::placeholders::_1;
-class IMotionMediator;
 /**
  * @brief Class controlled by robot motion can communication
  * @author changunAn(changun516@wavem.net)
  * @date 23.04.05
  */
-class WmMotionController : public rclcpp::Node,public IMotionColleague,public std::enable_shared_from_this<WmMotionController> {
+class WmMotionController : public rclcpp::Node {
     private :
         std::shared_ptr<WmMotionControllerConstants> constants_;
         float test;
-        std::shared_ptr<CanMGR> m_can_manager;
+        std::shared_ptr<Manager> manager_;
+
         // timer 
         rclcpp::TimerBase::SharedPtr timer_;
         rclcpp::TimerBase::SharedPtr tf_timer_;
@@ -118,14 +120,17 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         //
         float cmd_angel_convert(const float& ori_angel,const float& ori_linaer);
     public :
-        WmMotionController(std::shared_ptr<IMotionMediator> motion_colleague,std::shared_ptr<CanMGR> can_mgr);
+        WmMotionController(std::shared_ptr<Manager> manager);
         virtual ~WmMotionController();
 
         // mediator function list
-        void fn_send_value(const int& value) override;
-        void fn_recv_value(const int& value) override;
-        void fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time) override;
-        void fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time) override;
+        void fn_send_value(const int& value) ;
+        void fn_recv_value(const int& value) ;
+        void fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time) ;
+        void fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time) ;
+       
+        int test_num ;
+
 };
 
 #endif

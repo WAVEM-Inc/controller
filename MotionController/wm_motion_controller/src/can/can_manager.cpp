@@ -5,7 +5,7 @@
  * @author changunAn(changun516@wavem.net)
  * @param motion_mediator 
  */
-CanMGR::CanMGR(std::shared_ptr<IMotionMediator> motion_mediator):IMotionColleague(motion_mediator){
+CanMGR::CanMGR(std::shared_ptr<Manager> manager):manager_(manager){    
     fn_can_init();
 }
 
@@ -120,7 +120,7 @@ CanMGR::~CanMGR(){
  */
 void CanMGR::fn_send_value(const int& value){
    // std::cout<< "override can_mannager"<<std::endl;
-    m_i_motion_mediator->fn_send_value(value,shared_from_this());
+   //m_i_motion_mediator->fn_send_value(value,shared_from_this());
 }
 /**
  * @brief 
@@ -146,15 +146,21 @@ void CanMGR::log(std::string call_name){
  * @param cur_time 
  */
 void CanMGR::fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
-    m_i_motion_mediator->fn_send_rpm(rpm,cur_time,shared_from_this());
+    //m_i_motion_mediator->fn_send_rpm(rpm,cur_time,shared_from_this());
 }
 
 void CanMGR::fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
-	
-
+    
 }
 
 
 void CanMGR::static_break(UGV::BREAK break_status){
     obj_.static_break(break_status);
+}
+
+
+
+void CanMGR::fn_test(int a){
+    test_num=a;
+    std::cout<<"==test== "<<test_num<<std::endl;
 }

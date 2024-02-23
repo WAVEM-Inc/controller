@@ -3,7 +3,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "/opt/ros/humble/**",
+                "/home/nuc-bt/ros2_ws/src/drive/controller/MotionController/can_msgs/install/can_msgs/include/**"
             ],
             "defines": [
                 "_DEBUG",

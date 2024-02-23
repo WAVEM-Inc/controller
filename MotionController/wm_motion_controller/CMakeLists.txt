@@ -34,6 +34,7 @@ add_executable(wm_motion_controller_node
   src/colleague/motion_colleague.cpp  src/mediator/concrete_motion_mediator.cpp
   src/converter/ugv_converter.cpp src/entity/ugv.cpp
   src/quaternion/quaternion.cpp
+  src/manager/manager.cpp
 )
 ament_target_dependencies(wm_motion_controller_node 
 rclcpp 

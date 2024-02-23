@@ -1,6 +1,6 @@
 #include "wm_motion_controller/wm_motion_controller.hpp"
 #include "can/can_manager.hpp"
-
+#include "manager/manager.hpp"
 /**
  * @brief The main function of the WmMotionController node.
  * @param argc int paramter , Number of factors delivered at the start of the program
@@ -11,7 +11,8 @@
  */
 int main(int argc, char** argv){
     rclcpp::init(argc, argv);
-	std::cout<< R"(=======================================================================================================================
+	std::cout<< 
+R"(=======================================================================================================================
 ███    ███  ██████  ████████ ██  ██████  ███    ██          ██████  ██████  ███    ██ ████████ ██████   ██████  ██     
 ████  ████ ██    ██    ██    ██ ██    ██ ████   ██         ██      ██    ██ ████   ██    ██    ██   ██ ██    ██ ██     
 ██ ████ ██ ██    ██    ██    ██ ██    ██ ██ ██  ██         ██      ██    ██ ██ ██  ██    ██    ██████  ██    ██ ██     
@@ -20,14 +21,8 @@ int main(int argc, char** argv){
 =======================================================================================================================)"<<std::endl;
 
 	std::cout<<"main start"<<std::endl;
-	std::shared_ptr<ConcreteMotionMediator> mediator = std::make_shared<ConcreteMotionMediator>();
-	
-	std::shared_ptr<CanMGR> can_mgr =  std::make_shared<CanMGR>(mediator);
-	mediator->fn_set_can_mgr(can_mgr);
-    auto node = std::make_shared<WmMotionController>(mediator,can_mgr);
-	mediator->fn_set_wm_motion_controller(node);
-    rclcpp::spin(node);	
-	rclcpp::shutdown();
-
+	//std::shared_ptr<ConcreteMotionMediator> mediator = std::make_shared<ConcreteMotionMediator>();
+	std::shared_ptr<Manager> manager = std::make_shared<Manager>();
+	manager->fn_run();
 	return 0;
 }
