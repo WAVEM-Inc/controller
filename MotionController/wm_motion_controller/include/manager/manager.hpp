@@ -6,13 +6,14 @@
 #include "wm_motion_controller/wm_motion_controller.hpp"
 //
 #include "common/common.hpp"
-
+#include "manager/motion.hpp"
+#include "manager/i_can.hpp"
 //defualt header
 #include <memory>
 #include <map>
 class WmMotionController;
 class CanMGR;
-class Manager{
+class Manager : public IMotion,ICAN{
     public :
         Manager();
         
@@ -20,7 +21,16 @@ class Manager{
         void fn_run();
         void fn_map_up(std::string key, MANAGER::SETUP value);
         //
-        void fn_motion_send_data(int test);
+     
+
+        // motion
+        void fn_can_send_led_and_horn(const can_msgs::msg::ControlHardware::SharedPtr can_chw) override;
+        void fn_can_send_steering(float angular) override;
+        void fn_can_send_vel(float linear) override;
+        void fn_can_send_break(UGV::BREAK break_status) override;
+
+        // can
+        void can_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time) override;
 
     private : 
         std::map<std::string,MANAGER::SETUP> map_setup_;

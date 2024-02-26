@@ -79,9 +79,9 @@ std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 		//std::thread thread_run(&CanMGR::fn_can_run,m_can_manager);
 		//thread_run.detach();
 
-		manager_->fn_map_up("motion_controller",MANAGER::SETUP::START);
+		manager_->fn_map_up("WmMotionController",MANAGER::SETUP::START);
 std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
-	}
+}
 WmMotionController::~WmMotionController(){
 
 }
@@ -93,6 +93,7 @@ WmMotionController::~WmMotionController(){
  */
 void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw){
 	//m_can_manager->fn_send_control_hardware(can_chw->horn,can_chw->head_light,can_chw->right_light,can_chw->left_light);
+	manager_->fn_can_send_led_and_horn(can_chw);
 }
 
 /**
@@ -124,12 +125,15 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 void WmMotionController::cmd_vel_run(float vel_linear, float vel_angular){
 	if(!emergency_check_){
 		//m_can_manager->fn_send_control_steering(vel_angular);
+		manager_->fn_can_send_steering(vel_angular);
 		//m_can_manager->fn_send_control_vel(vel_linear);
+		manager_->fn_can_send_vel(vel_linear);
 	}
 	else{
 		//m_can_manager->static_break(UGV::BREAK::STOP);
+		manager_->fn_can_send_break(UGV::BREAK::STOP);
 	}
-	manager_->fn_motion_send_data(test_num++);
+	//manager_->fn_motion_send_data(test_num++);
 }
 
 void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){
@@ -138,15 +142,18 @@ void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){
 		prev_ugv_->get_cur_rpm();
 		cur_ugv_->get_cur_rpm();
 		//m_can_manager->static_break(UGV::BREAK::LED);
+		manager_->fn_can_send_break(UGV::BREAK::LED);
 	}
 	else if(std::fabs(vel_linear)<0.001 && constants_->rpm_center_+constants_->rpm_break < cur_rpm&&
 			constants_->rpm_center_-constants_->rpm_break > cur_rpm){
 		prev_ugv_->get_cur_rpm();
 		cur_ugv_->get_cur_rpm();
 		//m_can_manager->static_break(UGV::BREAK::STOP);
+		manager_->fn_can_send_break(UGV::BREAK::STOP);
 	}
 	else{
 		//m_can_manager->static_break(UGV::BREAK::GO);
+		manager_->fn_can_send_break(UGV::BREAK::GO);
 	}
 }
 

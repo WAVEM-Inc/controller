@@ -24,6 +24,20 @@ void Manager::fn_map_up(std::string key, MANAGER::SETUP value){
     }
 }
 
-void Manager::fn_motion_send_data(int test){
-    can_manager_->fn_test(test);
+void Manager::fn_can_send_led_and_horn(const can_msgs::msg::ControlHardware::SharedPtr can_chw){
+    can_manager_->fn_send_control_hardware(can_chw->horn,can_chw->head_light,can_chw->right_light,can_chw->left_light);
+}
+
+void Manager::fn_can_send_steering(float angular){
+    can_manager_->fn_send_control_steering(angular);
+}
+void Manager::fn_can_send_vel(float linear){
+    can_manager_->fn_send_control_vel(linear);
+}
+void Manager::fn_can_send_break(UGV::BREAK break_status){
+    can_manager_->static_break(break_status);
+}
+
+void Manager::can_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
+    wm_motion_controller_->fn_recv_rpm(rpm,cur_time);
 }

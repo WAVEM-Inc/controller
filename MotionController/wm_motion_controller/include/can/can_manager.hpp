@@ -58,7 +58,6 @@ class CanMGR{
         void fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time);
         void fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time);
         
-        void fn_test(int a);
 
         CanMGR(std::shared_ptr<Manager> manager);
 
