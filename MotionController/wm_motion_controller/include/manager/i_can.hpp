@@ -3,7 +3,7 @@
 #include <chrono> // time
 class ICAN{
     public :
-    virtual ~ICAN();
+
     virtual void can_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time)=0;
 };
 

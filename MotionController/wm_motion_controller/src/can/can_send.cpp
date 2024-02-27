@@ -66,9 +66,8 @@ int CanSend::Send(std::vector<unsigned char> data, unsigned int msgid, char* dev
        msg.append(" ");
     }
     msg.append(" <data transfer success>\n");
-    std::cout<<"can_send.cpp"<<__LINE__<<std::endl;
-    printf("%s",msg.c_str());
-    std::cout<<"can_send.cpp"<<__LINE__<<std::endl;
+    //printf("%s",msg.c_str());
+    
     return 0;
 }
 

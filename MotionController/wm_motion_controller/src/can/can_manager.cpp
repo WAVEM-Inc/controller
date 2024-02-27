@@ -31,9 +31,9 @@ void CanMGR::fn_can_run(){
  * @date 23.04.06
  */
 int CanMGR::fn_can_init(){
-	//obj_.RegistFaultCallback<CanMGR>(this, &CanMGR::faultCallback);
+	obj_.RegistFaultCallback<CanMGR>(this, &CanMGR::faultCallback);
 	obj_.RegistRpmCallback<CanMGR>(this, &CanMGR::rpmCallback);
-    //obj_.RegistRequestCallback<CanMGR>(this,&CanMGR::requestCallback);
+    obj_.RegistRequestCallback<CanMGR>(this,&CanMGR::requestCallback);
     obj_.Run();
     return 0;
 }
@@ -72,7 +72,7 @@ void CanMGR::rpmCallback(int mcu_shift
                     ,int mcu_torque
                     ){
     fn_send_rpm(mcu_speed,std::chrono::system_clock::now());
-    std::cout<<"[can] spped callback"<<std::endl;
+    std::cout<<"[can] speed callback"<<std::endl;
 }
 
 /**
@@ -151,6 +151,7 @@ void CanMGR::log(std::string call_name){
 void CanMGR::fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
     //m_i_motion_mediator->fn_send_rpm(rpm,cur_time,shared_from_this());
     manager_->can_send_rpm(rpm,cur_time);
+    std::cout<<rpm<<std::endl;
 }
 
 void CanMGR::fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){

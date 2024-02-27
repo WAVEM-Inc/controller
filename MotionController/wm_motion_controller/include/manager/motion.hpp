@@ -5,7 +5,7 @@
 #include "entity/df_ugv.hpp"
 class IMotion{
     public :
-        virtual ~IMotion();
+   
         virtual void fn_can_send_led_and_horn(const can_msgs::msg::ControlHardware::SharedPtr can_chw)=0;
         virtual void fn_can_send_steering(float angular)=0;
         virtual void fn_can_send_vel(float linear)=0;

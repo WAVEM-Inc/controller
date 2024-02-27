@@ -131,9 +131,6 @@ int CanAdaptor::ROpen(vector<string> device){
    // can_dump->open(parametermap.size(), arg,this,&CanAdaptor::receive);
    // thread 방법
   try{
-    std::cout<<"can_adaptor.cpp"<<__LINE__<<std::endl;
-    sleep(1);
-
     thread recvthread([&](int argc, vector<string> argv,CanAdaptor* pClassType,void(CanAdaptor::*func)(unsigned char* data,int canid)) {
 	 					       this->CanOpen(argc,argv,pClassType,func);
                          }, parametermap.size(),argval,this,&CanAdaptor::Receive);
@@ -183,11 +180,12 @@ int CanAdaptor::CanOpen(int argc, vector<string> arg,CanAdaptor* pClassType,void
 * @warning 
 * @exception
 */
-void CanAdaptor::CheckSocketStatus(vector<string> device,std::function<void(int,int,int)> callbackfunc){
+void CanAdaptor::CheckSocketStatus(vector<string> device,std::function<void(int,int)> callbackfunc){
 
   int (CanAdaptor::*pFunc1)(vector<string>) = &CanAdaptor::SOpen;
   function<int(vector<string>)> openfunc = move(bind(pFunc1, this, placeholders::_1));
-  std::thread ([&](vector<string> dev,std::function<void(int,int,int)> func) {
+  //cout << "thread check socket OK!!! : " << endl;        
+  std::thread ([&](vector<string> dev,std::function<void(int,int)> func) {
           
     while (true){
 
@@ -199,14 +197,14 @@ void CanAdaptor::CheckSocketStatus(vector<string> device,std::function<void(int,
         if ( IsConnected((char*)iter->c_str()) == false ){
           cerr << "[ERR]Socket check result :  invalid can device - " << iter->c_str() << endl;        
           // call function (can device fault) 
-          func(CAN_DEVICE_FAULT,0x00,0x00);
+          func(CAN_DEVICE_FAULT,0x00);
           Release();             
           isConn = false; 
 
           cout << "try reopen socket : " << endl;        
           if ( SOpen(dev) == 0 ){
             // call function (can device normal)
-            func(CAN_NO_FAULT,0x00,0x00);                
+            func(CAN_NO_FAULT,0x00);                
           }                         
           break;
         }              
@@ -227,37 +225,18 @@ void CanAdaptor::CheckSocketStatus(vector<string> device,std::function<void(int,
 * @exception
 */
 void CanAdaptor::Receive(byte* data,int canid) {
-  std::cout<< "recieve"<<std::endl;
+
   //function map에서 canid에 해당하는 callback을 조회하여 호출한다.
-  if(funcsmap_.size()==0){
-    return;
-  }
-  try{
-    std::cout<< "MapSize " << funcsmap_.size() <<std::endl;
-    if(registe_check_==false ||funcsmap_.empty()){
-      return;
-    }
-    std::cout<< "CanId " << canid <<std::endl;
-    auto value = funcsmap_.find(canid);
-    if(value==funcsmap_.end()){
-      return;
-    }
-    else{
-      std::cout<< "recieve else"<<std::endl;
-      cout << " map key  : "<< value->first << endl;
-      std::shared_ptr<CanCallbackFunc> object = value->second;
-      cout << " count  : "<< object.use_count() << "," << object << endl;
-      CanCallbackFunc* lpCls = (CanCallbackFunc*)value->second.get();
-      cout << "[recv] canid :"<< lpCls->getCanid() << ", channel :" << lpCls->getChannel() << endl;
-      std::function<void(byte*)> func = lpCls->getHandler();
-      //data 파싱 및 등록된 callback 함수를 호출한다.
-      //std::future<void> ret = std::async(std::launch::async, func,data);
-      func(data);
-    }
-  }
-  catch(exception e){
-    std::cout<< "receive excetion" <<std::endl;
-  }
+  auto value = funcsmap_.find(canid);
+  //cout << " map key  : "<< value->first << endl;
+  std::shared_ptr<CanCallbackFunc> object = value->second;
+  //cout << " count  : "<< object.use_count() << "," << object << endl;
+  CanCallbackFunc* lpCls = (CanCallbackFunc*)value->second.get();
+  //cout << "[recv] canid :"<< lpCls->getCanid() << ", channel :" << lpCls->getChannel() << endl;
+  std::function<void(byte*)> func = lpCls->getHandler();
+  //data 파싱 및 등록된 callback 함수를 호출한다.
+  //std::future<void> ret = std::async(std::launch::async, func,data);
+  func(data);
 }
 
 /**
@@ -270,11 +249,10 @@ void CanAdaptor::Receive(byte* data,int canid) {
 */
 int CanAdaptor::RunControlFlag(int flag, string device ){
     
-  AD_Control_Flag data;
+  Mode_Control_Flag data;
   memset(&data,0x00,CAN_MAX_DLEN);
-  data.ad_control_request_flag = (unsigned char)flag;
-  data.ad_flag_msgcntr = 15; // new heartbeat
-    //postCanMessage<AD_Control_Flag>(data,AD_Control_Flag,device_type[CAN1]);
+  data.mode_control_request_flag = (unsigned char)flag;
+    //postCanMessage<Mode_Control_Flag>(data,MODE_CONTROL_FLAG,device_type[CAN1]);
     //for synchronously
   byte temp[CAN_MAX_DLEN];
     //byte* body = makeframebody(temp,data);
@@ -287,7 +265,7 @@ int CanAdaptor::RunControlFlag(int flag, string device ){
   int (CanAdaptor::*pFunc)(vector<byte>, unsigned int, string) = &CanAdaptor::Send;
   function<void(vector<byte>, unsigned int, string)> postMessagefunc = move(bind(pFunc, this, placeholders::_1, placeholders::_2, placeholders::_3));
 
-  int ret = Send(body, AD_CONTROL_FLAG, (char*)device.c_str());   
+  int ret = Send(body, MODE_CONTROL_FLAG, (char*)device.c_str());   
 
   return ret;
 }
@@ -409,17 +387,17 @@ void CanAdaptor::StopPostMessage(unsigned int canid){
 }
 
 /**
-* @brief AD_CONTROL_BODY  type is transmitted through the CAN network.
+* @brief iECU_Control_Hardware type is transmitted through the CAN network.
 * @details
-* @param body AD_CONTROL_BODY  data
+* @param body iECU_Control_Hardware data
 * @param canid can id
 * @param device can channel
 * @return  void
 * @warning
 * @exception
 */
-void CanAdaptor::PostMessageByType(AD_Control_Body  data,int msgid,string device){
-  //cout <<  "send AD_CONTROL_BODY  msg "<< endl;
+void CanAdaptor::PostMessageByType(iECU_Control_Hardware data,int msgid,string device){
+  //cout <<  "send iECU_Control_Hardware msg "<< endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -428,17 +406,17 @@ void CanAdaptor::PostMessageByType(AD_Control_Body  data,int msgid,string device
 }
 
 /**
-* @brief AD_Control_Accelerate type is transmitted through the CAN network.
+* @brief iECU_Control_Accelerate type is transmitted through the CAN network.
 * @details
-* @param body AD_CONTROL_BODY  data
+* @param body iECU_Control_Hardware data
 * @param canid can id
 * @param device can channel
 * @return  void
 * @warning
 * @exception
 */
-void CanAdaptor::PostMessageByType(AD_Control_Accelerate data,int msgid,string device){
- // cout <<  "send AD_Control_Accelerate msg "<< endl;
+void CanAdaptor::PostMessageByType(iECU_Control_Accelerate data,int msgid,string device){
+ // cout <<  "send iECU_Control_Accelerate msg "<< endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -446,17 +424,17 @@ void CanAdaptor::PostMessageByType(AD_Control_Accelerate data,int msgid,string d
 }
 
 /**
-* @brief AD_Control_Brake type is transmitted through the CAN network.
+* @brief iECU_Control_Brake type is transmitted through the CAN network.
 * @details
-* @param body AD_CONTROL_BODY  data
+* @param body iECU_Control_Hardware data
 * @param canid can id
 * @param device can channel
 * @return  void
 * @warning
 * @exception
 */
-void CanAdaptor::PostMessageByType(AD_Control_Brake data,int msgid,string device){
-  //cout <<  "send AD_Control_Brake msg "<< endl;
+void CanAdaptor::PostMessageByType(iECU_Control_Brake data,int msgid,string device){
+  //cout <<  "send iECU_Control_Brake msg "<< endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -464,17 +442,17 @@ void CanAdaptor::PostMessageByType(AD_Control_Brake data,int msgid,string device
 }
 
 /**
-* @brief AD_Control_Steering type is transmitted through the CAN network.
+* @brief iECU_Control_Steering type is transmitted through the CAN network.
 * @details
-* @param body AD_CONTROL_BODY  data
+* @param body iECU_Control_Hardware data
 * @param canid can id
 * @param device can channel
 * @return  void
 * @warning
 * @exception
 */
-void CanAdaptor::PostMessageByType(AD_Control_Steering data,int msgid,string device){
-  //cout <<  "send AD_Control_Steering msg "<< endl;
+void CanAdaptor::PostMessageByType(iECU_Control_Steering data,int msgid,string device){
+  //cout <<  "send iECU_Control_Steering msg "<< endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -482,17 +460,17 @@ void CanAdaptor::PostMessageByType(AD_Control_Steering data,int msgid,string dev
 }
 
 /**
-* @brief AD_Control_Flag type is transmitted through the CAN network.
+* @brief Mode_Control_Flag type is transmitted through the CAN network.
 * @details
-* @param body AD_CONTROL_BODY  data
+* @param body iECU_Control_Hardware data
 * @param canid can id
 * @param device can channel
 * @return  void
 * @warning
 * @exception
 */
-void CanAdaptor::PostMessageByType(AD_Control_Flag data,int msgid,string device){
-  //cout <<  "send AD_Control_Flag msg : "<< device << endl;
+void CanAdaptor::PostMessageByType(Mode_Control_Flag data,int msgid,string device){
+  //cout <<  "send Mode_Control_Flag msg : "<< device << endl;
   byte body[CAN_MAX_DLEN];
   //byte* body = makeframebody(temp,data);
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
@@ -508,7 +486,7 @@ void CanAdaptor::PostMessageByType(AD_Control_Flag data,int msgid,string device)
 * @warning
 * @exception
 */
-byte * CanAdaptor::MakeFramebody(byte* body,AD_Control_Body  data){
+byte * CanAdaptor::MakeFramebody(byte* body,iECU_Control_Hardware data){
 
   memcpy(body,(void*)&data,CAN_MAX_DLEN);
   // data를 body로 변환

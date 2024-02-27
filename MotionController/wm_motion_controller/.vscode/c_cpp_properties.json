@@ -4,8 +4,9 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
+                "/home/ubuntu/ros2_ws/src/CanRobotControl/**",
                 "/opt/ros/foxy/include",
-                "/home/nuc-bs/ros2_ws/src/controller/MotionController/install/can_msgs/include/"
+
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

@@ -13,10 +13,11 @@
 #include <map>
 class WmMotionController;
 class CanMGR;
+class IMotion;
+class ICAN;
 class Manager : public IMotion,ICAN{
     public :
         Manager();
-        
         virtual ~Manager();
         void fn_run();
         void fn_map_up(std::string key, MANAGER::SETUP value);
@@ -28,9 +29,11 @@ class Manager : public IMotion,ICAN{
         void fn_can_send_steering(float angular) override;
         void fn_can_send_vel(float linear) override;
         void fn_can_send_break(UGV::BREAK break_status) override;
+       
 
         // can
         void can_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time) override;
+       
 
     private : 
         std::map<std::string,MANAGER::SETUP> map_setup_;

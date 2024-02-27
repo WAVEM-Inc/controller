@@ -50,7 +50,6 @@ static volatile int running = 1;
 */         
 int CanDump::Open(int argc, std::vector<std::string> argval,CanAdaptor* pClassType,void(CanAdaptor::*func)(unsigned char* data,int canid))
 {	
-	std::cout<<"Candump.cpp_Open "<<std::endl;
   string argv[MAXCN];
   int idx = 0;
 
@@ -329,27 +328,15 @@ int CanDump::Open(int argc, std::vector<std::string> argval,CanAdaptor* pClassTy
 			//printf("%*s", max_devname_len, devname[idx]);
 		    //callback function
             //pClassType->receive(frame.data,frame.can_id);
-			std::cout<<"can_dump.cpp" <<__LINE__<<std::endl; 
-			fprint_long_canframe(stdout, &frame, NULL, view, maxdlen);
-			std::cout<<"can_dump.cpp" <<__LINE__<<std::endl; 
-			printf("\n");
+			//std::cout<<"@!TEST";
+			//fprint_long_canframe(stdout, &frame, NULL, view, maxdlen);
+			//printf("\n");
 
 			fflush(stdout);
 			// 콜백 함수 등록
-			
             function<void(unsigned char*,int)>  handler = move(bind(func, pClassType, placeholders::_1,placeholders::_2));
-			std::cout<<"can_dump.cpp" <<' '<<__LINE__<<' '<<frame.data<<' '<<frame.can_id<<std::endl;
-			
-			std::cout<<"!!"<<func<<std::endl;
-			if(sizeof(frame.data)!=0){
-				try{
-					handler(frame.data,frame.can_id);
-				}
-				catch(exception e){
-					std::cout<<" Capybara "<<std::endl;
-				}
-			}
-			std::cout<<"can_dump.cpp" <<__LINE__<<std::endl; 
+
+			handler(frame.data,frame.can_id);
 		}
 	  }
 	}catch(int e){
