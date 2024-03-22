@@ -1,5 +1,9 @@
 .vscode/settings.json
-doc
-build
-install
-log
+doc/
+build/
+install/
+log/
+cmake-build-debug/
+cmake-build-remote-host-cmake/
+.idea/
+venv/

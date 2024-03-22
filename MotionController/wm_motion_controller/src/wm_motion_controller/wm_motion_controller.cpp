@@ -241,7 +241,7 @@ void WmMotionController::fn_send_rpm(const float& rpm,const std::chrono::system_
  * @param cur_time 
  */
 void WmMotionController::fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
-	RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_check+"%.02f",rpm);
+	//RCLCPP_INFO(this->get_logger(),constants_->log_mediator_recv_rpm_check+"%.02f",rpm);
 	//std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
 	cur_ugv_->set_cur_rpm(rpm);
 	//std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
