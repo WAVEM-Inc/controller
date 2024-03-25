@@ -35,6 +35,8 @@ add_executable(wm_motion_controller_node
   src/converter/ugv_converter.cpp src/entity/ugv.cpp
   src/quaternion/quaternion.cpp
   src/manager/manager.cpp
+        include/can/can2ad_dbc.h
+        include/can/can2vcu_dbc.h
 )
 ament_target_dependencies(wm_motion_controller_node 
 rclcpp 
