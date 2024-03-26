@@ -7,7 +7,9 @@
 #include <memory.h>
 #include <arpa/inet.h>
 
-#include "can/w1candbc.h"
+#include "can/can2ad_dbc.h"
+#include "can/can2vcu_dbc.h"
+
 #include "entity/df_ugv.hpp"
 
 using namespace std;
@@ -29,6 +31,8 @@ class DataRelayer {
     typedef std::function<void(int,int,int)> func_rpm_callback; // Callback function pointer variable definition
     //typedef std::function<void(int,int,int)> func_other_callback; // Callback function pointer variable definition
     typedef std::function<void(short)> func_request_callback;
+
+
     func_fault_callback faultCallback;// Callback function pointer variable definition
     func_rpm_callback rpmCallback; // Callback function pointer variable definition
     func_request_callback requestCallback;
@@ -86,13 +90,7 @@ class DataRelayer {
         , placeholders::_2
         ));
     }
-    template<typename T>
-    void RegistRequestCallback(T *pClassType,void(T::*pfunc)(short)){
-      requestCallback = move(bind(pfunc, pClassType
-        , placeholders::_1
-        ));
-    }
-    
+
 
     void Run();
     void SendTest();
@@ -108,8 +106,9 @@ class DataRelayer {
     void Handler_Remote_Control_Shake (Remote_Control_Shake msg);
     void Handler_Remote_Control_IO (Remote_Control_IO msg);
     void Handler_DBS_Status (DBS_Status msg);
+    void Handler_DBS_Status2 (VCU::DBS_Status2 msg);
     void Handler_VCU_DBS_Request (VCU_DBS_Request msg);
-    void Handler_MCU_Torque_Feedback (MCU_Torque_Feedback msg);
+    void Handler_MCU_Torque_Feedback (VCU::MCU_Torque_Feedback msg);
     unsigned short ConvertSpeedUnits(float vel);
 
     bool is_big_endian(){

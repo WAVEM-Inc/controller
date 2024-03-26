@@ -16,13 +16,14 @@ enum MSG_ID {
   REMOTE_CONTROL_SHAKE_2 = 0x10b,
   REMOTE_CONTROL_IO = 0x10a,
   DBS_STATUS = 0x142,
+  DBS_STATUS2 = 0x143,
   VCU_DBS_REQUEST = 0x154,
-  IECU_CONTROL_HARDWARE	=	0X506,
-  IECU_CONTROL_ACCELERATE	=	0X504,
-  IECU_CONTROL_BRAKE	=	0X503,
-  IECU_CONTROL_STEERING	=	0X502,
-  MODE_CONTROL_FLAG	=	0X501,
-  TORQUE_FEEDBACK = 0x10
+  IECU_CONTROL_HARDWARE	=	0x506,
+  IECU_CONTROL_ACCELERATE	=	0x504,
+  IECU_CONTROL_BRAKE	=	0x503,
+  IECU_CONTROL_STEERING	=	0x502,
+  MODE_CONTROL_FLAG	=	0x501,
+  TORQUE_FEEDBACK = 0x10 // [v]
 };
 
 enum SVC_ID {
@@ -39,7 +40,7 @@ enum ACC_GEAR {
    REVERSE
 };
 
-enum CHANNEL_TYPE { CAN0,CAN1 } ;
+enum CHANNEL_TYPE { CAN0,CAN1,CAN2 } ;
 
 /**
  * @brief Test device type
@@ -52,7 +53,7 @@ static const char *device_type[] =
  * 
  */
 static const char *device_type[] =
-        { "can0", "can1"};
+        { "can0", "can1","can2"};
 #define CAN_ALIVE_CHECKTIME 2 // second
 #define CAN_RECV_RETRY_TIME 2 // second
 

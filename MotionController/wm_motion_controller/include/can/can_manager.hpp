@@ -41,7 +41,6 @@ class CanMGR{
         int fn_can_init(); // can callback function register 
         void faultCallback(int can_falut,int dbs_fault);
         void rpmCallback(int mcu_shift,int mcu_speed,int mcu_torque);
-        void requestCallback(short temp); // test callback,map bug   - by changun 23.11.26
         void log(std::string call_name);
 
         //

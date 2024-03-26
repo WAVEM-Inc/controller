@@ -75,9 +75,6 @@ void DataRelayer::RegistFaultCallback(void(*pfunc)(int,int)){
   faultCallback = static_cast<void(*)(int,int)>(pfunc);
 };
 
-void DataRelayer::RegistRequstCallback(void(*pfunc)(short)){
-  requestCallback = static_cast<void(*)(short)>(pfunc);
-};
 
 
 /**
@@ -237,11 +234,13 @@ void DataRelayer::Handler_Remote_Control_IO (Remote_Control_IO msg){
 * @return void
 * @exception
 */
+/*
 void DataRelayer::Handler_DBS_Status (DBS_Status msg){
   cout << "[recv] DBS_Status : " << (int)msg.dbs_fault_code <<","<<(int)msg.dbs_hp_pressure <<","<<(int)msg.dbs_system_status << endl;
-
   faultCallback(CAN_NO_FAULT,msg.dbs_fault_code);
 }
+*/
+
 
 /**
 * @brief Callback function to register with CanAdaptor::
@@ -261,18 +260,10 @@ void DataRelayer::Handler_VCU_DBS_Request (VCU_DBS_Request msg){
 * @return void
 * @exception
 */
-void DataRelayer::Handler_MCU_Torque_Feedback (MCU_Torque_Feedback msg){
-  /*
-  cout << "[recv] MCU_Torque_Feedback : " << (int)msg.mcu_current
-    <<","<<(int)msg.mcu_errorcode
-    <<","<<(int)msg.mcu_motortemp
-    <<","<<(int)msg.mcu_shift
-    <<","<<(int)msg.mcu_speed
-    <<","<<(int)msg.mcu_torque << endl;
-*/
-  rpmCallback((int)msg.mcu_shift
-                    ,(int)msg.mcu_speed
-                    ,(int)msg.mcu_torque);
+void DataRelayer::Handler_MCU_Torque_Feedback (VCU::MCU_Torque_Feedback msg){
+  rpmCallback((int)msg.MCU_Shift
+                    ,(int)msg.MCU_SPEED
+                    ,(int)msg.MCU_TORQUE);
 }
 
 /**
@@ -288,17 +279,19 @@ void DataRelayer::Run(){
   canlib_->Initialize(system_endian_);
 
   // 수신 핸들러 등록
-  canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_EPS_Control_Request,VCU_EPS_CONTROL_REQUEST,device_type[CAN1]);
+  canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_DBS_Status2,DBS_STATUS2,device_type[CAN2]); // changun
+  canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_MCU_Torque_Feedback,TORQUE_FEEDBACK,device_type[CAN2]);
+  //
+    canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_EPS_Control_Request,VCU_EPS_CONTROL_REQUEST,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_Shake,REMOTE_CONTROL_SHAKE_2,device_type[CAN1]);
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_IO,REMOTE_CONTROL_IO,device_type[CAN1]);
   //std::cout << "can_test1"<<'\n';
   //changun 1->0 230427
-  canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_DBS_Status,DBS_STATUS,device_type[CAN1]); // changun 
-  
+
   
     //std::cout << "can_test2"<< '\n';
   // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_DBS_Request,VCU_DBS_REQUEST,device_type[CAN1]);1
-  canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_MCU_Torque_Feedback,TORQUE_FEEDBACK,device_type[CAN0]);
+
   //std::cout << "can_test3"<< '\n';
   // 수신 리스너 오픈
   vector<string> device;
@@ -313,7 +306,8 @@ void DataRelayer::Run(){
     cout << "open fail" << endl;
     sleep(CAN_ALIVE_CHECKTIME);      
   }
-    //changun 1->0 230427
+
+  // Autonomous Driving Check
   while(canlib_->RunControlFlag(1,device_type[CAN1]) != 0 ){
     cout << "run config flag fail" << endl;
     sleep(CAN_ALIVE_CHECKTIME);
@@ -416,5 +410,10 @@ void DataRelayer::SendTest(){
         //dat_2.iecu_dbs_valid = 1;
         canlib_->PostCanMessage<iECU_Control_Brake>(dat_2,IECU_CONTROL_BRAKE,device_type[CAN1]);
     }
+
+void DataRelayer::Handler_DBS_Status2(VCU::DBS_Status2 msg) {
+    cout << "[recv] DBS_Status2 : " << (int)msg.DBS_Fault_Code <<","<<(int)msg.DBS_RollingCounter2 <<","<<(int)msg.DBS_WarringCode << endl;
+    faultCallback(CAN_NO_FAULT,msg.DBS_Fault_Code);
+}
 
 

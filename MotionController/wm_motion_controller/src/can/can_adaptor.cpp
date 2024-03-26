@@ -459,23 +459,6 @@ void CanAdaptor::PostMessageByType(iECU_Control_Steering data,int msgid,string d
   PostMessageByType(body, msgid, device );
 }
 
-/**
-* @brief Mode_Control_Flag type is transmitted through the CAN network.
-* @details
-* @param body iECU_Control_Hardware data
-* @param canid can id
-* @param device can channel
-* @return  void
-* @warning
-* @exception
-*/
-void CanAdaptor::PostMessageByType(Mode_Control_Flag data,int msgid,string device){
-  //cout <<  "send Mode_Control_Flag msg : "<< device << endl;
-  byte body[CAN_MAX_DLEN];
-  //byte* body = makeframebody(temp,data);
-  memcpy(body,(void*)&data,CAN_MAX_DLEN);
-  PostMessageByType(body, msgid, device );
-}
 
 /**
 * @brief Convert structure data to 8-byte byte array

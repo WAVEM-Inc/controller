@@ -31,9 +31,9 @@ void CanMGR::fn_can_run(){
  * @date 23.04.06
  */
 int CanMGR::fn_can_init(){
+    // dbs fault status
 	obj_.RegistFaultCallback<CanMGR>(this, &CanMGR::faultCallback);
-	obj_.RegistRpmCallback<CanMGR>(this, &CanMGR::rpmCallback);
-    obj_.RegistRequestCallback<CanMGR>(this,&CanMGR::requestCallback);
+    obj_.RegistRpmCallback<CanMGR>(this, &CanMGR::rpmCallback);
     obj_.Run();
     return 0;
 }
@@ -73,13 +73,6 @@ void CanMGR::rpmCallback(int mcu_shift
                     ){
     fn_send_rpm(mcu_speed,std::chrono::system_clock::now());
     std::cout<<"[can] speed callback"<<std::endl;
-}
-
-/**
- * 
-*/
-void CanMGR::requestCallback(short temp){
-
 }
 
 

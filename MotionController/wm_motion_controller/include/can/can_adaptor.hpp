@@ -14,7 +14,9 @@
 #include <linux/can.h>
 #include <linux/can/raw.h>
 
-#include "can/w1candbc.h"
+// can header
+#include "can/can2ad_dbc.h"
+#include "can/can2vcu_dbc.h"
 #include "cancallbackfunc.hpp"
 
 //typedef unsigned char* byte;
@@ -51,19 +53,12 @@ class CanAdaptor {
     map<int, std::shared_ptr<CanCallbackFunc>> funcsmap_;
     static CanAdaptor* instance;
 
-    typedef std::function<void(VCU_EPS_Control_Request)> func_VCU_EPS_Control_Request;
-    typedef std::function<void(Remote_Control_Shake)> func_Remote_Control_Shake;
-    typedef std::function<void(Remote_Control_IO)> func_Remote_Control_IO;
-    typedef std::function<void(DBS_Status)> func_DBS_Status;
-    typedef std::function<void(VCU_DBS_Request)> func_VCU_DBS_Request;
-    typedef std::function<void(MCU_Torque_Feedback)> func_MCU_Torque_Feedback;
-    
+    //typedef std::function<void(DBS_Status)> func_DBS_Status;
+    typedef std::function<void(VCU::DBS_Status2)> func_DBS_Status2;
+    typedef std::function<void(VCU::MCU_Torque_Feedback)> func_MCU_Torque_Feedback;
 
-    func_VCU_EPS_Control_Request handler_vcr;
-    func_Remote_Control_Shake handler_rcs;
-    func_Remote_Control_IO handler_rci;
-    func_DBS_Status handler_ds;
-    func_VCU_DBS_Request handler_vdr;
+    //func_DBS_Status handler_ds;
+    func_DBS_Status2 handler_ds2;
     func_MCU_Torque_Feedback handler_mtf;
 
     bool isBigEndian_ = 0;
@@ -90,7 +85,7 @@ class CanAdaptor {
     void PostMessageByType(iECU_Control_Accelerate body,int msgid,string device);
     void PostMessageByType(iECU_Control_Brake body,int msgid,string device);
     void PostMessageByType(iECU_Control_Steering body,int msgid,string device);
-    void PostMessageByType(Mode_Control_Flag body,int msgid,string device);
+
     void PostMessageByType(byte* body, unsigned int canid, string device );
     void PostMessageByType(byte* data, unsigned int canid, string device,int duration );
     
@@ -120,108 +115,8 @@ class CanAdaptor {
       return instance;
     };
 
-    
-    /**
-    * @brief Register a callback function.(VCU_EPS_Control_Request)
-    * @details Register a callback function that receives VCU_EPS_Control_Request as a parameter.
-    * @param *pClassType an channel to open
-    * @param T::*pfunc callback function
-    * @param  msgid  MSG ID (same value as can id)
-    * @param  device can channel
-    * @return void
-    * @exception
-    */
-    template<typename T>
-    void SetHandler(T *pClassType,void(T::*pfunc)(VCU_EPS_Control_Request),int canid,string device){
-      //void CanAdaptor::setHandler(T *pClassType,void(T::*pfunc)(VCU_EPS_Control_Request,std::string msgid,CHANNEL_TYPE type)){  
-      //setHandler(bind(pfunc, pClassType, placeholders::_1));    
-      handler_vcr = move(bind(pfunc, pClassType, placeholders::_1));
-      //int canid = string2hex(msgid);
-      
-      std::shared_ptr<CanCallbackFunc> object = std::make_shared<CanCallbackFunc>(
-                 canid
-                ,device
-                ,[&](byte* data) { 
-                    // data를 VCU_EPS_Control_Request에 맞춰서 넣는다.
-                    VCU_EPS_Control_Request r;                                        
-                    memcpy((void*)&r,data,CAN_MAX_DLEN);
-                    //cout<< "call VCU_EPS_Control_Request" << endl;
-                    handler_vcr((VCU_EPS_Control_Request)r);
-                    //cout<< "end handler_vcr" << endl;
-                }
-                );                
-     cout << "setHandler(VCU_EPS_Control_Request) : " + device << ", canid : "<< canid << endl;          
-     funcsmap_.insert(make_pair(canid,object));     
-//     print_map_state("VCU_EPS_Control_Request");
-   };
 
-    /**
-    * @brief Register a callback function.(Remote_Control_IO)
-    * @details Register a callback function that receives Remote_Control_IO as a parameter.
-    * @param *pClassType an channel to open
-    * @param T::*pfunc callback function
-    * @param  msgid  MSG ID (same value as can id)
-    * @param  device can channel
-    * @return void
-    * @exception
-    */
-    template<typename T>
-    void SetHandler(T *pClassType,void(T::*pfunc)(Remote_Control_IO),int canid,string device){        
-      handler_rci = move(bind(pfunc, pClassType, placeholders::_1));
-      //int canid = string2hex(msgid);
-      
-      std::shared_ptr<CanCallbackFunc> object = std::make_shared<CanCallbackFunc>(
-                 canid
-                ,device
-                ,[&](byte* data) { 
-                  // data를 Remote_Control_IO 맞춰서 넣는다.
-                  Remote_Control_IO r;
-                  memcpy((void*)&r,data,CAN_MAX_DLEN);
-                  //this->handler_h(r);
-                  //cout<< "call Remote_Control_IO" << endl;
-                  handler_rci((Remote_Control_IO)r);
-                  //cout<< "end handler_rci" << endl;
-                }
-                );
-      
-       cout << "setHandler(Remote_Control_IO) : " + device << ", canid : "<< canid << endl;          
-       funcsmap_.insert(make_pair(canid,object));           
-  //    print_map_state("Remote_Control_IO");
-   };
 
-   /**
-    * @brief Register a callback function.(Remote_Control_Shake_2)
-    * @details Register a callback function that receives Remote_Control_Shake_2 as a parameter.
-    * @param *pClassType an channel to open
-    * @param T::*pfunc callback function
-    * @param  msgid  MSG ID (same value as can id)
-    * @param  device can channel
-    * @return void
-    * @exception
-    */
-    template<typename T>
-    void SetHandler(T *pClassType,void(T::*pfunc)(Remote_Control_Shake),int canid,string device){        
-      handler_rcs = move(bind(pfunc, pClassType, placeholders::_1));
-      //int canid = string2hex(msgid);
-      
-      std::shared_ptr<CanCallbackFunc> object = std::make_shared<CanCallbackFunc>(
-                 canid
-                ,device
-                ,[&](byte* data) { 
-                  // data를 Remote_Control_Shake_2 맞춰서 넣는다.
-                  Remote_Control_Shake r;
-                  memcpy((void*)&r,data,CAN_MAX_DLEN);
-                  //this->handler_h(r);
-                  //cout<< "call Remote_Control_Shake_2" << endl;
-                  handler_rcs((Remote_Control_Shake)r);
-                  //cout<< "end handler_rcs" << endl;
-                }
-                );
-      
-      cout << "setHandler(Remote_Control_Shake_2) : " + device << ", canid : "<< canid << endl;          
-      funcsmap_.insert(make_pair(canid,object));           
-//      print_map_state("Remote_Control_Shake_2");
-   };
 
    /**
     * @brief Register a callback function.(DBS_Status)
@@ -233,6 +128,7 @@ class CanAdaptor {
     * @return void
     * @exception
     */
+    /*
     template<typename T>
     void SetHandler(T *pClassType,void(T::*pfunc)(DBS_Status),int canid,string device){        
       handler_ds = move(bind(pfunc, pClassType, placeholders::_1));
@@ -256,41 +152,28 @@ class CanAdaptor {
        funcsmap_.insert(make_pair(canid,object));           
 //    print_map_state("DBS_Status");
    };
+*/
 
-   /**
-    * @brief Register a callback function.(VCU_DBS_Request)
-    * @details Register a callback function that receives VCU_DBS_Request as a parameter.
-    * @param *pClassType an channel to open
-    * @param T::*pfunc callback function
-    * @param  msgid  MSG ID (same value as can id)
-    * @param  device can channel
-    * @return void
-    * @exception
-    */
     template<typename T>
-    void SetHandler(T *pClassType,void(T::*pfunc)(VCU_DBS_Request),int canid,string device){        
-      handler_vdr = move(bind(pfunc, pClassType, placeholders::_1));
-      //int canid = string2hex(msgid);
-      
-      std::shared_ptr<CanCallbackFunc> object = std::make_shared<CanCallbackFunc>(
-                 canid
+    void SetHandler(T *pClassType,void(T::*pfunc)(VCU::DBS_Status2),int canid,string device){
+        handler_ds2 = move(bind(pfunc, pClassType, placeholders::_1));
+        //int canid = string2hex(msgid);
+        std::shared_ptr<CanCallbackFunc> object = std::make_shared<CanCallbackFunc>(
+                canid
                 ,device
-                ,[&](byte* data) { 
-                  // data를 VCU_DBS_Request 맞춰서 넣는다.
-                  VCU_DBS_Request r;
-                  memcpy((void*)&r,data,CAN_MAX_DLEN);
-                  //this->handler_h(r);
-                  //cout<< "call VCU_DBS_Request" << endl;
-                  handler_vdr((VCU_DBS_Request)r);
-                  //cout<< "end handler_vdr" << endl;
+                ,[&](byte* data) {
+                    // data를 DBS_Status 맞춰서 넣는다.
+                    VCU::DBS_Status2 r;
+                    memcpy((void*)&r,data,CAN_MAX_DLEN);
+                    //this->handler_h(r);
+                    //cout<< "call DBS_Status" << endl;
+                    handler_ds2((VCU::DBS_Status2)r);
+                    // cout<< "end DBS_Status" << endl;
                 }
-                );
-      
-      cout << "setHandler(VCU_DBS_Request) : " + device << ", canid : "<< canid << endl;          
-      funcsmap_.insert(make_pair(canid,object));           
-//      print_map_state("VCU_DBS_Request");
-   };
-   
+        );
+        cout << "setHandler(DBS_Status) : " + device << ", canid : "<< canid << endl;
+        funcsmap_.insert(make_pair(canid,object));
+    };
    
   /**
     * @brief Register a callback function.(MCU_Torque_Feedback)
@@ -303,7 +186,7 @@ class CanAdaptor {
     * @exception
     */
     template<typename T>
-    void SetHandler(T *pClassType,void(T::*pfunc)(MCU_Torque_Feedback),int canid,string device){        
+    void SetHandler(T *pClassType,void(T::*pfunc)(VCU::MCU_Torque_Feedback),int canid,string device){
       handler_mtf = move(bind(pfunc, pClassType, placeholders::_1));
      // int canid = string2hex(msgid);
       
@@ -312,11 +195,11 @@ class CanAdaptor {
                 ,device
                 ,[&](byte* data) { 
                   // data를 MCU_Torque_Feedback 맞춰서 넣는다.
-                  MCU_Torque_Feedback r;
+                  VCU::MCU_Torque_Feedback r;
                   memcpy((void*)&r,data,CAN_MAX_DLEN);
                   //this->handler_h(r);
                   //cout<< "call MCU_Torque_Feedback" << endl;
-                  handler_mtf((MCU_Torque_Feedback)r);
+                  handler_mtf((VCU::MCU_Torque_Feedback)r);
                   //cout<< "end handler_mtf" << endl;
                 }
                 );
