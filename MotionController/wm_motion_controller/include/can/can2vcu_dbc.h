@@ -38,6 +38,72 @@ namespace VCU {
         unsigned char reserved2[3];
     };
 
+    struct MCU_Torque_Feedback{
+        unsigned long long MCU_Shift:2; // 2
+        unsigned long long MCU_SPEED:18; // 20
+        unsigned long long MCU_TORQUE:16; // 36
+        unsigned long long MCU_CURRENT:12; // 48
+        unsigned long long MCU_MOTORTEMP:8; // 56
+        unsigned long long MCU_ERRORCODE:8; //64
+    };
+    struct VCU_Vehicle_ErrorCode{
+        unsigned short Error_Code:10; //10
+        unsigned short reserved:4; //14
+        unsigned short Veh_Bat_St:2; // 16
+        unsigned char Low_voltage; // 24
+        unsigned char Residual_Pressure:1; //25 -1
+        unsigned char Charge_Abnormal:1; //26 -2
+        unsigned char reserved2:6; // 32
+        unsigned char reserved3[4];
+    };
+    struct DBS_Status2{
+        unsigned long long DBS_Fault_Code:24; //24
+        unsigned long long DBS_WarringCode:16; //40
+        unsigned long long reserved:8; //48
+        unsigned long long DBS_RollingCounter2:4; //52
+        unsigned long long reserved2:4; // 56
+        unsigned long long DBS_CheckSum2:8; // 64
+    };
+    // select
+
+    struct Vehicle_Mileage1{
+        unsigned long long Vehicle_ODO1:24; // 24
+        unsigned long long Vchicle_AD_Mileage1:24; //48
+        unsigned long long Vehicle_Mileage1_MsgCntr:4; // 52
+        unsigned long long reserved:12; //64
+    };
+
+    struct DBS_Status{
+        unsigned char DBS_System_Status:2; //2
+        unsigned char reserved:4; // 6
+        unsigned char DBS_Park_Warning:2; // 8
+        unsigned char DBS_Work_Mode; // 16
+        unsigned char BrakePressureReqACK; // 24
+        unsigned char DBS_HP_pressure; // 32
+        unsigned char DBS_PeadalOpening; // 40
+        unsigned char DBS_Ref_Iq; // 48
+        unsigned char DBS_RollingCounter:4; //52
+        unsigned char reserved2:2; //54
+        unsigned char DBS_EstopFlag:1; // 55
+        unsigned char DBS_PedaiFlag:1; // 56
+        unsigned char DBS_CheckSum; //64.
+    };
+    struct VCU_DBS_Request{
+        unsigned char VCU_DBS_Request_Flag; //8
+        unsigned char VCU_DBS_Work_Mode; //16
+        unsigned char VCU_DBS_Pressure_Request; //24
+        unsigned char VCU_ABS_Active; // 32
+        unsigned char reserved[4];
+    };
+    struct Vehicle_Odometer_Status{
+        unsigned long long Vehicle_ODO:18; // 18
+        unsigned long long Vehicle_TRIP:12; // 30
+        unsigned long long Vehicle_Remote_Mileage:12; //42
+        unsigned long long Vehicle_AD_Mileage:18; // 60
+        unsigned long long Vehicle_Odometer_MsgCntr:4; //64
+    };
+
+
 }
 #pragma pack(pop)
 #endif //WM_MOTION_CONTROLLER_CAN2VCU_DBC_H
