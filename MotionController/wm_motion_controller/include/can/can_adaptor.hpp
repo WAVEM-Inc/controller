@@ -78,13 +78,13 @@ class CanAdaptor {
        
     void PrintMapState(string name);
 
-    byte* MakeFramebody(byte* body,iECU_Control_Hardware data); //< strunct를 byte형 body로 변환
-    // can network 데이터 전송 함수  - 전송 데이터 타입 별로 생성......
+    //byte* MakeFramebody(byte* body,iECU_Control_Hardware data); //< strunct를 byte형 body로 변환
 
-    void PostMessageByType(iECU_Control_Hardware body,int msgid,string device);
-    void PostMessageByType(iECU_Control_Accelerate body,int msgid,string device);
-    void PostMessageByType(iECU_Control_Brake body,int msgid,string device);
-    void PostMessageByType(iECU_Control_Steering body,int msgid,string device);
+    // can network 데이터 전송 함수  - 전송 데이터 타입 별로 생성......
+    void PostMessageByType(AD::AD_Control_Body body,int msgid,string device);
+    void PostMessageByType(AD::AD_Control_Accelerate body,int msgid,string device);
+    void PostMessageByType(AD::AD_Control_Brake body,int msgid,string device);
+    void PostMessageByType(AD::AD_Control_Steering body,int msgid,string device);
 
     void PostMessageByType(byte* body, unsigned int canid, string device );
     void PostMessageByType(byte* data, unsigned int canid, string device,int duration );
@@ -96,7 +96,7 @@ class CanAdaptor {
     int  Initialize(bool endian); //< 초기화
     void Release(); //< 종료
     int  Open(vector<string> device); //< open can channel, warning : callback function을 전부 등록후 호출한다.
-    int  RunControlFlag(int flag, string device);
+       //int  RunControlFlag(int flag, string device);
     bool IsConnected(string device);           
     void CheckSocketStatus(vector<string> device,std::function<void(int,int)> func);
     void StopPostMessage(unsigned int canid);

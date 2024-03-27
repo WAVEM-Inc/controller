@@ -30,12 +30,9 @@ class DataRelayer {
     typedef std::function<void(int,int)> func_fault_callback; // Callback function pointer variable definition
     typedef std::function<void(int,int,int)> func_rpm_callback; // Callback function pointer variable definition
     //typedef std::function<void(int,int,int)> func_other_callback; // Callback function pointer variable definition
-    typedef std::function<void(short)> func_request_callback;
-
 
     func_fault_callback faultCallback;// Callback function pointer variable definition
     func_rpm_callback rpmCallback; // Callback function pointer variable definition
-    func_request_callback requestCallback;
     //func_other_callback otherCallback; // Callback function pointer variable definition
 
     bool system_endian_ = 0;
@@ -53,12 +50,8 @@ class DataRelayer {
     void ControlHardware(bool horn, bool head_light, bool right_light, bool left_light);
     void StopPostMessage(unsigned int id);
 
-    void HeartBeat();
     //void static_break(bool flag);
     void static_break(UGV::BREAK break_status);
-    void RegistRpmCallback(void(*pfunc)(int,int,int));
-    void RegistFaultCallback(void(*pfunc)(int,int));
-    void RegistRequstCallback(void(*func)(short));
 
     /**
     * @brief Register a RPM callback function
@@ -102,15 +95,9 @@ class DataRelayer {
     void SendMessageControlAccelerate(float vel);
     void SendMessageControlHardware(bool Horn,bool HeadLight,bool Right_Turn_Light, bool Left_Turn_Light);
   
-    void Handler_VCU_EPS_Control_Request (VCU_EPS_Control_Request msg);
-    void Handler_Remote_Control_Shake (Remote_Control_Shake msg);
-    void Handler_Remote_Control_IO (Remote_Control_IO msg);
-    void Handler_DBS_Status (DBS_Status msg);
+    //void Handler_VCU_EPS_Control_Request (VCU_EPS_Control_Request msg);
     void Handler_DBS_Status2 (VCU::DBS_Status2 msg);
-    void Handler_VCU_DBS_Request (VCU_DBS_Request msg);
     void Handler_MCU_Torque_Feedback (VCU::MCU_Torque_Feedback msg);
-    unsigned short ConvertSpeedUnits(float vel);
-
     bool is_big_endian(){
       char buf[2] = {0,1};
       unsigned short *val = reinterpret_cast<unsigned short*>(buf);
