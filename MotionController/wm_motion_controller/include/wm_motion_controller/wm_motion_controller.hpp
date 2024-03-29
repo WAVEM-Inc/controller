@@ -13,6 +13,7 @@
 #include "geometry_msgs/msg/twist.hpp"
 #include "can_msgs/msg/control_hardware.hpp"
 #include "can_msgs/msg/mode.hpp"
+#include "route_msgs/msg/drive_break.hpp"
 
 #include "sensor_msgs/msg/imu.hpp"
 #include "nav_msgs/msg/odometry.hpp"
@@ -57,14 +58,14 @@ class WmMotionController : public rclcpp::Node {
         rclcpp::CallbackGroup::SharedPtr cb_group_odom_;
         rclcpp::CallbackGroup::SharedPtr cb_group_rtt_odom_;
         rclcpp::CallbackGroup::SharedPtr cb_group_mode_;
-
+        rclcpp::CallbackGroup::SharedPtr cb_group_break_;
 
         // subscription list
         rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr m_sub_cmdvel;
         rclcpp::Subscription<can_msgs::msg::ControlHardware>::SharedPtr m_sub_can_chw;
         rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr sub_imu_;
         rclcpp::Subscription<can_msgs::msg::Mode>::SharedPtr sub_mode_;
-
+        rclcpp::Subscription<route_msgs::msg::DriveBreak>::SharedPtr sub_break_;
 
         rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr pub_odom_;
         rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pub_rtt_;
@@ -76,6 +77,7 @@ class WmMotionController : public rclcpp::Node {
         void fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel);
         void imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu);
         void slam_mode_callback(const can_msgs::msg::Mode::SharedPtr mode);
+        void break_callback(const route_msgs::msg::DriveBreak::SharedPtr pressure);
   
 
         // ugv calculate 
@@ -105,7 +107,7 @@ class WmMotionController : public rclcpp::Node {
         double prev_imu_th_;
         float correction_;
         bool control_mode_;
-
+        double pressure_;
         geometry_msgs::msg::Quaternion odom_quat_;
         //rclcpp::TimerBase::SharedPtr timer_;
         rclcpp::Time current_time_;  //!< 현재 시각

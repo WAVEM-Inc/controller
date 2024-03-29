@@ -46,20 +46,24 @@ WmMotionController::WmMotionController(std::shared_ptr<Manager> manager)
 		cb_group_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 		cb_group_rtt_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 		cb_group_mode_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+        cb_group_break_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 
 std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 		rclcpp::SubscriptionOptions sub_cmdvel_options;
 		rclcpp::SubscriptionOptions sub_can_chw_options;
 		rclcpp::SubscriptionOptions sub_imu_options;
 		rclcpp::SubscriptionOptions sub_controller_mode_options;
+        rclcpp::SubscriptionOptions sub_break_options;
 
 		rclcpp::PublisherOptions pub_odom_options;
 		rclcpp::PublisherOptions pub_rtt_odom_options;
+
 std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 		sub_cmdvel_options.callback_group = m_cb_group_cmd_vel;
 		sub_can_chw_options.callback_group = m_cb_group_can_chw;
 		sub_imu_options.callback_group = cb_group_imu_;
 		sub_controller_mode_options.callback_group = cb_group_mode_;
+        sub_break_options.callback_group=cb_group_break_;
 
 		pub_odom_options.callback_group = cb_group_odom_;
 		pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
@@ -69,7 +73,7 @@ std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 		m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(constants_->m_tp_can_chw,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1),sub_can_chw_options);
 		sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
 		sub_mode_ = this->create_subscription<can_msgs::msg::Mode>(constants_->tp_control_mode_,1,std::bind(&WmMotionController::slam_mode_callback,this,_1),sub_controller_mode_options);
-		
+		sub_break_ = this->create_subscription<route_msgs::msg::DriveBreak>("/drive/break",1,std::bind(&WmMotionController::break_callback,this,_1),sub_break_options);
 std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 		pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
 		pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
@@ -123,7 +127,7 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 	//	
 }
 void WmMotionController::cmd_vel_run(float vel_linear, float vel_angular){
-		manager_->fn_can_send_steering(vel_angular);
+		manager_->fn_can_send_steering(vel_angular*pressure_);
 
 		manager_->fn_can_send_vel(vel_linear);
 
@@ -407,5 +411,9 @@ float WmMotionController::cmd_angel_convert(const float& ori_angel,const float& 
 
 void WmMotionController::slam_mode_callback(const can_msgs::msg::Mode::SharedPtr mode){
 	control_mode_ = mode->slam_mode;
+}
+
+void WmMotionController::break_callback(const route_msgs::msg::DriveBreak::SharedPtr pressure) {
+    pressure_= (100-pressure->break_pressure)*0.01;
 }
 
