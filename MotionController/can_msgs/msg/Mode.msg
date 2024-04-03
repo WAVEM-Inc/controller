@@ -1,0 +1,1 @@
+bool slam_mode
