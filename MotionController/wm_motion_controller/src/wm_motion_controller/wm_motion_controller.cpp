@@ -14,9 +14,8 @@
  * @author changunAn(changun516@wavem.net)
  * @date 23.04.06
  */
-WmMotionController::WmMotionController(std::shared_ptr<Manager> manager)
+WmMotionController::WmMotionController()
 	:Node("WmMotionControllerNode"),
-	manager_(manager),
 	pose_yaw_(0),
 	prev_pose_yaw_(0),
 	odom_dist_(0),
@@ -83,7 +82,7 @@ std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 		//std::thread thread_run(&CanMGR::fn_can_run,m_can_manager);
 		//thread_run.detach();
 
-		manager_->fn_map_up("WmMotionController",MANAGER::SETUP::START);
+		//manager_->fn_map_up("WmMotionController",MANAGER::SETUP::START);
 std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 }
 WmMotionController::~WmMotionController(){

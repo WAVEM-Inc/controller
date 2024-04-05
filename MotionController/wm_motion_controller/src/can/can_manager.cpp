@@ -7,9 +7,9 @@
  * @author changunAn(changun516@wavem.net)
  * @param motion_mediator 
  */
-CanMGR::CanMGR(std::shared_ptr<Manager> manager):manager_(manager){    
+CanMGR::CanMGR(){
     fn_can_init();
-    manager_->fn_map_up("CanMGR",MANAGER::SETUP::START);
+    //manager_->fn_map_up("CanMGR",MANAGER::SETUP::START);
 }
 
 /**
@@ -143,7 +143,8 @@ void CanMGR::log(std::string call_name){
  */
 void CanMGR::fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
     //m_i_motion_mediator->fn_send_rpm(rpm,cur_time,shared_from_this());
-    manager_->can_send_rpm(rpm,cur_time);
+
+    //manager_->can_send_rpm(rpm,cur_time);
     std::cout<<rpm<<std::endl;
 }
 

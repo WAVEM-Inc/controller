@@ -210,7 +210,9 @@ int CanDump::Open(int argc, std::vector<std::string> argval,CanAdaptor* pClassTy
 					return 1;
 				}
 			}
-
+#if DEBUG_MODE==1
+            std::cout<<"[CanDump]-[Open] : "<<__LINE__<<std::endl;
+#endif
 			if (err_mask)
 				setsockopt(obj->s, SOL_CAN_RAW, CAN_RAW_ERR_FILTER,
 					   &err_mask, sizeof(err_mask));
@@ -259,7 +261,9 @@ int CanDump::Open(int argc, std::vector<std::string> argval,CanAdaptor* pClassTy
 			return 1;
 		  }		
 	  }
-
+#if DEBUG_MODE==1
+        std::cout<<"[CanDump]-[Open] : "<<__LINE__<<std::endl;
+#endif
       /* these settings are static and can be held out of the hot path */
       iov.iov_base = &frame;
       msg.msg_name = &addr;
@@ -268,9 +272,13 @@ int CanDump::Open(int argc, std::vector<std::string> argval,CanAdaptor* pClassTy
       msg.msg_control = &ctrlmsg;
     
       while (running) {
-
+#if DEBUG_MODE==1
+          std::cout<<"[CanDump]-[Open] : "<<__LINE__<<std::endl;
+#endif
         num_events = epoll_wait(fd_epoll, events_pending, currmax, timeout_ms);
-
+#if DEBUG_MODE==1
+          std::cout<<"[CanDump]-[Open] : "<<__LINE__<<std::endl;
+#endif
         if (num_events == -1) {
           if (errno != EINTR)
             running = 0;
@@ -282,7 +290,9 @@ int CanDump::Open(int argc, std::vector<std::string> argval,CanAdaptor* pClassTy
 			running = 0;
 			continue;
 		}
-
+#if DEBUG_MODE==1
+          std::cout<<"[CanDump]-[Open] : "<<__LINE__<<std::endl;
+#endif
 		for (int i = 0; i < num_events; i++) {  /* check waiting CAN RAW sockets */
 			struct if_info* obj = (struct if_info*)events_pending[i].data.ptr;
 			int idx;
@@ -308,7 +318,9 @@ int CanDump::Open(int argc, std::vector<std::string> argval,CanAdaptor* pClassTy
 			// 	perror("read");
 			// 	return 1;
 			// }
-
+#if DEBUG_MODE==1
+            std::cout<<"[CanDump]-[Open] : "<<__LINE__<<std::endl;
+#endif
 
 			if ((size_t)nbytes == CAN_MTU)
 				maxdlen = CAN_MAX_DLEN;
@@ -325,13 +337,9 @@ int CanDump::Open(int argc, std::vector<std::string> argval,CanAdaptor* pClassTy
 			if (frame.can_id & CAN_EFF_FLAG)
 				view |= CANLIB_VIEW_INDENT_SFF;
 
-			//printf("%*s", max_devname_len, devname[idx]);
-		    //callback function
-            //pClassType->receive(frame.data,frame.can_id);
-			//std::cout<<"@!TEST";
-			//fprint_long_canframe(stdout, &frame, NULL, view, maxdlen);
-			//printf("\n");
-
+#if DEBUG_MODE==1
+            std::cout<<"[CanDump]-[Open] : "<<__LINE__<<std::endl;
+#endif
 			fflush(stdout);
 			// 콜백 함수 등록
             function<void(unsigned char*,int)>  handler = move(bind(func, pClassType, placeholders::_1,placeholders::_2));

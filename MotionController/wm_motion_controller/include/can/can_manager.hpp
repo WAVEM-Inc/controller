@@ -33,7 +33,7 @@ static void sigterm(int signo)
  */
 class CanMGR{
     private :
-        std::shared_ptr<Manager> manager_;
+        //std::shared_ptr<Manager> manager_;
   
         DataRelayer obj_; // Member variables for calling Can-related functions
         std::chrono::_V2::system_clock::time_point callback_time_; // current callback time
@@ -58,7 +58,7 @@ class CanMGR{
         void fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time);
         
 
-        CanMGR(std::shared_ptr<Manager> manager);
+        CanMGR();
 
         virtual ~CanMGR();
 

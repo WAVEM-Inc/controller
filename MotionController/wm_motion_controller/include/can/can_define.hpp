@@ -35,7 +35,7 @@ enum ACC_GEAR {
    REVERSE
 };
 
-enum CHANNEL_TYPE { CAN0,CAN1,CAN2 } ;
+enum CHANNEL_TYPE { CAN0 } ;
 
 /**
  * @brief Test device type
@@ -48,7 +48,7 @@ static const char *device_type[] =
  * 
  */
 static const char *device_type[] =
-        { "can0", "can1","can2"};
+        { "can0"};
 #define CAN_ALIVE_CHECKTIME 2 // second
 #define CAN_RECV_RETRY_TIME 2 // second
 

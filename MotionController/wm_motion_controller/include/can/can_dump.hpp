@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <vector>
-
+#include "common/test.h"
 #define TIMESTAMPSZ 50 /* string 'absolute with date' requires max 49 bytes */
 
 #define MAXCN 2    /* max. number of CAN channel */

@@ -83,7 +83,7 @@ void DataRelayer::SendMessageControlSteering(float steering_angle_cmd) {
     dat_1.AD_Steering_Angle_Cmd = (steering_angle_cmd + OFFSET_STEERING) * RESOLUTION_STEERING_CTRL;
     dat_1.AD_Steering_Valid = 1;
     //changun CAN 1->0 230427
-    canlib_->PostCanMessage<AD::AD_Control_Steering>(dat_1, AD_CONTROL_STEERING, device_type[CAN2]);
+    canlib_->PostCanMessage<AD::AD_Control_Steering>(dat_1, AD_CONTROL_STEERING, device_type[CAN0]);
 };
 
 /**
@@ -112,7 +112,7 @@ void DataRelayer::SendMessageControlAccelerate(float vel) {
     dat_1.AD_Accelerate_Work_Mode = 1;
     dat_1.AD_Speed_Control = [](float v) { return v * CNV_SPEED_FACTOR * RESOLUTION_SPEED_CTRL; }(std::fabs(vel));
     dat_1.AD_Torque_Control = 0;
-    canlib_->PostCanMessage<AD::AD_Control_Accelerate>(dat_1, AD_CONTROL_ACCELERATE, device_type[CAN2]);
+    canlib_->PostCanMessage<AD::AD_Control_Accelerate>(dat_1, AD_CONTROL_ACCELERATE, device_type[CAN0]);
 };
 
 
@@ -133,7 +133,7 @@ void DataRelayer::SendMessageControlHardware(bool Horn, bool HeadLight, bool Rig
     dat_1.AD_Horn_Control = Horn ? 1 : 0;
     dat_1.AD_Left_Turn_Light = Left_Turn_Light ? 1 : 0;
     dat_1.AD_Right_Turn_Light = Right_Turn_Light ? 1 : 0;
-    canlib_->PostCanMessage<AD::AD_Control_Body>(dat_1, AD_CONTROL_HARDWARE, device_type[CAN1]);
+    canlib_->PostCanMessage<AD::AD_Control_Body>(dat_1, AD_CONTROL_HARDWARE, device_type[CAN0]);
 };
 // 필요에 따라 추가 한다.외부 인터페이스 API 정의 필요
 
@@ -193,30 +193,36 @@ void DataRelayer::Run() {
 
     canlib_ = CanAdaptor::getInstance();
     canlib_->Initialize(system_endian_);
-
+#if DEBUG_MODE==1
+    std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
+#endif
     // 수신 핸들러 등록
     canlib_->SetHandler<DataRelayer>(this, &DataRelayer::Handler_DBS_Status2, DBS_STATUS2,
-                                     device_type[CAN2]); // changun
+                                     device_type[CAN0]); // changun
     canlib_->SetHandler<DataRelayer>(this, &DataRelayer::Handler_MCU_Torque_Feedback, TORQUE_FEEDBACK,
-                                     device_type[CAN2]);
-
-    //canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_EPS_Control_Request,VCU_EPS_CONTROL_REQUEST,device_type[CAN1]);
-
-    // canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_DBS_Request,VCU_DBS_REQUEST,device_type[CAN1]);1
+                                     device_type[CAN0]);
+#if DEBUG_MODE==1
+    std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
+#endif
 
     // 수신 리스너 오픈
     vector<string> device;
-    device.push_back(device_type[CAN2]);
-    int ret = 0;
+    device.push_back(device_type[CAN0]);
 
+    int ret = 0;
     while (canlib_->Open(device) != 0) {
         cout << "open fail" << endl;
         sleep(CAN_ALIVE_CHECKTIME);
     }
-
+#if DEBUG_MODE==1
+    std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
+#endif
     //포트 오픈 체크 스레드
     cout << "Start checking for can channel fault" << endl;
     canlib_->CheckSocketStatus(device, faultCallback);
+#if DEBUG_MODE==1
+    std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
+#endif
 }
 
 void DataRelayer::StopPostMessage(unsigned int id) {
@@ -239,7 +245,7 @@ void DataRelayer::SendTest() {
     dat_1.AD_Left_Turn_Light = 1;
     dat_1.AD_Right_Turn_Light = 1;
     //
-    canlib_->PostCanMessage<AD::AD_Control_Body>(dat_1, AD_CONTROL_HARDWARE, device_type[CAN2]);
+    canlib_->PostCanMessage<AD::AD_Control_Body>(dat_1, AD_CONTROL_HARDWARE, device_type[CAN0]);
 }
 
 void DataRelayer::static_break(UGV::BREAK break_status) {
@@ -255,7 +261,7 @@ void DataRelayer::static_break(UGV::BREAK break_status) {
         dat_2.AD_BrakePressure_Cmd = 100; //origin 100
     }
     //dat_2.iecu_dbs_valid = 1;
-    canlib_->PostCanMessage<AD::AD_Control_Brake>(dat_2, AD_CONTROL_BRAKE, device_type[CAN2]);
+    canlib_->PostCanMessage<AD::AD_Control_Brake>(dat_2, AD_CONTROL_BRAKE, device_type[CAN0]);
 }
 
 void DataRelayer::Handler_DBS_Status2(VCU::DBS_Status2 msg) {

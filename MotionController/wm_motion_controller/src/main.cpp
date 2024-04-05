@@ -23,6 +23,9 @@ R"(=============================================================================
 	std::cout<<"main start"<<std::endl;
 	//std::shared_ptr<ConcreteMotionMediator> mediator = std::make_shared<ConcreteMotionMediator>();
 	std::shared_ptr<Manager> manager = std::make_shared<Manager>();
+#if DEBUG_MODE==1
+    std::cout<<"[main] : "<<__LINE__<<std::endl;
+#endif
 	manager->fn_run();
 	return 0;
 }

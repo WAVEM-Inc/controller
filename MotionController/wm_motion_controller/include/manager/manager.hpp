@@ -6,6 +6,7 @@
 #include "wm_motion_controller/wm_motion_controller.hpp"
 //
 #include "common/common.hpp"
+#include "common/test.h"
 #include "manager/motion.hpp"
 #include "manager/i_can.hpp"
 //defualt header

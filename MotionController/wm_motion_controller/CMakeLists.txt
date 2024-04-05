@@ -38,6 +38,7 @@ add_executable(wm_motion_controller_node
         src/manager/manager.cpp
         include/can/can2ad_dbc.h
         include/can/can2vcu_dbc.h
+        include/common/test.h
 )
 ament_target_dependencies(wm_motion_controller_node
         rclcpp

@@ -122,7 +122,7 @@ class WmMotionController : public rclcpp::Node {
         //
         float cmd_angel_convert(const float& ori_angel,const float& ori_linaer);
     public :
-        WmMotionController(std::shared_ptr<Manager> manager);
+        WmMotionController();
         virtual ~WmMotionController();
 
         // mediator function list

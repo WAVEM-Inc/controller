@@ -166,7 +166,7 @@ void sprint_canframe(char *buf , struct canfd_frame *cf, int sep, int maxdlen);
  * The CAN data[] is separated by '.' when sep != 0.
  *
  * The type of the CAN frame (CAN 2.0 / CAN FD) is specified by maxdlen:
- * maxdlen = 8 -> CAN2.0 frame (aka Classical CAN)
+ * maxdlen = 8 -> CAN0.0 frame (aka Classical CAN)
  * maxdlen = 64 -> CAN FD frame
  *
  * 12345678#112233 -> extended CAN-Id = 0x12345678, len = 3, data, sep = 0
@@ -200,7 +200,7 @@ void sprint_long_canframe(char *buf , struct canfd_frame *cf, int view, int maxd
  * Creates a CAN frame hexadecimal output in user readable format.
  *
  * The type of the CAN frame (CAN 2.0 / CAN FD) is specified by maxdlen:
- * maxdlen = 8 -> CAN2.0 frame (aka Classical CAN)
+ * maxdlen = 8 -> CAN0.0 frame (aka Classical CAN)
  * maxdlen = 64 -> CAN FD frame
  *
  * 12345678   [3]  11 22 33 -> extended CAN-Id = 0x12345678, len = 3, data
