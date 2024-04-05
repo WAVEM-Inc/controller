@@ -25,7 +25,7 @@ WmMotionController::WmMotionController()
 	origin_x_(0),
 	origin_y_(0){
 		RCLCPP_INFO(this->get_logger(),"%s","Motion_controller start!");
-		
+
 		this->declare_parameter<float>("correction", correction_);
 		this->get_parameter("correction", correction_);
 		constants_ = std::make_shared<WmMotionControllerConstants>();
@@ -67,13 +67,18 @@ std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 		pub_odom_options.callback_group = cb_group_odom_;
 		pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
 std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
+
 		broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(this);
+
 		m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(constants_->m_tp_cmdvel,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1),sub_cmdvel_options);
+
 		m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(constants_->m_tp_can_chw,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1),sub_can_chw_options);
 		sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
 		sub_mode_ = this->create_subscription<can_msgs::msg::Mode>(constants_->tp_control_mode_,1,std::bind(&WmMotionController::slam_mode_callback,this,_1),sub_controller_mode_options);
-		sub_break_ = this->create_subscription<route_msgs::msg::DriveBreak>("/drive/break",1,std::bind(&WmMotionController::break_callback,this,_1),sub_break_options);
-std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
+
+//		sub_break_ = this->create_subscription<route_msgs::msg::DriveBreak>("/drive/break",1,std::bind(&WmMotionController::break_callback,this,_1),sub_break_options);
+
+        std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 		pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
 		pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
 		timer_ = this->create_wall_timer(100ms,std::bind(&WmMotionController::pub_odometry,this));
@@ -84,6 +89,7 @@ std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 
 		//manager_->fn_map_up("WmMotionController",MANAGER::SETUP::START);
 std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
+
 }
 WmMotionController::~WmMotionController(){
 
@@ -96,7 +102,7 @@ WmMotionController::~WmMotionController(){
  */
 void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw){
 	//m_can_manager->fn_send_control_hardware(can_chw->horn,can_chw->head_light,can_chw->right_light,can_chw->left_light);
-	manager_->fn_can_send_led_and_horn(can_chw);
+
 }
 
 /**
@@ -126,9 +132,9 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 	//	
 }
 void WmMotionController::cmd_vel_run(float vel_linear, float vel_angular){
-		manager_->fn_can_send_steering(vel_angular*pressure_);
+/*		manager_->fn_can_send_steering(vel_angular*pressure_);
 
-		manager_->fn_can_send_vel(vel_linear);
+		manager_->fn_can_send_vel(vel_linear);*/
 
 
 }
@@ -139,18 +145,18 @@ void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){
 		prev_ugv_->get_cur_rpm();
 		cur_ugv_->get_cur_rpm();
 		//m_can_manager->static_break(UGV::BREAK::LED);
-		manager_->fn_can_send_break(UGV::BREAK::LED);
+		//manager_->fn_can_send_break(UGV::BREAK::LED);
 	}
 	else if(std::fabs(vel_linear)<0.001 && constants_->rpm_center_+constants_->rpm_break < cur_rpm&&
 			constants_->rpm_center_-constants_->rpm_break > cur_rpm){
 		prev_ugv_->get_cur_rpm();
 		cur_ugv_->get_cur_rpm();
 		//m_can_manager->static_break(UGV::BREAK::STOP);
-		manager_->fn_can_send_break(UGV::BREAK::STOP);
+		//manager_->fn_can_send_break(UGV::BREAK::STOP);
 	}
 	else{
 		//m_can_manager->static_break(UGV::BREAK::GO);
-		manager_->fn_can_send_break(UGV::BREAK::GO);
+		//manager_->fn_can_send_break(UGV::BREAK::GO);
 	}
 }
 

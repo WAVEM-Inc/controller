@@ -31,7 +31,8 @@ static void sigterm(int signo)
  * @see IMotionColleague
  * @warning Be careful of problems caused by Mutex
  */
-class CanMGR{
+#include "rclcpp/rclcpp.hpp"
+class CanMGR :public rclcpp::Node{
     private :
         //std::shared_ptr<Manager> manager_;
   

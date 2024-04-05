@@ -38,7 +38,7 @@ class Manager : public IMotion,ICAN{
 
     private : 
         std::map<std::string,MANAGER::SETUP> map_setup_;
-        std::shared_ptr<CanMGR> can_manager_;
+
         std::shared_ptr<WmMotionController> wm_motion_controller_;
 };
 

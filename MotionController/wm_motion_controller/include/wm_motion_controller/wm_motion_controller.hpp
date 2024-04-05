@@ -35,7 +35,7 @@
 
 #include "entity/ugv.hpp"
 #include "quaternion/quaternion.hpp"
-class Manager;
+
 using std::placeholders::_1;
 /**
  * @brief Class controlled by robot motion can communication
@@ -46,7 +46,7 @@ class WmMotionController : public rclcpp::Node {
     private :
         std::shared_ptr<WmMotionControllerConstants> constants_;
         float test;
-        std::shared_ptr<Manager> manager_;
+        //std::shared_ptr<Manager> manager_;
 
         // timer 
         rclcpp::TimerBase::SharedPtr timer_;

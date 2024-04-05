@@ -8,9 +8,10 @@
  * @author changunAn(changun516@wavem.net)
  * @param motion_mediator 
  */
-CanMGR::CanMGR(){
+CanMGR::CanMGR() : Node("CanMotionController"){
     fn_can_init();
     //manager_->fn_map_up("CanMGR",MANAGER::SETUP::START);
+    fn_can_run();
 }
 
 /**
