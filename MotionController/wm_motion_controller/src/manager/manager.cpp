@@ -16,22 +16,32 @@ void Manager::fn_run(){
 /*
 	//can_manager_->fn_can_run();*/
 
-    //std::shared_ptr<CanMGR> can_manager_=std::make_shared<CanMGR>();
-//    std::thread thread_run(&CanMGR::fn_can_run,can_manager_);
-
+/*    std::shared_ptr<CanMGR> can_manager_=std::make_shared<CanMGR>();
+    std::thread thread_run(&CanMGR::fn_can_run,can_manager_);
+    thread_run.detach();*/
+    std::shared_ptr<CanMGR> can_manager_=std::make_shared<CanMGR>();
     wm_motion_controller_ = std::make_shared<WmMotionController>();
-   // rclcpp::spin(wm_motion_controller_);
-
+    //std::thread thread_run(&CanMGR::fn_can_run,can_manager_);
+    auto can_thread = std::thread([](auto node){rclcpp::spin(node);}, can_manager_);
+    auto ros_thread = std::thread([](auto node){rclcpp::spin(node);},wm_motion_controller_);
+    can_manager_->fn_can_run();
+/*    wm_motion_controller_ = std::make_shared<WmMotionController>();
+    //rclcpp::spin(wm_motion_controller_);
     rclcpp::executors::MultiThreadedExecutor excutor;
     excutor.add_node(wm_motion_controller_);
-    excutor.add_node(std::make_shared<CanMGR>());
-    excutor.spin();
-    /*
-    */
+
+    //excutor.add_node(std::make_shared<CanMGR>());
+    excutor.spin();*/
+
+    can_thread.join();
+    ros_thread.join();
+
     //
-
+    std::cout<<"test"<<"!"<<std::endl;
     //rclcpp::spin(temp);
+/*    while(1){
 
+    }*/
 
     // 결과 출력
     //thread_run.join();

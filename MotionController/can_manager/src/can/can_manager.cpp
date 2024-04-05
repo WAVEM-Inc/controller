@@ -2,7 +2,6 @@
 #include <unistd.h>
 #include<signal.h>
 
-#include "manager/manager.hpp"
 /**
  * @brief Construct a new Can M G R:: Can M G R object
  * @author changunAn(changun516@wavem.net)
@@ -11,10 +10,6 @@
 CanMGR::CanMGR() : Node("CanMotionController"){
 //CanMGR::CanMGR(){
     fn_can_init();
-    //manager_->fn_map_up("CanMGR",MANAGER::SETUP::START);
-    //std::thread thread_run(&CanMGR::fn_can_run,this);
-    //thread_run.detach();
-    //fn_can_run();
 }
 
 /**

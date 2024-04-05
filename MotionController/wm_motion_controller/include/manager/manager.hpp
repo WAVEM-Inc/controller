@@ -16,7 +16,7 @@ class WmMotionController;
 class CanMGR;
 class IMotion;
 class ICAN;
-class Manager : public IMotion,ICAN{
+class Manager : public IMotion,ICAN, std::enable_shared_from_this<Manager>{
     public :
         Manager();
         virtual ~Manager();

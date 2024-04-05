@@ -132,6 +132,14 @@ class WmMotionController : public rclcpp::Node {
         void fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time) ;
        
         int test_num ;
+    void run() {
+        // 여기에 스레드로 실행할 작업을 추가합니다.
+        // 이 예시에서는 간단히 "WmMotionController is running"을 출력합니다.
+        while (rclcpp::ok()) {
+            std::cout << "WmMotionController is running" << std::endl;
+            std::this_thread::sleep_for(std::chrono::seconds(1)); // 1초 대기
+        }
+    }
 
 };
 

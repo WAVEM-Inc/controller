@@ -11,8 +11,8 @@
 #include <memory>
 //extern int optind, opterr, optopt;
 //static char *progname;
-#include "entity/df_ugv.hpp"
-class Manager;
+#include "can/df_ugv.hpp"
+#include "rclcpp/rclcpp.hpp"
 static volatile int state = 1;
 /**
  * @brief 
