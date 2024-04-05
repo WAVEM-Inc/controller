@@ -1,5 +1,6 @@
 #include"can/can_manager.hpp"
 #include <unistd.h>
+#include<signal.h>
 
 #include "manager/manager.hpp"
 /**
@@ -19,7 +20,8 @@ CanMGR::CanMGR(){
 void CanMGR::fn_can_run(){
 	std::cout << "***can run start!!!***" << std::endl;
 	while(state){
-		sleep(5);
+        signal(SIGINT, SIG_DFL);
+        sleep(5);
 	}
 	std::cout << "***can end!!!***" << std::endl;
 }
