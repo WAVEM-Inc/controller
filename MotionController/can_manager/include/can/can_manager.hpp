@@ -12,17 +12,29 @@
 //extern int optind, opterr, optopt;
 //static char *progname;
 #include "can/df_ugv.hpp"
+#include "can_manager/constants.hpp"
+// can include
 #include "rclcpp/rclcpp.hpp"
+#include "can_msgs/msg/ad_control_body.hpp"
+#include "can_msgs/msg/ad_control_accelerate.hpp"
+#include "can_msgs/msg/ad_control_brake.hpp"
+#include "can_msgs/msg/ad_control_steering.hpp"
+#include "can_msgs/msg/bms.hpp"
+#include "can_msgs/msg/dbs_status_two.hpp"
+#include "can_msgs/msg/torque_feedback.hpp"
+#include "can_msgs/msg/vcu_mcu_request.hpp"
+
 static volatile int state = 1;
+
 /**
  * @brief 
  * @param signo 
  */
-static void sigterm(int signo)
-{
-  fprintf(stdout, "SIGNAL %d  in main\n", signo);
-	state = 0;
+static void sigterm(int signo) {
+    fprintf(stdout, "SIGNAL %d  in main\n", signo);
+    state = 0;
 }
+
 /**
  * @brief Class to control CAN communication
  * @author changunAn(changun516@wavem.net)
@@ -31,38 +43,47 @@ static void sigterm(int signo)
  * @see IMotionColleague
  * @warning Be careful of problems caused by Mutex
  */
-#include "rclcpp/rclcpp.hpp"
-class CanMGR :public rclcpp::Node{
+class CanMGR : public rclcpp::Node {
 //class CanMGR{
-    private :
+private :
+    DataRelayer obj_; // Member variables for calling Can-related functions
+    std::chrono::_V2::system_clock::time_point callback_time_; // current callback time
+    std::chrono::_V2::system_clock::time_point old_time_; // Previous callback time
+    std::unique_ptr<Constants> constants_;
+    rclcpp::Subscription<can_msgs::msg::AdControlBody>::SharedPtr sub_body_;
+    rclcpp::Subscription<can_msgs::msg::AdControlAccelerate>::SharedPtr sub_accelerate_;
+    rclcpp::Subscription<can_msgs::msg::AdControlBrake>::SharedPtr sub_brake_;
+    rclcpp::Subscription<can_msgs::msg::AdControlSteering>::SharedPtr sub_steering_;
+    rclcpp::CallbackGroup::SharedPtr cbg_body;
+    int fn_can_init(); // can callback function register
+    void faultCallback(int can_falut, int dbs_fault);
 
-  
-        DataRelayer obj_; // Member variables for calling Can-related functions
-        std::chrono::_V2::system_clock::time_point callback_time_; // current callback time
-        std::chrono::_V2::system_clock::time_point old_time_; // Previous callback time
-        int fn_can_init(); // can callback function register 
-        void faultCallback(int can_falut,int dbs_fault);
-        void rpmCallback(int mcu_shift,int mcu_speed,int mcu_torque);
-        void log(std::string call_name);
+    void rpmCallback(int mcu_shift, int mcu_speed, int mcu_torque);
 
-        //
-        int test_num;
-    public :
-        void static_break(bool flag);
-        void static_break(UGV::BREAK break_status);
-        void fn_can_run();
-        void fn_send_control_hardware(bool horn,bool head_light,bool right_light,bool left_light);
-        void fn_send_control_steering(float angular);
-        void fn_send_control_vel(float linear);
-        void fn_send_value(const int& value);
-        void fn_recv_value(const int& value);
-        void fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time);
-        void fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time);
-        
+    void bmsCallback(int sys_sts,int soc);
+    void vehicleCallback(int error_code, int low_voltage);
+    void log(std::string call_name);
 
-        CanMGR();
+    void tp_control_body_callback(can_msgs::msg::AdControlBody::SharedPtr control_body);
 
-        virtual ~CanMGR();
+    void tp_control_accelerate(can_msgs::msg::AdControlAccelerate::SharedPtr control_accelerate);
+
+    void tp_control_brake(can_msgs::msg::AdControlBrake::SharedPtr control_brake);
+
+    void tp_control_steering(can_msgs::msg::AdControlSteering::SharedPtr control_steering);
+
+    
+public :
+
+    void fn_can_run();
+
+    void fn_send_rpm(const float &rpm, const std::chrono::system_clock::time_point &cur_time);
+
+
+    CanMGR();
+
+    virtual ~CanMGR();
 
 };
+
 #endif

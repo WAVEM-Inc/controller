@@ -66,7 +66,7 @@ int CanSend::Send(std::vector<unsigned char> data, unsigned int msgid, char* dev
        msg.append(" ");
     }
     msg.append(" <data transfer success>\n");
-    //printf("%s",msg.c_str());
+    printf("%s",msg.c_str());
     
     return 0;
 }

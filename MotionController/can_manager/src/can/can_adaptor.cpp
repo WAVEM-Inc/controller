@@ -507,17 +507,16 @@ int CanAdaptor::Send(vector<byte> data, unsigned int msgid, string device ){
 * @exception
 */
 bool CanAdaptor::IsConnected(string device){
-
+    std::cout<<"test "<<device <<std::endl;
   if ( ptr_can_send_ == NULL ){
     cerr << "[ERR]invalid can send object" << endl;
     return false;
   }
 
   if ( ptr_can_send_->IsConnected((char*)device.c_str()) == false){
-    cerr << "[ERR]Not currently connected to CAN network" << endl;        
+    cerr << "[ERR]Not currently connected to CAN network "<< device << endl;
 	return false;
-  } 
-
+  }
   return true;
 }
 
@@ -539,5 +538,22 @@ void CanAdaptor::PrintMapState(string name){
     CanCallbackFunc* obj = (CanCallbackFunc*)iter->second.get();
     cout << "("<< name << ")iter->second channel : "<<obj->getChannel() << ", canid : "<< obj->getCanid() << endl;
   }
+}
+
+int CanAdaptor::RunControlFlag(int flag, string device) {
+    AD::AD_Setup_Control data;
+    memset(&data,0x00,CAN_MAX_DLEN);
+    data.CAN_Sign_tran_State = (unsigned char)flag;
+    byte temp[CAN_MAX_DLEN];
+    //byte* body = makeframebody(temp,data);
+    memcpy(temp,(void*)&data,CAN_MAX_DLEN);
+    vector<byte> body;
+    for (byte value : temp){
+        body.emplace_back(value);
+    }
+    int (CanAdaptor::*pFunc)(vector<byte>, unsigned int, string) = &CanAdaptor::Send;
+    function<void(vector<byte>, unsigned int, string)> postMessagefunc = move(bind(pFunc, this, placeholders::_1, placeholders::_2, placeholders::_3));
+    int ret = Send(body, AD_SETUP_CONTROL, (char*)device.c_str());
+    return ret;
 }
 

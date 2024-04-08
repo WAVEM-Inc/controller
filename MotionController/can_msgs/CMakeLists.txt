@@ -9,10 +9,17 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(nav_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/ControlHardware.msg"
-  "msg/Mode.msg"
-  "msg/Emergency.msg"
-  DEPENDENCIES builtin_interfaces std_msgs nav_msgs
+        "msg/AdControlAccelerate.msg"
+        "msg/AdControlBody.msg"
+        "msg/AdControlBrake.msg"
+        "msg/AdControlSteering.msg"
+        "msg/Bms.msg"
+        "msg/DbsStatusTwo.msg"
+        "msg/TorqueFeedback.msg"
+        "msg/VcuMcuRequest.msg"
+        "msg/Mode.msg"
+        "msg/Emergency.msg"
+        DEPENDENCIES builtin_interfaces std_msgs nav_msgs
 )
 
 ament_export_dependencies(rosidl_default_runtime)

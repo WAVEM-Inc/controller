@@ -1,0 +1,9 @@
+bool fog_light
+bool low_beam
+bool reversing_light
+bool double_flash_light
+bool brake_light
+bool horn_control
+bool high_beam
+bool right_turn_light
+bool left_turn_light

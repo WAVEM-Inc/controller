@@ -6,6 +6,23 @@
 #define WM_MOTION_CONTROLLER_CAN2AD_DBC_H
 #pragma pack(push, 1)
 namespace AD{
+    struct AD_Setup_Control{
+        unsigned char AD_Release_Emergency_Button:1; //1
+        unsigned char AD_Release_F_Bumper:1;//2
+        unsigned char AD_Release_B_Bumper:1;//3
+        unsigned char AD_Release_L_Bumper:1;//4
+        unsigned char AD_Release_R_Bumper:1;//5
+        unsigned char reserved:3;//8
+        unsigned char AD_Clear_TRIP:1;//9
+        unsigned char AD_Disable_F_Bumper:1;//10
+        unsigned char AD_Disable_B_Bumper:1;//11
+        unsigned char AD_Disable_L_Bumper:1;//12
+        unsigned char AD_Disable_R_Bumper:1;//13
+        unsigned char reserved2:3; //16
+        unsigned char CAN_Sign_tran_State:1; //17
+        unsigned char reserved3:7; //24
+        unsigned char reserved4[5];
+    };
     struct System_Power_Control {
         unsigned char AD_Sys_Power_Control: 2; // 1 byte 2bit
         unsigned char Reserved_Sys_Power_Control: 2; // 1 byte 2bit

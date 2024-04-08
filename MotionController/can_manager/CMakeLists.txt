@@ -43,6 +43,7 @@ set(source_list
         src/can/can_send.cpp
         src/can/data_relayer.cpp
         src/can/lib.cpp
+        include/can_manager/constants.hpp
 )
 set(node_name
         can_manager_node

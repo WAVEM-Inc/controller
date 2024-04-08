@@ -56,11 +56,13 @@ class CanAdaptor {
     //typedef std::function<void(DBS_Status)> func_DBS_Status;
     typedef std::function<void(VCU::DBS_Status2)> func_DBS_Status2;
     typedef std::function<void(VCU::MCU_Torque_Feedback)> func_MCU_Torque_Feedback;
-
+    typedef std::function<void(VCU::BMS_A0h)> func_BMS_A0h;
+    typedef std::function<void(VCU::VCU_Vehicle_ErrorCode)> func_VCU_Vehicle_ErrorCode;
     //func_DBS_Status handler_ds;
     func_DBS_Status2 handler_ds2;
     func_MCU_Torque_Feedback handler_mtf;
-
+    func_BMS_A0h handler_bms;
+    func_VCU_Vehicle_ErrorCode handler_vehicle_error;
     bool isBigEndian_ = 0;
 
     std::shared_ptr<CanDump> ptr_can_dump_ = NULL;
@@ -96,7 +98,7 @@ class CanAdaptor {
     int  Initialize(bool endian); //< 초기화
     void Release(); //< 종료
     int  Open(vector<string> device); //< open can channel, warning : callback function을 전부 등록후 호출한다.
-       //int  RunControlFlag(int flag, string device);
+    int RunControlFlag(int flag, string device);
     bool IsConnected(string device);           
     void CheckSocketStatus(vector<string> device,std::function<void(int,int)> func);
     void StopPostMessage(unsigned int canid);
@@ -209,6 +211,46 @@ class CanAdaptor {
 //      print_map_state("MCU_Torque_Feedback");
    };
 
+    template<typename T>
+    void SetHandler(T *pClassType,void(T::*pfunc)(VCU::BMS_A0h),int canid,string device){
+        handler_bms = move(bind(pfunc, pClassType, placeholders::_1));
+        std::shared_ptr<CanCallbackFunc> object = std::make_shared<CanCallbackFunc>(
+                canid
+                ,device
+                ,[&](byte* data) {
+                    // data를 MCU_Torque_Feedback 맞춰서 넣는다.
+                    VCU::BMS_A0h r;
+                    memcpy((void*)&r,data,CAN_MAX_DLEN);
+                    //this->handler_h(r);
+                    //cout<< "call MCU_Torque_Feedback" << endl;
+                    handler_bms((VCU::BMS_A0h)r);
+                    //cout<< "end handler_mtf" << endl;
+                }
+        );
+        cout << "setHandler(BMS) : " + device << ", canid : "<< canid << endl;
+        funcsmap_.insert(make_pair(canid,object));
+//      print_map_state("MCU_Torque_Feedback");
+    };
+    template<typename T>
+    void SetHandler(T *pClassType,void(T::*pfunc)(VCU::VCU_Vehicle_ErrorCode),int canid,string device){
+        handler_vehicle_error = move(bind(pfunc, pClassType, placeholders::_1));
+        std::shared_ptr<CanCallbackFunc> object = std::make_shared<CanCallbackFunc>(
+                canid
+                ,device
+                ,[&](byte* data) {
+                    // data를 MCU_Torque_Feedback 맞춰서 넣는다.
+                    VCU::VCU_Vehicle_ErrorCode r;
+                    memcpy((void*)&r,data,CAN_MAX_DLEN);
+                    //this->handler_h(r);
+                    //cout<< "call MCU_Torque_Feedback" << endl;
+                    handler_vehicle_error((VCU::VCU_Vehicle_ErrorCode)r);
+                    //cout<< "end handler_mtf" << endl;
+                }
+        );
+        cout << "setHandler(VCU_Vehicle_ErrorCode) : " + device << ", canid : "<< canid << endl;
+        funcsmap_.insert(make_pair(canid,object));
+//      print_map_state("MCU_Torque_Feedback");
+    };
     /**
     * @brief Register a callback function.
     * @details Register a callback function that receives Remote_Control_IO as a parameter.

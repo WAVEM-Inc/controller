@@ -9,8 +9,42 @@
  */
 CanMGR::CanMGR() : Node("CanMotionController"){
 //CanMGR::CanMGR(){
+    //
+
+    constants_ = std::make_unique<Constants>();
+    cbg_body = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+    rclcpp::CallbackGroup::SharedPtr cbg_accelerate=create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+    rclcpp::CallbackGroup::SharedPtr cbg_brake=create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+    rclcpp::CallbackGroup::SharedPtr cbg_steering=create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+    rclcpp::SubscriptionOptions options_body;
+    rclcpp::SubscriptionOptions options_accelerate;
+    rclcpp::SubscriptionOptions options_brake;
+    rclcpp::SubscriptionOptions options_steering;
+    options_body.callback_group = cbg_body;
+    options_accelerate.callback_group=cbg_accelerate;
+    options_brake.callback_group=cbg_brake;
+    options_steering.callback_group=cbg_steering;
+
+    sub_body_ = this->create_subscription<can_msgs::msg::AdControlBody>(constants_->tp_name_control_body_,
+                                                                        1,
+                                                                        std::bind(&CanMGR::tp_control_body_callback,this,std::placeholders::_1),
+                                                                        options_body);
+
+    sub_accelerate_ = this->create_subscription<can_msgs::msg::AdControlAccelerate>(constants_->tp_name_control_accelerate_,
+                                                                                    rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
+                                                                std::bind(&CanMGR::tp_control_accelerate, this,
+                                                                          std::placeholders::_1), options_accelerate);
+    sub_brake_= this->create_subscription<can_msgs::msg::AdControlBrake>(constants_->tp_name_control_brake_,
+                                                                              rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
+                                                                              std::bind(&CanMGR::tp_control_brake, this,
+                                                                                        std::placeholders::_1), options_brake);
+    sub_steering_ = this->create_subscription<can_msgs::msg::AdControlSteering>(constants_->tp_name_control_steering_,
+                                                                        rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
+                                                                        std::bind(&CanMGR::tp_control_steering, this,
+                                                                                  std::placeholders::_1), options_steering);
+
     fn_can_init();
-}
+ }
 
 /**
  * @brief can operation function
@@ -33,8 +67,10 @@ void CanMGR::fn_can_run(){
  */
 int CanMGR::fn_can_init(){
     // dbs fault status
-	obj_.RegistFaultCallback<CanMGR>(this, &CanMGR::faultCallback);
-    obj_.RegistRpmCallback<CanMGR>(this, &CanMGR::rpmCallback);
+	//obj_.RegistFaultCallback<CanMGR>(this, &CanMGR::faultCallback);
+    //obj_.RegistRpmCallback<CanMGR>(this, &CanMGR::rpmCallback);
+    //obj_.RegistBmsCallback<CanMGR>(this,&CanMGR::bmsCallback);
+    obj_.RegistVehicleErrorCallback<CanMGR>(this,&CanMGR::vehicleCallback);
     obj_.Run();
     return 0;
 }
@@ -72,62 +108,25 @@ void CanMGR::rpmCallback(int mcu_shift
                     ,int mcu_speed
                     ,int mcu_torque
                     ){
-    fn_send_rpm(mcu_speed,std::chrono::system_clock::now());
+    //fn_send_rpm(mcu_speed,std::chrono::system_clock::now());
     std::cout<<"[can] speed callback"<<std::endl;
 }
-
-
-/**
- * @brief Function for controlling horn, head_light, right, left_light from robot to VCU via Can communication
- * @param horn 
- * @param head_light 
- * @param right_light 
- * @param left_light 
- * @author changunAn(changun516@wavem.net) 
- */
-void CanMGR::fn_send_control_hardware(bool horn,bool head_light,bool right_light,bool left_light){
-    obj_.ControlHardware(horn,head_light,right_light,left_light);
-    fn_send_value(1);
+void CanMGR::bmsCallback(int sys_sts, int soc) {
+    RCLCPP_INFO(this->get_logger(),"[bmsCallback] sys_sts %d, soc %d \n",
+                sys_sts,
+                soc);
+}
+void CanMGR::vehicleCallback(int error_code, int low_voltage) {
+    RCLCPP_INFO(this->get_logger(),"[vehicleCallback] error_code %d, low_voltage %d \n",
+                error_code,
+                low_voltage);
 }
 
-/**
- * @brief Function for sending steering control values from robot to VCU via Can communication
- * @author changunAn(changun516@wavem.net) 
- * @param angular 
- */
-void CanMGR::fn_send_control_steering(float angular){
-    obj_.ControlSteering(angular);
-}
-/**
- * @brief Function for sending motor control values from robot to VCU via Can communication
- * @author changunAn(changun516@wavem.net) 
- * @param linear 
- */
-void CanMGR::fn_send_control_vel(float linear){
-    obj_.ControlVel(linear);
-}
 
 CanMGR::~CanMGR(){
     
 }
-/**
- * @brief Ability to send data from VCU to robot via Can communication to wm_motion_controller
- * @author changunAn(changun516@wavem.net) 
- * @param value 
- */
-void CanMGR::fn_send_value(const int& value){
-   // std::cout<< "override can_mannager"<<std::endl;
-   //m_i_motion_mediator->fn_send_value(value,shared_from_this());
-}
-/**
- * @brief 
- * @author changunAn(changun516@wavem.net) 
- * @param value 
- */
-void CanMGR::fn_recv_value(const int& value){
-   // std::cout<< "override can_mannager "<<value<<std::endl;
 
-}
 void CanMGR::log(std::string call_name){
     std::chrono::system_clock::time_point callback_time = std::chrono::system_clock::now();
     std::time_t callback_time_t = std::chrono::system_clock::to_time_t(callback_time);
@@ -149,13 +148,48 @@ void CanMGR::fn_send_rpm(const float& rpm,const std::chrono::system_clock::time_
     std::cout<<rpm<<std::endl;
 }
 
-void CanMGR::fn_recv_rpm(const float& rpm,const std::chrono::system_clock::time_point& cur_time){
-    
+
+void CanMGR::tp_control_body_callback( can_msgs::msg::AdControlBody::SharedPtr control_body) {
+    std::cout<<std::endl;
+    RCLCPP_INFO(this->get_logger(),"fog_light %d , low_beam %d, reversing_light %d, double_flash_light %d, brake_light %d, horn_control %d, high_beam %d, right_turn_light %d , left_turn_light %d \n",
+                control_body->fog_light,
+                control_body->low_beam,
+                control_body->reversing_light,
+                control_body->double_flash_light,
+                control_body->brake_light,
+                control_body->horn_control,
+                control_body->high_beam,
+                control_body->right_turn_light,
+                control_body->left_turn_light);
+    obj_.ControlHardware(control_body->fog_light,
+                         control_body->low_beam,
+                         control_body->reversing_light,
+                         control_body->double_flash_light,
+                         control_body->brake_light,
+                         control_body->horn_control,
+                         control_body->high_beam,
+                         control_body->right_turn_light,
+                         control_body->left_turn_light);
 }
 
+void CanMGR::tp_control_accelerate( can_msgs::msg::AdControlAccelerate::SharedPtr control_accelerate) {
+    obj_.ControlVel(static_cast<float>(control_accelerate->acc),static_cast<float>(control_accelerate->speed_control));
+}
 
-void CanMGR::static_break(UGV::BREAK break_status){
-    obj_.static_break(break_status);
+void CanMGR::tp_control_brake( can_msgs::msg::AdControlBrake::SharedPtr control_brake) {
+    if(control_brake->brakepressure_cmd==0){
+        obj_.static_break(UGV::BREAK::GO);
+    }
+    else if(control_brake->brakepressure_cmd == 1){
+        obj_.static_break(UGV::BREAK::STOP);
+    }
+    else{
+        obj_.static_break(UGV::BREAK::LED);
+    }
+}
+
+void CanMGR::tp_control_steering( can_msgs::msg::AdControlSteering::SharedPtr control_steering) {
+    obj_.ControlSteering(control_steering->steering_speed_cmd,control_steering->steering_angle_cmd);
 }
 
 
