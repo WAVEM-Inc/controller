@@ -104,7 +104,8 @@ void DataRelayer::SendMessageControlSteering(float speed, float steering_angle_c
     }
     AD::AD_Control_Steering dat_1;
     memset(&dat_1, 0x00, CAN_MAX_DLEN);
-    dat_1.AD_Steering_Speed_Cmd = speed;
+    dat_1.AD_Steering_Valid= 1;
+    dat_1.AD_Steering_Speed_Cmd = static_cast<unsigned char>(speed)-static_cast<unsigned char>(2.68);
     dat_1.AD_Steering_Angle_Cmd = (steering_angle_cmd + OFFSET_STEERING) * RESOLUTION_STEERING_CTRL;
     canlib_->PostCanMessage<AD::AD_Control_Steering>(dat_1, AD_CONTROL_STEERING, device_type[CAN0]);
 };
@@ -117,6 +118,7 @@ void DataRelayer::SendMessageControlSteering(float speed, float steering_angle_c
 * @exception
 */
 void DataRelayer::SendMessageControlAccelerate(float acc, float vel) {
+    std::cout<<"[temp]" << acc <<std::endl;
     unsigned char gear;
     if (vel > 0) {
         gear = FORWARD;
@@ -129,10 +131,10 @@ void DataRelayer::SendMessageControlAccelerate(float acc, float vel) {
     //HeartBeat();
     AD::AD_Control_Accelerate dat_1;
     memset(&dat_1, 0x00, CAN_MAX_DLEN);
-    dat_1.AD_Acc = acc;
-    dat_1.AD_Accelerate_Gear = gear;
     dat_1.AD_Accelerate_Valid = 1;
+    dat_1.AD_Acc = static_cast<unsigned short>(acc)+ static_cast<unsigned short>(500);
     dat_1.AD_Accelerate_Work_Mode = 1;
+    dat_1.AD_Accelerate_Gear = gear;
     dat_1.AD_Speed_Control = [](float v) { return v * CNV_SPEED_FACTOR * RESOLUTION_SPEED_CTRL; }(std::fabs(vel));
     dat_1.AD_Torque_Control = 0;
     canlib_->PostCanMessage<AD::AD_Control_Accelerate>(dat_1, AD_CONTROL_ACCELERATE, device_type[CAN0]);
@@ -169,6 +171,7 @@ void DataRelayer::SendMessageControlHardware(bool fog_light,
     dat_1.AD_High_Beam = high_beam ? 1 : 0;
     dat_1.AD_Right_Turn_Light = right_turn_light ? 1 : 0;
     dat_1.AD_Left_Turn_Light = left_turn_light ? 1 : 0;
+    dat_1.AD_Body_Valid = 1;
     canlib_->PostCanMessage<AD::AD_Control_Body>(dat_1, AD_CONTROL_BODY, device_type[CAN0]);
 };
 // 필요에 따라 추가 한다.외부 인터페이스 API 정의 필요
@@ -300,7 +303,7 @@ void DataRelayer::static_break(UGV::BREAK break_status) {
     memset(&dat_2, 0x00, CAN_MAX_DLEN);
     dat_2.AD_DBS_Valid = 1;
     if (UGV::BREAK::LED == break_status) {
-        dat_2.AD_BrakePressure_Cmd = 15;
+        dat_2.AD_BrakePressure_Cmd = 10;
     } else if (UGV::BREAK::GO == break_status) {
         dat_2.AD_DBS_Valid = 0;
         dat_2.AD_BrakePressure_Cmd = 0;

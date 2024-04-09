@@ -42,7 +42,8 @@ CanMGR::CanMGR() : Node("CanMotionController"){
                                                                         rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
                                                                         std::bind(&CanMGR::tp_control_steering, this,
                                                                                   std::placeholders::_1), options_steering);
-
+    cur_speed_=0;
+    cur_speed_acc_=0;
     fn_can_init();
  }
 
@@ -161,6 +162,7 @@ void CanMGR::tp_control_body_callback( can_msgs::msg::AdControlBody::SharedPtr c
                 control_body->high_beam,
                 control_body->right_turn_light,
                 control_body->left_turn_light);
+    obj_.ControlVel(cur_speed_acc_,cur_speed_);
     obj_.ControlHardware(control_body->fog_light,
                          control_body->low_beam,
                          control_body->reversing_light,
@@ -170,13 +172,17 @@ void CanMGR::tp_control_body_callback( can_msgs::msg::AdControlBody::SharedPtr c
                          control_body->high_beam,
                          control_body->right_turn_light,
                          control_body->left_turn_light);
+
 }
 
 void CanMGR::tp_control_accelerate( can_msgs::msg::AdControlAccelerate::SharedPtr control_accelerate) {
-    obj_.ControlVel(static_cast<float>(control_accelerate->acc),static_cast<float>(control_accelerate->speed_control));
+    cur_speed_ = static_cast<float>(control_accelerate->speed_control);
+    cur_speed_acc_= static_cast<float>(control_accelerate->acc);
+    obj_.ControlVel(cur_speed_acc_,cur_speed_);
 }
 
 void CanMGR::tp_control_brake( can_msgs::msg::AdControlBrake::SharedPtr control_brake) {
+    obj_.ControlVel(cur_speed_acc_,cur_speed_);
     if(control_brake->brakepressure_cmd==0){
         obj_.static_break(UGV::BREAK::GO);
     }
@@ -189,6 +195,7 @@ void CanMGR::tp_control_brake( can_msgs::msg::AdControlBrake::SharedPtr control_
 }
 
 void CanMGR::tp_control_steering( can_msgs::msg::AdControlSteering::SharedPtr control_steering) {
+    obj_.ControlVel(cur_speed_acc_,cur_speed_);
     obj_.ControlSteering(control_steering->steering_speed_cmd,control_steering->steering_angle_cmd);
 }
 

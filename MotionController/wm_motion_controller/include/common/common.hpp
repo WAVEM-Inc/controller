@@ -7,4 +7,5 @@ namespace MANAGER{
         START = 1
     };
 }
+#define CYCLE 0.2
 #endif 

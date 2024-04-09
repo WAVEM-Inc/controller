@@ -47,6 +47,8 @@ class CanMGR : public rclcpp::Node {
 //class CanMGR{
 private :
     DataRelayer obj_; // Member variables for calling Can-related functions
+    float cur_speed_;
+    float cur_speed_acc_;
     std::chrono::_V2::system_clock::time_point callback_time_; // current callback time
     std::chrono::_V2::system_clock::time_point old_time_; // Previous callback time
     std::unique_ptr<Constants> constants_;

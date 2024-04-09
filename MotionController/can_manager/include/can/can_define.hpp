@@ -8,8 +8,8 @@
 
 #define  OFFSET_STEERING 30
 #define  OFFSET_STRANGLE 3000
-#define  MAX_STEERING 30
-#define  MIN_STEERING -30
+#define  MAX_STEERING 31
+#define  MIN_STEERING -31
 
 enum MSG_ID {
   DBS_STATUS = 0x142,
