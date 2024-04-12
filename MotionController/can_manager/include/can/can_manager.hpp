@@ -63,7 +63,8 @@ private :
     void rpmCallback(int mcu_shift, int mcu_speed, int mcu_torque);
 
     void bmsCallback(int sys_sts,int soc);
-    void vehicleCallback(int error_code, int low_voltage);
+    void vehicleErrorCallback(int error_code, int low_voltage);
+    void vehicleStatus2Callback(int brake_press, float speed);
     void log(std::string call_name);
 
     void tp_control_body_callback(can_msgs::msg::AdControlBody::SharedPtr control_body);

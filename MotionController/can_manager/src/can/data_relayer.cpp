@@ -221,11 +221,12 @@ void DataRelayer::Handler_MCU_Torque_Feedback(VCU::MCU_Torque_Feedback msg) {
     rpmCallback((int) msg.MCU_Shift, (int) msg.MCU_SPEED, (int) msg.MCU_TORQUE);
 }
 void DataRelayer::Handler_BMS_Status(VCU::BMS_A0h msg) {
-    bmsCallback(static_cast<int>(msg.BMS_Sys_Sts),static_cast<int>(msg.BMS_HVBatSOC));
+    bmsCallback(static_cast<int>(msg.BMS_Sys_Sts),static_cast<int>(msg.BMS_HVBatSOC)*RESOLUTION_BMS_SOC);
 }
 void DataRelayer::Handler_VEHICLE_ERROR_Status(VCU::VCU_Vehicle_ErrorCode msg) {
     vehicleErrorCallback(static_cast<int>(msg.Error_Code), static_cast<int>(msg.Low_voltage));
 }
+
 
 /**
 * @brief run test
@@ -242,10 +243,11 @@ void DataRelayer::Run() {
     std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
 #endif
     // 수신 핸들러 등록
-    //canlib_->SetHandler<DataRelayer>(this, &DataRelayer::Handler_DBS_Status2, DBS_STATUS2,device_type[CAN0]); // changun
-    //canlib_->SetHandler<DataRelayer>(this, &DataRelayer::Handler_MCU_Torque_Feedback, TORQUE_FEEDBACK,device_type[CAN0]);
+    canlib_->SetHandler<DataRelayer>(this, &DataRelayer::Handler_DBS_Status2, DBS_STATUS2,device_type[CAN0]); // changun
+    canlib_->SetHandler<DataRelayer>(this, &DataRelayer::Handler_MCU_Torque_Feedback, TORQUE_FEEDBACK,device_type[CAN0]);
     canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VEHICLE_ERROR_Status,VCU_VEHICLE_ERRORCODE,device_type[CAN0]);
-    //canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_BMS_Status,BMS_A0H, device_type[CAN0]);
+    canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_BMS_Status,BMS_A0H, device_type[CAN0]);
+    canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_Vehicle_Status_2,VCU_VEHICLE_STATUS_2, device_type[CAN0]);
 #if DEBUG_MODE == 1
     std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
 #endif
@@ -259,7 +261,7 @@ void DataRelayer::Run() {
         cout << "open fail" << endl;
         sleep(CAN_ALIVE_CHECKTIME);
     }
-    while(canlib_->RunControlFlag(1,device_type[CAN0]) != 0 ){
+    while(canlib_->RunControlFlag(0,device_type[CAN0]) != 0 ){
         cout << "run config flag fail" << endl;
         sleep(CAN_ALIVE_CHECKTIME);
     }
@@ -315,9 +317,16 @@ void DataRelayer::static_break(UGV::BREAK break_status) {
 }
 
 void DataRelayer::Handler_DBS_Status2(VCU::DBS_Status2 msg) {
-    cout << "[recv] DBS_Status2 : " << (int) msg.DBS_Fault_Code << "," << (int) msg.DBS_RollingCounter2 << ","
-         << (int) msg.DBS_WarringCode << endl;
-    faultCallback(CAN_NO_FAULT, msg.DBS_Fault_Code);
+    faultCallback(msg.DBS_WarringCode-OFFSET_DBS_WARRINGCODE, msg.DBS_Fault_Code);
 }
+
+void DataRelayer::run_flag() {
+     canlib_->RunControlFlag(0, device_type[CAN0]);
+}
+
+void DataRelayer::Handler_VCU_Vehicle_Status_2(VCU::VCU_Vehicle_Status_2 msg) {
+    vehicleStatus2Callback(static_cast<float>(msg.Vehicle_Brake_Pressure)*RESOLUTION_VEHICLE_BRAKE_PRESSURE, (static_cast<float>(msg.Vehicle_Speed)*RESOLUTION_VEHICLE_SPEED)-OFFSET_VEHICLE_STATUS_SPEED);
+}
+
 
 

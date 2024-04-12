@@ -58,11 +58,13 @@ class CanAdaptor {
     typedef std::function<void(VCU::MCU_Torque_Feedback)> func_MCU_Torque_Feedback;
     typedef std::function<void(VCU::BMS_A0h)> func_BMS_A0h;
     typedef std::function<void(VCU::VCU_Vehicle_ErrorCode)> func_VCU_Vehicle_ErrorCode;
+    typedef std::function<void(VCU::VCU_Vehicle_Status_2)> func_VCU_Vehicle_Status2;
     //func_DBS_Status handler_ds;
     func_DBS_Status2 handler_ds2;
     func_MCU_Torque_Feedback handler_mtf;
     func_BMS_A0h handler_bms;
     func_VCU_Vehicle_ErrorCode handler_vehicle_error;
+    func_VCU_Vehicle_Status2 handler_vehicle_status;
     bool isBigEndian_ = 0;
 
     std::shared_ptr<CanDump> ptr_can_dump_ = NULL;
@@ -170,6 +172,27 @@ class CanAdaptor {
                     //this->handler_h(r);
                     //cout<< "call DBS_Status" << endl;
                     handler_ds2((VCU::DBS_Status2)r);
+                    // cout<< "end DBS_Status" << endl;
+                }
+        );
+        cout << "setHandler(DBS_Status) : " + device << ", canid : "<< canid << endl;
+        funcsmap_.insert(make_pair(canid,object));
+    };
+
+    template<typename T>
+    void SetHandler(T *pClassType,void(T::*pfunc)(VCU::VCU_Vehicle_Status_2),int canid,string device){
+        handler_vehicle_status = move(bind(pfunc, pClassType, placeholders::_1));
+        //int canid = string2hex(msgid);
+        std::shared_ptr<CanCallbackFunc> object = std::make_shared<CanCallbackFunc>(
+                canid
+                ,device
+                ,[&](byte* data) {
+                    // data를 DBS_Status 맞춰서 넣는다.
+                    VCU::VCU_Vehicle_Status_2 r;
+                    memcpy((void*)&r,data,CAN_MAX_DLEN);
+                    //this->handler_h(r);
+                    //cout<< "call DBS_Status" << endl;
+                    handler_vehicle_status((VCU::VCU_Vehicle_Status_2)r);
                     // cout<< "end DBS_Status" << endl;
                 }
         );

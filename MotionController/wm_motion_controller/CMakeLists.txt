@@ -31,13 +31,9 @@ find_package(route_msgs REQUIRED)
 add_executable(wm_motion_controller_node
         src/main.cpp
         src/wm_motion_controller/wm_motion_controller.cpp src/wm_motion_controller/wm_motion_controller_constants.cpp
-        src/can/lib.cpp src/can/can_adaptor.cpp src/can/can_send.cpp src/can/data_relayer.cpp src/can/can_dump.cpp src/can/can_manager.cpp
-        src/colleague/motion_colleague.cpp src/mediator/concrete_motion_mediator.cpp
-        src/converter/ugv_converter.cpp src/entity/ugv.cpp
+    src/converter/ugv_converter.cpp src/entity/ugv.cpp
         src/quaternion/quaternion.cpp
-        src/manager/manager.cpp
-        include/can/can2ad_dbc.h
-        include/can/can2vcu_dbc.h
+
         include/common/test.h
 )
 ament_target_dependencies(wm_motion_controller_node
