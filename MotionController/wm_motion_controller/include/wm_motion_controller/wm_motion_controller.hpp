@@ -11,7 +11,11 @@
 // ros2 header file
 #include"rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
-#include "can_msgs/msg/control_hardware.hpp"
+#include "can_msgs/msg/ad_control_accelerate.hpp"
+#include "can_msgs/msg/ad_control_body.hpp"
+#include "can_msgs/msg/ad_control_brake.hpp"
+#include "can_msgs/msg/ad_control_steering.hpp"
+
 #include "can_msgs/msg/mode.hpp"
 #include "route_msgs/msg/drive_break.hpp"
 
@@ -53,27 +57,36 @@ class WmMotionController : public rclcpp::Node {
         rclcpp::TimerBase::SharedPtr tf_timer_;
         // callback group list 
         rclcpp::CallbackGroup::SharedPtr m_cb_group_cmd_vel;
-        rclcpp::CallbackGroup::SharedPtr m_cb_group_can_chw;
+
         rclcpp::CallbackGroup::SharedPtr cb_group_imu_;
         rclcpp::CallbackGroup::SharedPtr cb_group_odom_;
         rclcpp::CallbackGroup::SharedPtr cb_group_rtt_odom_;
         rclcpp::CallbackGroup::SharedPtr cb_group_mode_;
         rclcpp::CallbackGroup::SharedPtr cb_group_break_;
+        rclcpp::CallbackGroup::SharedPtr cbg_body_;
+        rclcpp::CallbackGroup::SharedPtr cbg_accelerate_;
+        rclcpp::CallbackGroup::SharedPtr cbg_brake_;
+        rclcpp::CallbackGroup::SharedPtr cbg_steering_;
+
+        // publish list
+        rclcpp::Publisher<can_msgs::msg::AdControlBody>::SharedPtr pub_body_;
+        rclcpp::Publisher<can_msgs::msg::AdControlAccelerate>::SharedPtr pub_accelerate_;
+        rclcpp::Publisher<can_msgs::msg::AdControlBrake>::SharedPtr pub_brake_;
+        rclcpp::Publisher<can_msgs::msg::AdControlSteering>::SharedPtr pub_steering_;
+        rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr pub_odom_;
+        rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pub_rtt_;
 
         // subscription list
         rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr m_sub_cmdvel;
-        rclcpp::Subscription<can_msgs::msg::ControlHardware>::SharedPtr m_sub_can_chw;
+
         rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr sub_imu_;
         rclcpp::Subscription<can_msgs::msg::Mode>::SharedPtr sub_mode_;
         rclcpp::Subscription<route_msgs::msg::DriveBreak>::SharedPtr sub_break_;
 
-        rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr pub_odom_;
-        rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pub_rtt_;
-
         std::unique_ptr<tf2_ros::TransformBroadcaster> broadcaster;
 
         // callback fucntion list
-        void fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw);
+
         void fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel);
         void imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu);
         void slam_mode_callback(const can_msgs::msg::Mode::SharedPtr mode);

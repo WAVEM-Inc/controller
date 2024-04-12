@@ -12,6 +12,10 @@ class WmMotionControllerConstants{
         const std::string tp_odom_;
         const std::string odom_frame_id_;
         const std::string child_frame_id_;
+        const std::string tp_control_body_;
+        const std::string tp_control_accelerate_;
+        const std::string tp_control_brake_;
+        const std::string tp_control_steering_;
 
         const float clear_zero_;
         const float rpm_center_;

@@ -7,7 +7,7 @@
 
 #include "manager/manager.hpp"
 #include "common/common.hpp"
-#include "can/can_define.hpp"
+#define OFFSET_STEERING 30
 
 /**
  * @brief Construct a new Wm Motion Controller:: Wm Motion Controller object
@@ -40,40 +40,49 @@ WmMotionController::WmMotionController()
 		std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 		//
 		m_cb_group_cmd_vel = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-		m_cb_group_can_chw = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 		cb_group_imu_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 		cb_group_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 		cb_group_rtt_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 		cb_group_mode_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
         cb_group_break_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+        cbg_accelerate_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+        cbg_body_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+        cbg_brake_ =create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+        cbg_steering_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 
 std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 		rclcpp::SubscriptionOptions sub_cmdvel_options;
-		rclcpp::SubscriptionOptions sub_can_chw_options;
+
 		rclcpp::SubscriptionOptions sub_imu_options;
 		rclcpp::SubscriptionOptions sub_controller_mode_options;
         rclcpp::SubscriptionOptions sub_break_options;
 
 		rclcpp::PublisherOptions pub_odom_options;
 		rclcpp::PublisherOptions pub_rtt_odom_options;
+        rclcpp::PublisherOptions pub_body_options;
+        rclcpp::PublisherOptions pub_accelerate_options;
+        rclcpp::PublisherOptions pub_brake_options;
+        rclcpp::PublisherOptions pub_steering_options;
+
 
 std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 		sub_cmdvel_options.callback_group = m_cb_group_cmd_vel;
-		sub_can_chw_options.callback_group = m_cb_group_can_chw;
 		sub_imu_options.callback_group = cb_group_imu_;
 		sub_controller_mode_options.callback_group = cb_group_mode_;
         sub_break_options.callback_group=cb_group_break_;
 
 		pub_odom_options.callback_group = cb_group_odom_;
 		pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
+        pub_accelerate_options.callback_group = cbg_accelerate_;
+        pub_body_options.callback_group = cbg_body_;
+        pub_brake_options.callback_group = cbg_brake_;
+        pub_steering_options.callback_group = cbg_steering_;
 std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 
 		broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(this);
 
 		m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(constants_->m_tp_cmdvel,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1),sub_cmdvel_options);
-
-		m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(constants_->m_tp_can_chw,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1),sub_can_chw_options);
-		sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
+        sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
 		sub_mode_ = this->create_subscription<can_msgs::msg::Mode>(constants_->tp_control_mode_,1,std::bind(&WmMotionController::slam_mode_callback,this,_1),sub_controller_mode_options);
 
 //		sub_break_ = this->create_subscription<route_msgs::msg::DriveBreak>("/drive/break",1,std::bind(&WmMotionController::break_callback,this,_1),sub_break_options);
@@ -81,8 +90,13 @@ std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
         std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
 		pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
 		pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
-		timer_ = this->create_wall_timer(100ms,std::bind(&WmMotionController::pub_odometry,this));
-		tf_timer_ = this->create_wall_timer(100ms,std::bind(&WmMotionController::update_transform,this));
+        pub_steering_ = this->create_publisher<can_msgs::msg::AdControlSteering>(constants_->tp_control_steering_,1,pub_steering_options);
+        pub_brake_ = this->create_publisher<can_msgs::msg::AdControlBrake>(constants_->tp_control_brake_,1,pub_brake_options);
+        pub_body_ = this->create_publisher<can_msgs::msg::AdControlBody>(constants_->tp_control_body_,1,pub_body_options);
+        pub_accelerate_ = this->create_publisher<can_msgs::msg::AdControlAccelerate>(constants_->tp_control_accelerate_,1,pub_steering_options);
+        //
+        timer_ = this->create_wall_timer(std::chrono::milliseconds(100),std::bind(&WmMotionController::pub_odometry,this));
+		tf_timer_ = this->create_wall_timer(std::chrono::milliseconds(100),std::bind(&WmMotionController::update_transform,this));
 		//
 		//std::thread thread_run(&CanMGR::fn_can_run,m_can_manager);
 		//thread_run.detach();
@@ -95,15 +109,6 @@ WmMotionController::~WmMotionController(){
 
 }
 
-/**
- * @brief Callback function for controlling horn, light, when can_msgs:msgControlHardWare message is received
- * @author changunAn(changun516@wavem.net)
- * @param can_chw 
- */
-void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardware::SharedPtr can_chw){
-	//m_can_manager->fn_send_control_hardware(can_chw->horn,can_chw->head_light,can_chw->right_light,can_chw->left_light);
-
-}
 
 /**
  * @brief cmd_vel receive function for robot control
@@ -112,7 +117,7 @@ void WmMotionController::fn_can_chw_callback(const can_msgs::msg::ControlHardwar
  * @date 23.04.06
  */
 void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel){
-	//RCLCPP_INFO(this->get_logger(),constants_->log_cmd_callback+"linear = %.02f,angular = %.02f\n", cmd_vel->linear.x, cmd_vel->angular.z);
+	RCLCPP_INFO(this->get_logger(),"linear = %.02f,angular = %.02f\n", cmd_vel->linear.x, cmd_vel->angular.z);
 	float vel_linear = 0,vel_angular = 0;
 	vel_linear = (cmd_vel->linear.x);
 	vel_angular = cmd_vel->angular.z;
@@ -133,10 +138,15 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 }
 void WmMotionController::cmd_vel_run(float vel_linear, float vel_angular){
 /*		manager_->fn_can_send_steering(vel_angular*pressure_);
-
 		manager_->fn_can_send_vel(vel_linear);*/
-
-
+        can_msgs::msg::AdControlAccelerate accelerate;
+        can_msgs::msg::AdControlSteering steering;
+        accelerate.speed_control=vel_linear;
+        accelerate.acc=0.1;
+        steering.steering_angle_cmd=vel_angular;
+        steering.steering_speed_cmd=0.1;
+        pub_accelerate_->publish(accelerate);
+        pub_steering_->publish(steering);
 }
 
 void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){

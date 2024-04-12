@@ -23,7 +23,11 @@ tp_rtt_odom_(TP_RTT_ODOM),
 tp_control_mode_(TP_CONTROL_MODE),
 tp_emergency_(TP_EMERGENCY),
 slam_mode_fast_speed_(SLAM_MODE_FAST_SPEED),
-slam_mode_ang_cor_(SLAM_MODE_ANG_COR)
+slam_mode_ang_cor_(SLAM_MODE_ANG_COR),
+  tp_control_body_(TP_NAME_CONTROL_BODY),
+  tp_control_accelerate_(TP_NAME_CONTROL_ACCELERATE),
+  tp_control_brake_(TP_NAME_CONTROL_BRAKE),
+  tp_control_steering_(TP_NAME_CONTROL_STEERING)
 {
 
 }
