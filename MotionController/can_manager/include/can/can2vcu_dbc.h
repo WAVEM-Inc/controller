@@ -102,7 +102,13 @@ namespace VCU {
         unsigned long long Vehicle_AD_Mileage:18; // 60
         unsigned long long Vehicle_Odometer_MsgCntr:4; //64
     };
-
+    struct VCU_Vehicle_Status_2{
+        unsigned short Vehicle_Speed; // 16
+        unsigned short Vehicle_Brake_Pressure; // 16
+        unsigned short Vehicle_Steering_Angle; //16
+        unsigned short reserved:12; //12
+        unsigned short Vehicle_Status_2_MsgCntr:4;
+    };
 
 }
 #pragma pack(pop)

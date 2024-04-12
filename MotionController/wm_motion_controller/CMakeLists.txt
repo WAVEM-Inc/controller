@@ -33,7 +33,8 @@ add_executable(wm_motion_controller_node
         src/wm_motion_controller/wm_motion_controller.cpp src/wm_motion_controller/wm_motion_controller_constants.cpp
         src/converter/ugv_converter.cpp src/entity/ugv.cpp
         src/quaternion/quaternion.cpp
-        src/manager/manager.cpp
+    src/converter/ugv_converter.cpp src/entity/ugv.cpp
+        src/quaternion/quaternion.cpp
         include/common/test.h
 )
 ament_target_dependencies(wm_motion_controller_node

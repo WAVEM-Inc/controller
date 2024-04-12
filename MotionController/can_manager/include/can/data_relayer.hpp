@@ -30,6 +30,7 @@ class DataRelayer {
     typedef std::function<void(int,int,int)> func_rpm_callback; // Callback function pointer variable definition
     typedef std::function<void(int,int)> func_bms_callback;
     typedef std::function<void(int,int)> func_vehicle_error_callback;
+    typedef std::function<void(int,float)> func_vehicle_status2;
 
     //typedef std::function<void(int,int,int)> func_other_callback; // Callback function pointer variable definition
 
@@ -37,6 +38,7 @@ class DataRelayer {
     func_rpm_callback rpmCallback; // Callback function pointer variable definition
     func_bms_callback bmsCallback;
     func_vehicle_error_callback  vehicleErrorCallback;
+    func_vehicle_status2 vehicleStatus2Callback;
     //func_other_callback otherCallback; // Callback function pointer variable definition
 
     bool system_endian_ = 0;
@@ -51,6 +53,7 @@ class DataRelayer {
 
     void ControlSteering(float speed,float angle);
     void ControlVel(float acc, float vel);
+    void ControlVel();
     void ControlHardware(
             bool fog_light,
             bool low_beam,
@@ -113,9 +116,18 @@ class DataRelayer {
                                 placeholders::_2
         ));
     }
+    template<typename T>
+    void RegistVehicleStatus2Callback(T *pClassType,void(T::*pfunc)(int,float)){
+        vehicleStatus2Callback = move(bind(pfunc,
+                                         pClassType,
+                                         placeholders::_1,
+                                         placeholders::_2
+        ));
+    }
+
     void Run();
     void SendTest();
-
+    void run_flag();
   private:
     void SetmsgMap(int svcid,int msgid,string device);
 
@@ -136,6 +148,7 @@ class DataRelayer {
     void Handler_MCU_Torque_Feedback (VCU::MCU_Torque_Feedback msg);
     void Handler_BMS_Status(VCU::BMS_A0h msg);
     void Handler_VEHICLE_ERROR_Status(VCU::VCU_Vehicle_ErrorCode msg);
+    void Handler_VCU_Vehicle_Status_2(VCU::VCU_Vehicle_Status_2 msg);
     bool is_big_endian(){
       char buf[2] = {0,1};
       unsigned short *val = reinterpret_cast<unsigned short*>(buf);

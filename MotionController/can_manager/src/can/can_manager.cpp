@@ -55,7 +55,9 @@ void CanMGR::fn_can_run(){
 	std::cout << "***can run start!!!***" << std::endl;
 	while(state){
         signal(SIGINT, SIG_DFL);
-        sleep(5);
+        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        obj_.ControlVel(cur_speed_acc_,cur_speed_);
+        obj_.run_flag();
 	}
 	std::cout << "***can end!!!***" << std::endl;
 }
@@ -68,10 +70,11 @@ void CanMGR::fn_can_run(){
  */
 int CanMGR::fn_can_init(){
     // dbs fault status
-	//obj_.RegistFaultCallback<CanMGR>(this, &CanMGR::faultCallback);
-    //obj_.RegistRpmCallback<CanMGR>(this, &CanMGR::rpmCallback);
-    //obj_.RegistBmsCallback<CanMGR>(this,&CanMGR::bmsCallback);
-    obj_.RegistVehicleErrorCallback<CanMGR>(this,&CanMGR::vehicleCallback);
+	obj_.RegistFaultCallback<CanMGR>(this, &CanMGR::faultCallback);
+    obj_.RegistRpmCallback<CanMGR>(this, &CanMGR::rpmCallback);
+    obj_.RegistBmsCallback<CanMGR>(this,&CanMGR::bmsCallback);
+    obj_.RegistVehicleStatus2Callback(this, &CanMGR::vehicleStatus2Callback);
+    obj_.RegistVehicleErrorCallback<CanMGR>(this, &CanMGR::vehicleErrorCallback);
     obj_.Run();
     return 0;
 }
@@ -92,7 +95,9 @@ int CanMGR::fn_can_init(){
  * @date 23.04.07
  */
 void CanMGR::faultCallback(int can_falut,int dbs_fault){
-	  std::cout << "[main] callback DBS_Status : " << (int)can_falut<< "," << (int)dbs_fault<< std::endl; 
+    RCLCPP_INFO(this->get_logger(),"[faultCallback] can_falut %d, dbs_fault %d \n",
+                can_falut,
+                dbs_fault);
 }
 
 
@@ -110,17 +115,23 @@ void CanMGR::rpmCallback(int mcu_shift
                     ,int mcu_torque
                     ){
     //fn_send_rpm(mcu_speed,std::chrono::system_clock::now());
-    std::cout<<"[can] speed callback"<<std::endl;
+    RCLCPP_INFO(this->get_logger(),"[rpmCallback] mcu_speed %d \n",
+                mcu_speed);
 }
 void CanMGR::bmsCallback(int sys_sts, int soc) {
     RCLCPP_INFO(this->get_logger(),"[bmsCallback] sys_sts %d, soc %d \n",
                 sys_sts,
                 soc);
 }
-void CanMGR::vehicleCallback(int error_code, int low_voltage) {
-    RCLCPP_INFO(this->get_logger(),"[vehicleCallback] error_code %d, low_voltage %d \n",
+void CanMGR::vehicleErrorCallback(int error_code, int low_voltage) {
+    RCLCPP_INFO(this->get_logger(),"[vehicleErrorCallback] error_code %d, low_voltage %d \n",
                 error_code,
                 low_voltage);
+}
+void CanMGR::vehicleStatus2Callback(int brake_press, float speed) {
+    RCLCPP_INFO(this->get_logger(),"[vehicleStatus2Callback] brake_press %d, speed %f \n",
+                brake_press,
+                speed);
 }
 
 
@@ -182,6 +193,8 @@ void CanMGR::tp_control_accelerate( can_msgs::msg::AdControlAccelerate::SharedPt
 }
 
 void CanMGR::tp_control_brake( can_msgs::msg::AdControlBrake::SharedPtr control_brake) {
+    RCLCPP_INFO(this->get_logger(),"[brake] pressure %d\n",
+                control_brake->brakepressure_cmd);
     obj_.ControlVel(cur_speed_acc_,cur_speed_);
     if(control_brake->brakepressure_cmd==0){
         obj_.static_break(UGV::BREAK::GO);
@@ -198,6 +211,7 @@ void CanMGR::tp_control_steering( can_msgs::msg::AdControlSteering::SharedPtr co
     obj_.ControlVel(cur_speed_acc_,cur_speed_);
     obj_.ControlSteering(control_steering->steering_speed_cmd,control_steering->steering_angle_cmd);
 }
+
 
 
 
