@@ -23,6 +23,7 @@
 #include "can_msgs/msg/dbs_status_two.hpp"
 #include "can_msgs/msg/torque_feedback.hpp"
 #include "can_msgs/msg/vcu_mcu_request.hpp"
+#include "robot_status_msgs/msg/velocity_status.hpp"
 
 static volatile int state = 1;
 
@@ -57,6 +58,11 @@ private :
     rclcpp::Subscription<can_msgs::msg::AdControlBrake>::SharedPtr sub_brake_;
     rclcpp::Subscription<can_msgs::msg::AdControlSteering>::SharedPtr sub_steering_;
     rclcpp::CallbackGroup::SharedPtr cbg_body;
+
+    rclcpp::Publisher<can_msgs::msg::TorqueFeedback>::SharedPtr pub_rpm_;
+    rclcpp::Publisher<can_msgs::msg::Bms>::SharedPtr pub_bms_;
+    rclcpp::Publisher<robot_status_msgs::msg::VelocityStatus>::SharedPtr pub_velocity_;
+
     int fn_can_init(); // can callback function register
     void faultCallback(int can_falut, int dbs_fault);
 

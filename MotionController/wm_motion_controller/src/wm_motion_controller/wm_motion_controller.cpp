@@ -71,7 +71,7 @@ WmMotionController::WmMotionController()
     sub_controller_mode_options.callback_group = cb_group_mode_;
     sub_break_options.callback_group=cb_group_break_;
 
-<<<<<<< HEAD
+
 		m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(constants_->m_tp_cmdvel,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1),sub_cmdvel_options);
         sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
 		sub_mode_ = this->create_subscription<can_msgs::msg::Mode>(constants_->tp_control_mode_,1,std::bind(&WmMotionController::slam_mode_callback,this,_1),sub_controller_mode_options);
@@ -91,7 +91,7 @@ WmMotionController::WmMotionController()
 		//
 		//std::thread thread_run(&CanMGR::fn_can_run,m_can_manager);
 		//thread_run.detach();
-=======
+
     pub_odom_options.callback_group = cb_group_odom_;
     pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
     pub_accelerate_options.callback_group = cbg_accelerate_;
@@ -121,7 +121,7 @@ WmMotionController::WmMotionController()
     //
     //std::thread thread_run(&CanMGR::fn_can_run,m_can_manager);
     //thread_run.detach();
->>>>>>> KEC/Humble/Changun/Feature/CanSetting
+
 
     //manager_->fn_map_up("WmMotionController",MANAGER::SETUP::START);
     std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
@@ -139,16 +139,6 @@ WmMotionController::~WmMotionController(){
  * @date 23.04.06
  */
 void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel){
-<<<<<<< HEAD
-	RCLCPP_INFO(this->get_logger(),"linear = %.02f,angular = %.02f\n", cmd_vel->linear.x, cmd_vel->angular.z);
-	float vel_linear = 0,vel_angular = 0;
-	vel_linear = (cmd_vel->linear.x);
-	vel_angular = cmd_vel->angular.z;
-	float cur_rpm = cur_ugv_->get_cur_rpm();
-	//==
-	//std::cout<<"test "<< vel_angular;
-	vel_angular = (vel_angular==0 || control_mode_==false) ?cmd_angel_convert(vel_angular,vel_linear) : vel_angular/(vel_linear+0.0001)*OFFSET_STEERING/90;
-=======
     RCLCPP_INFO(this->get_logger(),"linear = %.02f,angular = %.02f\n", cmd_vel->linear.x, cmd_vel->angular.z);
     float vel_linear = 0,vel_angular = 0;
     vel_linear = (cmd_vel->linear.x);
@@ -157,7 +147,6 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
     //==
     //std::cout<<"test "<< vel_angular;
     vel_angular = (vel_angular==0 || control_mode_==false) ?cmd_angel_convert(vel_angular,vel_linear) : vel_angular/(vel_linear+0.0001)*OFFSET_STEERING/90;
->>>>>>> KEC/Humble/Changun/Feature/CanSetting
 
     cmd_vel_break(vel_linear, cur_rpm);
     if(vel_angular>30){
@@ -172,16 +161,7 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
 void WmMotionController::cmd_vel_run(float vel_linear, float vel_angular){
 /*		manager_->fn_can_send_steering(vel_angular*pressure_);
 		manager_->fn_can_send_vel(vel_linear);*/
-<<<<<<< HEAD
-        can_msgs::msg::AdControlAccelerate accelerate;
-        can_msgs::msg::AdControlSteering steering;
-        accelerate.speed_control=vel_linear;
-        accelerate.acc=0.1;
-        steering.steering_angle_cmd=vel_angular;
-        steering.steering_speed_cmd=0.1;
-        pub_accelerate_->publish(accelerate);
-        pub_steering_->publish(steering);
-=======
+
     can_msgs::msg::AdControlAccelerate accelerate;
     can_msgs::msg::AdControlSteering steering;
     accelerate.speed_control=vel_linear;
@@ -190,7 +170,7 @@ void WmMotionController::cmd_vel_run(float vel_linear, float vel_angular){
     steering.steering_speed_cmd=0.1;
     pub_accelerate_->publish(accelerate);
     pub_steering_->publish(steering);
->>>>>>> KEC/Humble/Changun/Feature/CanSetting
+
 }
 
 void WmMotionController::cmd_vel_break(float vel_linear, float cur_rpm){

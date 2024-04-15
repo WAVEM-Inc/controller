@@ -28,5 +28,5 @@ WmMotionControllerConstants::WmMotionControllerConstants():
         tp_control_accelerate_(TP_NAME_CONTROL_ACCELERATE),
         tp_control_brake_(TP_NAME_CONTROL_BRAKE),
         tp_control_steering_(TP_NAME_CONTROL_STEERING)
-
+{
 }

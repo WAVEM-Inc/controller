@@ -25,6 +25,16 @@ CanMGR::CanMGR() : Node("CanMotionController"){
     options_brake.callback_group=cbg_brake;
     options_steering.callback_group=cbg_steering;
 
+    rclcpp::CallbackGroup::SharedPtr cbg_rpm = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+    rclcpp::CallbackGroup::SharedPtr cbg_bms = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+    rclcpp::CallbackGroup::SharedPtr cbg_velocity = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+    rclcpp::PublisherOptions options_rpm;
+    rclcpp::PublisherOptions options_bms;
+    rclcpp::PublisherOptions options_velocity;
+    options_rpm.callback_group = cbg_rpm;
+    options_bms.callback_group = cbg_bms;
+    options_velocity.callback_group = cbg_velocity;
+
     sub_body_ = this->create_subscription<can_msgs::msg::AdControlBody>(constants_->tp_name_control_body_,
                                                                         1,
                                                                         std::bind(&CanMGR::tp_control_body_callback,this,std::placeholders::_1),
@@ -42,6 +52,16 @@ CanMGR::CanMGR() : Node("CanMotionController"){
                                                                         rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
                                                                         std::bind(&CanMGR::tp_control_steering, this,
                                                                                   std::placeholders::_1), options_steering);
+    pub_rpm_ = this->create_publisher<can_msgs::msg::TorqueFeedback>(constants_->tp_name_state_rpm_,
+                                                                     rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
+                                                                     options_rpm);
+    pub_bms_ = this->create_publisher<can_msgs::msg::Bms>(constants_->tp_name_state_bms_,
+                                                          rclcpp::QoS(rclcpp::SystemDefaultsQoS()) ,
+                                                          options_bms);
+    pub_velocity_ = this->create_publisher<robot_status_msgs::msg::VelocityStatus>(constants_->tp_name_state_velocity_,
+                                                          rclcpp::QoS(rclcpp::SystemDefaultsQoS()) ,
+                                                                      options_velocity);
+
     cur_speed_=0;
     cur_speed_acc_=0;
     fn_can_init();
@@ -114,9 +134,13 @@ void CanMGR::rpmCallback(int mcu_shift
                     ,int mcu_speed
                     ,int mcu_torque
                     ){
-    //fn_send_rpm(mcu_speed,std::chrono::system_clock::now());
     RCLCPP_INFO(this->get_logger(),"[rpmCallback] mcu_speed %d \n",
                 mcu_speed);
+    can_msgs::msg::TorqueFeedback temp_rpm;
+    temp_rpm.mcu_shift = mcu_shift;
+    temp_rpm.mcu_speed = mcu_speed;
+    temp_rpm.mcu_torque = mcu_torque;
+    pub_rpm_->publish(temp_rpm);
 }
 void CanMGR::bmsCallback(int sys_sts, int soc) {
     RCLCPP_INFO(this->get_logger(),"[bmsCallback] sys_sts %d, soc %d \n",
@@ -173,7 +197,7 @@ void CanMGR::tp_control_body_callback( can_msgs::msg::AdControlBody::SharedPtr c
                 control_body->high_beam,
                 control_body->right_turn_light,
                 control_body->left_turn_light);
-    obj_.ControlVel(cur_speed_acc_,cur_speed_);
+    //obj_.ControlVel(cur_speed_acc_,cur_speed_);
     obj_.ControlHardware(control_body->fog_light,
                          control_body->low_beam,
                          control_body->reversing_light,
@@ -189,13 +213,13 @@ void CanMGR::tp_control_body_callback( can_msgs::msg::AdControlBody::SharedPtr c
 void CanMGR::tp_control_accelerate( can_msgs::msg::AdControlAccelerate::SharedPtr control_accelerate) {
     cur_speed_ = static_cast<float>(control_accelerate->speed_control);
     cur_speed_acc_= static_cast<float>(control_accelerate->acc);
-    obj_.ControlVel(cur_speed_acc_,cur_speed_);
+    //obj_.ControlVel(cur_speed_acc_,cur_speed_);
 }
 
 void CanMGR::tp_control_brake( can_msgs::msg::AdControlBrake::SharedPtr control_brake) {
     RCLCPP_INFO(this->get_logger(),"[brake] pressure %d\n",
                 control_brake->brakepressure_cmd);
-    obj_.ControlVel(cur_speed_acc_,cur_speed_);
+    //obj_.ControlVel(cur_speed_acc_,cur_speed_);
     if(control_brake->brakepressure_cmd==0){
         obj_.static_break(UGV::BREAK::GO);
     }
@@ -208,7 +232,7 @@ void CanMGR::tp_control_brake( can_msgs::msg::AdControlBrake::SharedPtr control_
 }
 
 void CanMGR::tp_control_steering( can_msgs::msg::AdControlSteering::SharedPtr control_steering) {
-    obj_.ControlVel(cur_speed_acc_,cur_speed_);
+    //obj_.ControlVel(cur_speed_acc_,cur_speed_);
     obj_.ControlSteering(control_steering->steering_speed_cmd,control_steering->steering_angle_cmd);
 }
 

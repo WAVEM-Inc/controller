@@ -10,6 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(can_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(robot_status_msgs REQUIRED)
 
 include_directories(
         include
@@ -21,6 +22,7 @@ set(dependencies
         can_msgs
         #route_msgs
         std_msgs
+        robot_status_msgs
 )
 
 set(source_list
@@ -34,7 +36,6 @@ set(source_list
         include/can/can_send.hpp
         include/can/cancallbackfunc.hpp
         include/can/data_relayer.hpp
-        include/can/i_can_connect.hpp
         include/can/lib.hpp
         include/can/lib.hpp
         src/can/can_adaptor.cpp
