@@ -50,6 +50,7 @@ WmMotionController::WmMotionController()
     cbg_brake_ =create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
     cbg_steering_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 
+
     std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
     rclcpp::SubscriptionOptions sub_cmdvel_options;
 

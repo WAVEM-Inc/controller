@@ -27,12 +27,6 @@
 // define header file
 #include "wm_motion_controller/wm_motion_controller_constants.hpp"
 
-// mediator header file
-/*
-#include "colleague/i_motion_colleague.hpp"
-#include "mediator/i_motion_mediator.hpp"
-#include "mediator/concrete_motion_mediator.hpp"
-*/
 
 #include "entity/ugv.hpp"
 #include "quaternion/quaternion.hpp"

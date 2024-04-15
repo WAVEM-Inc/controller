@@ -10,20 +10,23 @@
 CanMGR::CanMGR() : Node("CanMotionController"){
 //CanMGR::CanMGR(){
     //
-
+    check_emergency_= false;
     constants_ = std::make_unique<Constants>();
     cbg_body = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
     rclcpp::CallbackGroup::SharedPtr cbg_accelerate=create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
     rclcpp::CallbackGroup::SharedPtr cbg_brake=create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
     rclcpp::CallbackGroup::SharedPtr cbg_steering=create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+    rclcpp::CallbackGroup::SharedPtr cbg_emergency= create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
     rclcpp::SubscriptionOptions options_body;
     rclcpp::SubscriptionOptions options_accelerate;
     rclcpp::SubscriptionOptions options_brake;
     rclcpp::SubscriptionOptions options_steering;
+    rclcpp::SubscriptionOptions options_emergency;
     options_body.callback_group = cbg_body;
     options_accelerate.callback_group=cbg_accelerate;
     options_brake.callback_group=cbg_brake;
     options_steering.callback_group=cbg_steering;
+    options_emergency.callback_group = cbg_emergency;
 
     rclcpp::CallbackGroup::SharedPtr cbg_rpm = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
     rclcpp::CallbackGroup::SharedPtr cbg_bms = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
@@ -52,6 +55,10 @@ CanMGR::CanMGR() : Node("CanMotionController"){
                                                                         rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
                                                                         std::bind(&CanMGR::tp_control_steering, this,
                                                                                   std::placeholders::_1), options_steering);
+    sub_emergency_ = this->create_subscription<can_msgs::msg::Emergency>(constants_->tp_name_emergency_,
+                                                                                 rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
+                                                                                 std::bind(&CanMGR::tp_emergency, this,
+                                                                                           std::placeholders::_1), options_emergency);
     pub_rpm_ = this->create_publisher<can_msgs::msg::TorqueFeedback>(constants_->tp_name_state_rpm_,
                                                                      rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
                                                                      options_rpm);
@@ -78,6 +85,10 @@ void CanMGR::fn_can_run(){
         std::this_thread::sleep_for(std::chrono::milliseconds(20));
         obj_.ControlVel(cur_speed_acc_,cur_speed_);
         obj_.run_flag();
+        if(check_emergency_){
+            obj_.static_break(UGV::BREAK::STOP);
+        }
+
 	}
 	std::cout << "***can end!!!***" << std::endl;
 }
@@ -234,6 +245,15 @@ void CanMGR::tp_control_brake( can_msgs::msg::AdControlBrake::SharedPtr control_
 void CanMGR::tp_control_steering( can_msgs::msg::AdControlSteering::SharedPtr control_steering) {
     //obj_.ControlVel(cur_speed_acc_,cur_speed_);
     obj_.ControlSteering(control_steering->steering_speed_cmd,control_steering->steering_angle_cmd);
+}
+
+void CanMGR::tp_emergency(can_msgs::msg::Emergency::SharedPtr stop) {
+    if(stop->stop) {
+        check_emergency_ = true;
+    }
+    else{
+        check_emergency_=false;
+    }
 }
 
 

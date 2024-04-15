@@ -24,6 +24,7 @@
 #include "can_msgs/msg/torque_feedback.hpp"
 #include "can_msgs/msg/vcu_mcu_request.hpp"
 #include "robot_status_msgs/msg/velocity_status.hpp"
+#include "can_msgs/msg/emergency.hpp"
 
 static volatile int state = 1;
 
@@ -50,6 +51,7 @@ private :
     DataRelayer obj_; // Member variables for calling Can-related functions
     float cur_speed_;
     float cur_speed_acc_;
+    bool check_emergency_;
     std::chrono::_V2::system_clock::time_point callback_time_; // current callback time
     std::chrono::_V2::system_clock::time_point old_time_; // Previous callback time
     std::unique_ptr<Constants> constants_;
@@ -57,6 +59,8 @@ private :
     rclcpp::Subscription<can_msgs::msg::AdControlAccelerate>::SharedPtr sub_accelerate_;
     rclcpp::Subscription<can_msgs::msg::AdControlBrake>::SharedPtr sub_brake_;
     rclcpp::Subscription<can_msgs::msg::AdControlSteering>::SharedPtr sub_steering_;
+    rclcpp::Subscription<can_msgs::msg::Emergency>::SharedPtr sub_emergency_;
+
     rclcpp::CallbackGroup::SharedPtr cbg_body;
 
     rclcpp::Publisher<can_msgs::msg::TorqueFeedback>::SharedPtr pub_rpm_;
@@ -80,7 +84,7 @@ private :
     void tp_control_brake(can_msgs::msg::AdControlBrake::SharedPtr control_brake);
 
     void tp_control_steering(can_msgs::msg::AdControlSteering::SharedPtr control_steering);
-
+    void tp_emergency(can_msgs::msg::Emergency::SharedPtr stop);
 
 public :
 

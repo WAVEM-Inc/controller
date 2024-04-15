@@ -13,6 +13,7 @@
 #define TP_NAME_TORQUE_FEEDBACK "/drive/can/vcu/torque_feedback"
 #define TP_NAME_BMS "/drive/can/vcu/bms_a0h"
 #define TP_NAME_VELOCITY "/drive/velocity/state"
+#define TP_NAME_EMERGENCY "/drive/can/emergency"
 
 #include<iostream>
 class Constants {
@@ -24,7 +25,8 @@ public:
             tp_name_control_steering_(TP_NAME_CONTROL_STEERING),
             tp_name_state_rpm_(TP_NAME_TORQUE_FEEDBACK),
             tp_name_state_bms_(TP_NAME_BMS),
-            tp_name_state_velocity_(TP_NAME_VELOCITY)
+            tp_name_state_velocity_(TP_NAME_VELOCITY),
+            tp_name_emergency_(TP_NAME_EMERGENCY)
     {}
     const std::string tp_name_control_body_;
     const std::string tp_name_control_accelerate_;
@@ -33,6 +35,7 @@ public:
     const std::string tp_name_state_rpm_;
     const std::string tp_name_state_bms_;
     const std::string tp_name_state_velocity_;
+    const std::string tp_name_emergency_;
 };
 
 
