@@ -1,0 +1,2 @@
+float64 dbs_warringcode
+float64 dbs_fault_code

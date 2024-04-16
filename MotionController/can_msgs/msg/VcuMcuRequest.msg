@@ -1,0 +1,5 @@
+int32 mcu_speed_req
+float64 mcu_torque_req
+int32 mcu_clamping_brake_req
+int32 mcu_drivemode
+int32 mcu_vcu_motor_request_valid
