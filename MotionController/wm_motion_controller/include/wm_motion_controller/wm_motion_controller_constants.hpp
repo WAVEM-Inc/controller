@@ -17,6 +17,7 @@ public :
     const std::string tp_control_accelerate_;
     const std::string tp_control_brake_;
     const std::string tp_control_steering_;
+    const std::string tp_break_;
 
     const float clear_zero_;
     const float rpm_center_;

@@ -23,7 +23,8 @@ WmMotionController::WmMotionController()
          lo_y_(0),
          origin_corr_(0),
          origin_x_(0),
-         origin_y_(0){
+         origin_y_(0),
+         pressure_(1){
     RCLCPP_INFO(this->get_logger(),"%s","Motion_controller start!");
 
     this->declare_parameter<float>("correction", correction_);
@@ -77,21 +78,8 @@ WmMotionController::WmMotionController()
         sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
 		sub_mode_ = this->create_subscription<can_msgs::msg::Mode>(constants_->tp_control_mode_,1,std::bind(&WmMotionController::slam_mode_callback,this,_1),sub_controller_mode_options);
 
-//		sub_break_ = this->create_subscription<route_msgs::msg::DriveBreak>("/drive/break",1,std::bind(&WmMotionController::break_callback,this,_1),sub_break_options);
+		sub_break_ = this->create_subscription<route_msgs::msg::DriveBreak>(constants_->tp_break_,1,std::bind(&WmMotionController::break_callback,this,_1),sub_break_options);
 
-        std::cout<<constants_->log_constructor<<__LINE__<<std::endl;
-		pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
-		pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
-        pub_steering_ = this->create_publisher<can_msgs::msg::AdControlSteering>(constants_->tp_control_steering_,1,pub_steering_options);
-        pub_brake_ = this->create_publisher<can_msgs::msg::AdControlBrake>(constants_->tp_control_brake_,1,pub_brake_options);
-        pub_body_ = this->create_publisher<can_msgs::msg::AdControlBody>(constants_->tp_control_body_,1,pub_body_options);
-        pub_accelerate_ = this->create_publisher<can_msgs::msg::AdControlAccelerate>(constants_->tp_control_accelerate_,1,pub_steering_options);
-        //
-        timer_ = this->create_wall_timer(std::chrono::milliseconds(100),std::bind(&WmMotionController::pub_odometry,this));
-		tf_timer_ = this->create_wall_timer(std::chrono::milliseconds(100),std::bind(&WmMotionController::update_transform,this));
-		//
-		//std::thread thread_run(&CanMGR::fn_can_run,m_can_manager);
-		//thread_run.detach();
 
     pub_odom_options.callback_group = cb_group_odom_;
     pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
@@ -147,7 +135,8 @@ void WmMotionController::fn_cmdvel_callback(const geometry_msgs::msg::Twist::Sha
     float cur_rpm = cur_ugv_->get_cur_rpm();
     //==
     //std::cout<<"test "<< vel_angular;
-    vel_angular = (vel_angular==0 || control_mode_==false) ?cmd_angel_convert(vel_angular,vel_linear) : vel_angular/(vel_linear+0.0001)*OFFSET_STEERING/90;
+
+    //vel_angular = (vel_angular==0 || control_mode_==false) ?cmd_angel_convert(vel_angular,vel_linear) : vel_angular/(vel_linear+0.0001)*OFFSET_STEERING/90;
 
     cmd_vel_break(vel_linear, cur_rpm);
     if(vel_angular>30){
@@ -165,7 +154,8 @@ void WmMotionController::cmd_vel_run(float vel_linear, float vel_angular){
 
     can_msgs::msg::AdControlAccelerate accelerate;
     can_msgs::msg::AdControlSteering steering;
-    accelerate.speed_control=vel_linear;
+    accelerate.speed_control=vel_linear*pressure_;
+    //accelerate.speed_control=vel_linear;
     accelerate.acc=0.1;
     steering.steering_angle_cmd=vel_angular;
     steering.steering_speed_cmd=0.1;
@@ -205,17 +195,6 @@ void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu
     qua_.setterW(imu->orientation.w);
 
     qua_.QuaternionToEulerAngles();
-
-    //		qua_.EulerToQuaternion(-qua_.getterYaw()+(180+correction_)*M_PI/180,qua_.getterPitch(), qua_.getterRoll());
-
-    //		qua_.setterX(qua_.getterEulerX());
-    //		qua_.setterY(qua_.getterEulerY());
-    //		qua_.setterW(qua_.getterEulerW());
-    //		qua_.setterZ(qua_.getterEulerZ());
-
-    //tf2::Quaternion q;
-    //q.setRPY(0,0,qua_.getterYaw());
-    //		qua_.QuaternionToEulerAngles();
 
     qua_.EulerToQuaternion(qua_.getterYaw()+(180+correction_)*M_PI/180,-qua_.getterRoll(), qua_.getterPitch());
     qua_.setterX(qua_.getterEulerX());
@@ -330,21 +309,14 @@ void WmMotionController::pub_odometry(){
     pub_odom_->publish(odom);
     geometry_msgs::msg::PoseStamped rtt_value;
     rtt_value.pose.position.x = odom_dist_;
-
     rtt_value.pose.orientation.x = qua_.getterYaw();//-90*M_PI/180;
-    //	if(qua_.getterYaw()/*-90*M_PI/180*/>M_PI){
-    //		rtt_value.pose.orientation.x -= 2*M_PI;
-    //	}
-    //	else if(qua_.getterYaw()/*-90*M_PI/180*/<-M_PI){
-    //		rtt_value.pose.orientation.x += 2*M_PI;
-    //	} //+ (-180*M_PI/180)/*+origin_corr*/;
+
     if(rtt_value.pose.orientation.x/*-90*M_PI/180*/>M_PI){
         rtt_value.pose.orientation.x -= 2*M_PI;
     }
     else if(rtt_value.pose.orientation.x/*-90*M_PI/180*/<-M_PI){
         rtt_value.pose.orientation.x += 2*M_PI;
-    } //+ (-180*M_PI/180)/*+origin_corr*/;
-    //rtt_value.pose.orientation.y = (qua_.getterYaw() -90*M_PI/180 )*180/M_PI;
+    }
     rtt_value.pose.orientation.y = (rtt_value.pose.orientation.x)*180/M_PI;
 
     pub_rtt_->publish(rtt_value);
@@ -400,12 +372,9 @@ void WmMotionController::calculate_next_position(){
     auto sub_time = current_time_-odom_time_;
     double time_seconds = sub_time.seconds();
     vel_x_ = dxy_;
-    //std::cout<<"calculate_next_position"<< lo_x_<<' '<<dxy_<<' '<<test<<'\n';
     if (dxy_ != 0) {
         lo_x_ += ( dxy_ * cosf( qua_.getterYaw()));	//minseok 200611 before x
         lo_y_ += ( dxy_ * sinf(  qua_.getterYaw() ));
-        //lo_x_ += ( dxy_ * cosf( qua_.getterYaw()));	//minseok 200611 before x
-        //lo_y_ += ( dxy_ * sinf(  qua_.getterYaw() ));
         origin_x_ += ( dxy_ * cosf( qua_.getterYaw()+origin_corr_ ));	//minseok 200611 before x
         origin_y_ += ( dxy_ * sinf(  qua_.getterYaw()+origin_corr_));
     }
@@ -455,4 +424,9 @@ void WmMotionController::slam_mode_callback(const can_msgs::msg::Mode::SharedPtr
 
 void WmMotionController::break_callback(const route_msgs::msg::DriveBreak::SharedPtr pressure) {
     pressure_= (100-pressure->break_pressure)*0.01;
+    if(pressure==0){
+        can_msgs::msg::AdControlBrake brake;
+        brake.brakepressure_cmd=1;
+        pub_brake_->publish(brake);
+    }
 }

@@ -37,6 +37,7 @@ void DataRelayer::ControlSteering(float speed, float angle) {
 * @exception
 */
 void DataRelayer::ControlVel(float acc, float vel) {//iECU_Control_Accelerate, iECU_Control_Brake둘다 사용)
+    std::cout<<"[test_vel] "<<vel<<std::endl;
     SendMessageControlAccelerate(acc, vel);
 }
 
@@ -221,7 +222,7 @@ void DataRelayer::Handler_MCU_Torque_Feedback(VCU::MCU_Torque_Feedback msg) {
     rpmCallback((int) msg.MCU_Shift, (int) msg.MCU_SPEED, (int) msg.MCU_TORQUE);
 }
 void DataRelayer::Handler_BMS_Status(VCU::BMS_A0h msg) {
-    bmsCallback(static_cast<int>(msg.BMS_Sys_Sts),static_cast<int>(msg.BMS_HVBatSOC)*RESOLUTION_BMS_SOC);
+    bmsCallback(static_cast<int>(msg.BMS_Charge_StsCc),static_cast<int>(msg.BMS_HVBatSOC)*RESOLUTION_BMS_SOC);
 }
 void DataRelayer::Handler_VEHICLE_ERROR_Status(VCU::VCU_Vehicle_ErrorCode msg) {
     vehicleErrorCallback(static_cast<int>(msg.Error_Code), static_cast<int>(msg.Low_voltage));
@@ -301,6 +302,7 @@ void DataRelayer::SendTest() {
 }
 
 void DataRelayer::static_break(UGV::BREAK break_status) {
+    std::cout<<"[test]" <<std::endl;
     AD::AD_Control_Brake dat_2;
     memset(&dat_2, 0x00, CAN_MAX_DLEN);
     dat_2.AD_DBS_Valid = 1;

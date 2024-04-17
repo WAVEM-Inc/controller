@@ -6,13 +6,15 @@
 #define TP_CMDVEL "/cmd_vel"
 #define TP_CONTROL_HARD_WARE "/can/control_hardware"
 #define TP_QUEUE_SIZE 1
-#define TP_ODOM "/odom"
-#define TP_RTT_ODOM "/rtt_odom"
+#define TP_ODOM "/drive/odom/origin"
+#define TP_RTT_ODOM "/drive/odom/eular"
 #define ODOM_FRAME_ID "odom"
 #define CHILD_FRAME_ID "base_footprint"
-#define TP_IMU "/imu/data"
+#define TP_IMU "/sensor/imu/data"
 #define TP_EMERGENCY "/emergency"
 #define TP_CONTROL_MODE "/control/mode"
+#define TP_NAME_BREAK "/drive/break"
+
 #define TP_NAME_CONTROL_BODY "/drive/can/ad_control_body"
 #define TP_NAME_CONTROL_ACCELERATE "/drive/can/ad_control_accelerate"
 #define TP_NAME_CONTROL_BRAKE "/drive/can/ad_control_brake"
