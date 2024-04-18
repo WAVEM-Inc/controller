@@ -252,7 +252,13 @@ void CanMGR::tp_control_body_callback(can_msgs::msg::AdControlBody::SharedPtr co
 }
 
 void CanMGR::tp_control_accelerate(can_msgs::msg::AdControlAccelerate::SharedPtr control_accelerate) {
-    cur_speed_ = static_cast<float>(control_accelerate->speed_control);
+    double safe_speed = 0.6;
+    if(control_accelerate->speed_control>safe_speed){
+        cur_speed_=safe_speed;
+    } // 추후 제거 필요 Test 시 사고 방지
+    else {
+        cur_speed_ = static_cast<float>(control_accelerate->speed_control);
+    }
     cur_speed_acc_ = static_cast<float>(control_accelerate->acc);
     //obj_.ControlVel(cur_speed_acc_,cur_speed_);
 }
