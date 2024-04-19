@@ -332,7 +332,7 @@ void WmMotionController::pub_odometry() {
     odom.pose.pose.position.z = constants_->clear_zero_;
     odom.pose.pose.orientation.w = odom_quat_.w;
     odom.pose.pose.orientation.z = odom_quat_.z;
-    odom.twist.twist.linear.x = vel_x_;
+    odom.twist.twist.linear.x = vel_x_*10;
     odom.twist.twist.linear.y = constants_->clear_zero_;
     odom.twist.twist.linear.z = constants_->clear_zero_;
     odom.twist.twist.angular.x = constants_->clear_zero_;

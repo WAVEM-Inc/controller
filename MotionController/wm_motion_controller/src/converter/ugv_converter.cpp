@@ -20,9 +20,9 @@ float CONVERTER::UGVConverter::rpm_to_distance(ENTITY::UGV prev_ugv, ENTITY::UGV
     //std::cout<<cur_ugv.get_wheel()<<' '<<cur_ugv.get_wheel()*M_PI <<' '<<((RPM_STANDARD-prev_ugv.get_cur_rpm())+(RPM_STANDARD-cur_ugv.get_cur_rpm()))/2<< time_dif/60<<' '<<cur_ugv.get_gear_ratio()<<'\n';
     //auto temp_correction=1.16;
     float result =0;
-    std::cout << "[rpm to distance] "<< prev_ugv.get_cur_rpm() << " "<< cur_ugv.get_cur_rpm()<<std::endl;
+    //std::cout << "[rpm to distance] "<< prev_ugv.get_cur_rpm() << " "<< cur_ugv.get_cur_rpm()<<std::endl;
     result = ((cur_ugv.get_wheel()*M_PI) * ((prev_ugv.get_cur_rpm()-RPM_STANDARD)+(cur_ugv.get_cur_rpm()-RPM_STANDARD))/2 * (time_dif/60) / cur_ugv.get_gear_ratio());
-    std::cout<< "[result] "<<(prev_ugv.get_cur_rpm()-RPM_STANDARD)+(cur_ugv.get_cur_rpm()-RPM_STANDARD)<<" "<<result <<std::endl;
+    //std::cout<< "[result] "<<(prev_ugv.get_cur_rpm()-RPM_STANDARD)+(cur_ugv.get_cur_rpm()-RPM_STANDARD)<<" "<<result <<std::endl;
     result /=2; // under
     result *=10;
     //Do not divide if you use the formula below (result/2)
