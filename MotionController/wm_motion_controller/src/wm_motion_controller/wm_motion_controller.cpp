@@ -184,8 +184,8 @@ void WmMotionController::cmd_vel_run(float vel_linear, float vel_angular) {
 
     can_msgs::msg::AdControlAccelerate accelerate;
     can_msgs::msg::AdControlSteering steering;
-    accelerate.speed_control = vel_linear * pressure_;
-    //accelerate.speed_control=vel_linear;
+    //accelerate.speed_control = vel_linear * pressure_;
+    accelerate.speed_control=vel_linear;
     accelerate.acc = 0.1;
     steering.steering_angle_cmd = vel_angular;
     steering.steering_speed_cmd =0.1;
