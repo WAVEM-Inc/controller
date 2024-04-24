@@ -463,9 +463,14 @@ void WmMotionController::slam_mode_callback(const can_msgs::msg::Mode::SharedPtr
 
 void WmMotionController::break_callback(const route_msgs::msg::DriveBreak::SharedPtr pressure) {
     pressure_ = (100 - pressure->break_pressure) * 0.01;
-    if (pressure == 0) {
+    if (pressure_ == 0) {
         can_msgs::msg::AdControlBrake brake;
         brake.brakepressure_cmd = 1;
+        pub_brake_->publish(brake);
+    }
+    if(pressure->break_pressure==0){
+        can_msgs::msg::AdControlBrake brake;
+        brake.brakepressure_cmd =0;
         pub_brake_->publish(brake);
     }
 }
