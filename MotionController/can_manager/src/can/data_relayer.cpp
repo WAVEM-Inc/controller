@@ -325,6 +325,10 @@ void DataRelayer::Handler_DBS_Status2(VCU::DBS_Status2 msg) {
 void DataRelayer::run_flag() {
      canlib_->RunControlFlag(0, device_type[CAN0]);
 }
+void DataRelayer::run_off_flag() {
+    canlib_->RunControlFlag(1, device_type[CAN0]);
+}
+
 
 void DataRelayer::Handler_VCU_Vehicle_Status_2(VCU::VCU_Vehicle_Status_2 msg) {
     vehicleStatus2Callback(static_cast<float>(msg.Vehicle_Brake_Pressure)*RESOLUTION_VEHICLE_BRAKE_PRESSURE, (static_cast<float>(msg.Vehicle_Speed)*RESOLUTION_VEHICLE_SPEED)-OFFSET_VEHICLE_STATUS_SPEED);

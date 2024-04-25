@@ -14,6 +14,7 @@
 #define TP_NAME_BMS "/sensor/battery/state"
 #define TP_NAME_VELOCITY "/drive/velocity/state"
 #define TP_NAME_EMERGENCY "/drive/can/emergency"
+#define TP_NAME_INIT "/drive/can/init"
 
 #include<iostream>
 class Constants {
@@ -26,7 +27,8 @@ public:
             tp_name_state_rpm_(TP_NAME_TORQUE_FEEDBACK),
             tp_name_state_bms_(TP_NAME_BMS),
             tp_name_state_velocity_(TP_NAME_VELOCITY),
-            tp_name_emergency_(TP_NAME_EMERGENCY)
+            tp_name_emergency_(TP_NAME_EMERGENCY),
+            tp_name_init_(TP_NAME_INIT)
     {}
     const std::string tp_name_control_body_;
     const std::string tp_name_control_accelerate_;
@@ -36,6 +38,7 @@ public:
     const std::string tp_name_state_bms_;
     const std::string tp_name_state_velocity_;
     const std::string tp_name_emergency_;
+    const std::string tp_name_init_;
 };
 
 

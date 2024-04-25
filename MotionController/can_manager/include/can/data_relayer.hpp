@@ -128,6 +128,7 @@ class DataRelayer {
     void Run();
     void SendTest();
     void run_flag();
+    void run_off_flag();
   private:
     void SetmsgMap(int svcid,int msgid,string device);
 

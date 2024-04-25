@@ -26,6 +26,7 @@
 #include "robot_status_msgs/msg/velocity_status.hpp"
 #include "can_msgs/msg/emergency.hpp"
 #include "sensor_msgs/msg/battery_state.hpp"
+#include "can_msgs/msg/init.hpp"
 
 static volatile int state = 1;
 
@@ -61,12 +62,14 @@ private :
     rclcpp::Subscription<can_msgs::msg::AdControlBrake>::SharedPtr sub_brake_;
     rclcpp::Subscription<can_msgs::msg::AdControlSteering>::SharedPtr sub_steering_;
     rclcpp::Subscription<can_msgs::msg::Emergency>::SharedPtr sub_emergency_;
+    rclcpp::Subscription<can_msgs::msg::Init>::SharedPtr sub_can_init_;
 
     rclcpp::CallbackGroup::SharedPtr cbg_body;
     rclcpp::CallbackGroup::SharedPtr cbg_accelerate;
     rclcpp::CallbackGroup::SharedPtr cbg_brake;
     rclcpp::CallbackGroup::SharedPtr cbg_steering;
     rclcpp::CallbackGroup::SharedPtr cbg_emergency;
+    rclcpp::CallbackGroup::SharedPtr cbg_init_;
     rclcpp::CallbackGroup::SharedPtr cbg_rpm;
     rclcpp::CallbackGroup::SharedPtr cbg_bms;
     rclcpp::CallbackGroup::SharedPtr cbg_velocity;
@@ -93,6 +96,7 @@ private :
 
     void tp_control_steering(can_msgs::msg::AdControlSteering::SharedPtr control_steering);
     void tp_emergency(can_msgs::msg::Emergency::SharedPtr stop);
+    void tp_init_callback(can_msgs::msg::Init::SharedPtr init);
 
 public :
 

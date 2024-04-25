@@ -5,8 +5,8 @@
 int main(int argc,char** argv){
     rclcpp::init(argc,argv);
     std::shared_ptr<CanMGR> manager = std::make_shared<CanMGR>();
+    sleep(1);
     std::thread thread_run(&CanMGR::fn_can_run,manager);
-
     rclcpp::spin(manager);
     thread_run.join();
     return 0;

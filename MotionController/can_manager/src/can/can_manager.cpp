@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include<signal.h>
 #include "can_manager/debug.hpp"
-
+#include "can/can_define.hpp"
 /**
  * @brief Construct a new Can M G R:: Can M G R object
  * @author changunAn(changun516@wavem.net)
@@ -18,17 +18,19 @@ CanMGR::CanMGR() : Node("CanMotionController") {
     cbg_brake = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
     cbg_steering = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
     cbg_emergency = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+    cbg_init_ = create_callback_group(rclcpp::CallbackGroupType::Reentrant);
     rclcpp::SubscriptionOptions options_body;
     rclcpp::SubscriptionOptions options_accelerate;
     rclcpp::SubscriptionOptions options_brake;
     rclcpp::SubscriptionOptions options_steering;
     rclcpp::SubscriptionOptions options_emergency;
+    rclcpp::SubscriptionOptions options_init;
     options_body.callback_group = cbg_body;
     options_accelerate.callback_group = cbg_accelerate;
     options_brake.callback_group = cbg_brake;
     options_steering.callback_group = cbg_steering;
     options_emergency.callback_group = cbg_emergency;
-
+    options_init.callback_group = cbg_init_;
     cbg_rpm = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
     cbg_bms = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
     cbg_velocity = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
@@ -62,11 +64,17 @@ CanMGR::CanMGR() : Node("CanMotionController") {
                                                                                           this,
                                                                                           std::placeholders::_1),
                                                                                 options_steering);
+     sub_can_init_ = this->create_subscription<can_msgs::msg::Init>(constants_->tp_name_init_,
+                                                                   rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
+                                                                   std::bind(&CanMGR::tp_init_callback, this,
+                                                                             std::placeholders::_1),
+                                                                   options_init);
     sub_emergency_ = this->create_subscription<can_msgs::msg::Emergency>(constants_->tp_name_emergency_,
                                                                          rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
                                                                          std::bind(&CanMGR::tp_emergency, this,
                                                                                    std::placeholders::_1),
                                                                          options_emergency);
+
     pub_rpm_ = this->create_publisher<can_msgs::msg::TorqueFeedback>(constants_->tp_name_state_rpm_,
                                                                      rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
                                                                      options_rpm);
@@ -77,10 +85,9 @@ CanMGR::CanMGR() : Node("CanMotionController") {
                                                                                    rclcpp::QoS(
                                                                                            rclcpp::SystemDefaultsQoS()),
                                                                                    options_velocity);
-
     cur_speed_ = 0;
     cur_speed_acc_ = 0;
-    fn_can_init();
+    //fn_can_init();
 }
 
 /**
@@ -89,15 +96,15 @@ CanMGR::CanMGR() : Node("CanMotionController") {
  */
 void CanMGR::fn_can_run() {
     std::cout << "***can run start!!!***" << std::endl;
+    fn_can_init();
     while (state) {
-        signal(SIGINT, SIG_DFL);
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
         obj_.ControlVel(cur_speed_acc_, cur_speed_);
         obj_.run_flag();
         if (check_emergency_) {
             obj_.static_break(UGV::BREAK::STOP);
         }
-
+        signal(SIGINT, SIG_DFL);
+        std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
     std::cout << "***can end!!!***" << std::endl;
 }
@@ -286,6 +293,15 @@ void CanMGR::tp_emergency(can_msgs::msg::Emergency::SharedPtr stop) {
         check_emergency_ = true;
     } else {
         check_emergency_ = false;
+    }
+}
+
+void CanMGR::tp_init_callback(can_msgs::msg::Init::SharedPtr init) {
+    if(!init->can_sign_tran_state){
+        obj_.run_off_flag();
+    }
+    else {
+        obj_.run_flag();
     }
 }
 
