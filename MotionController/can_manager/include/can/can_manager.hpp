@@ -25,6 +25,7 @@
 #include "can_msgs/msg/vcu_mcu_request.hpp"
 #include "robot_status_msgs/msg/velocity_status.hpp"
 #include "can_msgs/msg/emergency.hpp"
+#include "sensor_msgs/msg/battery_state.hpp"
 
 static volatile int state = 1;
 
@@ -62,9 +63,16 @@ private :
     rclcpp::Subscription<can_msgs::msg::Emergency>::SharedPtr sub_emergency_;
 
     rclcpp::CallbackGroup::SharedPtr cbg_body;
+    rclcpp::CallbackGroup::SharedPtr cbg_accelerate;
+    rclcpp::CallbackGroup::SharedPtr cbg_brake;
+    rclcpp::CallbackGroup::SharedPtr cbg_steering;
+    rclcpp::CallbackGroup::SharedPtr cbg_emergency;
+    rclcpp::CallbackGroup::SharedPtr cbg_rpm;
+    rclcpp::CallbackGroup::SharedPtr cbg_bms;
+    rclcpp::CallbackGroup::SharedPtr cbg_velocity;
 
     rclcpp::Publisher<can_msgs::msg::TorqueFeedback>::SharedPtr pub_rpm_;
-    rclcpp::Publisher<can_msgs::msg::Bms>::SharedPtr pub_bms_;
+    rclcpp::Publisher<sensor_msgs::msg::BatteryState>::SharedPtr pub_bms_;
     rclcpp::Publisher<robot_status_msgs::msg::VelocityStatus>::SharedPtr pub_velocity_;
 
     int fn_can_init(); // can callback function register

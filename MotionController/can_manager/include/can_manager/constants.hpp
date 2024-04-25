@@ -11,7 +11,7 @@
 
 //
 #define TP_NAME_TORQUE_FEEDBACK "/drive/can/vcu/torque_feedback"
-#define TP_NAME_BMS "/drive/can/vcu/bms_a0h"
+#define TP_NAME_BMS "/sensor/battery/state"
 #define TP_NAME_VELOCITY "/drive/velocity/state"
 #define TP_NAME_EMERGENCY "/drive/can/emergency"
 

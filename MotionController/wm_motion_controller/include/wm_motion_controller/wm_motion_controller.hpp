@@ -15,6 +15,7 @@
 #include "can_msgs/msg/ad_control_body.hpp"
 #include "can_msgs/msg/ad_control_brake.hpp"
 #include "can_msgs/msg/ad_control_steering.hpp"
+#include "can_msgs/msg/torque_feedback.hpp"
 
 #include "can_msgs/msg/mode.hpp"
 #include "route_msgs/msg/drive_break.hpp"
@@ -58,7 +59,7 @@ private :
     rclcpp::CallbackGroup::SharedPtr cbg_accelerate_;
     rclcpp::CallbackGroup::SharedPtr cbg_brake_;
     rclcpp::CallbackGroup::SharedPtr cbg_steering_;
-
+    rclcpp::CallbackGroup::SharedPtr cbg_rpm_;
     // publish list
     rclcpp::Publisher<can_msgs::msg::AdControlBody>::SharedPtr pub_body_;
     rclcpp::Publisher<can_msgs::msg::AdControlAccelerate>::SharedPtr pub_accelerate_;
@@ -73,7 +74,7 @@ private :
     rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr sub_imu_;
     rclcpp::Subscription<can_msgs::msg::Mode>::SharedPtr sub_mode_;
     rclcpp::Subscription<route_msgs::msg::DriveBreak>::SharedPtr sub_break_;
-
+    rclcpp::Subscription<can_msgs::msg::TorqueFeedback>::SharedPtr sub_rpm_;
 
     std::unique_ptr<tf2_ros::TransformBroadcaster> broadcaster;
 
@@ -83,7 +84,7 @@ private :
     void imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu);
     void slam_mode_callback(const can_msgs::msg::Mode::SharedPtr mode);
     void break_callback(const route_msgs::msg::DriveBreak::SharedPtr pressure);
-
+    void rpm_callback(const can_msgs::msg::TorqueFeedback::SharedPtr rpm);
 
     // ugv calculate
     std::shared_ptr<ENTITY::UGV> prev_ugv_;
@@ -111,6 +112,7 @@ private :
     double imu_th_;
     double prev_imu_th_;
     float correction_;
+    float odometry_offset_;
     bool control_mode_;
     double pressure_;
     geometry_msgs::msg::Quaternion odom_quat_;
@@ -126,6 +128,7 @@ private :
     void cmd_vel_run(float vel_linear, float vel_angular);
     //
     float cmd_angel_convert(const float& ori_angel,const float& ori_linaer);
+
 public :
     WmMotionController();
     virtual ~WmMotionController();

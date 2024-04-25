@@ -14,11 +14,13 @@ namespace CONVERTER{
         private :
             const int rpm_standard_;
             std::unique_ptr<ENTITY::UGV> target_ugv_;
+            float odometry_offset_;
             long long calculate_time_difference(const std::chrono::system_clock::time_point& startTime, const std::chrono::system_clock::time_point& endTime);
         public : 
             UGVConverter();
             float rpm_to_speed();
             float rpm_to_distance(ENTITY::UGV prev_ugv, ENTITY::UGV cur_ugv);
+            void set_odometry_offset(float offset);
 
 
     };

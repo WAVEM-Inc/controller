@@ -11,6 +11,7 @@ find_package(rclcpp REQUIRED)
 find_package(can_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(robot_status_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
 include_directories(
         include
@@ -23,6 +24,7 @@ set(dependencies
         #route_msgs
         std_msgs
         robot_status_msgs
+        sensor_msgs
 )
 
 set(source_list
@@ -45,6 +47,7 @@ set(source_list
         src/can/data_relayer.cpp
         src/can/lib.cpp
         include/can_manager/constants.hpp
+        include/can_manager/debug.hpp
 )
 set(node_name
         can_manager_node
