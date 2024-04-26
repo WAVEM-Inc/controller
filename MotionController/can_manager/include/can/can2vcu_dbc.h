@@ -110,6 +110,7 @@ namespace VCU {
         unsigned short Vehicle_Status_2_MsgCntr:4;
     };
 
+
 }
 #pragma pack(pop)
 #endif //WM_MOTION_CONTROLLER_CAN2VCU_DBC_H

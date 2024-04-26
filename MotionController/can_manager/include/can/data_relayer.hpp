@@ -11,6 +11,7 @@
 #include "can/can2vcu_dbc.h"
 #include "can/df_ugv.hpp"
 
+#include "can/can_define.hpp"
 using namespace std;
 
 class CanAdaptor;
@@ -47,6 +48,10 @@ class DataRelayer {
     map<int,int> magMap_; // code , MSG_ID
     map<int,string> channelMap_; // code , channel
 
+    //
+    ACC_GEAR prev_gear_;
+    int gear_trans_check_;
+    //
   public:
     DataRelayer(); 
     virtual ~DataRelayer();
@@ -134,6 +139,7 @@ class DataRelayer {
 
     void SendMessageControlSteering(float speed,float steering_angle_cmd);
     void SendMessageControlAccelerate(float acc, float vel);
+    void SendMessageControlAccelerate(float acc, float vel,unsigned char gear);
     void SendMessageControlHardware(bool fog_light,
                                     bool low_beam,
                                     bool reversing_light,
@@ -143,7 +149,7 @@ class DataRelayer {
                                     bool high_beam,
                                     bool right_turn_light,
                                     bool left_turn_light);
-  
+
     //void Handler_VCU_EPS_Control_Request (VCU_EPS_Control_Request msg);
     void Handler_DBS_Status2 (VCU::DBS_Status2 msg);
     void Handler_MCU_Torque_Feedback (VCU::MCU_Torque_Feedback msg);

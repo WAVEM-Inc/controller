@@ -4,11 +4,10 @@
 #include "can/can_adaptor.hpp"
 #include "can/data_relayer.hpp"
 
-#include "can/can_define.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rcutils/logging_macros.h"
 
-DataRelayer::DataRelayer() {
+DataRelayer::DataRelayer() :   prev_gear_(ACC_GEAR::NEUTRAL),gear_trans_check_(0){
     system_endian_ = is_big_endian();
 }
 
@@ -120,13 +119,14 @@ void DataRelayer::SendMessageControlSteering(float speed, float steering_angle_c
 */
 void DataRelayer::SendMessageControlAccelerate(float acc, float vel) {
     std::cout<<"[temp]" << acc <<std::endl;
+
     unsigned char gear;
     if (vel > 0) {
         gear = FORWARD;
     } else if (vel < 0) {
         gear = REVERSE;
     } else {
-        gear = PARKING;
+        gear = NEUTRAL;
         //gear = NEUTRAL;
     }
     //HeartBeat();
@@ -141,7 +141,19 @@ void DataRelayer::SendMessageControlAccelerate(float acc, float vel) {
     canlib_->PostCanMessage<AD::AD_Control_Accelerate>(dat_1, AD_CONTROL_ACCELERATE, device_type[CAN0]);
 };
 
-
+void DataRelayer::SendMessageControlAccelerate(float acc, float vel, unsigned char gear) {
+    std::cout<<"[temp]" << acc <<std::endl;
+    //HeartBeat();
+    AD::AD_Control_Accelerate dat_1;
+    memset(&dat_1, 0x00, CAN_MAX_DLEN);
+    dat_1.AD_Accelerate_Valid = 1;
+    dat_1.AD_Acc = static_cast<unsigned short>(acc)+ static_cast<unsigned short>(500);
+    dat_1.AD_Accelerate_Work_Mode = 1;
+    dat_1.AD_Accelerate_Gear = gear;
+    dat_1.AD_Speed_Control = [](float v) { return v * CNV_SPEED_FACTOR * RESOLUTION_SPEED_CTRL; }(std::fabs(vel));
+    dat_1.AD_Torque_Control = 0;
+    canlib_->PostCanMessage<AD::AD_Control_Accelerate>(dat_1, AD_CONTROL_ACCELERATE, device_type[CAN0]);
+};
 /**
 * @brief send API(ControlHardware)
 * @details

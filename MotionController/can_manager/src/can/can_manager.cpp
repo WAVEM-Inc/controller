@@ -98,7 +98,8 @@ void CanMGR::fn_can_run() {
     std::cout << "***can run start!!!***" << std::endl;
     fn_can_init();
     while (state) {
-        obj_.ControlVel(cur_speed_acc_, cur_speed_);
+        obj_.
+        ControlVel(cur_speed_acc_, cur_speed_);
         obj_.run_flag();
         if (check_emergency_) {
             obj_.static_break(UGV::BREAK::STOP);

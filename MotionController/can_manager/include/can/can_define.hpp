@@ -60,5 +60,6 @@ static const char *device_type[] =
         { "can0"};
 #define CAN_ALIVE_CHECKTIME 2 // second
 #define CAN_RECV_RETRY_TIME 2 // second
+#define GEAR_TRANS 3000
 
 #endif
