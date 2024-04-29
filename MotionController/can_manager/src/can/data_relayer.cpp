@@ -329,6 +329,17 @@ void DataRelayer::static_break(UGV::BREAK break_status) {
     //dat_2.iecu_dbs_valid = 1;
     canlib_->PostCanMessage<AD::AD_Control_Brake>(dat_2, AD_CONTROL_BRAKE, device_type[CAN0]);
 }
+void DataRelayer::static_break(int brake_pressure_cmd) {
+    rclcpp::Logger logger = rclcpp::get_logger("DataRelayer");
+    RCUTILS_LOG_INFO_NAMED(logger.get_name(),"[static_break]-brake_pressure_cmd %d",brake_pressure_cmd);
+    AD::AD_Control_Brake dat_2;
+    memset(&dat_2, 0x00, CAN_MAX_DLEN);
+    dat_2.AD_DBS_Valid = 1;
+    dat_2.AD_BrakePressure_Cmd =brake_pressure_cmd;
+    //dat_2.iecu_dbs_valid = 1;
+    canlib_->PostCanMessage<AD::AD_Control_Brake>(dat_2, AD_CONTROL_BRAKE, device_type[CAN0]);
+}
+
 
 void DataRelayer::Handler_DBS_Status2(VCU::DBS_Status2 msg) {
     faultCallback(msg.DBS_WarringCode-OFFSET_DBS_WARRINGCODE, msg.DBS_Fault_Code);

@@ -462,10 +462,11 @@ void WmMotionController::slam_mode_callback(const can_msgs::msg::Mode::SharedPtr
 }
 
 void WmMotionController::break_callback(const route_msgs::msg::DriveBreak::SharedPtr pressure) {
-    pressure_ = (100 - pressure->break_pressure) * 0.01;
+    /*  기존 cmd_vel에 감속을 시도하려고 한 방법
+    pressure_ = (100 - pressure->break_pressure)*0.01;
     if (pressure_ == 0) {
         can_msgs::msg::AdControlBrake brake;
-        brake.brakepressure_cmd = 1;
+        brake.brakepressure_cmd = 100;
         pub_brake_->publish(brake);
     }
     if(pressure->break_pressure==0){
@@ -473,6 +474,8 @@ void WmMotionController::break_callback(const route_msgs::msg::DriveBreak::Share
         brake.brakepressure_cmd =0;
         pub_brake_->publish(brake);
     }
+     */
+    can_msgs::msg::AdControlBrake brake;
 }
 
 void WmMotionController::rpm_callback(const can_msgs::msg::TorqueFeedback::SharedPtr rpm) {

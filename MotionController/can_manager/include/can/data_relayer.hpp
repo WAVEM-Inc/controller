@@ -73,6 +73,7 @@ class DataRelayer {
 
     //void static_break(bool flag);
     void static_break(UGV::BREAK break_status);
+    void static_break(int brake_pressure_cmd);
 
     /**
     * @brief Register a RPM callback function

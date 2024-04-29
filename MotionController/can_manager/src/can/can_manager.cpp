@@ -274,14 +274,7 @@ void CanMGR::tp_control_accelerate(can_msgs::msg::AdControlAccelerate::SharedPtr
 void CanMGR::tp_control_brake(can_msgs::msg::AdControlBrake::SharedPtr control_brake) {
     RCLCPP_INFO(this->get_logger(), "[brake] pressure %d\n",
                 control_brake->brakepressure_cmd);
-    //obj_.ControlVel(cur_speed_acc_,cur_speed_);
-    if (control_brake->brakepressure_cmd == 0) {
-        obj_.static_break(UGV::BREAK::GO);
-    } else if (control_brake->brakepressure_cmd == 1) {
-        obj_.static_break(UGV::BREAK::STOP);
-    } else {
-        obj_.static_break(UGV::BREAK::LED);
-    }
+    obj_.static_break(control_brake->brakepressure_cmd);
 }
 
 void CanMGR::tp_control_steering(can_msgs::msg::AdControlSteering::SharedPtr control_steering) {
