@@ -3,6 +3,7 @@
 #include<signal.h>
 #include "can_manager/debug.hpp"
 #include "can/can_define.hpp"
+#include "code/kec_code_defie.hpp"
 /**
  * @brief Construct a new Can M G R:: Can M G R object
  * @author changunAn(changun516@wavem.net)
@@ -37,9 +38,12 @@ CanMGR::CanMGR() : Node("CanMotionController") {
     rclcpp::PublisherOptions options_rpm;
     rclcpp::PublisherOptions options_bms;
     rclcpp::PublisherOptions options_velocity;
+    rclcpp::PublisherOptions options_bms_error_;
+
     options_rpm.callback_group = cbg_rpm;
     options_bms.callback_group = cbg_bms;
     options_velocity.callback_group = cbg_velocity;
+    options_bms_error_.callback_group = cbg_bms_error_;
 
     sub_body_ = this->create_subscription<can_msgs::msg::AdControlBody>(constants_->tp_name_control_body_,
                                                                         1,
@@ -85,6 +89,9 @@ CanMGR::CanMGR() : Node("CanMotionController") {
                                                                                    rclcpp::QoS(
                                                                                            rclcpp::SystemDefaultsQoS()),
                                                                                    options_velocity);
+    pub_bms_error_= this->create_publisher<std_msgs::msg::String>(constants_->tp_name_error_,
+                                                                  rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
+                                                                  options_bms_error_);
     cur_speed_ = 0;
     cur_speed_acc_ = 0;
     //fn_can_init();
@@ -98,11 +105,10 @@ void CanMGR::fn_can_run() {
     std::cout << "***can run start!!!***" << std::endl;
     fn_can_init();
     while (state) {
-        obj_.
-        ControlVel(cur_speed_acc_, cur_speed_);
+        obj_.ControlVel(cur_speed_acc_, cur_speed_);
         obj_.run_flag();
         if (check_emergency_) {
-            obj_.static_break(UGV::BREAK::STOP);
+            obj_.static_break(100);
         }
         signal(SIGINT, SIG_DFL);
         std::this_thread::sleep_for(std::chrono::milliseconds(20));
@@ -173,17 +179,25 @@ void CanMGR::rpmCallback(int mcu_shift, int mcu_speed, int mcu_torque
     pub_rpm_->publish(temp_rpm);
 }
 
-void CanMGR::bmsCallback(int sys_sts, int soc) {
+void CanMGR::bmsCallback(int bms_charge_stscc ,int soc, int sys_sts) {
 #if DEBUG_MODE == 1
-    RCLCPP_INFO(this->get_logger(), "[bmsCallback] sys_sts %d, soc %d \n",
+    RCLCPP_INFO(this->get_logger(), "[bmsCallback] sys_sts %d, soc %d stscc %d\n",
                 sys_sts,
-                soc);
+                soc,
+                bms_charge_stscc);
 #endif
     sensor_msgs::msg::BatteryState temp_battery;
     temp_battery.voltage = soc;
-    temp_battery.present = sys_sts;
-
+    temp_battery.present = !bms_charge_stscc;
     pub_bms_->publish(temp_battery);
+    if(soc<=10){
+        obj_.ControlHardware(false,false,false,false,false,true,false,false,false);
+    }
+    if(sys_sts!=0){
+        std_msgs::msg::String error;
+        error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kBms));
+        pub_bms_error_->publish(error);
+    }
 }
 
 void CanMGR::vehicleErrorCallback(int error_code, int low_voltage) {

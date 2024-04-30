@@ -476,6 +476,8 @@ void WmMotionController::break_callback(const route_msgs::msg::DriveBreak::Share
     }
      */
     can_msgs::msg::AdControlBrake brake;
+    brake.brakepressure_cmd=pressure->break_pressure;
+    pub_brake_->publish(brake);
 }
 
 void WmMotionController::rpm_callback(const can_msgs::msg::TorqueFeedback::SharedPtr rpm) {

@@ -234,7 +234,9 @@ void DataRelayer::Handler_MCU_Torque_Feedback(VCU::MCU_Torque_Feedback msg) {
     rpmCallback((int) msg.MCU_Shift, (int) msg.MCU_SPEED, (int) msg.MCU_TORQUE);
 }
 void DataRelayer::Handler_BMS_Status(VCU::BMS_A0h msg) {
-    bmsCallback(static_cast<int>(msg.BMS_Charge_StsCc),static_cast<int>(msg.BMS_HVBatSOC)*RESOLUTION_BMS_SOC);
+    bmsCallback(static_cast<int>(msg.BMS_Charge_StsCc),
+                static_cast<int>(msg.BMS_HVBatSOC)*RESOLUTION_BMS_SOC,
+                static_cast<int>(msg.BMS_Sys_Sts));
 }
 void DataRelayer::Handler_VEHICLE_ERROR_Status(VCU::VCU_Vehicle_ErrorCode msg) {
     vehicleErrorCallback(static_cast<int>(msg.Error_Code), static_cast<int>(msg.Low_voltage));
@@ -313,7 +315,7 @@ void DataRelayer::SendTest() {
     canlib_->PostCanMessage<AD::AD_Control_Body>(dat_1, AD_CONTROL_BODY, device_type[CAN0]);
 }
 
-void DataRelayer::static_break(UGV::BREAK break_status) {
+/*void DataRelayer::static_break(UGV::BREAK break_status) {
     std::cout<<"[test]" <<std::endl;
     AD::AD_Control_Brake dat_2;
     memset(&dat_2, 0x00, CAN_MAX_DLEN);
@@ -328,7 +330,7 @@ void DataRelayer::static_break(UGV::BREAK break_status) {
     }
     //dat_2.iecu_dbs_valid = 1;
     canlib_->PostCanMessage<AD::AD_Control_Brake>(dat_2, AD_CONTROL_BRAKE, device_type[CAN0]);
-}
+}*/
 void DataRelayer::static_break(int brake_pressure_cmd) {
     rclcpp::Logger logger = rclcpp::get_logger("DataRelayer");
     RCUTILS_LOG_INFO_NAMED(logger.get_name(),"[static_break]-brake_pressure_cmd %d",brake_pressure_cmd);

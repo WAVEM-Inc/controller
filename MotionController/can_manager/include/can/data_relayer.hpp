@@ -29,7 +29,7 @@ class DataRelayer {
     //void(*fpoint)(int,int,int);
     typedef std::function<void(int,int)> func_fault_callback; // Callback function pointer variable definition
     typedef std::function<void(int,int,int)> func_rpm_callback; // Callback function pointer variable definition
-    typedef std::function<void(int,int)> func_bms_callback;
+    typedef std::function<void(int,int,int)> func_bms_callback;
     typedef std::function<void(int,int)> func_vehicle_error_callback;
     typedef std::function<void(int,float)> func_vehicle_status2;
 
@@ -72,7 +72,7 @@ class DataRelayer {
     void StopPostMessage(unsigned int id);
 
     //void static_break(bool flag);
-    void static_break(UGV::BREAK break_status);
+    //void static_break(UGV::BREAK break_status);
     void static_break(int brake_pressure_cmd);
 
     /**
@@ -107,11 +107,12 @@ class DataRelayer {
     }
 
     template<typename T>
-    void RegistBmsCallback(T *pClassType,void(T::*pfunc)(int,int)){
+    void RegistBmsCallback(T *pClassType,void(T::*pfunc)(int,int,int)){
         bmsCallback = move(bind(pfunc,
                                 pClassType,
                                 placeholders::_1,
-                                placeholders::_2
+                                placeholders::_2,
+                                placeholders::_3
                 ));
     }
     template<typename T>

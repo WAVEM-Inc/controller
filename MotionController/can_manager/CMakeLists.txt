@@ -48,6 +48,7 @@ set(source_list
         src/can/lib.cpp
         include/can_manager/constants.hpp
         include/can_manager/debug.hpp
+        include/code/kec_code_defie.hpp
 )
 set(node_name
         can_manager_node

@@ -27,6 +27,7 @@
 #include "can_msgs/msg/emergency.hpp"
 #include "sensor_msgs/msg/battery_state.hpp"
 #include "can_msgs/msg/init.hpp"
+#include "std_msgs/msg/string.hpp"
 
 static volatile int state = 1;
 
@@ -73,17 +74,19 @@ private :
     rclcpp::CallbackGroup::SharedPtr cbg_rpm;
     rclcpp::CallbackGroup::SharedPtr cbg_bms;
     rclcpp::CallbackGroup::SharedPtr cbg_velocity;
+    rclcpp::CallbackGroup::SharedPtr cbg_bms_error_;
 
     rclcpp::Publisher<can_msgs::msg::TorqueFeedback>::SharedPtr pub_rpm_;
     rclcpp::Publisher<sensor_msgs::msg::BatteryState>::SharedPtr pub_bms_;
     rclcpp::Publisher<robot_status_msgs::msg::VelocityStatus>::SharedPtr pub_velocity_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_bms_error_;
 
     int fn_can_init(); // can callback function register
     void faultCallback(int can_falut, int dbs_fault);
 
     void rpmCallback(int mcu_shift, int mcu_speed, int mcu_torque);
 
-    void bmsCallback(int sys_sts,int soc);
+    void bmsCallback(int bms_charge_stscc ,int soc, int sys_sts);
     void vehicleErrorCallback(int error_code, int low_voltage);
     void vehicleStatus2Callback(int brake_press, float speed);
     void log(std::string call_name);

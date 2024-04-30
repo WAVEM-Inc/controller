@@ -16,6 +16,8 @@
 #define TP_NAME_EMERGENCY "/drive/can/emergency"
 #define TP_NAME_INIT "/drive/can/init"
 
+#define TP_NAME_ERROR "/rms/ktp/data/notify/error/status"
+
 #include<iostream>
 class Constants {
 public:
@@ -28,7 +30,8 @@ public:
             tp_name_state_bms_(TP_NAME_BMS),
             tp_name_state_velocity_(TP_NAME_VELOCITY),
             tp_name_emergency_(TP_NAME_EMERGENCY),
-            tp_name_init_(TP_NAME_INIT)
+            tp_name_init_(TP_NAME_INIT),
+            tp_name_error_(TP_NAME_ERROR)
     {}
     const std::string tp_name_control_body_;
     const std::string tp_name_control_accelerate_;
@@ -39,6 +42,7 @@ public:
     const std::string tp_name_state_velocity_;
     const std::string tp_name_emergency_;
     const std::string tp_name_init_;
+    const std::string tp_name_error_;
 };
 
 
