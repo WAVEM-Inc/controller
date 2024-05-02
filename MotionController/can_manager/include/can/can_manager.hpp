@@ -82,7 +82,7 @@ private :
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_bms_error_;
 
     int fn_can_init(); // can callback function register
-    void faultCallback(int can_falut, int dbs_fault);
+    void faultCallback(int can_falut, unsigned long long dbs_fault);
 
     void rpmCallback(int mcu_shift, int mcu_speed, int mcu_torque);
 

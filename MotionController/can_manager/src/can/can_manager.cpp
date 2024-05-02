@@ -148,12 +148,58 @@ int CanMGR::fn_can_init() {
  * @author changunAn(changun516@wavem.net)
  * @date 23.04.07
  */
-void CanMGR::faultCallback(int can_falut, int dbs_fault) {
+void CanMGR::faultCallback(int can_falut, unsigned long long dbs_fault) {
 #if DEBUG_MODE == 1
     RCLCPP_INFO(this->get_logger(), "[faultCallback] can_falut %d, dbs_fault %d \n",
                 can_falut,
                 dbs_fault);
 #endif
+    switch (dbs_fault) {
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kOverLoadProtection):
+            std::cout << "Overload protection" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kOverTemperatureProtection):
+            std::cout << "Over-temperature protection" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kOverCurrentProtection):
+            std::cout << "Overcurrent protection" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kPowerSupplyUndervoltageFault):
+            std::cout << "Power supply undervoltage fault" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kPowerOvervoltageFailure):
+            std::cout << "Power overvoltage failure" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kInsufficientPressure):
+            std::cout << "Insufficient pressure" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kMotorFailure):
+            std::cout << "Motor failure" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kCommunicationFailure):
+            std::cout << "Communication failure" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kCurrentSamplingFailure):
+            std::cout << "Current sampling failure" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kDriveFailure):
+            std::cout << "Drive failure" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kMagneticCompilationFailure):
+            std::cout << "Magnetic compilation failure" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kPressureSensorFailure):
+            std::cout << "Pressure sensor failure" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kPedalPositionSensorFailure):
+            std::cout << "Pedal position sensor failure" << std::endl;
+            break;
+        case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kOtherFailures):
+            std::cout << "Other failures" << std::endl;
+            break;
+        default:
+            std::cout << "Unknown fault code" << std::endl;
+    }
 }
 
 
@@ -195,7 +241,7 @@ void CanMGR::bmsCallback(int bms_charge_stscc ,int soc, int sys_sts) {
     }
     if(sys_sts!=0){
         std_msgs::msg::String error;
-        error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kBms));
+        error.data=std::to_string(static_cast<int>(KEC::BMS_Sys_Sts::kBms));
         pub_bms_error_->publish(error);
     }
 }
@@ -274,13 +320,15 @@ void CanMGR::tp_control_body_callback(can_msgs::msg::AdControlBody::SharedPtr co
 }
 
 void CanMGR::tp_control_accelerate(can_msgs::msg::AdControlAccelerate::SharedPtr control_accelerate) {
-    double safe_speed = 0.6;
+/*    double safe_speed = 0.6;
     if(control_accelerate->speed_control>safe_speed){
         cur_speed_=safe_speed;
     } // 추후 제거 필요 Test 시 사고 방지
     else {
-        cur_speed_ = static_cast<float>(control_accelerate->speed_control);
     }
+*/
+    cur_speed_ = static_cast<float>(control_accelerate->speed_control);
+
     cur_speed_acc_ = static_cast<float>(control_accelerate->acc);
     //obj_.ControlVel(cur_speed_acc_,cur_speed_);
 }

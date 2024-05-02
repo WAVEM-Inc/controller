@@ -4,7 +4,8 @@
 
 #include "entity/df_ugv.hpp"
 #include "tf2/LinearMath/Quaternion.h"
-
+#define _USE_MATH_DEFINES
+#include <cmath>
 
 #include "common/common.hpp"
 
@@ -225,7 +226,7 @@ void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu
     qua_.QuaternionToEulerAngles();
 
     //qua_.EulerToQuaternion(qua_.getterYaw() + (180 + correction_) * M_PI / 180, -qua_.getterRoll(), qua_.getterPitch());
-    qua_.EulerToQuaternion(qua_.getterYaw() + (180 + correction_) * M_PI / 180, 0,0);
+    qua_.EulerToQuaternion(qua_.getterYaw(), 0,0);
     qua_.setterX(qua_.getterEulerX());
     qua_.setterY(qua_.getterEulerY());
     qua_.setterW(qua_.getterEulerW());
@@ -349,7 +350,8 @@ void WmMotionController::pub_odometry() {
     } else if (rtt_value.pose.orientation.x/*-90*M_PI/180*/< -M_PI) {
         rtt_value.pose.orientation.x += 2 * M_PI;
     }
-    double eular = (rtt_value.pose.orientation.x) * 180 / M_PI;
+    double eular = ((rtt_value.pose.orientation.x) * 180 / M_PI) ;
+    eular += correction_;
     if(eular<0){
         rtt_value.pose.orientation.y =360+eular;
     }

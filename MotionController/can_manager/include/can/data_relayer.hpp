@@ -27,7 +27,7 @@ class DataRelayer {
 
   private:
     //void(*fpoint)(int,int,int);
-    typedef std::function<void(int,int)> func_fault_callback; // Callback function pointer variable definition
+    typedef std::function<void(int,unsigned long long)> func_fault_callback; // Callback function pointer variable definition
     typedef std::function<void(int,int,int)> func_rpm_callback; // Callback function pointer variable definition
     typedef std::function<void(int,int,int)> func_bms_callback;
     typedef std::function<void(int,int)> func_vehicle_error_callback;
@@ -99,7 +99,7 @@ class DataRelayer {
     * @exception
     */
     template<typename T>
-    void RegistFaultCallback(T *pClassType,void(T::*pfunc)(int,int)){
+    void RegistFaultCallback(T *pClassType,void(T::*pfunc)(int,unsigned long long)){
       faultCallback = move(bind(pfunc, pClassType
         , placeholders::_1
         , placeholders::_2
