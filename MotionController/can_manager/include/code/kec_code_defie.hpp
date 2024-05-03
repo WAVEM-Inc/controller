@@ -5,7 +5,7 @@
 #ifndef CAN_MANAGER_KEC_CODE_DEFIE_HPP
 #define CAN_MANAGER_KEC_CODE_DEFIE_HPP
 namespace KEC{
-    enum class BMS_Sys_Sts{
+    enum class ErrorCode{
         kCan = 100, // can 통신 에러
         kMotor = 150, // 모터 고장
         kOverload = 160, // 과부하

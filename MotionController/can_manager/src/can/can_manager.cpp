@@ -154,36 +154,50 @@ void CanMGR::faultCallback(int can_falut, unsigned long long dbs_fault) {
                 can_falut,
                 dbs_fault);
 #endif
+    std_msgs::msg::String error;
     switch (dbs_fault) {
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kOverLoadProtection):
-            std::cout << "Overload protection" << std::endl;
+            error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kOverload));
+            pub_bms_error_->publish(error);
+            RCLCPP_INFO(this->get_logger(),"[CanMGR]-[faultCallback]-[ErrorCode] OverLoad %s",error.data.c_str());
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kOverTemperatureProtection):
             std::cout << "Over-temperature protection" << std::endl;
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kOverCurrentProtection):
-            std::cout << "Overcurrent protection" << std::endl;
+            error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kOvercurrent));
+            pub_bms_error_->publish(error);
+            RCLCPP_INFO(this->get_logger(),"[CanMGR]-[faultCallback]-[ErrorCode] kOverCurrentProtection %s",error.data.c_str());
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kPowerSupplyUndervoltageFault):
-            std::cout << "Power supply undervoltage fault" << std::endl;
+            error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kPowerLowVoltage));
+            pub_bms_error_->publish(error);
+            RCLCPP_INFO(this->get_logger(),"[CanMGR]-[faultCallback]-[ErrorCode] kPowerSupplyUndervoltageFault %s",error.data.c_str());
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kPowerOvervoltageFailure):
-            std::cout << "Power overvoltage failure" << std::endl;
+            error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kPowerOverVoltge));
+            pub_bms_error_->publish(error);
+            RCLCPP_INFO(this->get_logger(),"[CanMGR]-[faultCallback]-[ErrorCode] kPowerOvervoltageFailure %s",error.data.c_str());
+
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kInsufficientPressure):
             std::cout << "Insufficient pressure" << std::endl;
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kMotorFailure):
+            error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kMotor));
+            pub_bms_error_->publish(error);
+            RCLCPP_INFO(this->get_logger(),"[CanMGR]-[faultCallback]-[ErrorCode] kMotorFailure %s",error.data.c_str());
             std::cout << "Motor failure" << std::endl;
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kCommunicationFailure):
-            std::cout << "Communication failure" << std::endl;
+            error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kCan));
+            pub_bms_error_->publish(error);
+            RCLCPP_INFO(this->get_logger(),"[CanMGR]-[faultCallback]-[ErrorCode] kCommunicationFailure %s",error.data.c_str());
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kCurrentSamplingFailure):
             std::cout << "Current sampling failure" << std::endl;
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kDriveFailure):
-            std::cout << "Drive failure" << std::endl;
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kMagneticCompilationFailure):
             std::cout << "Magnetic compilation failure" << std::endl;
@@ -241,7 +255,7 @@ void CanMGR::bmsCallback(int bms_charge_stscc ,int soc, int sys_sts) {
     }
     if(sys_sts!=0){
         std_msgs::msg::String error;
-        error.data=std::to_string(static_cast<int>(KEC::BMS_Sys_Sts::kBms));
+        error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kBms));
         pub_bms_error_->publish(error);
     }
 }
