@@ -344,7 +344,7 @@ void DataRelayer::static_break(int brake_pressure_cmd) {
 
 
 void DataRelayer::Handler_DBS_Status2(VCU::DBS_Status2 msg) {
-    faultCallback(msg.DBS_WarringCode, msg.DBS_Fault_Code-static_cast<unsigned long long>(OFFSET_DBS_WARRINGCODE));
+    faultCallback(msg.DBS_WarringCode, msg.DBS_Fault_Code);
 }
 
 void DataRelayer::run_flag() {
