@@ -74,12 +74,12 @@ private :
     rclcpp::CallbackGroup::SharedPtr cbg_rpm;
     rclcpp::CallbackGroup::SharedPtr cbg_bms;
     rclcpp::CallbackGroup::SharedPtr cbg_velocity;
-    rclcpp::CallbackGroup::SharedPtr cbg_bms_error_;
+    rclcpp::CallbackGroup::SharedPtr cbg_error_;
 
     rclcpp::Publisher<can_msgs::msg::TorqueFeedback>::SharedPtr pub_rpm_;
     rclcpp::Publisher<sensor_msgs::msg::BatteryState>::SharedPtr pub_bms_;
     rclcpp::Publisher<robot_status_msgs::msg::VelocityStatus>::SharedPtr pub_velocity_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_bms_error_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_error_;
 
     int fn_can_init(); // can callback function register
     void faultCallback(int can_falut, unsigned long long dbs_fault);
@@ -89,6 +89,7 @@ private :
     void bmsCallback(int bms_charge_stscc ,int soc, int sys_sts);
     void vehicleErrorCallback(int error_code, int low_voltage);
     void vehicleStatus2Callback(int brake_press, float speed);
+    void remoteIOCallback(int remote_a);
     void log(std::string call_name);
 
     void tp_control_body_callback(can_msgs::msg::AdControlBody::SharedPtr control_body);

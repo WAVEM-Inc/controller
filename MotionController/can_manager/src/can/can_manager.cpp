@@ -38,12 +38,12 @@ CanMGR::CanMGR() : Node("CanMotionController") {
     rclcpp::PublisherOptions options_rpm;
     rclcpp::PublisherOptions options_bms;
     rclcpp::PublisherOptions options_velocity;
-    rclcpp::PublisherOptions options_bms_error_;
+    rclcpp::PublisherOptions options_error_;
 
     options_rpm.callback_group = cbg_rpm;
     options_bms.callback_group = cbg_bms;
     options_velocity.callback_group = cbg_velocity;
-    options_bms_error_.callback_group = cbg_bms_error_;
+    options_error_.callback_group = cbg_error_;
 
     sub_body_ = this->create_subscription<can_msgs::msg::AdControlBody>(constants_->tp_name_control_body_,
                                                                         1,
@@ -89,9 +89,9 @@ CanMGR::CanMGR() : Node("CanMotionController") {
                                                                                    rclcpp::QoS(
                                                                                            rclcpp::SystemDefaultsQoS()),
                                                                                    options_velocity);
-    pub_bms_error_= this->create_publisher<std_msgs::msg::String>(constants_->tp_name_error_,
+    pub_error_= this->create_publisher<std_msgs::msg::String>(constants_->tp_name_error_,
                                                                   rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
-                                                                  options_bms_error_);
+                                                                  options_error_);
     cur_speed_ = 0;
     cur_speed_acc_ = 0;
     //fn_can_init();
@@ -129,6 +129,7 @@ int CanMGR::fn_can_init() {
     obj_.RegistBmsCallback<CanMGR>(this, &CanMGR::bmsCallback);
     obj_.RegistVehicleStatus2Callback(this, &CanMGR::vehicleStatus2Callback);
     obj_.RegistVehicleErrorCallback<CanMGR>(this, &CanMGR::vehicleErrorCallback);
+    obj_.RegisterRemoteIOCallback<CanMGR>(this, &CanMGR::remoteIOCallback);
     obj_.Run();
     return 0;
 }
@@ -149,7 +150,7 @@ int CanMGR::fn_can_init() {
  * @date 23.04.07
  */
 void CanMGR::faultCallback(int can_falut, unsigned long long dbs_fault) {
-#if DEBUG_MODE == 1
+#if DEBUG_MODE == 2
     RCLCPP_INFO(this->get_logger(), "[faultCallback] can_falut %d, dbs_fault %d \n",
                 can_falut,
                 dbs_fault);
@@ -158,7 +159,7 @@ void CanMGR::faultCallback(int can_falut, unsigned long long dbs_fault) {
     switch (dbs_fault) {
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kOverLoadProtection):
             error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kOverload));
-            pub_bms_error_->publish(error);
+            pub_error_->publish(error);
             RCLCPP_INFO(this->get_logger(),"[CanMGR]-[faultCallback]-[ErrorCode] OverLoad %s",error.data.c_str());
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kOverTemperatureProtection):
@@ -166,17 +167,17 @@ void CanMGR::faultCallback(int can_falut, unsigned long long dbs_fault) {
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kOverCurrentProtection):
             error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kOvercurrent));
-            pub_bms_error_->publish(error);
+            pub_error_->publish(error);
             RCLCPP_INFO(this->get_logger(),"[CanMGR]-[faultCallback]-[ErrorCode] kOverCurrentProtection %s",error.data.c_str());
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kPowerSupplyUndervoltageFault):
             error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kPowerLowVoltage));
-            pub_bms_error_->publish(error);
+            pub_error_->publish(error);
             RCLCPP_INFO(this->get_logger(),"[CanMGR]-[faultCallback]-[ErrorCode] kPowerSupplyUndervoltageFault %s",error.data.c_str());
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kPowerOvervoltageFailure):
             error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kPowerOverVoltge));
-            pub_bms_error_->publish(error);
+            pub_error_->publish(error);
             RCLCPP_INFO(this->get_logger(),"[CanMGR]-[faultCallback]-[ErrorCode] kPowerOvervoltageFailure %s",error.data.c_str());
 
             break;
@@ -185,13 +186,13 @@ void CanMGR::faultCallback(int can_falut, unsigned long long dbs_fault) {
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kMotorFailure):
             error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kMotor));
-            pub_bms_error_->publish(error);
+            pub_error_->publish(error);
             RCLCPP_INFO(this->get_logger(),"[CanMGR]-[faultCallback]-[ErrorCode] kMotorFailure %s",error.data.c_str());
             std::cout << "Motor failure" << std::endl;
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kCommunicationFailure):
             error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kCan));
-            pub_bms_error_->publish(error);
+            pub_error_->publish(error);
             RCLCPP_INFO(this->get_logger(),"[CanMGR]-[faultCallback]-[ErrorCode] kCommunicationFailure %s",error.data.c_str());
             break;
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kCurrentSamplingFailure):
@@ -211,6 +212,9 @@ void CanMGR::faultCallback(int can_falut, unsigned long long dbs_fault) {
         case static_cast<unsigned long long>(KEC::DBS_Fault_Code::kOtherFailures):
             std::cout << "Other failures" << std::endl;
             break;
+        case 0:
+            std::cout << "Data Normal" << std::endl;
+            break;
         default:
             std::cout << "Unknown fault code" << std::endl;
     }
@@ -228,7 +232,7 @@ void CanMGR::faultCallback(int can_falut, unsigned long long dbs_fault) {
  */
 void CanMGR::rpmCallback(int mcu_shift, int mcu_speed, int mcu_torque
 ) {
-#if DEBUG_MODE == 1
+#if DEBUG_MODE == 2
     RCLCPP_INFO(this->get_logger(), "[rpmCallback] mcu_speed %d \n",
                 mcu_speed);
 #endif
@@ -240,7 +244,7 @@ void CanMGR::rpmCallback(int mcu_shift, int mcu_speed, int mcu_torque
 }
 
 void CanMGR::bmsCallback(int bms_charge_stscc ,int soc, int sys_sts) {
-#if DEBUG_MODE == 1
+#if DEBUG_MODE == 2
     RCLCPP_INFO(this->get_logger(), "[bmsCallback] sys_sts %d, soc %d stscc %d\n",
                 sys_sts,
                 soc,
@@ -256,12 +260,12 @@ void CanMGR::bmsCallback(int bms_charge_stscc ,int soc, int sys_sts) {
     if(sys_sts!=0){
         std_msgs::msg::String error;
         error.data=std::to_string(static_cast<int>(KEC::ErrorCode::kBms));
-        pub_bms_error_->publish(error);
+        pub_error_->publish(error);
     }
 }
 
 void CanMGR::vehicleErrorCallback(int error_code, int low_voltage) {
-#if DEBUG_MODE == 1
+#if DEBUG_MODE == 2
     RCLCPP_INFO(this->get_logger(), "[vehicleErrorCallback] error_code %d, low_voltage %d \n",
                 error_code,
                 low_voltage);
@@ -269,16 +273,25 @@ void CanMGR::vehicleErrorCallback(int error_code, int low_voltage) {
 }
 
 void CanMGR::vehicleStatus2Callback(int brake_press, float speed) {
-#if DEBUG_MODE == 1
+#if DEBUG_MODE == 2
     RCLCPP_INFO(this->get_logger(), "[vehicleStatus2Callback] brake_press %d, speed %f \n",
                 brake_press,
                 speed);
 #endif
     robot_status_msgs::msg::VelocityStatus temp_velocity;
     temp_velocity.current_velocity = speed;
+    
     pub_velocity_->publish(temp_velocity);
 }
-
+void CanMGR::remoteIOCallback(int remote_a){
+#if DEBUG_MODE == 2
+    RCLCPP_INFO(this->get_logger(), "[remoteIOCallback] remote a %d \n",
+                remote_a);
+#endif
+    if(remote_a==0){
+        cur_speed_ = 0;
+    }
+}
 
 CanMGR::~CanMGR() {
 
@@ -307,7 +320,7 @@ void CanMGR::fn_send_rpm(const float &rpm, const std::chrono::system_clock::time
 
 
 void CanMGR::tp_control_body_callback(can_msgs::msg::AdControlBody::SharedPtr control_body) {
-#if DEBUG_MODE == 1
+#if DEBUG_MODE == 2
     RCLCPP_INFO(this->get_logger(),
                 "fog_light %d , low_beam %d, reversing_light %d, double_flash_light %d, brake_light %d, horn_control %d, high_beam %d, right_turn_light %d , left_turn_light %d \n",
                 control_body->fog_light,

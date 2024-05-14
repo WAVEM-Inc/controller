@@ -36,7 +36,6 @@ void DataRelayer::ControlSteering(float speed, float angle) {
 * @exception
 */
 void DataRelayer::ControlVel(float acc, float vel) {//iECU_Control_Accelerate, iECU_Control_Brake둘다 사용)
-    std::cout<<"[test_vel] "<<vel<<std::endl;
     SendMessageControlAccelerate(acc, vel);
 }
 
@@ -118,7 +117,6 @@ void DataRelayer::SendMessageControlSteering(float speed, float steering_angle_c
 * @exception
 */
 void DataRelayer::SendMessageControlAccelerate(float acc, float vel) {
-    std::cout<<"[temp]" << acc <<std::endl;
 
     unsigned char gear;
     if (vel > 0) {
@@ -142,7 +140,6 @@ void DataRelayer::SendMessageControlAccelerate(float acc, float vel) {
 };
 
 void DataRelayer::SendMessageControlAccelerate(float acc, float vel, unsigned char gear) {
-    std::cout<<"[temp]" << acc <<std::endl;
     //HeartBeat();
     AD::AD_Control_Accelerate dat_1;
     memset(&dat_1, 0x00, CAN_MAX_DLEN);
@@ -254,7 +251,7 @@ void DataRelayer::Run() {
 
     canlib_ = CanAdaptor::getInstance();
     canlib_->Initialize(system_endian_);
-#if DEBUG_MODE == 1
+#if DEBUG_MODE == 2
     std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
 #endif
     // 수신 핸들러 등록
@@ -263,7 +260,8 @@ void DataRelayer::Run() {
     canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VEHICLE_ERROR_Status,VCU_VEHICLE_ERRORCODE,device_type[CAN0]);
     canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_BMS_Status,BMS_A0H, device_type[CAN0]);
     canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_Vehicle_Status_2,VCU_VEHICLE_STATUS_2, device_type[CAN0]);
-#if DEBUG_MODE == 1
+    canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_IO,REMOTE_CONTROL_IO,device_type[CAN0]);
+#if DEBUG_MODE == 2
     std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
 #endif
 
@@ -281,13 +279,13 @@ void DataRelayer::Run() {
         sleep(CAN_ALIVE_CHECKTIME);
     }
 
-#if DEBUG_MODE == 1
+#if DEBUG_MODE == 2
     std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
 #endif
     //포트 오픈 체크 스레드
     cout << "Start checking for can channel fault" << endl;
     canlib_->CheckSocketStatus(device, vehicleErrorCallback);
-#if DEBUG_MODE == 1
+#if DEBUG_MODE == 2
     std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
 #endif
 }
@@ -361,3 +359,6 @@ void DataRelayer::Handler_VCU_Vehicle_Status_2(VCU::VCU_Vehicle_Status_2 msg) {
 
 
 
+void DataRelayer::Handler_Remote_Control_IO(VCU::Remote_Control_IO msg) {
+    remoteIOCallback(static_cast<int>(msg.Remote_A));
+}

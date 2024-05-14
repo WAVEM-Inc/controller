@@ -41,7 +41,7 @@ using std::placeholders::_1;
 class WmMotionController : public rclcpp::Node {
 private :
     std::shared_ptr<WmMotionControllerConstants> constants_;
-    float test;
+    float total_odom_;
     //std::shared_ptr<Manager> manager_;
 
     // timer

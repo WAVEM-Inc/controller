@@ -343,6 +343,7 @@ void WmMotionController::pub_odometry() {
     pub_odom_->publish(odom);
     geometry_msgs::msg::PoseStamped rtt_value;
     rtt_value.pose.position.x = odom_dist_;
+    rtt_value.pose.position.y = total_odom_;
     rtt_value.pose.orientation.x = qua_.getterYaw();//-90*M_PI/180;
 
     if (rtt_value.pose.orientation.x/*-90*M_PI/180*/> M_PI) {
@@ -408,7 +409,7 @@ void WmMotionController::update_transform() {
 void WmMotionController::calculate_next_position() {
     current_time_ = this->now();
     dxy_ = static_cast<double>(cur_ugv_->get_cur_distnace());
-    test += dxy_;
+    total_odom_ += std::fabs(dxy_);
     odom_dist_ += dxy_;
     auto sub_time = current_time_ - odom_time_;
     double time_seconds = sub_time.seconds();

@@ -110,6 +110,15 @@ namespace VCU {
         unsigned short Vehicle_Status_2_MsgCntr:4;
     };
 
+    struct Remote_Control_IO{
+        unsigned char Remote_E; //0 8
+        unsigned char Remote_F; //1 16
+        unsigned char Remote_A; //2 24
+        unsigned char Remote_B; //3 32
+        unsigned char Remote_C; //4 40
+        unsigned char Remote_D; //5 48
+        unsigned short reserved;
+    };
 
 }
 #pragma pack(pop)
