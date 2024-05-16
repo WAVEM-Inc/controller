@@ -409,5 +409,10 @@ void WmMotionController::slam_mode_callback(const can_msgs::msg::Mode::SharedPtr
 	control_mode_ = mode->slam_mode;
 }
 void WmMotionController::fn_emergency_callback(const can_msgs::msg::Emergency::SharedPtr data){
-	m_can_manager->static_break(UGV::BREAK::STOP);
+	if(data->stop){
+			m_can_manager->static_break(UGV::BREAK::STOP);
+	}
+	else{
+		m_can_manager->static_break(UGV::BREAK::GO);
+	}
 }
