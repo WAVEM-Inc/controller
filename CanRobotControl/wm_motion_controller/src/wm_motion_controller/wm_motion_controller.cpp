@@ -43,12 +43,14 @@ origin_y_(0){
 	cb_group_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	cb_group_rtt_odom_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	cb_group_mode_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+	cbg_emergency_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 	rclcpp::SubscriptionOptions sub_cmdvel_options;
 	rclcpp::SubscriptionOptions sub_can_chw_options;
 	rclcpp::SubscriptionOptions sub_imu_options;
 	rclcpp::SubscriptionOptions sub_controller_mode_options;
 	rclcpp::PublisherOptions pub_odom_options;
 	rclcpp::PublisherOptions pub_rtt_odom_options;
+	rclcpp::SubscriptionOptions sub_emergency_options;
 
 	sub_cmdvel_options.callback_group = m_cb_group_cmd_vel;
 	sub_can_chw_options.callback_group = m_cb_group_can_chw;
@@ -56,11 +58,14 @@ origin_y_(0){
 	sub_controller_mode_options.callback_group = cb_group_mode_;
 	pub_odom_options.callback_group = cb_group_odom_;
 	pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
+	sub_emergency_options.callback_group = cbg_emergency_;
 
 	m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(constants_->m_tp_cmdvel,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_cmdvel_callback,this,_1),sub_cmdvel_options);
 	m_sub_can_chw = this->create_subscription<can_msgs::msg::ControlHardware>(constants_->m_tp_can_chw,constants_->m_tp_queue_size,std::bind(&WmMotionController::fn_can_chw_callback,this,_1),sub_can_chw_options);
 	sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
 	sub_mode_ = this->create_subscription<can_msgs::msg::Mode>(constants_->tp_slam_mode_,1,std::bind(&WmMotionController::slam_mode_callback,this,_1),sub_controller_mode_options);
+	
+	sub_emergency_ = this->create_subscription<can_msgs::msg::Mode>("drive/can/emergency",1,std::bind(&WmMotionController::fn_emergency_callback,this,_1),sub_emergency_options);
 	//
 	pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
 	pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
@@ -402,4 +407,7 @@ float WmMotionController::cmd_angel_convert(const float& ori_angel,const float& 
 
 void WmMotionController::slam_mode_callback(const can_msgs::msg::Mode::SharedPtr mode){
 	control_mode_ = mode->slam_mode;
+}
+void WmMotionController::fn_emergency_callback(const can_msgs::msg::Emergency::SharedPtr data){
+	m_can_manager->static_break(UGV::BREAK::STOP);
 }

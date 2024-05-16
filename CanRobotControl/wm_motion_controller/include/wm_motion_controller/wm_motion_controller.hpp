@@ -13,6 +13,7 @@
 #include "geometry_msgs/msg/twist.hpp"
 #include "can_msgs/msg/control_hardware.hpp"
 #include "can_msgs/msg/mode.hpp"
+#include "can_msgs/msg/emergency.hpp"
 #include "sensor_msgs/msg/imu.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
@@ -53,13 +54,13 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         rclcpp::CallbackGroup::SharedPtr cb_group_odom_;
         rclcpp::CallbackGroup::SharedPtr cb_group_rtt_odom_;
         rclcpp::CallbackGroup::SharedPtr cb_group_mode_;
-
+	rclcpp::CallbackGroup::SharedPtr cbg_emergency_;
         // subscription list
         rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr m_sub_cmdvel;
         rclcpp::Subscription<can_msgs::msg::ControlHardware>::SharedPtr m_sub_can_chw;
         rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr sub_imu_;
         rclcpp::Subscription<can_msgs::msg::Mode>::SharedPtr sub_mode_;
-
+	rclcpp::Subscription<can_msgs::msg::Emergency>::SharedPtr sub_emergency_;
         rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr pub_odom_;
         rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pub_rtt_;
 
@@ -68,7 +69,7 @@ class WmMotionController : public rclcpp::Node,public IMotionColleague,public st
         void fn_cmdvel_callback(const geometry_msgs::msg::Twist::SharedPtr cmd_vel);
         void imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu);
         void slam_mode_callback(const can_msgs::msg::Mode::SharedPtr mode);
-
+	void fn_emergency_callback(const can_msgs::msg::Emergency::SharedPtr data);
         // ugv calculate 
         std::shared_ptr<ENTITY::UGV> prev_ugv_;
         std::shared_ptr<ENTITY::UGV> cur_ugv_;
