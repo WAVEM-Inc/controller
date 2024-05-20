@@ -232,7 +232,7 @@ void CanMGR::faultCallback(int can_falut, unsigned long long dbs_fault) {
  */
 void CanMGR::rpmCallback(int mcu_shift, int mcu_speed, int mcu_torque
 ) {
-#if DEBUG_MODE == 2
+#if DEBUG_MODE == 1
     RCLCPP_INFO(this->get_logger(), "[rpmCallback] mcu_speed %d \n",
                 mcu_speed);
 #endif
