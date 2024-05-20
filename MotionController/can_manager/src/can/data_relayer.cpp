@@ -4,11 +4,10 @@
 #include "can/can_adaptor.hpp"
 #include "can/data_relayer.hpp"
 
-#include "can/can_define.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rcutils/logging_macros.h"
 
-DataRelayer::DataRelayer() {
+DataRelayer::DataRelayer() :   prev_gear_(ACC_GEAR::NEUTRAL),gear_trans_check_(0){
     system_endian_ = is_big_endian();
 }
 
@@ -37,7 +36,6 @@ void DataRelayer::ControlSteering(float speed, float angle) {
 * @exception
 */
 void DataRelayer::ControlVel(float acc, float vel) {//iECU_Control_Accelerate, iECU_Control_Brake둘다 사용)
-    std::cout<<"[test_vel] "<<vel<<std::endl;
     SendMessageControlAccelerate(acc, vel);
 }
 
@@ -119,14 +117,14 @@ void DataRelayer::SendMessageControlSteering(float speed, float steering_angle_c
 * @exception
 */
 void DataRelayer::SendMessageControlAccelerate(float acc, float vel) {
-    std::cout<<"[temp]" << acc <<std::endl;
+
     unsigned char gear;
     if (vel > 0) {
         gear = FORWARD;
     } else if (vel < 0) {
         gear = REVERSE;
     } else {
-        gear = PARKING;
+        gear = NEUTRAL;
         //gear = NEUTRAL;
     }
     //HeartBeat();
@@ -141,7 +139,18 @@ void DataRelayer::SendMessageControlAccelerate(float acc, float vel) {
     canlib_->PostCanMessage<AD::AD_Control_Accelerate>(dat_1, AD_CONTROL_ACCELERATE, device_type[CAN0]);
 };
 
-
+void DataRelayer::SendMessageControlAccelerate(float acc, float vel, unsigned char gear) {
+    //HeartBeat();
+    AD::AD_Control_Accelerate dat_1;
+    memset(&dat_1, 0x00, CAN_MAX_DLEN);
+    dat_1.AD_Accelerate_Valid = 1;
+    dat_1.AD_Acc = static_cast<unsigned short>(acc)+ static_cast<unsigned short>(500);
+    dat_1.AD_Accelerate_Work_Mode = 1;
+    dat_1.AD_Accelerate_Gear = gear;
+    dat_1.AD_Speed_Control = [](float v) { return v * CNV_SPEED_FACTOR * RESOLUTION_SPEED_CTRL; }(std::fabs(vel));
+    dat_1.AD_Torque_Control = 0;
+    canlib_->PostCanMessage<AD::AD_Control_Accelerate>(dat_1, AD_CONTROL_ACCELERATE, device_type[CAN0]);
+};
 /**
 * @brief send API(ControlHardware)
 * @details
@@ -222,7 +231,9 @@ void DataRelayer::Handler_MCU_Torque_Feedback(VCU::MCU_Torque_Feedback msg) {
     rpmCallback((int) msg.MCU_Shift, (int) msg.MCU_SPEED, (int) msg.MCU_TORQUE);
 }
 void DataRelayer::Handler_BMS_Status(VCU::BMS_A0h msg) {
-    bmsCallback(static_cast<int>(msg.BMS_Charge_StsCc),static_cast<int>(msg.BMS_HVBatSOC)*RESOLUTION_BMS_SOC);
+    bmsCallback(static_cast<int>(msg.BMS_Charge_StsCc),
+                static_cast<int>(msg.BMS_HVBatSOC)*RESOLUTION_BMS_SOC,
+                static_cast<int>(msg.BMS_Sys_Sts));
 }
 void DataRelayer::Handler_VEHICLE_ERROR_Status(VCU::VCU_Vehicle_ErrorCode msg) {
     vehicleErrorCallback(static_cast<int>(msg.Error_Code), static_cast<int>(msg.Low_voltage));
@@ -240,7 +251,7 @@ void DataRelayer::Run() {
 
     canlib_ = CanAdaptor::getInstance();
     canlib_->Initialize(system_endian_);
-#if DEBUG_MODE == 1
+#if DEBUG_MODE == 2
     std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
 #endif
     // 수신 핸들러 등록
@@ -249,7 +260,8 @@ void DataRelayer::Run() {
     canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VEHICLE_ERROR_Status,VCU_VEHICLE_ERRORCODE,device_type[CAN0]);
     canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_BMS_Status,BMS_A0H, device_type[CAN0]);
     canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_Vehicle_Status_2,VCU_VEHICLE_STATUS_2, device_type[CAN0]);
-#if DEBUG_MODE == 1
+    canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_IO,REMOTE_CONTROL_IO,device_type[CAN0]);
+#if DEBUG_MODE == 2
     std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
 #endif
 
@@ -267,13 +279,13 @@ void DataRelayer::Run() {
         sleep(CAN_ALIVE_CHECKTIME);
     }
 
-#if DEBUG_MODE == 1
+#if DEBUG_MODE == 2
     std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
 #endif
     //포트 오픈 체크 스레드
     cout << "Start checking for can channel fault" << endl;
     canlib_->CheckSocketStatus(device, vehicleErrorCallback);
-#if DEBUG_MODE == 1
+#if DEBUG_MODE == 2
     std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
 #endif
 }
@@ -301,7 +313,7 @@ void DataRelayer::SendTest() {
     canlib_->PostCanMessage<AD::AD_Control_Body>(dat_1, AD_CONTROL_BODY, device_type[CAN0]);
 }
 
-void DataRelayer::static_break(UGV::BREAK break_status) {
+/*void DataRelayer::static_break(UGV::BREAK break_status) {
     std::cout<<"[test]" <<std::endl;
     AD::AD_Control_Brake dat_2;
     memset(&dat_2, 0x00, CAN_MAX_DLEN);
@@ -316,15 +328,30 @@ void DataRelayer::static_break(UGV::BREAK break_status) {
     }
     //dat_2.iecu_dbs_valid = 1;
     canlib_->PostCanMessage<AD::AD_Control_Brake>(dat_2, AD_CONTROL_BRAKE, device_type[CAN0]);
+}*/
+void DataRelayer::static_break(int brake_pressure_cmd) {
+    rclcpp::Logger logger = rclcpp::get_logger("DataRelayer");
+    RCUTILS_LOG_INFO_NAMED(logger.get_name(),"[static_break]-brake_pressure_cmd %d",brake_pressure_cmd);
+    AD::AD_Control_Brake dat_2;
+    memset(&dat_2, 0x00, CAN_MAX_DLEN);
+    dat_2.AD_DBS_Valid = 1;
+    dat_2.AD_BrakePressure_Cmd =brake_pressure_cmd;
+    //dat_2.iecu_dbs_valid = 1;
+    canlib_->PostCanMessage<AD::AD_Control_Brake>(dat_2, AD_CONTROL_BRAKE, device_type[CAN0]);
 }
 
+
 void DataRelayer::Handler_DBS_Status2(VCU::DBS_Status2 msg) {
-    faultCallback(msg.DBS_WarringCode-OFFSET_DBS_WARRINGCODE, msg.DBS_Fault_Code);
+    faultCallback(msg.DBS_WarringCode, msg.DBS_Fault_Code);
 }
 
 void DataRelayer::run_flag() {
      canlib_->RunControlFlag(0, device_type[CAN0]);
 }
+void DataRelayer::run_off_flag() {
+    canlib_->RunControlFlag(1, device_type[CAN0]);
+}
+
 
 void DataRelayer::Handler_VCU_Vehicle_Status_2(VCU::VCU_Vehicle_Status_2 msg) {
     vehicleStatus2Callback(static_cast<float>(msg.Vehicle_Brake_Pressure)*RESOLUTION_VEHICLE_BRAKE_PRESSURE, (static_cast<float>(msg.Vehicle_Speed)*RESOLUTION_VEHICLE_SPEED)-OFFSET_VEHICLE_STATUS_SPEED);
@@ -332,3 +359,6 @@ void DataRelayer::Handler_VCU_Vehicle_Status_2(VCU::VCU_Vehicle_Status_2 msg) {
 
 
 
+void DataRelayer::Handler_Remote_Control_IO(VCU::Remote_Control_IO msg) {
+    remoteIOCallback(static_cast<int>(msg.Remote_A));
+}

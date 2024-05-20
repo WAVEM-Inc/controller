@@ -4,7 +4,8 @@
 
 #include "entity/df_ugv.hpp"
 #include "tf2/LinearMath/Quaternion.h"
-
+#define _USE_MATH_DEFINES
+#include <cmath>
 
 #include "common/common.hpp"
 
@@ -225,7 +226,7 @@ void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu
     qua_.QuaternionToEulerAngles();
 
     //qua_.EulerToQuaternion(qua_.getterYaw() + (180 + correction_) * M_PI / 180, -qua_.getterRoll(), qua_.getterPitch());
-    qua_.EulerToQuaternion(qua_.getterYaw() + (180 + correction_) * M_PI / 180, 0,0);
+    qua_.EulerToQuaternion(qua_.getterYaw(), 0,0);
     qua_.setterX(qua_.getterEulerX());
     qua_.setterY(qua_.getterEulerY());
     qua_.setterW(qua_.getterEulerW());
@@ -342,6 +343,7 @@ void WmMotionController::pub_odometry() {
     pub_odom_->publish(odom);
     geometry_msgs::msg::PoseStamped rtt_value;
     rtt_value.pose.position.x = odom_dist_;
+    rtt_value.pose.position.y = total_odom_;
     rtt_value.pose.orientation.x = qua_.getterYaw();//-90*M_PI/180;
 
     if (rtt_value.pose.orientation.x/*-90*M_PI/180*/> M_PI) {
@@ -349,7 +351,8 @@ void WmMotionController::pub_odometry() {
     } else if (rtt_value.pose.orientation.x/*-90*M_PI/180*/< -M_PI) {
         rtt_value.pose.orientation.x += 2 * M_PI;
     }
-    double eular = (rtt_value.pose.orientation.x) * 180 / M_PI;
+    double eular = ((rtt_value.pose.orientation.x) * 180 / M_PI) ;
+    eular += correction_;
     if(eular<0){
         rtt_value.pose.orientation.y =360+eular;
     }
@@ -406,7 +409,7 @@ void WmMotionController::update_transform() {
 void WmMotionController::calculate_next_position() {
     current_time_ = this->now();
     dxy_ = static_cast<double>(cur_ugv_->get_cur_distnace());
-    test += dxy_;
+    total_odom_ += std::fabs(dxy_);
     odom_dist_ += dxy_;
     auto sub_time = current_time_ - odom_time_;
     double time_seconds = sub_time.seconds();
@@ -462,10 +465,11 @@ void WmMotionController::slam_mode_callback(const can_msgs::msg::Mode::SharedPtr
 }
 
 void WmMotionController::break_callback(const route_msgs::msg::DriveBreak::SharedPtr pressure) {
-    pressure_ = (100 - pressure->break_pressure) * 0.01;
+    /*  기존 cmd_vel에 감속을 시도하려고 한 방법
+    pressure_ = (100 - pressure->break_pressure)*0.01;
     if (pressure_ == 0) {
         can_msgs::msg::AdControlBrake brake;
-        brake.brakepressure_cmd = 1;
+        brake.brakepressure_cmd = 100;
         pub_brake_->publish(brake);
     }
     if(pressure->break_pressure==0){
@@ -473,6 +477,10 @@ void WmMotionController::break_callback(const route_msgs::msg::DriveBreak::Share
         brake.brakepressure_cmd =0;
         pub_brake_->publish(brake);
     }
+     */
+    can_msgs::msg::AdControlBrake brake;
+    brake.brakepressure_cmd=pressure->break_pressure;
+    pub_brake_->publish(brake);
 }
 
 void WmMotionController::rpm_callback(const can_msgs::msg::TorqueFeedback::SharedPtr rpm) {
