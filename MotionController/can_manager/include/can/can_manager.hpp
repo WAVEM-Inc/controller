@@ -86,7 +86,7 @@ private :
 
     void rpmCallback(int mcu_shift, int mcu_speed, int mcu_torque);
 
-    void bmsCallback(int bms_charge_stscc ,int soc, int sys_sts);
+    void bmsCallback(int bms_charge_stscc ,int soc, int sys_sts, int voltage);
     void vehicleErrorCallback(int error_code, int low_voltage);
     void vehicleStatus2Callback(int brake_press, float speed);
     void remoteIOCallback(int remote_a);
