@@ -248,7 +248,7 @@ void CanMGR::bmsCallback(int bms_charge_stscc ,int soc, int sys_sts, int voltage
     RCLCPP_INFO(this->get_logger(), "[bmsCallback] sys_sts %d, soc %d stscc %d voltage %d \n",
                 sys_sts,
                 soc,
-                bms_charge_stscc
+                bms_charge_stscc,
 		voltage);
 #endif
     sensor_msgs::msg::BatteryState temp_battery;
