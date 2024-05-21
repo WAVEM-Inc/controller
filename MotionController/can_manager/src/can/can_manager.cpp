@@ -244,11 +244,12 @@ void CanMGR::rpmCallback(int mcu_shift, int mcu_speed, int mcu_torque
 }
 
 void CanMGR::bmsCallback(int bms_charge_stscc ,int soc, int sys_sts, int voltage) {
-#if DEBUG_MODE == 2
-    RCLCPP_INFO(this->get_logger(), "[bmsCallback] sys_sts %d, soc %d stscc %d\n",
+#if DEBUG_MODE == 1
+    RCLCPP_INFO(this->get_logger(), "[bmsCallback] sys_sts %d, soc %d stscc %d voltage %d \n",
                 sys_sts,
                 soc,
-                bms_charge_stscc);
+                bms_charge_stscc
+		voltage);
 #endif
     sensor_msgs::msg::BatteryState temp_battery;
     temp_battery.voltage = soc;
