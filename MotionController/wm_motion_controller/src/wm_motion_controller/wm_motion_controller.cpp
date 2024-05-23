@@ -226,7 +226,7 @@ void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu
     qua_.QuaternionToEulerAngles();
 
     //qua_.EulerToQuaternion(qua_.getterYaw() + (180 + correction_) * M_PI / 180, -qua_.getterRoll(), qua_.getterPitch());
-    qua_.EulerToQuaternion(qua_.getterYaw(), 0,0);
+    qua_.EulerToQuaternion(qua_.getterYaw(), qua_.getterPitch(),qua_.getterRoll()+180);
     qua_.setterX(qua_.getterEulerX());
     qua_.setterY(qua_.getterEulerY());
     qua_.setterW(qua_.getterEulerW());
@@ -331,6 +331,8 @@ void WmMotionController::pub_odometry() {
     odom.pose.pose.position.x = lo_x_;
     odom.pose.pose.position.y = lo_y_;
     odom.pose.pose.position.z = constants_->clear_zero_;
+    odom.pose.pose.orientation.x = odom_quat_.x;
+    odom.pose.pose.orientation.y = odom_quat_.y;
     odom.pose.pose.orientation.w = odom_quat_.w;
     odom.pose.pose.orientation.z = odom_quat_.z;
     odom.twist.twist.linear.x = vel_x_*10;

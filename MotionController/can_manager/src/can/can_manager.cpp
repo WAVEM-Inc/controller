@@ -243,16 +243,18 @@ void CanMGR::rpmCallback(int mcu_shift, int mcu_speed, int mcu_torque
     pub_rpm_->publish(temp_rpm);
 }
 
-void CanMGR::bmsCallback(int bms_charge_stscc ,int soc, int sys_sts) {
-#if DEBUG_MODE == 2
-    RCLCPP_INFO(this->get_logger(), "[bmsCallback] sys_sts %d, soc %d stscc %d\n",
+void CanMGR::bmsCallback(int bms_charge_stscc ,int soc, int sys_sts, int voltage) {
+#if DEBUG_MODE == 1
+    RCLCPP_INFO(this->get_logger(), "[bmsCallback] sys_sts %d, soc %d stscc %d voltage %d \n",
                 sys_sts,
                 soc,
-                bms_charge_stscc);
+                bms_charge_stscc,
+		voltage);
 #endif
     sensor_msgs::msg::BatteryState temp_battery;
     temp_battery.voltage = soc;
     temp_battery.present = !bms_charge_stscc;
+    temp_battery.percentage = static_cast<float>(voltage);
     pub_bms_->publish(temp_battery);
     if(soc<=10){
         obj_.ControlHardware(false,false,false,false,false,true,false,false,false);

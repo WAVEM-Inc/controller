@@ -233,7 +233,8 @@ void DataRelayer::Handler_MCU_Torque_Feedback(VCU::MCU_Torque_Feedback msg) {
 void DataRelayer::Handler_BMS_Status(VCU::BMS_A0h msg) {
     bmsCallback(static_cast<int>(msg.BMS_Charge_StsCc),
                 static_cast<int>(msg.BMS_HVBatSOC)*RESOLUTION_BMS_SOC,
-                static_cast<int>(msg.BMS_Sys_Sts));
+                static_cast<int>(msg.BMS_Sys_Sts),
+                static_cast<int>(msg.BMS_HVBatVol));
 }
 void DataRelayer::Handler_VEHICLE_ERROR_Status(VCU::VCU_Vehicle_ErrorCode msg) {
     vehicleErrorCallback(static_cast<int>(msg.Error_Code), static_cast<int>(msg.Low_voltage));
