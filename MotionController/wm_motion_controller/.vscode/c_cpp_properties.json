@@ -4,9 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/home/ubuntu/ros2_ws/src/CanRobotControl/**",
-                "/opt/ros/foxy/include",
-
+                "/opt/ros/humble/**",
+                "/home/nuc-bt/kec_ws/src/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
