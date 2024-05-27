@@ -65,7 +65,7 @@ origin_y_(0){
 	sub_imu_ = this->create_subscription<sensor_msgs::msg::Imu>(constants_->tp_imu_,constants_->m_tp_queue_size,std::bind(&WmMotionController::imu_callback,this,_1),sub_imu_options);
 	sub_mode_ = this->create_subscription<can_msgs::msg::Mode>(constants_->tp_slam_mode_,1,std::bind(&WmMotionController::slam_mode_callback,this,_1),sub_controller_mode_options);
 	
-	sub_emergency_ = this->create_subscription<can_msgs::msg::Mode>("drive/can/emergency",1,std::bind(&WmMotionController::fn_emergency_callback,this,_1),sub_emergency_options);
+	sub_emergency_ = this->create_subscription<can_msgs::msg::Emergency>("drive/can/emergency",1,std::bind(&WmMotionController::fn_emergency_callback,this,_1),sub_emergency_options);
 	//
 	pub_odom_ = this->create_publisher<nav_msgs::msg::Odometry>(constants_->tp_odom_, 1,pub_odom_options);
 	pub_rtt_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(constants_->tp_rtt_odom_,10,pub_rtt_odom_options);
