@@ -1,0 +1,39 @@
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+WARNING: Package name "CanRobotControl" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /ws/controller/CanRobotControl/build/CanRobotControl
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/ament_index/resource_index/package_run_dependencies/CanRobotControl
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/ament_index/resource_index/parent_prefix_path/CanRobotControl
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/environment/ament_prefix_path.sh
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/environment/ament_prefix_path.dsv
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/environment/path.sh
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/environment/path.dsv
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/local_setup.bash
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/local_setup.sh
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/local_setup.zsh
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/local_setup.dsv
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/package.dsv
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/ament_index/resource_index/packages/CanRobotControl
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/cmake/CanRobotControlConfig.cmake
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/cmake/CanRobotControlConfig-version.cmake
+-- Symlinking: /ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/package.xml

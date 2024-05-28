@@ -1,0 +1,61 @@
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+-- Found FastRTPS: /opt/ros/foxy/include  
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Found can_msgs: 0.0.0 (/ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /ws/controller/CanRobotControl/build/can_led_keyboard
+[35m[1mScanning dependencies of target can_led_keyboard_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/can_led_keyboard_node.dir/src/can_led_keyboard.cpp.o[0m
+[100%] [32m[1mLinking CXX executable can_led_keyboard_node[0m
+[100%] Built target can_led_keyboard_node
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/lib/can_led_keyboard/can_led_keyboard_node
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/ament_index/resource_index/package_run_dependencies/can_led_keyboard
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/ament_index/resource_index/parent_prefix_path/can_led_keyboard
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/can_led_keyboard/environment/ament_prefix_path.sh
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/can_led_keyboard/environment/ament_prefix_path.dsv
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/can_led_keyboard/environment/path.sh
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/can_led_keyboard/environment/path.dsv
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/can_led_keyboard/local_setup.bash
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/can_led_keyboard/local_setup.sh
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/can_led_keyboard/local_setup.zsh
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/can_led_keyboard/local_setup.dsv
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/can_led_keyboard/package.dsv
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/ament_index/resource_index/packages/can_led_keyboard
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/can_led_keyboard/cmake/can_led_keyboardConfig.cmake
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/can_led_keyboard/cmake/can_led_keyboardConfig-version.cmake
+-- Symlinking: /ws/controller/CanRobotControl/install/can_led_keyboard/share/can_led_keyboard/package.xml

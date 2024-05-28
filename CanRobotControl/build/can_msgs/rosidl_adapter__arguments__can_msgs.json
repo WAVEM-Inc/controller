@@ -1,0 +1,8 @@
+{
+  "package_name": "can_msgs",
+  "non_idl_tuples": [
+    "/ws/controller/CanRobotControl/can_msgs:msg/ControlHardware.msg",
+    "/ws/controller/CanRobotControl/can_msgs:msg/Mode.msg",
+    "/ws/controller/CanRobotControl/can_msgs:msg/Emergency.msg"
+  ]
+}

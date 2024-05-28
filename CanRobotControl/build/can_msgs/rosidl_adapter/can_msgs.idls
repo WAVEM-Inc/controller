@@ -1,0 +1,3 @@
+/ws/controller/CanRobotControl/build/can_msgs/rosidl_adapter/can_msgs:msg/ControlHardware.idl
+/ws/controller/CanRobotControl/build/can_msgs/rosidl_adapter/can_msgs:msg/Mode.idl
+/ws/controller/CanRobotControl/build/can_msgs/rosidl_adapter/can_msgs:msg/Emergency.idl

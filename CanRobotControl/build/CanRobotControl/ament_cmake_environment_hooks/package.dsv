@@ -1,0 +1,4 @@
+source;share/CanRobotControl/local_setup.bash
+source;share/CanRobotControl/local_setup.dsv
+source;share/CanRobotControl/local_setup.sh
+source;share/CanRobotControl/local_setup.zsh

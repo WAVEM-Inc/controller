@@ -1,0 +1,12 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from can_msgs/msg/Mode.msg
+// generated code does not contain a copyright notice
+
+
+module can_msgs {
+  module msg {
+    struct Mode {
+      boolean slam_mode;
+    };
+  };
+};

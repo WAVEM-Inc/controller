@@ -1,0 +1,1 @@
+/ws/controller/CanRobotControl/build/wm_motion_controller/ament_cmake_core/wm_motion_controllerConfig-version.cmake

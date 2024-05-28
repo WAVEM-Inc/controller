@@ -1,0 +1,8 @@
+source;share/CanRobotControl/hook/cmake_prefix_path.ps1
+source;share/CanRobotControl/hook/cmake_prefix_path.dsv
+source;share/CanRobotControl/hook/cmake_prefix_path.sh
+source;share/CanRobotControl/local_setup.bash
+source;share/CanRobotControl/local_setup.dsv
+source;share/CanRobotControl/local_setup.ps1
+source;share/CanRobotControl/local_setup.sh
+source;share/CanRobotControl/local_setup.zsh

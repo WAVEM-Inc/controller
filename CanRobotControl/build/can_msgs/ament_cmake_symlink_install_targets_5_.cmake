@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/ws/controller/CanRobotControl/build/can_msgs/rosidl_generator_py/can_msgs/libcan_msgs__python.so" "TARGETS" "can_msgs__python" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")

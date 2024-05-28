@@ -6,6 +6,7 @@ def generate_launch_description():
     motion_node = Node(
         package='wm_motion_controller',
         executable='wm_motion_controller_node',
+        arguments=['--ros-args','--enclave','/velodyne_driver_node'],
         parameters=[{'correction': 0.0}],
         output='screen'
     )

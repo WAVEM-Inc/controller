@@ -1,0 +1,15 @@
+/ws/controller/CanRobotControl/install/CanRobotControl/share/ament_index/resource_index/package_run_dependencies/CanRobotControl
+/ws/controller/CanRobotControl/install/CanRobotControl/share/ament_index/resource_index/parent_prefix_path/CanRobotControl
+/ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/environment/ament_prefix_path.sh
+/ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/environment/ament_prefix_path.dsv
+/ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/environment/path.sh
+/ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/environment/path.dsv
+/ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/local_setup.bash
+/ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/local_setup.sh
+/ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/local_setup.zsh
+/ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/local_setup.dsv
+/ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/package.dsv
+/ws/controller/CanRobotControl/install/CanRobotControl/share/ament_index/resource_index/packages/CanRobotControl
+/ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/cmake/CanRobotControlConfig.cmake
+/ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/cmake/CanRobotControlConfig-version.cmake
+/ws/controller/CanRobotControl/install/CanRobotControl/share/CanRobotControl/package.xml

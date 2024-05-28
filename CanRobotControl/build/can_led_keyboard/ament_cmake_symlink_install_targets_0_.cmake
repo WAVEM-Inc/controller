@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/ws/controller/CanRobotControl/build/can_led_keyboard/can_led_keyboard_node" "TARGETS" "can_led_keyboard_node" "DESTINATION" "lib/can_led_keyboard")

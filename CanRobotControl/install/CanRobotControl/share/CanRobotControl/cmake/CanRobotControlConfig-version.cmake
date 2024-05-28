@@ -1,0 +1,1 @@
+/ws/controller/CanRobotControl/build/CanRobotControl/ament_cmake_core/CanRobotControlConfig-version.cmake

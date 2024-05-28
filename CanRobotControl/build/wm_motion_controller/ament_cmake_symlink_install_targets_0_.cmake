@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/ws/controller/CanRobotControl/build/wm_motion_controller/wm_motion_controller_node" "TARGETS" "wm_motion_controller_node" "DESTINATION" "lib/wm_motion_controller")

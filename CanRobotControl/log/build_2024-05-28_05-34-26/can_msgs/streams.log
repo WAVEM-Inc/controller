@@ -1,0 +1,244 @@
+[0.027s] Invoking command in '/ws/controller/CanRobotControl/build/can_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ws/amr-navigation/navigation2/install/nav2_gazebo_spawner:/opt/ros/foxy:/ws/gps/ntrip_client-ros2/install/ntrip_client:/ws/gps/nmea/install/nmea_navsat_driver:/ws/rms/rcs_mqtt_bridge/install/rcs_mqtt_bridge /usr/bin/cmake /ws/controller/CanRobotControl/can_msgs -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ws/controller/CanRobotControl/install/can_msgs
+[0.071s] -- The C compiler identification is GNU 9.4.0
+[0.111s] -- The CXX compiler identification is GNU 9.4.0
+[0.116s] -- Check for working C compiler: /usr/bin/cc
+[0.170s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.170s] -- Detecting C compiler ABI info
+[0.226s] -- Detecting C compiler ABI info - done
+[0.232s] -- Detecting C compile features
+[0.232s] -- Detecting C compile features - done
+[0.233s] -- Check for working CXX compiler: /usr/bin/c++
+[0.292s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.293s] -- Detecting CXX compiler ABI info
+[0.354s] -- Detecting CXX compiler ABI info - done
+[0.360s] -- Detecting CXX compile features
+[0.360s] -- Detecting CXX compile features - done
+[0.365s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.397s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.397s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.489s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.553s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.622s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.637s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.727s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[0.754s] -- Found FastRTPS: /opt/ros/foxy/include  
+[0.834s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.892s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.895s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.896s] -- Looking for pthread.h
+[0.951s] -- Looking for pthread.h - found
+[0.951s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.008s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.008s] -- Looking for pthread_create in pthreads
+[1.057s] -- Looking for pthread_create in pthreads - not found
+[1.057s] -- Looking for pthread_create in pthread
+[1.112s] -- Looking for pthread_create in pthread - found
+[1.113s] -- Found Threads: TRUE  
+[1.227s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[1.248s] -- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)
+[1.336s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[1.461s] -- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+[1.666s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.746s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.777s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+[1.782s] -- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+[1.808s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") 
+[1.808s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.808s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+[1.808s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so
+[1.830s] -- Found PythonExtra: .so  
+[1.926s] -- Configuring done
+[1.957s] -- Generating done
+[1.959s] -- Build files have been written to: /ws/controller/CanRobotControl/build/can_msgs
+[1.964s] Invoked command in '/ws/controller/CanRobotControl/build/can_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ws/amr-navigation/navigation2/install/nav2_gazebo_spawner:/opt/ros/foxy:/ws/gps/ntrip_client-ros2/install/ntrip_client:/ws/gps/nmea/install/nmea_navsat_driver:/ws/rms/rcs_mqtt_bridge/install/rcs_mqtt_bridge /usr/bin/cmake /ws/controller/CanRobotControl/can_msgs -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ws/controller/CanRobotControl/install/can_msgs
+[1.966s] Invoking command in '/ws/controller/CanRobotControl/build/can_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ws/amr-navigation/navigation2/install/nav2_gazebo_spawner:/opt/ros/foxy:/ws/gps/ntrip_client-ros2/install/ntrip_client:/ws/gps/nmea/install/nmea_navsat_driver:/ws/rms/rcs_mqtt_bridge/install/rcs_mqtt_bridge /usr/bin/cmake --build /ws/controller/CanRobotControl/build/can_msgs -- -j16 -l16
+[2.005s] [35m[1mScanning dependencies of target can_msgs__cpp[0m
+[2.005s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[2.016s] [  4%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[2.239s] [35m[1mScanning dependencies of target can_msgs__rosidl_generator_c[0m
+[2.247s] [  4%] Built target can_msgs__cpp
+[2.269s] [  6%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_generator_c.dir/rosidl_generator_c/can_msgs/msg/detail/control_hardware__functions.c.o[0m
+[2.270s] [ 10%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[2.270s] [ 10%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[2.270s] [ 12%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[2.273s] [ 14%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_generator_c.dir/rosidl_generator_c/can_msgs/msg/detail/mode__functions.c.o[0m
+[2.275s] [ 17%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_generator_c.dir/rosidl_generator_c/can_msgs/msg/detail/emergency__functions.c.o[0m
+[2.323s] [ 19%] [32m[1mLinking C shared library libcan_msgs__rosidl_generator_c.so[0m
+[2.360s] [ 19%] Built target can_msgs__rosidl_generator_c
+[2.373s] [ 21%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[2.378s] [ 23%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[2.459s] [35m[1mScanning dependencies of target can_msgs__rosidl_typesupport_cpp[0m
+[2.468s] [35m[1mScanning dependencies of target can_msgs__rosidl_typesupport_introspection_cpp[0m
+[2.474s] [35m[1mScanning dependencies of target can_msgs__rosidl_typesupport_fastrtps_cpp[0m
+[2.489s] [ 25%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/can_msgs/msg/control_hardware__type_support.cpp.o[0m
+[2.490s] [ 27%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/can_msgs/msg/detail/control_hardware__type_support.cpp.o[0m
+[2.495s] [ 29%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/can_msgs/msg/mode__type_support.cpp.o[0m
+[2.495s] [ 31%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/can_msgs/msg/emergency__type_support.cpp.o[0m
+[2.505s] [ 34%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/can_msgs/msg/detail/dds_fastrtps/control_hardware__type_support.cpp.o[0m
+[2.506s] [ 36%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/can_msgs/msg/detail/emergency__type_support.cpp.o[0m
+[2.510s] [ 38%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/can_msgs/msg/detail/dds_fastrtps/emergency__type_support.cpp.o[0m
+[2.511s] [ 40%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/can_msgs/msg/detail/mode__type_support.cpp.o[0m
+[2.515s] [ 42%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/can_msgs/msg/detail/dds_fastrtps/mode__type_support.cpp.o[0m
+[2.561s] [35m[1mScanning dependencies of target can_msgs__rosidl_typesupport_c[0m
+[2.592s] [ 44%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/can_msgs/msg/mode__type_support.cpp.o[0m
+[2.596s] [ 46%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/can_msgs/msg/control_hardware__type_support.cpp.o[0m
+[2.605s] [ 48%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/can_msgs/msg/emergency__type_support.cpp.o[0m
+[2.613s] [35m[1mScanning dependencies of target can_msgs__rosidl_typesupport_introspection_c[0m
+[2.642s] [ 51%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/can_msgs/msg/detail/control_hardware__type_support.c.o[0m
+[2.645s] [ 55%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/can_msgs/msg/detail/emergency__type_support.c.o[0m
+[2.645s] [ 55%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/can_msgs/msg/detail/mode__type_support.c.o[0m
+[2.655s] [ 57%] [32m[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_c.so[0m
+[2.695s] [ 59%] [32m[1mLinking C shared library libcan_msgs__rosidl_typesupport_introspection_c.so[0m
+[2.711s] [ 59%] Built target can_msgs__rosidl_typesupport_c
+[2.737s] [ 59%] Built target can_msgs__rosidl_typesupport_introspection_c
+[2.816s] [ 61%] [32m[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_cpp.so[0m
+[2.830s] [ 63%] [32m[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[2.855s] [ 63%] Built target can_msgs__rosidl_typesupport_cpp
+[2.881s] [ 63%] Built target can_msgs__rosidl_typesupport_introspection_cpp
+[2.890s] [ 65%] [32m[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[2.949s] [ 65%] Built target can_msgs__rosidl_typesupport_fastrtps_cpp
+[2.960s] [ 68%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[3.120s] [35m[1mScanning dependencies of target can_msgs__rosidl_typesupport_fastrtps_c[0m
+[3.138s] [ 74%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/can_msgs/msg/detail/control_hardware__type_support_c.cpp.o[0m
+[3.138s] [ 74%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/can_msgs/msg/detail/mode__type_support_c.cpp.o[0m
+[3.138s] [ 74%] [32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/can_msgs/msg/detail/emergency__type_support_c.cpp.o[0m
+[3.330s] [ 76%] [32m[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[3.389s] [ 76%] Built target can_msgs__rosidl_typesupport_fastrtps_c
+[3.399s] [35m[1mScanning dependencies of target can_msgs[0m
+[3.409s] [ 76%] Built target can_msgs
+[3.418s] [35m[1mScanning dependencies of target can_msgs__py[0m
+[3.428s] [ 78%] [34m[1mGenerating Python code for ROS interfaces[0m
+[3.723s] [ 78%] Built target can_msgs__py
+[3.734s] [35m[1mScanning dependencies of target can_msgs__python[0m
+[3.754s] [ 85%] [32mBuilding C object CMakeFiles/can_msgs__python.dir/rosidl_generator_py/can_msgs/msg/_control_hardware_s.c.o[0m
+[3.754s] [ 85%] [32mBuilding C object CMakeFiles/can_msgs__python.dir/rosidl_generator_py/can_msgs/msg/_mode_s.c.o[0m
+[3.754s] [ 85%] [32mBuilding C object CMakeFiles/can_msgs__python.dir/rosidl_generator_py/can_msgs/msg/_emergency_s.c.o[0m
+[3.816s] [ 87%] [32m[1mLinking C shared library rosidl_generator_py/can_msgs/libcan_msgs__python.so[0m
+[3.851s] [ 87%] Built target can_msgs__python
+[3.865s] [35m[1mScanning dependencies of target can_msgs__rosidl_typesupport_introspection_c__pyext[0m
+[3.865s] [35m[1mScanning dependencies of target can_msgs__rosidl_typesupport_c__pyext[0m
+[3.865s] [35m[1mScanning dependencies of target can_msgs__rosidl_typesupport_fastrtps_c__pyext[0m
+[3.884s] [ 89%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/can_msgs/_can_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[3.886s] [ 93%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/can_msgs/_can_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[3.886s] [ 93%] [32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/can_msgs/_can_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[3.945s] [ 95%] [32m[1mLinking C shared library rosidl_generator_py/can_msgs/can_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so[0m
+[3.946s] [100%] [32m[1mLinking C shared library rosidl_generator_py/can_msgs/can_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so[0m
+[3.947s] [100%] [32m[1mLinking CXX shared library rosidl_generator_py/can_msgs/can_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so[0m
+[3.986s] [100%] Built target can_msgs__rosidl_typesupport_c__pyext
+[3.986s] [100%] Built target can_msgs__rosidl_typesupport_introspection_c__pyext
+[4.003s] [100%] Built target can_msgs__rosidl_typesupport_fastrtps_c__pyext
+[4.013s] Invoked command in '/ws/controller/CanRobotControl/build/can_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ws/amr-navigation/navigation2/install/nav2_gazebo_spawner:/opt/ros/foxy:/ws/gps/ntrip_client-ros2/install/ntrip_client:/ws/gps/nmea/install/nmea_navsat_driver:/ws/rms/rcs_mqtt_bridge/install/rcs_mqtt_bridge /usr/bin/cmake --build /ws/controller/CanRobotControl/build/can_msgs -- -j16 -l16
+[4.144s] Invoking command in '/ws/controller/CanRobotControl/build/can_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ws/amr-navigation/navigation2/install/nav2_gazebo_spawner:/opt/ros/foxy:/ws/gps/ntrip_client-ros2/install/ntrip_client:/ws/gps/nmea/install/nmea_navsat_driver:/ws/rms/rcs_mqtt_bridge/install/rcs_mqtt_bridge /usr/bin/cmake --install /ws/controller/CanRobotControl/build/can_msgs
+[4.152s] -- Install configuration: ""
+[4.152s] -- Execute custom install script
+[4.152s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/ament_index/resource_index/rosidl_interfaces/can_msgs
+[4.160s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/control_hardware.h
+[4.168s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/control_hardware__functions.h
+[4.175s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/control_hardware__struct.h
+[4.182s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/control_hardware__type_support.h
+[4.190s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/emergency__functions.h
+[4.197s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/emergency__struct.h
+[4.205s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/emergency__type_support.h
+[4.212s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/mode__functions.h
+[4.219s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/mode__struct.h
+[4.226s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/mode__type_support.h
+[4.234s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/emergency.h
+[4.241s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/mode.h
+[4.248s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/rosidl_generator_c__visibility_control.h
+[4.256s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/environment/library_path.sh
+[4.264s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/environment/library_path.dsv
+[4.271s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/control_hardware__rosidl_typesupport_fastrtps_c.h
+[4.279s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/emergency__rosidl_typesupport_fastrtps_c.h
+[4.286s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/mode__rosidl_typesupport_fastrtps_c.h
+[4.294s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[4.301s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_c.so
+[4.309s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/control_hardware__rosidl_typesupport_fastrtps_cpp.hpp
+[4.316s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/emergency__rosidl_typesupport_fastrtps_cpp.hpp
+[4.324s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/mode__rosidl_typesupport_fastrtps_cpp.hpp
+[4.331s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[4.339s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_cpp.so
+[4.347s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/control_hardware__rosidl_typesupport_introspection_c.h
+[4.355s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/emergency__rosidl_typesupport_introspection_c.h
+[4.362s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/mode__rosidl_typesupport_introspection_c.h
+[4.369s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[4.377s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/control_hardware.hpp
+[4.384s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/control_hardware__builder.hpp
+[4.392s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/control_hardware__struct.hpp
+[4.399s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/control_hardware__traits.hpp
+[4.407s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/control_hardware__type_support.hpp
+[4.414s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/emergency__builder.hpp
+[4.421s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/emergency__struct.hpp
+[4.429s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/emergency__traits.hpp
+[4.436s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/emergency__type_support.hpp
+[4.444s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/mode__builder.hpp
+[4.451s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/mode__struct.hpp
+[4.458s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/mode__traits.hpp
+[4.466s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/mode__type_support.hpp
+[4.473s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/emergency.hpp
+[4.480s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/mode.hpp
+[4.488s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+[4.496s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/control_hardware__rosidl_typesupport_introspection_cpp.hpp
+[4.505s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/emergency__rosidl_typesupport_introspection_cpp.hpp
+[4.513s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/include/can_msgs/msg/detail/mode__rosidl_typesupport_introspection_cpp.hpp
+[4.520s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/environment/pythonpath.sh
+[4.528s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/environment/pythonpath.dsv
+[4.536s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/lib/python3.8/site-packages/can_msgs/__init__.py
+[4.544s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/lib/python3.8/site-packages/can_msgs/msg/__init__.py
+[4.552s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/lib/python3.8/site-packages/can_msgs/msg/_control_hardware.py
+[4.560s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/lib/python3.8/site-packages/can_msgs/msg/_emergency.py
+[4.568s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/lib/python3.8/site-packages/can_msgs/msg/_mode.py
+[4.576s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+[4.583s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+[4.590s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+[4.598s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__python.so
+[4.607s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/msg/ControlHardware.idl
+[4.615s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/msg/Mode.idl
+[4.623s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/msg/Emergency.idl
+[4.630s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/msg/ControlHardware.msg
+[4.638s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/msg/Mode.msg
+[4.646s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/msg/Emergency.msg
+[4.653s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/ament_index/resource_index/package_run_dependencies/can_msgs
+[4.661s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/ament_index/resource_index/parent_prefix_path/can_msgs
+[4.671s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/environment/ament_prefix_path.sh
+[4.679s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/environment/ament_prefix_path.dsv
+[4.687s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/environment/path.sh
+[4.694s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/environment/path.dsv
+[4.702s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/local_setup.bash
+[4.710s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/local_setup.sh
+[4.718s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/local_setup.zsh
+[4.725s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/local_setup.dsv
+[4.733s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/package.dsv
+[4.741s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/ament_index/resource_index/packages/can_msgs
+[4.749s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/rosidl_cmake-extras.cmake
+[4.756s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[4.764s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[4.772s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[4.781s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[4.789s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[4.797s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[4.805s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgsConfig.cmake
+[4.813s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgsConfig-version.cmake
+[4.820s] -- Symlinking: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/package.xml
+[4.829s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__rosidl_generator_c.so
+[4.829s] -- Set runtime path of "/ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__rosidl_generator_c.so" to ""
+[4.829s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_c.so
+[4.829s] -- Set runtime path of "/ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_c.so" to ""
+[4.829s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_c.so
+[4.829s] -- Set runtime path of "/ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_c.so" to ""
+[4.829s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_cpp.so
+[4.829s] -- Set runtime path of "/ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[4.829s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_cpp.so
+[4.829s] -- Set runtime path of "/ws/controller/CanRobotControl/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_cpp.so" to ""
+[4.857s] Compiling '/ws/controller/CanRobotControl/install/can_msgs/lib/python3.8/site-packages/can_msgs/__init__.py'...
+[4.860s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cExport.cmake
+[4.860s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cExport-noconfig.cmake
+[4.860s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cExport.cmake
+[4.860s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[4.860s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cExport.cmake
+[4.860s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[4.860s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cppExport.cmake
+[4.860s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[4.860s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[4.860s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cppExport.cmake
+[4.860s] -- Installing: /ws/controller/CanRobotControl/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[4.862s] Invoked command in '/ws/controller/CanRobotControl/build/can_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ws/amr-navigation/navigation2/install/nav2_gazebo_spawner:/opt/ros/foxy:/ws/gps/ntrip_client-ros2/install/ntrip_client:/ws/gps/nmea/install/nmea_navsat_driver:/ws/rms/rcs_mqtt_bridge/install/rcs_mqtt_bridge /usr/bin/cmake --install /ws/controller/CanRobotControl/build/can_msgs
