@@ -10,7 +10,7 @@
 #include "common/common.hpp"
 
 #define OFFSET_STEERING 30
-
+#define IMU_CORRECTION 0
 /**
  * @brief Construct a new Wm Motion Controller:: Wm Motion Controller object
  * @author changunAn(changun516@wavem.net)
@@ -226,7 +226,7 @@ void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu
     qua_.QuaternionToEulerAngles();
 
     //qua_.EulerToQuaternion(qua_.getterYaw() + (180 + correction_) * M_PI / 180, -qua_.getterRoll(), qua_.getterPitch());
-    qua_.EulerToQuaternion(qua_.getterYaw(), qua_.getterPitch(),qua_.getterRoll());
+    qua_.EulerToQuaternion(qua_.getterYaw()-(IMU_CORRECTION*M_PI / 180), qua_.getterPitch(),qua_.getterRoll());
     qua_.setterX(qua_.getterEulerX());
     qua_.setterY(qua_.getterEulerY());
     qua_.setterW(qua_.getterEulerW());
