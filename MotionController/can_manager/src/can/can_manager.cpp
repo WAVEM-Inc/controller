@@ -4,6 +4,8 @@
 #include "can_manager/debug.hpp"
 #include "can/can_define.hpp"
 #include "code/kec_code_defie.hpp"
+
+#define STRAIGHT_CORRECTION -0.1
 /**
  * @brief Construct a new Can M G R:: Can M G R object
  * @author changunAn(changun516@wavem.net)
@@ -359,6 +361,9 @@ void CanMGR::tp_control_accelerate(can_msgs::msg::AdControlAccelerate::SharedPtr
     cur_speed_ = static_cast<float>(control_accelerate->speed_control);
 
     cur_speed_acc_ = static_cast<float>(control_accelerate->acc);
+
+    //
+
     //obj_.ControlVel(cur_speed_acc_,cur_speed_);
 }
 
@@ -370,7 +375,15 @@ void CanMGR::tp_control_brake(can_msgs::msg::AdControlBrake::SharedPtr control_b
 
 void CanMGR::tp_control_steering(can_msgs::msg::AdControlSteering::SharedPtr control_steering) {
     //obj_.ControlVel(cur_speed_acc_,cur_speed_);
-    obj_.ControlSteering(control_steering->steering_speed_cmd, control_steering->steering_angle_cmd);
+    double cmd_angle =  control_steering->steering_angle_cmd+STRAIGHT_CORRECTION;
+    if(cmd_angle>=30){
+    	cmd_angle=30;
+    }
+    else if(cmd_angle<=-30){
+    	cmd_angle=-30;
+    }
+    obj_.ControlSteering(control_steering->steering_speed_cmd, cmd_angle);
+    //obj_.ControlSteering(cur_speed_,STRAIGHT_CORRECTION);
 }
 
 void CanMGR::tp_emergency(can_msgs::msg::Emergency::SharedPtr stop) {
