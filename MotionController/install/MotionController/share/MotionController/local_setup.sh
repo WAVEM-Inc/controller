@@ -1,0 +1,1 @@
+/home/nuc-bs/ros2_ws/src/controller/MotionController/build/MotionController/ament_cmake_environment_hooks/local_setup.sh

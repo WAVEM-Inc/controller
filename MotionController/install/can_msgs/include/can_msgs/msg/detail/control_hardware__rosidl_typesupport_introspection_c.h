@@ -1,0 +1,1 @@
+/home/nuc-bs/ros2_ws/src/controller/MotionController/build/can_msgs/rosidl_typesupport_introspection_c/can_msgs/msg/detail/control_hardware__rosidl_typesupport_introspection_c.h
