@@ -26,7 +26,8 @@ WmMotionController::WmMotionController()
           origin_corr_(0),
           origin_x_(0),
           origin_y_(0),
-          pressure_(1) {
+          pressure_(1),
+          imu_offset_(0){
     RCLCPP_INFO(this->get_logger(), "%s", "Motion_controller start!");
 
     this->declare_parameter<float>("correction", correction_);
@@ -226,7 +227,7 @@ void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu
     qua_.QuaternionToEulerAngles();
 
     //qua_.EulerToQuaternion(qua_.getterYaw() + (180 + correction_) * M_PI / 180, -qua_.getterRoll(), qua_.getterPitch());
-    qua_.EulerToQuaternion(qua_.getterYaw()-(IMU_CORRECTION*M_PI / 180), qua_.getterPitch(),qua_.getterRoll());
+    qua_.EulerToQuaternion(qua_.getterYaw()+(imu_offset_*M_PI / 180), qua_.getterPitch(),qua_.getterRoll());
     qua_.setterX(qua_.getterEulerX());
     qua_.setterY(qua_.getterEulerY());
     qua_.setterW(qua_.getterEulerW());
@@ -502,4 +503,8 @@ void WmMotionController::rpm_callback(const can_msgs::msg::TorqueFeedback::Share
     //std::cout<<"wm_motion_controller.cpp"<<__LINE__<<std::endl;
     prev_ugv_->set_cur_time(cur_ugv_->get_cur_time());
     //std::cout << "wm_motion_controller.cpp" << __LINE__ << std::endl;
+}
+
+void WmMotionController::imu_offset_callback(const route_msgs::msg::Offset::SharedPtr data) {
+    imu_offset_= data->data;
 }

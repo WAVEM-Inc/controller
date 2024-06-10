@@ -19,6 +19,7 @@
 
 #include "can_msgs/msg/mode.hpp"
 #include "route_msgs/msg/drive_break.hpp"
+#include "route_msgs/msg/offset.hpp"
 
 #include "sensor_msgs/msg/imu.hpp"
 #include "nav_msgs/msg/odometry.hpp"
@@ -42,6 +43,7 @@ class WmMotionController : public rclcpp::Node {
 private :
     std::shared_ptr<WmMotionControllerConstants> constants_;
     float total_odom_;
+    float imu_offset_;
     //std::shared_ptr<Manager> manager_;
 
     // timer
@@ -60,6 +62,7 @@ private :
     rclcpp::CallbackGroup::SharedPtr cbg_brake_;
     rclcpp::CallbackGroup::SharedPtr cbg_steering_;
     rclcpp::CallbackGroup::SharedPtr cbg_rpm_;
+    rclcpp::CallbackGroup::SharedPtr cbg_imu_offset_;
     // publish list
     rclcpp::Publisher<can_msgs::msg::AdControlBody>::SharedPtr pub_body_;
     rclcpp::Publisher<can_msgs::msg::AdControlAccelerate>::SharedPtr pub_accelerate_;
@@ -75,7 +78,7 @@ private :
     rclcpp::Subscription<can_msgs::msg::Mode>::SharedPtr sub_mode_;
     rclcpp::Subscription<route_msgs::msg::DriveBreak>::SharedPtr sub_break_;
     rclcpp::Subscription<can_msgs::msg::TorqueFeedback>::SharedPtr sub_rpm_;
-
+    rclcpp::Subscription<route_msgs::msg::Offset>::SharedPtr sub_imu_offset_;
     std::unique_ptr<tf2_ros::TransformBroadcaster> broadcaster;
 
     // callback fucntion list
@@ -85,6 +88,7 @@ private :
     void slam_mode_callback(const can_msgs::msg::Mode::SharedPtr mode);
     void break_callback(const route_msgs::msg::DriveBreak::SharedPtr pressure);
     void rpm_callback(const can_msgs::msg::TorqueFeedback::SharedPtr rpm);
+    void imu_offset_callback(const route_msgs::msg::Offset::SharedPtr data);
 
     // ugv calculate
     std::shared_ptr<ENTITY::UGV> prev_ugv_;
