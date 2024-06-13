@@ -20,6 +20,7 @@
 #define TP_NAME_CONTROL_ACCELERATE "/drive/can/ad_control_accelerate"
 #define TP_NAME_CONTROL_BRAKE "/drive/can/ad_control_brake"
 #define TP_NAME_CONTROL_STEERING "/drive/can/ad_control_steering"
+#define TP_NAME_IMU_OFFSET "/drive/odom/offset"
 #define RPM_CENTER 10000.0
 #define ZERO_APPROXIMATION 0.008
 #define RPM_BREAK 10

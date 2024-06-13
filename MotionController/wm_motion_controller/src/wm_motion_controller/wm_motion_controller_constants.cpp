@@ -29,6 +29,7 @@ WmMotionControllerConstants::WmMotionControllerConstants():
         tp_control_brake_(TP_NAME_CONTROL_BRAKE),
         tp_control_steering_(TP_NAME_CONTROL_STEERING),
         tp_break_(TP_NAME_BREAK),
-        tp_name_rpm_(TP_NAME_RPM)
+        tp_name_rpm_(TP_NAME_RPM),
+        tp_imu_offset_(TP_NAME_IMU_OFFSET)
 {
 }

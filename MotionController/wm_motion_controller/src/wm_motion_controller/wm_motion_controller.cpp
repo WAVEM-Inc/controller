@@ -74,7 +74,7 @@ WmMotionController::WmMotionController()
     rclcpp::PublisherOptions pub_accelerate_options;
     rclcpp::PublisherOptions pub_brake_options;
     rclcpp::PublisherOptions pub_steering_options;
-
+    rclcpp::SubscriptionOptions sub_imu_offset_options;
 
     std::cout << constants_->log_constructor << __LINE__ << std::endl;
     sub_cmdvel_options.callback_group = m_cb_group_cmd_vel;
@@ -82,7 +82,7 @@ WmMotionController::WmMotionController()
     sub_controller_mode_options.callback_group = cb_group_mode_;
     sub_break_options.callback_group = cb_group_break_;
     sub_rpm_options.callback_group = cbg_rpm_;
-
+    sub_imu_offset_options.callback_group = cbg_imu_offset_;
     m_sub_cmdvel = this->create_subscription<geometry_msgs::msg::Twist>(constants_->m_tp_cmdvel,
                                                                         constants_->m_tp_queue_size, std::bind(
                     &WmMotionController::fn_cmdvel_callback, this, _1), sub_cmdvel_options);
@@ -99,7 +99,11 @@ WmMotionController::WmMotionController()
     sub_rpm_ = this->create_subscription<can_msgs::msg::TorqueFeedback>(constants_->tp_name_rpm_,1,
                                                                         std::bind(&WmMotionController::rpm_callback,this,_1),
                                                                         sub_rpm_options);
-
+                                        
+sub_imu_offset_ = this->create_subscription<route_msgs::msg::Offset>(constants_->tp_imu_offset_,1,
+                                                                        std::bind(&WmMotionController::imu_offset_callback,this,_1),
+                                                                        sub_imu_offset_options);
+                                        
     pub_odom_options.callback_group = cb_group_odom_;
     pub_rtt_odom_options.callback_group = cb_group_rtt_odom_;
     pub_accelerate_options.callback_group = cbg_accelerate_;
@@ -225,7 +229,7 @@ void WmMotionController::imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu
     qua_.setterW(imu->orientation.w);
 
     qua_.QuaternionToEulerAngles();
-
+    RCLCPP_INFO(this->get_logger(),"imu offset %lf",imu_offset_);
     //qua_.EulerToQuaternion(qua_.getterYaw() + (180 + correction_) * M_PI / 180, -qua_.getterRoll(), qua_.getterPitch());
     qua_.EulerToQuaternion(qua_.getterYaw()-(imu_offset_*M_PI / 180), qua_.getterPitch(),qua_.getterRoll());
     qua_.setterX(qua_.getterEulerX());
