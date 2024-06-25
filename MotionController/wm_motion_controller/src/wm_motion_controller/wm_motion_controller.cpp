@@ -10,7 +10,7 @@
 #include "common/common.hpp"
 
 #define OFFSET_STEERING 30
-#define IMU_CORRECTION 0
+#define IMU_CORRECTION 90
 /**
  * @brief Construct a new Wm Motion Controller:: Wm Motion Controller object
  * @author changunAn(changun516@wavem.net)
