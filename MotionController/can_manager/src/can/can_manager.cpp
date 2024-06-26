@@ -41,11 +41,13 @@ CanMGR::CanMGR() : Node("CanMotionController") {
     rclcpp::PublisherOptions options_bms;
     rclcpp::PublisherOptions options_velocity;
     rclcpp::PublisherOptions options_error_;
+    rclcpp::PublisherOptions options_vcu_odom_;
 
     options_rpm.callback_group = cbg_rpm;
     options_bms.callback_group = cbg_bms;
     options_velocity.callback_group = cbg_velocity;
     options_error_.callback_group = cbg_error_;
+    options_vcu_odom_.callback_group = cbg_vcu_odom_;
 
     sub_body_ = this->create_subscription<can_msgs::msg::AdControlBody>(constants_->tp_name_control_body_,
                                                                         1,
@@ -94,6 +96,10 @@ CanMGR::CanMGR() : Node("CanMotionController") {
     pub_error_= this->create_publisher<std_msgs::msg::String>(constants_->tp_name_error_,
                                                                   rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
                                                                   options_error_);
+    pub_vcu_odom_ = this->create_publisher<can_msgs::msg::VcuVehicleOdometerStatus>(constants_->tp_name_vcu_odom_,
+                                                                                    rclcpp::QoS(rclcpp::SystemDefaultsQoS()),
+                                                                                    options_vcu_odom_);
+
     cur_speed_ = 0;
     cur_speed_acc_ = 0;
     //fn_can_init();
@@ -301,6 +307,9 @@ void CanMGR::vehicleOdometerStatusCallback(float odom) {
 #if DEBUG_MODE ==1
     RCLCPP_INFO(this->get_logger(),"Odom %lf",odom);
 #endif
+    can_msgs::msg::VcuVehicleOdometerStatus vos;
+    vos.odom_data=odom;
+    pub_vcu_odom_->publish(vos);
 }
 
 CanMGR::~CanMGR() {

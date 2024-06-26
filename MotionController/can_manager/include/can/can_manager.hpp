@@ -28,6 +28,7 @@
 #include "sensor_msgs/msg/battery_state.hpp"
 #include "can_msgs/msg/init.hpp"
 #include "std_msgs/msg/string.hpp"
+#include "can_msgs/msg/vcu_vehicle_odometer_status.hpp"
 
 static volatile int state = 1;
 
@@ -75,11 +76,13 @@ private :
     rclcpp::CallbackGroup::SharedPtr cbg_bms;
     rclcpp::CallbackGroup::SharedPtr cbg_velocity;
     rclcpp::CallbackGroup::SharedPtr cbg_error_;
+    rclcpp::CallbackGroup::SharedPtr cbg_vcu_odom_;
 
     rclcpp::Publisher<can_msgs::msg::TorqueFeedback>::SharedPtr pub_rpm_;
     rclcpp::Publisher<sensor_msgs::msg::BatteryState>::SharedPtr pub_bms_;
     rclcpp::Publisher<robot_status_msgs::msg::VelocityStatus>::SharedPtr pub_velocity_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_error_;
+    rclcpp::Publisher<can_msgs::msg::VcuVehicleOdometerStatus>::SharedPtr pub_vcu_odom_;
 
     int fn_can_init(); // can callback function register
     void faultCallback(int can_falut, unsigned long long dbs_fault);

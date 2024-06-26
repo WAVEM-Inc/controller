@@ -20,6 +20,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
         "msg/Mode.msg"
         "msg/Emergency.msg"
 	"msg/Init.msg"
+	"msg/VcuVehicleOdometerStatus.msg"
         DEPENDENCIES builtin_interfaces std_msgs nav_msgs
 )
 
