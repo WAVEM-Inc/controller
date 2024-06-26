@@ -90,6 +90,7 @@ private :
     void vehicleErrorCallback(int error_code, int low_voltage);
     void vehicleStatus2Callback(int brake_press, float speed);
     void remoteIOCallback(int remote_a);
+    void vehicleOdometerStatusCallback(float odom);
     void log(std::string call_name);
 
     void tp_control_body_callback(can_msgs::msg::AdControlBody::SharedPtr control_body);

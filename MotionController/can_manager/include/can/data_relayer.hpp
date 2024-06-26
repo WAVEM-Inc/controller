@@ -33,6 +33,7 @@ class DataRelayer {
     typedef std::function<void(int,int)> func_vehicle_error_callback;
     typedef std::function<void(int,float)> func_vehicle_status2;
     typedef std::function<void(int)> func_remote_io_callback;
+    typedef std::function<void(float)> func_vehicle_odometer_status_callback;
 
     //typedef std::function<void(int,int,int)> func_other_callback; // Callback function pointer variable definition
 
@@ -42,6 +43,7 @@ class DataRelayer {
     func_vehicle_error_callback  vehicleErrorCallback;
     func_vehicle_status2 vehicleStatus2Callback;
     func_remote_io_callback remoteIOCallback;
+    func_vehicle_odometer_status_callback vehicleOdometerStatusCallback;
     //func_other_callback otherCallback; // Callback function pointer variable definition
 
     bool system_endian_ = 0;
@@ -140,6 +142,12 @@ class DataRelayer {
                                          pClassType,
                                          placeholders::_1));
     }
+    template<typename T>
+    void RegisterVehicleOdometerStatusCallback(T *pClassType,void(T::*pfunc)(float)){
+        vehicleOdometerStatusCallback = move(bind(pfunc,
+                                     pClassType,
+                                     placeholders::_1));
+    }
 
     void Run();
     void SendTest();
@@ -168,6 +176,7 @@ class DataRelayer {
     void Handler_VEHICLE_ERROR_Status(VCU::VCU_Vehicle_ErrorCode msg);
     void Handler_VCU_Vehicle_Status_2(VCU::VCU_Vehicle_Status_2 msg);
     void Handler_Remote_Control_IO(VCU::Remote_Control_IO msg);
+    void Handler_VCU_Vehicle_Odometer_Status(VCU::Vehicle_Odometer_Status msg);
     bool is_big_endian(){
       char buf[2] = {0,1};
       unsigned short *val = reinterpret_cast<unsigned short*>(buf);

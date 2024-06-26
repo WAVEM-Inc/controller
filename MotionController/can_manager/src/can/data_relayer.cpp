@@ -262,6 +262,7 @@ void DataRelayer::Run() {
     canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_BMS_Status,BMS_A0H, device_type[CAN0]);
     canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_Vehicle_Status_2,VCU_VEHICLE_STATUS_2, device_type[CAN0]);
     canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_Remote_Control_IO,REMOTE_CONTROL_IO,device_type[CAN0]);
+    canlib_->SetHandler<DataRelayer>(this,&DataRelayer::Handler_VCU_Vehicle_Odometer_Status,VEHICLE_ODOMETER_STATUS,device_type[CAN0]);
 #if DEBUG_MODE == 2
     std::cout<<"[DataRelayer]-[Run] : "<<__LINE__<<std::endl;
 #endif
@@ -362,4 +363,8 @@ void DataRelayer::Handler_VCU_Vehicle_Status_2(VCU::VCU_Vehicle_Status_2 msg) {
 
 void DataRelayer::Handler_Remote_Control_IO(VCU::Remote_Control_IO msg) {
     remoteIOCallback(static_cast<int>(msg.Remote_A));
+}
+
+void DataRelayer::Handler_VCU_Vehicle_Odometer_Status(VCU::Vehicle_Odometer_Status msg) {
+    vehicleOdometerStatusCallback(static_cast<float>(msg.Vehicle_ODO));
 }

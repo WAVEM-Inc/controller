@@ -132,6 +132,7 @@ int CanMGR::fn_can_init() {
     obj_.RegistVehicleStatus2Callback(this, &CanMGR::vehicleStatus2Callback);
     obj_.RegistVehicleErrorCallback<CanMGR>(this, &CanMGR::vehicleErrorCallback);
     obj_.RegisterRemoteIOCallback<CanMGR>(this, &CanMGR::remoteIOCallback);
+    obj_.RegisterVehicleOdometerStatusCallback<CanMGR>(this,&CanMGR::vehicleOdometerStatusCallback);
     obj_.Run();
     return 0;
 }
@@ -295,6 +296,11 @@ void CanMGR::remoteIOCallback(int remote_a){
     if(remote_a==0){
         cur_speed_ = 0;
     }
+}
+void CanMGR::vehicleOdometerStatusCallback(float odom) {
+#if DEBUG_MODE ==1
+    RCLCPP_INFO(this->get_logger(),"Odom %lf",odom);
+#endif
 }
 
 CanMGR::~CanMGR() {
